@@ -1,0 +1,43 @@
+.modal-header {
+  display: flex;
+  justify-content: center; /* 사이트명 가운데 배치 */
+  align-items: center; /* 수직 중앙 정렬 */
+  position: relative; /* 상대적인 위치 설정 */
+  padding: 10px;
+  background-color: #267815;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  height: 80px; /* 헤더 높이 설정 */
+}
+
+h1 {
+  margin: 0;
+}
+
+.site-name {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* 텍스트를 세로로 배치 */
+  align-items: center; /* 텍스트를 가로로 가운데 배치 */
+  margin: 0;
+}
+
+.pitch {
+  font-size: 30px; /* PITCH 크기 */
+}
+
+.play {
+  font-size: 30px; /* PLAY 크기 */
+  margin-top: -10px; /* PLAY가 PITCH 바로 아래로 내려오도록 조정 */
+  margin-left: 73px; /* PLAY를 오른쪽으로 이동 */
+}
+
+
+
+.logo {
+  width: 55px; /* 원하는 크기로 설정 */
+  height: 55px;
+  /* margin-left: 5px; 사이트명과 이미지 사이 여백 */
+}
