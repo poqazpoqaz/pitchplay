@@ -1,0 +1,10 @@
+.btn {
+    background-color: #07550C;  
+    color: white;  
+    border: none;  
+    cursor: pointer;
+    /*추후 클릭시 효과를위해 버튼을 클릭 가능한 상태로뒀습니다. */
+    padding: 12px 24px;  
+    font-size: 16px; 
+    border-radius: 8px; 
+  }
