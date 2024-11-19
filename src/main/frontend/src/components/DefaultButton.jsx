@@ -20,7 +20,7 @@ const DefaultButton = ({ children }) => {
       style={buttonStyle}
       // onMouseEnter={(e) => { e.target.style = { ...buttonStyle, ...hoverStyle }; }} 
       // onMouseLeave={(e) => { e.target.style = buttonStyle; }} 
-      // 추후 hover효과를 위해 주석처리를해놨습니다
+      // 추후 hover효과를 위해   주석처리를해놨습니다
     >
       {children}
     </button>
