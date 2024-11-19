@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import LogoImg from "./LogoImg";
+import soccer from "../assets/soccer.svg"
 
 const StyledDiv = styled.div`
     display: flex;
@@ -9,11 +9,16 @@ const StyledDiv = styled.div`
     color: #FECACA;
     font-family: 'Lalezar', sans-serif;
 `
+const StyledImg = styled.img`
+    filter: drop-shadow(-7px 5px 4px rgba(0, 0, 0, 0.5)); /* 그림자 효과 */
+`
+
+
 function HeaderLogo() {
     return (
         <StyledDiv>
             <h1>PITCH</h1>
-            <LogoImg/>
+            <StyledImg src={soccer} />
             <h1>PLAY</h1>
         </StyledDiv>
     )
