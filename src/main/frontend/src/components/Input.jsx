@@ -11,7 +11,9 @@ const StyledInput = styled.input`
   `
   ;
 
+
 function Input({ id, type, placeholder, onChange, isvalid}) {
+  
   return <StyledInput 
                 id={id} // label과 input 연결 id
                 type={type} 
@@ -21,3 +23,13 @@ function Input({ id, type, placeholder, onChange, isvalid}) {
 }
 
 export default Input;
+
+//사용법
+{/* <label htmlFor="username">이메일</label>
+<Input
+  id="username"
+  type="email"
+  placeholder="이메일을 작성해주세요"
+  onChange={handleChange}
+  value={value}
+  isvalid={isValid} /> */}
