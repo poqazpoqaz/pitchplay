@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './MainSection.css';
 
 const MainSection = () => {
-  const [activeImage, setActiveImage] = useState(null); // 클릭된 이미지를 추적
-  const [hoveredImage, setHoveredImage] = useState(null); // 호버된 이미지 추적
+  const [activeImage, setActiveImage] = useState(null);
+  const [hoveredImage, setHoveredImage] = useState(null);
   const images = [
     {
       src: '1.jpg',
@@ -30,18 +30,18 @@ const MainSection = () => {
 
   const handleClick = (index) => {
     if (activeImage === index) {
-      setActiveImage(null); // 이미 클릭된 이미지를 다시 클릭하면 원래 상태로 돌아감
+      setActiveImage(null);
     } else {
-      setActiveImage(index); // 클릭한 이미지만 확장
+      setActiveImage(index);
     }
   };
 
   const handleHover = (index) => {
-    setHoveredImage(index); // 호버된 이미지 추적
+    setHoveredImage(index);
   };
 
   const handleLeave = () => {
-    setHoveredImage(null); // 호버에서 벗어나면 상태 초기화
+    setHoveredImage(null);
   };
 
   const scrollToImage = (index) => {
@@ -49,10 +49,10 @@ const MainSection = () => {
     if (imageElement) {
       imageElement.scrollIntoView({
         behavior: 'smooth',
-        block: 'center', // 이미지가 화면의 중앙에 위치하도록
+        block: 'center',
       });
 
-      // 스크롤 후 해당 이미지를 active 상태로 설정
+
       setActiveImage(index);
     }
   };
@@ -64,9 +64,9 @@ const MainSection = () => {
           <button
             key={index}
             className="image-nav-button"
-            onClick={() => scrollToImage(index)} // 버튼 클릭 시 해당 이미지로 스크롤 이동
+            onClick={() => scrollToImage(index)}
           >
-            {images[index].text} {/* 버튼 텍스트를 이미지의 text 속성으로 설정 */}
+            {images[index].text}
           </button>
         ))}
       </div>
@@ -74,7 +74,7 @@ const MainSection = () => {
       {images.map((image, index) => (
         <div
           key={image.src}
-          id={`image-${index}`} // 각 이미지에 고유 id 추가
+          id={`image-${index}`}
           className={`image ${activeImage === index ? 'active' : ''}`}
           onClick={() => handleClick(index)}
           onMouseEnter={() => handleHover(index)}
