@@ -28,7 +28,6 @@ const MainSection = () => {
     },
   ];
 
-
   const handleClick = (index) => {
     if (activeImage === index) {
       setActiveImage(null);
@@ -36,7 +35,6 @@ const MainSection = () => {
       setActiveImage(index);
     }
   };
-
 
   const handleHover = (index) => {
     setHoveredImage(index);
@@ -47,32 +45,8 @@ const MainSection = () => {
     setHoveredImage(null);
   };
 
-
-  const scrollToImage = (index) => {
-    const imageElement = document.getElementById(`image-${index}`);
-    if (imageElement) {
-      imageElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-    }
-    setActiveImage(index);
-  };
-
   return (
-    <div className="main-section">
-      <div className="image-buttons">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            className="image-nav-button"
-            onClick={() => scrollToImage(index)}
-          >
-            {images[index].text}
-          </button>
-        ))}
-      </div>
-
+    <div className="main-section"  style={{gridArea: "body"}}>
       {images.map((image, index) => (
         <div
           key={image.src}
@@ -96,7 +70,7 @@ const MainSection = () => {
               {image.linkText}
             </a>
           </div>
-        </div>
+        </div>  
       ))}
     </div>
   );

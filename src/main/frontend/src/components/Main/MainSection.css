@@ -1,10 +1,10 @@
 .main-section {
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     justify-content: space-between;
-    overflow: hidden;
     object-fit: contain;
+    min-width: 780px;
   }
 
   .image {
@@ -104,47 +104,11 @@
     background-color: rgba(0, 0, 0, 0.9);
   }
 
-  @media (max-width: 768px) {
+
+  @media (max-width: 800px) {
     .main-section {
+      display: flex;
       flex-direction: column;
-      overflow-y: scroll;
     }
-
-    .image {
-      flex: none;
-      width: 100%;
-      height: 50vh;
-      transition: transform 0.5s ease, z-index 0.5s ease;
-      object-fit: cover;
-    }
-
-    .image.active {
-      z-index: 10;
-    }
-
-    .text-overlay {
-      font-size: 1.5rem;
-      padding: 6px;
-    }
-
-    .link-overlay {
-      font-size: 1rem;
-    }
-
-    .image-nav-button {
-      font-size: 1rem;
-      padding: 4px 9px;
-    }
-
-    .image-buttons {
-      top: 10px;
-      left: 10px;
-      z-index: 1000;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .image-buttons {
-      display: none;
-    }
+    
   }

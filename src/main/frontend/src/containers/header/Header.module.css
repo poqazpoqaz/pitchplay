@@ -6,7 +6,7 @@
         '... left ... middle ... right ...' 130px
         '... ... ... ... ... ... ...' 1fr / 50px 165px 1fr 350px 1fr 165px 50px;
     height: 129px;
-    min-width: 600px;
+    min-width: 780px;
     }
 
 .headerLeft {
