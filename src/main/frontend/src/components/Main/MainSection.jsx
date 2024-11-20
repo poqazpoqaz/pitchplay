@@ -6,7 +6,7 @@ const MainSection = () => {
   const [hoveredImage, setHoveredImage] = useState(null);
   const images = [
     {
-      src: '1.jpg',
+      src: 'team.jpg',
       alt: 'Image 1',
       link: 'https://example.com/1',
       text: '소셜',
@@ -20,7 +20,7 @@ const MainSection = () => {
       linkText: '팀으로 이동하기',
     },
     {
-      src: 'gujang.png',
+      src: 'team.jpg',
       alt: 'Gujang',
       link: 'https://example.com/gujang',
       text: '구장',
@@ -46,7 +46,7 @@ const MainSection = () => {
   };
 
   return (
-    <div className="main-section"  style={{gridArea: "body"}}>
+    <div className="main-section" >
       {images.map((image, index) => (
         <div
           key={image.src}

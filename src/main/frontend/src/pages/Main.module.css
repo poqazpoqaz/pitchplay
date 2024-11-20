@@ -1,8 +1,27 @@
-.mainGrid{
+.mainGrid {
     display: grid;
-    grid-template: 
-    'title' 128px
-    'body' 80vh
-    'footer' 120px / 1fr;
-    overflow-y: hidden;
+    grid-template:
+        'title' 128px
+        'body' calc(100vh - 248px) 
+        'footer' 120px / 1fr;
+}
+
+@media (max-width: 1024px) {
+    .mainGrid {
+        display: grid;
+        grid-template:
+        'title' 128px
+        'body' calc(100vh - 248px) 
+        'footer' 250px / 1fr;
     }
+}
+
+@media (max-width: 786px) {
+    .mainGrid {
+        display: grid;
+        grid-template:
+            'title' 128px
+            'body' 100%
+            'footer' 250px / 1fr;
+    }
+}
