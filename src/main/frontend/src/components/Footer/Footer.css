@@ -1,0 +1,46 @@
+.footer {
+    width: 1024px;
+    height: 120px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .footer-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #1B4510;
+    white-space: nowrap;
+  }
+
+  .footer-menu {
+    display: flex;
+    gap: 15px;
+  }
+
+  .footer-menu a {
+    text-decoration: none;
+    color: #1B4510;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .footer-menu a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: #666;
+    text-align: right;
+    max-width: 300px;
+    white-space: wrap;
+    overflow: hidden;
+  }
