@@ -22,7 +22,7 @@ const StyledH1 = styled.h1`
 
 function TitleText({ color, size, children }) {
   return (
-    <StyledH1 color={color} size={size}>
+    <StyledH1 color={color} size={size} >
       {children}
     </StyledH1>
   );
