@@ -3,64 +3,67 @@ import { motion } from "framer-motion";
 import DeleteButton from "../DeleteButton";
 import TitleText from "../TitleText";
 import styles from "./MenuDropDown.module.css";
+import MenuDropItem from "./MenuDropItem"; // MenuDropItem을 임포트
 
 function MenuDropdown({ isVisible, onClick }) {
   const menus = ["소셜매칭", "팀매칭", "구장예약", "공지사항"];
-  //클릭된 메뉴
+
+  //클릭된 메뉴 확인
   const [selectedMenu, setSelectedMenu] = useState(null);
+
+  // 메뉴 클릭 시, 선택된 메뉴를 관리하는 함수
   const handleClick = (index) => {
     setSelectedMenu(index);
   };
 
+  // 메뉴 닫을 때 선택된 메뉴 초기화 및 onClick 호출
   const handleClose = () => {
-    setSelectedMenu(null); // 메뉴 닫을 때 클릭된 메뉴 초기화
-    onClick(); 
+    setSelectedMenu(null);
+    onClick();
   };
 
-
   return (
+    //전체 grid
     <motion.div
       className={styles.menudropgrid}
-      initial={{ x: "-120%" }} // 처음에는 위치 0
-      animate={{ x: isVisible ? 0 : "-120%" }} // 메뉴가 보일 때는 위치 0, 숨겨지면 -100%
+      initial={{ x: "-120%" }}
+      animate={{ x: isVisible ? 0 : "-120%" }}
       transition={{ duration: 0.3 }}
     >
+      {/* 닫기 */}
       <div className={styles.close}>
         <DeleteButton color="#ffffff" size="medium" onClick={handleClose} />
       </div>
+
+      {/* dropdown 제목 */}
       <div className={styles.title}>
         <TitleText color="var(--pink-color)" size="large">PITCHPLAY</TitleText>
       </div>
+
+      {/* dropdown 아이템 */}
       <ul className={styles.menus}>
         {menus.map((menu, index) => (
-          <motion.li
+          <MenuDropItem
             key={index}
-            onClick={() => handleClick(index)} // 메뉴 클릭 시 상태 변경
-            style={{
-              backgroundColor:
-              // 클릭된 항목에 진한 회색 배경 적용
-                selectedMenu === index ? "#333333" : "transparent", 
-              color: "#ffffff",
-              cursor: "pointer",
-            }}
-            whileHover={{
-              scale: 1.1,
-              backgroundColor: "#f2f2f2",
-              color: "#000000",
-              transition: { duration: 0.3 },
-            }}
+            index={index}
+            selectedMenu={selectedMenu} // selectedMenu를 전달
+            onClick={() => handleClick(index)} // 클릭 시 해당 메뉴를 선택하도록 처리
           >
             {menu}
-          </motion.li>
+          </MenuDropItem>
         ))}
       </ul>
+
+      {/* dropdown 로그인 */}
       <a href="#">
         <motion.p
-        whileHover={{
-            color:"#000000",
-            transition: {duration: 0.3}
-        }}
-        >로그인</motion.p>
+          whileHover={{
+            color: "#000000",
+            transition: { duration: 0.3 },
+          }}
+        >
+          로그인
+        </motion.p>
       </a>
     </motion.div>
   );
