@@ -2,84 +2,84 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kosmo.test01.dao.TestMapper">
-    <select id="countEmp" resultType="int">
-        select count(*) from emp
-    </select>
-    <select id="selectFirstEname" resultType="String">
-        select ename from emp limit 0,1
-    </select>
-    <select id="selectEnameByEmpno" resultType="string">
-        select ename from emp where empno = #{id}
-    </select>
-    <select id="selectEnameByDeptnoAndJob" resultType="string">
-        select ename from emp where deptno = #{dno} and job = #{job}
-    </select>
-    <select id="selectEmpRowByEmpno" resultType="map">
-        select empno, ename, sal from emp where empno = #{empno}
-    </select>
-    <select id="selectEmpRowsByDeptno" resultType="map">
-        select empno, ename, sal from emp where deptno = #{deptno}
-    </select>
-    <select id="selectEmpRowsByDeptnoWithDTO" resultType="com.kosmo.test01.dto.EmpDTO">
-        select empno, ename, sal from emp where deptno = #{deptno}
-    </select>
-    <select id="selectEmpWithSal" resultType="EmpDTO">
-        select empno, ename, sal from emp where sal >= #{sal}
-    </select>
-    <select id="selectEmpIfSal" resultType="EmpDTO">
-        select empno, ename, sal from emp
-        <if test="sal != null">
-            where sal > #{sal}
-        </if>
-    </select>
+<mapper namespace="com.kosmo.pitchplay.dao.mapper">
+<!--    <select id="countEmp" resultType="int">-->
+<!--        select count(*) from emp-->
+<!--    </select>-->
+<!--    <select id="selectFirstEname" resultType="String">-->
+<!--        select ename from emp limit 0,1-->
+<!--    </select>-->
+<!--    <select id="selectEnameByEmpno" resultType="string">-->
+<!--        select ename from emp where empno = #{id}-->
+<!--    </select>-->
+<!--    <select id="selectEnameByDeptnoAndJob" resultType="string">-->
+<!--        select ename from emp where deptno = #{dno} and job = #{job}-->
+<!--    </select>-->
+<!--    <select id="selectEmpRowByEmpno" resultType="map">-->
+<!--        select empno, ename, sal from emp where empno = #{empno}-->
+<!--    </select>-->
+<!--    <select id="selectEmpRowsByDeptno" resultType="map">-->
+<!--        select empno, ename, sal from emp where deptno = #{deptno}-->
+<!--    </select>-->
+<!--    <select id="selectEmpRowsByDeptnoWithDTO" resultType="com.kosmo.test01.dto.EmpDTO">-->
+<!--        select empno, ename, sal from emp where deptno = #{deptno}-->
+<!--    </select>-->
+<!--    <select id="selectEmpWithSal" resultType="EmpDTO">-->
+<!--        select empno, ename, sal from emp where sal >= #{sal}-->
+<!--    </select>-->
+<!--    <select id="selectEmpIfSal" resultType="EmpDTO">-->
+<!--        select empno, ename, sal from emp-->
+<!--        <if test="sal != null">-->
+<!--            where sal > #{sal}-->
+<!--        </if>-->
+<!--    </select>-->
     <!--    empno가 있으면 empno로 검색, ename이 있으면 ename으로 검색 이것도 저것도 아니면 검색 된 내용의 맨 위의 내용을 검색-->
-    <select id="selectEmpChoose1" resultType="EmpDTO">
-        select empno, ename, sal from emp
-        <choose>
-            <when test="empno != null">
-                where empno = #{empno}
-            </when>
-            <when test="ename != null">
-                where ename = #{ename}
-            </when>
-            <otherwise>
-                limit 0,1
-            </otherwise>
-        </choose>
-    </select>
-    <select id="selectEmpChoose2" resultType="EmpDTO">
-        select empno, ename, sal from emp
-        <where>
-            <if test="hiredate != null">
-                hiredate >= #{hiredate}
-            </if>
-            <if test="sal != null">
-                sal >= #{sal}
-            </if>
-        </where>
-        limit 0,5
-    </select>
-    <select id="selectEmpChoose3" resultType="EmpDTO">
-        select empno, ename, sal from emp
-        <where>
-            <foreach collection="list" item="item" open="empno in (" separator="," close=")">
-                #{item}
-            </foreach>
-        </where>
-    </select>
-    <insert id="insertDept01">
-        insert into dept(deptno, dname, loc) values(#{deptno}, #{dname}, #{loc})
-    </insert>
-    <update id="updateDept01">
-        <!--        update dept set dname = #{dname}, loc = #{loc} where deptno = #{deptno}-->
-        update
-        <set>
-            <if test="dname != null">dname = #{dname},</if>
-            <if test="loc != null">loc = #{loc}</if>
-        </set>
-    </update>
-    <delete id="deleteDept01">
-        delete from dept where deptno = #{deptno}
-    </delete>
+<!--    <select id="selectEmpChoose1" resultType="EmpDTO">-->
+<!--        select empno, ename, sal from emp-->
+<!--        <choose>-->
+<!--            <when test="empno != null">-->
+<!--                where empno = #{empno}-->
+<!--            </when>-->
+<!--            <when test="ename != null">-->
+<!--                where ename = #{ename}-->
+<!--            </when>-->
+<!--            <otherwise>-->
+<!--                limit 0,1-->
+<!--            </otherwise>-->
+<!--        </choose>-->
+<!--    </select>-->
+<!--    <select id="selectEmpChoose2" resultType="EmpDTO">-->
+<!--        select empno, ename, sal from emp-->
+<!--        <where>-->
+<!--            <if test="hiredate != null">-->
+<!--                hiredate >= #{hiredate}-->
+<!--            </if>-->
+<!--            <if test="sal != null">-->
+<!--                sal >= #{sal}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        limit 0,5-->
+<!--    </select>-->
+<!--    <select id="selectEmpChoose3" resultType="EmpDTO">-->
+<!--        select empno, ename, sal from emp-->
+<!--        <where>-->
+<!--            <foreach collection="list" item="item" open="empno in (" separator="," close=")">-->
+<!--                #{item}-->
+<!--            </foreach>-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    <insert id="insertDept01">-->
+<!--        insert into dept(deptno, dname, loc) values(#{deptno}, #{dname}, #{loc})-->
+<!--    </insert>-->
+<!--    <update id="updateDept01">-->
+<!--        &lt;!&ndash;        update dept set dname = #{dname}, loc = #{loc} where deptno = #{deptno}&ndash;&gt;-->
+<!--        update-->
+<!--        <set>-->
+<!--            <if test="dname != null">dname = #{dname},</if>-->
+<!--            <if test="loc != null">loc = #{loc}</if>-->
+<!--        </set>-->
+<!--    </update>-->
+<!--    <delete id="deleteDept01">-->
+<!--        delete from dept where deptno = #{deptno}-->
+<!--    </delete>-->
 </mapper>
