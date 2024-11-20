@@ -5,20 +5,20 @@
     '... close close ... ...' 20px
     '... ... ... ... ...' 70px
     '... ... title ... ...' 100px
-    'menu menu menu menu menu' 1fr
+    'menu menu menu menu menu' 280px
     '... ... ... ... ...' 1fr
-    '... login ... ... ...'1fr
+    '... login ... ... ...'20px
     '... ... ... ... ...'30px / 1fr 50px 200px 50px 1fr;
     color: #ffffff;
     background-color: #424242;
     text-align: center;
     width: 400px;
     padding: 20px;
-    z-index: 100;  /* z-index 설정 */
+    z-index: 100;  /* z-index  설정 */
     position: fixed; /* 화면에 고정 */
     top: 0; /* 화면 상단에 위치 */
     left: 0; /* 왼쪽에 위치 */
-    height: 100%; /* 전체 화면을 덮도록 */
+    height: 100%;
     box-shadow: 1px 1px 4px #222222;
 
 }
