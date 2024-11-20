@@ -5,11 +5,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  background-color: rgba(0, 0, 0, 0.5); /* 기본 배경색을 완전 투명으로 설정 */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000; /* 모달이 다른 콘텐츠 위에 나타나도록 */
+  backdrop-filter: blur(0px); /* 기본적으로 배경은 블러가 없음 */
+  transition: background-color 0.5s ease, backdrop-filter 0.5s ease; /* 배경색과 블러 효과가 부드럽게 변화하도록 설정 */
 }
 
 /* 모달 스타일 */
@@ -32,33 +34,10 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
+  color: white;
 }
 
 /* 모달 내용 */
 .content {
   padding: 20px;
-}
-
-/* 애니메이션 정의 (모달 열릴 때) */
-.modal-enter {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.modal-enter-active {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
-}
-
-/* 애니메이션 정의 (모달 닫힐 때) */
-.modal-exit {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.modal-exit-active {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
 }

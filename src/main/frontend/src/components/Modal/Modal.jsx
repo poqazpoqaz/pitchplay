@@ -1,36 +1,67 @@
 import React, { useRef } from 'react';
-import { CSSTransition } from 'react-transition-group'; // 애니메이션을 위한 react-transition-group import
+import { motion } from 'framer-motion'; // Framer Motion import
 import './Modal.css'; // 모달 스타일 import
 import ModalHeader from './ModalHeader'; // ModalHeader 컴포넌트 import
 
 const Modal = ({ isOpen, closeModal, children }) => {
   const nodeRef = useRef(null); // ref 생성
 
+  // 모달 애니메이션 설정
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.9 }, // 모달이 처음에는 투명하고 작은 상태
+    visible: { opacity: 1, scale: 1 },   // 모달이 나타날 때 완전한 크기와 불투명 상태
+    exit: { opacity: 0, scale: 0.9 },    // 모달이 닫힐 때의 상태
+  };
+
+  const overlayVariants = {
+    hidden: { 
+      backgroundColor: 'rgba(0, 0, 0, 0)',  // 배경이 처음에는 투명 상태
+      backdropFilter: 'blur(0px)'  // 처음에는 배경이 흐려지지 않음
+    },
+    visible: { 
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // 배경이 반투명으로 변화
+      backdropFilter: 'blur(10px)' // 배경이 블러 처리됨
+    },
+  };
+
   return (
-    <CSSTransition
-      in={isOpen} // 모달이 열릴 때
-      timeout={300} // 애니메이션 지속 시간 (ms)
-      classNames="modal" // 애니메이션 클래스 이름 (CSS에서 정의)
-      unmountOnExit // 모달이 닫히면 DOM에서 제거되도록 설정
-      nodeRef={nodeRef} // nodeRef를 CSSTransition에 전달
-    >
-      <div className="overlay" ref={nodeRef}> {/* ref를 overlay에 전달 */}
-        <div className="modal">
-          {/* 모달 내부에 ModalHeader 추가 */}
-          <ModalHeader />
-          
-          {/* 모달 내용 */}
-          <button className="closeButton" onClick={closeModal}>
-            X
-          </button>
-          <div className="content">
-            {children}
-          </div>
-        </div>
-      </div>
-    </CSSTransition>
+    <>
+      {/* 모달 오버레이 애니메이션 */}
+      {isOpen && (
+        <motion.div
+          className="overlay"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={overlayVariants}  // 배경 색상 및 블러 애니메이션 적용
+          transition={{ duration: 0.5 }} // 애니메이션 지속 시간
+          ref={nodeRef}
+        >
+          <motion.div
+            className="modal"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={modalVariants}  // 모달 애니메이션 적용
+            transition={{ duration: 0.5 }} // 애니메이션 지속 시간
+          >
+            {/* 모달 헤더 */}
+            <ModalHeader />
+
+            {/* 닫기 버튼 */}
+            <button className="closeButton" onClick={closeModal}>
+              X
+            </button>
+
+            {/* 모달 내용 */}
+            <div className="content">
+              {children}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </>
   );
 };
 
 export default Modal;
-//
