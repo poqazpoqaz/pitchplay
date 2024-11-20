@@ -3,7 +3,7 @@ import './MainSection.css';
 
 const MainSection = () => {
   const [activeImage, setActiveImage] = useState(null);
-  const [setHoveredImage] = useState(null);
+  const [hoveredImage, setHoveredImage] = useState(null);
   const images = [
     {
       src: '1.jpg',
@@ -28,6 +28,7 @@ const MainSection = () => {
     },
   ];
 
+
   const handleClick = (index) => {
     if (activeImage === index) {
       setActiveImage(null);
@@ -36,13 +37,16 @@ const MainSection = () => {
     }
   };
 
+
   const handleHover = (index) => {
     setHoveredImage(index);
   };
 
+
   const handleLeave = () => {
     setHoveredImage(null);
   };
+
 
   const scrollToImage = (index) => {
     const imageElement = document.getElementById(`image-${index}`);
@@ -51,10 +55,8 @@ const MainSection = () => {
         behavior: 'smooth',
         block: 'center',
       });
-
-
-      setActiveImage(index);
     }
+    setActiveImage(index);
   };
 
   return (
