@@ -1,0 +1,50 @@
+.menudropgrid{
+    display: grid;
+    grid-template: 
+    '... ... ... ... ...' 20px
+    '... close close ... ...' 20px
+    '... ... ... ... ...' 70px
+    '... ... title ... ...' 100px
+    'menu menu menu menu menu' 1fr
+    '... ... ... ... ...' 1fr
+    '... login ... ... ...'1fr
+    '... ... ... ... ...'30px / 1fr 50px 200px 50px 1fr;
+    color: #ffffff;
+    background-color: #424242;
+    text-align: center;
+    width: 400px;
+    padding: 20px;
+    z-index: 100;  /* z-index 설정 */
+    position: fixed; /* 화면에 고정 */
+    top: 0; /* 화면 상단에 위치 */
+    left: 0; /* 왼쪽에 위치 */
+    height: 100%; /* 전체 화면을 덮도록 */
+    box-shadow: 1px 1px 4px #222222;
+
+}
+
+.title{
+    grid-area: title;
+}
+
+.menus{
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+}
+
+.menus>li{
+    padding: 20px;
+}
+
+.close{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-area: close;
+}
+
+a{
+    grid-area: login;
+    color: white;
+}
