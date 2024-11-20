@@ -21,7 +21,7 @@ function MenuDropdown({ isVisible, onClick }) {
   return (
     <motion.div
       className={styles.menudropgrid}
-      initial={{ x: 0 }} // 처음에는 위치 0
+      initial={{ x: "-120%" }} // 처음에는 위치 0
       animate={{ x: isVisible ? 0 : "-120%" }} // 메뉴가 보일 때는 위치 0, 숨겨지면 -100%
       transition={{ duration: 0.3 }}
     >
