@@ -10,7 +10,7 @@ const HoverEffect = {
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{gridArea: "footer"}}>
       <div className="footer-title">PITCH PLAY</div>
       <nav className="footer-menu">
         <motion.a href="#menu1" {...HoverEffect}>메뉴</motion.a>
