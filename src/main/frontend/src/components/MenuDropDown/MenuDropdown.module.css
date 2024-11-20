@@ -18,7 +18,7 @@
     position: fixed; /* 화면에 고정 */
     top: 0; /* 화면 상단에 위치 */
     left: 0; /* 왼쪽에 위치 */
-    height: 100%;
+    height: 100%;   
     box-shadow: 1px 1px 4px #222222;
 
 }
@@ -33,7 +33,7 @@
     flex-direction: column;
 }
 
-.menus>li{
+.menus>a>li{
     padding: 20px;
 }
 
