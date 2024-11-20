@@ -3,7 +3,7 @@ import './MainSection.css';
 
 const MainSection = () => {
   const [activeImage, setActiveImage] = useState(null);
-  const [hoveredImage, setHoveredImage] = useState(null);
+  const [setHoveredImage] = useState(null);
   const images = [
     {
       src: '1.jpg',
@@ -26,7 +26,7 @@ const MainSection = () => {
       text: '구장',
       linkText: '구장으로 이동하기',
     },
-  ]; // 이미지와 링크 정보
+  ];
 
   const handleClick = (index) => {
     if (activeImage === index) {
