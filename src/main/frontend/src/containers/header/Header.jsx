@@ -1,12 +1,13 @@
 import HeaderLogo from "./HeaderLogo";
-import MenuDropdown from "../../components/MenuDropDown/MenuDropdown";
+import MenuDropdown from "../../components/menuDropdown/MenuDropdown";
 import styles from "./Header.module.css";
-import { useState } from "react";
 import mypage from "./mypage.svg";
 import search from "./search.svg";
 import setting from "./setting.svg";
 import menu from "./menu.svg";
 import TitleText from "../../components/TitleText";
+import { useState } from "react";
+
 
 function Header() {
     // 메뉴가 열려있는지 닫혀있는지를 관리하는 상태
@@ -20,8 +21,6 @@ function Header() {
     const closeMenu = () => {
         setIsMenuVisible(false);
     }
-
-
 
     return (
         <div className={styles.headerContainer}>
