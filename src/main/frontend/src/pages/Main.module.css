@@ -1,0 +1,8 @@
+.mainGrid{
+    display: grid;
+    grid-template: 
+    'title' 128px
+    'body' 80vh
+    'footer' 120px / 1fr;
+    overflow-y: hidden;
+    }
