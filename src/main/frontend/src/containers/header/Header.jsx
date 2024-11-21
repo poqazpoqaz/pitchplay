@@ -23,7 +23,7 @@ function Header() {
     }
 
     return (
-        <div className={styles['header-container']} style={{gridArea: "title"}}>
+        <div className={styles['header-container']} style={{gridArea: "header"}}>
             <div className={styles['header-left']}>
                 <div onClick={openMenu} className={styles['header-menu']}>
                     <img src={menu} />
