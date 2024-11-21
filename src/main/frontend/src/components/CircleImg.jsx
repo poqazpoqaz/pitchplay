@@ -6,6 +6,8 @@ const StyledCircleImg = styled.div`
     background-image: url(${props => props.src});
     background-size: cover;
     background-position: center;
+    width: 100%;
+    height: 100%;
 `
 
 function CircleImg({ src }) {
