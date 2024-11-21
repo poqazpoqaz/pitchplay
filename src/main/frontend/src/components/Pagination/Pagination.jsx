@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Pagination.css';
-import ArrowLeft from './ArrowLeft.svg'; 
-import ArrowRight from './ArrowRight.svg'; 
+import ArrowLeft from './ArrowLeft.svg';
+import ArrowRight from './ArrowRight.svg';
 
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
