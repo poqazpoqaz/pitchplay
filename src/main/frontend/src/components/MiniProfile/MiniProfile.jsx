@@ -2,6 +2,7 @@ import ManagerLabel from "./ManagerLabel";
 import CircleImg from "../CircleImg"
 import TitleText from "../TitleText";
 import styles from "./MiniProfile.module.css";
+import dots from "./dots.svg"
 
 
 function MiniProfile({ index, src, isManager }) {
@@ -12,13 +13,11 @@ function MiniProfile({ index, src, isManager }) {
             </div>
             <div className={styles['mini-name']}>
                 <TitleText color={"#000000"} size={"small"}>네임</TitleText>
-                {isManager && <ManagerLabel/>}
+                {isManager && <ManagerLabel />}
             </div>
             <div className={styles['mini-menu']}>
                 <a href="#">
-                    <p>●</p>
-                    <p>●</p>
-                    <p>●</p>
+                    <img src={dots} />
                 </a>
             </div>
         </div>

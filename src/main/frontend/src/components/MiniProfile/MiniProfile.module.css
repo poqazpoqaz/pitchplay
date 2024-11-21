@@ -27,7 +27,8 @@
     align-items: center;
 }
 
-.mini-menu>a>p {
-    font-size: 10px;
-    color: black;
+.mini-menu>a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
