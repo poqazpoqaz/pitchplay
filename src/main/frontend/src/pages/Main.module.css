@@ -1,4 +1,4 @@
-.mainGrid {
+.main-grid{
     display: grid;
     grid-template:
         'title' 128px
@@ -7,7 +7,7 @@
 }
 
 @media (max-width: 1024px) {
-    .mainGrid {
+    .main-grid{
         display: grid;
         grid-template:
         'title' 128px
@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 786px) {
-    .mainGrid {
+    .main-grid{
         display: grid;
         grid-template:
             'title' 128px

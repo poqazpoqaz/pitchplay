@@ -5,9 +5,9 @@ import Footer from "../containers/footer/Footer"
 
 function Main() {
     return (
-        <div className={styles.mainGrid}>
-            <Header/>
-            <MainSection/>
+        <div className={styles['main-grid']}>
+            <Header />
+            <MainSection />
             <Footer />
         </div>
     );

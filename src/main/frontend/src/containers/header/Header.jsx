@@ -23,18 +23,18 @@ function Header() {
     }
 
     return (
-        <div className={styles.headerContainer} style={{gridArea: "title"}}>
-            <div className={styles.headerLeft}>
-                <div onClick={openMenu} className={styles.headerMenu}>
+        <div className={styles['header-container']} style={{gridArea: "title"}}>
+            <div className={styles['header-left']}>
+                <div onClick={openMenu} className={styles['header-menu']}>
                     <img src={menu} />
                     <TitleText color="white">MENU</TitleText>
                 </div>
             </div>
             <MenuDropdown isVisible={isMenuVisible} onClick={closeMenu} />
-            <div className={styles.headerMiddle}>
+            <div className={styles['header-middle']}>
                 <HeaderLogo />
             </div>
-            <ul className={styles.headerRight}>
+            <ul className={styles['header-right']}>
                 <a href="#"><img src={mypage} /></a>
                 <a href="#"><img src={search} /></a>
                 <a href="#"><img src={setting} /></a>

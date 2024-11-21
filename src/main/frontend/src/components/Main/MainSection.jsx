@@ -13,7 +13,7 @@ const MainSection = () => {
       linkText: '소셜로 이동하기',
     },
     {
-      src: 'team.jpg',
+      src: '1.jpg',
       alt: 'Team',
       link: 'https://example.com/team',
       text: '팀',
