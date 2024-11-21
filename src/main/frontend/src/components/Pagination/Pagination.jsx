@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './Pagination.css';
-import ArrowLeft from './ArrowLeft.svg'; // ArrowLeft 아이콘 경로
-import ArrowRight from './ArrowRight.svg'; // ArrowRight 아이콘 경로
+import ArrowLeft from './ArrowLeft.svg'; 
+import ArrowRight from './ArrowRight.svg'; 
 
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 50; // 총 페이지 수
+  const [totalPages, setTotalPages] = useState(50); // 총 페이지 수는 추후 useState로 받아올겁니다.
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
