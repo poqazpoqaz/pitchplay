@@ -11,6 +11,9 @@ import java.util.UUID;
 @Table(
         name = "reservation",
         indexes = {
+                @Index(name = "idx_reservation_num", columnList = "reservation_num"),
+                @Index(name = "idx_mach_date", columnList = "mach_date"),
+                @Index(name = "idx_stadium_information", columnList = "stadium_information"),
                 @Index(name = "idx_stadium_information_mach_date", columnList = "stadium_information, mach_date")
         })
 public class ReservationEntity {
