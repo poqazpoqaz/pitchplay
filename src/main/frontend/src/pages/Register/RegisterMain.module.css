@@ -5,5 +5,18 @@
         '... ... ...' 30px
         '... register ...' 1fr
         '... ... ...' 30px
-        'footer footer footer' 120px / 1fr 700px 1fr;
+        'footer footer footer' 120px / 1fr 800px 1fr;
 }
+
+@media (max-width: 1024px){
+    .registermain-grid {
+        display: grid;
+        grid-template:
+            'header header header' 128px
+            '... ... ...' 30px
+            '... register ...' 1fr
+            '... ... ...' 30px
+            'footer footer footer' 120px / 1fr 8fr 1fr;
+    }
+}
+
