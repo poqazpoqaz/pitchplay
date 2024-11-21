@@ -1,0 +1,12 @@
+.navbar-grid{
+    display: grid;
+    grid-template:
+    '... ... ... ... ... ... ... ... ...' 1fr
+    '... btn1 ... btn2 ... btn3 ... btn4 ...'80px
+    '... ... ... ... ... ... ... ... ...' 1fr
+    '... search search search search search search search ...' 1fr 
+    '... ... ... ... ... ... ... ... ...' 1fr / 1fr 190px 30px 190px 30px 190px 30px 190px 1fr;
+    ;
+    border: 3px solid #F1F1F1;
+    padding: 10px;
+}
