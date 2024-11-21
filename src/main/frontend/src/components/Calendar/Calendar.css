@@ -90,5 +90,43 @@
     background: #BBBBBB;
     color: #fff;
   }
+  .select-year-month {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+  }
+
+  .select-year-month span {
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 30px;
+    left: 15;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    z-index: 10;
+  }
+
+  .dropdown-content {
+    display: flex;
+    gap: 10px;
+  }
+
+  .dropdown select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+  }
+
+
 
 
