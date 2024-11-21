@@ -43,36 +43,38 @@ function Login({ gridArea }) {
     };
 
     return (
-            <div className={styles['login-grid']} style={{ gridArea: gridArea }}>
-                <TitleText color="#000000" size="xlarge" gridArea="title">
-                    로그인
-                </TitleText>
+        <div className={styles['login-grid']} style={{ gridArea: gridArea }}>
+            <TitleText color="#000000" size="xlarge" gridArea="title">
+                로그인
+            </TitleText>
 
-                <Input
-                    type="text"
-                    placeholder="아이디"
-                    onChange={handleIdChange}
-                    value={id}
-                    gridArea="inp1"
-                />
+            <Input
+                type="text"
+                placeholder="아이디"
+                onChange={handleIdChange}
+                value={id}
+                gridArea="inp1"
+                size="small"
+            />
 
-                <Input
-                    type="password"
-                    placeholder="비밀번호"
-                    onChange={handlePasswordChange}
-                    value={password}
-                    gridArea="inp2"
-                />
+            <Input
+                type="password"
+                placeholder="비밀번호"
+                onChange={handlePasswordChange}
+                value={password}
+                gridArea="inp2"
+                size="small"
+            />
 
-                <Button type="button" onClick={handleLogin} color="var(--main-color)" gridArea="logbtn">
-                    로그인
-                </Button>
-                <div className={styles['login-link']}>
-                    <a href="#"><p>아이디 찾기</p></a>
-                    <a href="#"><p>비밀번호 찾기</p></a>
-                    <Link to={'/register'}><p>회원가입</p></Link>
-                </div>
+            <Button type="button" onClick={handleLogin} color="var(--main-color)" gridArea="logbtn">
+                로그인
+            </Button>
+            <div className={styles['login-link']}>
+                <a href="#"><p>아이디 찾기</p></a>
+                <a href="#"><p>비밀번호 찾기</p></a>
+                <Link to={'/register'}><p>회원가입</p></Link>
             </div>
+        </div>
     );
 }
 export default Login;

@@ -8,15 +8,28 @@ const StyledInput = styled.input`
     border: 1px solid var(--line-color);
     padding: 10px;
     margin-top: 5px;
+      font-size: ${(props) => {
+    switch (props.size) {
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '26px';
+      case 'large':
+        return '30px';
+      default:
+        return '24px';  // 기본값 설정
+    }
+  }}
     `;
 
-function Input({ type, placeholder, onChange, value, gridArea}) {
+function Input({ type, placeholder, onChange, value, gridArea, size}) {
   return (
       <StyledInput
         type={type}
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        size={size}
         style={{ gridArea: gridArea }}
       />
   );
