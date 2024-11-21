@@ -1,10 +1,10 @@
-import AdminLabel from "../AdminLabel";
+import ManagerLabel from "./ManagerLabel";
 import CircleImg from "../CircleImg"
 import TitleText from "../TitleText";
 import styles from "./MiniProfile.module.css";
 
 
-function MiniProfile({ index, src, isAdmin }) {
+function MiniProfile({ index, src, isManager }) {
     return (
         <div className={styles['mini-grid']}>
             <div className={styles['mini-img']}>
@@ -12,7 +12,7 @@ function MiniProfile({ index, src, isAdmin }) {
             </div>
             <div className={styles['mini-name']}>
                 <TitleText color={"#000000"} size={"small"}>네임</TitleText>
-                {isAdmin && <AdminLabel/>}
+                {isManager && <ManagerLabel/>}
             </div>
             <div className={styles['mini-menu']}>
                 <a href="#">
