@@ -1,0 +1,47 @@
+.container {
+    width: 100%;
+    max-width: 90%; /* 최대 너비를 90%로 설정하여 모바일에서 여백을 확보 */
+    margin: 0 auto;
+    padding: 1.5rem; /* 상대적인 단위 사용 */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem; /* 폰트 크기를 상대적인 단위로 설정 */
+    color: #000000; /* 글자 색을 검정색으로 설정 */
+  }
+
+  .chevron-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+
+  .chevron-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .chevron-icon.rotate {
+    transform: rotate(180deg);
+  }
+
+  .content-box {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .content-box.open {
+    max-height: 12rem; /* 모바일에서 적당한 최대 높이 설정 */
+  }
+
+  .content {
+    padding: 0.625rem; /* 상대적인 단위 사용 */
+    color: #000000; /* 글자 색을 검정색으로 설정 */
+  }
