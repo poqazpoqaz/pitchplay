@@ -1,0 +1,30 @@
+.login-grid {
+    display: grid;
+    grid-template:
+        '... ... ...' 1fr
+        '... title ...' 1fr
+        '... ... ...' 30px
+        '... inp1 ...' 1fr
+        '... ... ...' 20px
+        '... inp2 ...' 1fr
+        '... ... ...' 1fr
+        '... logbtn ...' 1fr
+        '... ... ...' 30px
+        '... link ...' 1fr
+        '... ... ...' 1fr/1fr 400px 1fr;
+    background: #F1F1F1;
+    grid-area: middle;
+    min-width: 700px;
+}
+
+
+.login-link {
+    grid-area: link;
+    display: flex;
+    justify-content: space-around;
+}
+
+.login-link>a>p {
+    color: black;
+    text-decoration: underline;
+}

@@ -4,6 +4,7 @@ import DeleteButton from "../DeleteButton";
 import TitleText from "../TitleText";
 import styles from "./MenuDropDown.module.css";
 import MenuDropItem from "./MenuDropItem"; // MenuDropItem을 임포트
+import { Link } from "react-router-dom";
 
 function MenuDropdown({ isVisible, onClick }) {
   const menus = ["소셜매칭", "팀매칭", "구장예약", "공지사항"];
@@ -55,7 +56,7 @@ function MenuDropdown({ isVisible, onClick }) {
       </ul>
 
       {/* dropdown 로그인 */}
-      <a href="#">
+      <a href="/login">
         <motion.p
           whileHover={{
             color: "#000000",
@@ -65,7 +66,7 @@ function MenuDropdown({ isVisible, onClick }) {
           로그인
         </motion.p>
       </a>
-    </motion.div>
+    </motion.div >
   );
 }
 
