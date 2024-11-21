@@ -1,0 +1,22 @@
+.circular-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .circular-button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .circular-button svg {
+    width: 100%;
+    height: 100%;
+  }
