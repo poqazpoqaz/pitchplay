@@ -6,28 +6,27 @@ const MainSection = () => {
   const [hoveredImage, setHoveredImage] = useState(null);
   const images = [
     {
-      src: '1.jpg',
+      src: 'team.jpg',
       alt: 'Image 1',
       link: 'https://example.com/1',
       text: '소셜',
       linkText: '소셜로 이동하기',
     },
     {
-      src: 'team.jpg',
+      src: '1.jpg',
       alt: 'Team',
       link: 'https://example.com/team',
       text: '팀',
       linkText: '팀으로 이동하기',
     },
     {
-      src: 'gujang.png',
+      src: 'team.jpg',
       alt: 'Gujang',
       link: 'https://example.com/gujang',
       text: '구장',
       linkText: '구장으로 이동하기',
     },
   ];
-
 
   const handleClick = (index) => {
     if (activeImage === index) {
@@ -36,7 +35,6 @@ const MainSection = () => {
       setActiveImage(index);
     }
   };
-
 
   const handleHover = (index) => {
     setHoveredImage(index);
@@ -47,32 +45,8 @@ const MainSection = () => {
     setHoveredImage(null);
   };
 
-
-  const scrollToImage = (index) => {
-    const imageElement = document.getElementById(`image-${index}`);
-    if (imageElement) {
-      imageElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-    }
-    setActiveImage(index);
-  };
-
   return (
-    <div className="main-section">
-      <div className="image-buttons">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            className="image-nav-button"
-            onClick={() => scrollToImage(index)}
-          >
-            {images[index].text}
-          </button>
-        ))}
-      </div>
-
+    <div className="main-section" >
       {images.map((image, index) => (
         <div
           key={image.src}
@@ -96,7 +70,7 @@ const MainSection = () => {
               {image.linkText}
             </a>
           </div>
-        </div>
+        </div>  
       ))}
     </div>
   );
