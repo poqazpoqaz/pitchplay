@@ -1,0 +1,132 @@
+.calendar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .header button {
+    background: #1b4510;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .selected-range {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .selected-range input {
+    width: 48%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .calendar-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+
+  .date {
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .date:hover {
+    background: #e0e0e0;
+  }
+
+  .date.selected-start {
+    background: #07550C;
+    color: #fff;
+    border-radius: 50%;
+  }
+
+  .date.selected-end {
+    background: #07550C;
+    color: #fff;
+    border-radius: 50%;
+  }
+
+  .date.in-range {
+    background: #BBBBBB;
+    color: #fff;
+  }
+  .select-year-month {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+  }
+
+  .select-year-month span {
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 30px;
+    left: 15;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    z-index: 10;
+  }
+
+  .dropdown-content {
+    display: flex;
+    gap: 10px;
+  }
+
+  .dropdown select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+  }
+
+
+
+

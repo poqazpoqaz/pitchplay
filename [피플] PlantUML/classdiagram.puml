@@ -1,0 +1,389 @@
+            @startuml
+
+entity UserEntity {
+    - cash : Integer
+    - name : String
+    - nickname : String
+    - id : String
+    - password : String
+    - email : String
+    - phone : String
+    - birthdate : LocalDate
+    - profileImageUrl : String
+    - preferredTime : List<LocalDateTime>
+    - preferredLocation : String
+    - preferredDay : List<LocalDate>
+    - teamInformation : String
+    - accountNumber : String
+    - introduction : String
+    - deactivated : boolean
+    - userIdNum : UUID <PK>
+    - adminRights : boolean
+    - gender : List<String>
+    - personnel : List<String>
+    - byAge : List<String>
+    + getter/setter()
+}
+
+entity PostEntity {
+    - postId : UUID <PK>
+    - postNum : Integer
+    - postTitle : String
+    - imageUrl: String
+    - nickname: String
+    - content: String
+    - createdAt: LocalDateTime
+    - updatedAt: LocalDateTime
+    - viewsNumber : Integer
+    - userIdNum: UUID <FK>
+    - @JsonTypeInfo : PostInfo
+    +getter/setter()
+}
+
+entity ReservationEntity {
+    - status : boolean
+    - matchNum : UUID <PK>
+    - reservationNum : String <FK>
+    - stadiumName : String
+    - reservationDate : LocalDateTime
+    - matchDate : LocalDateTime
+    - amount : Integer
+    - personnel : String
+    - stadiumInformation : String
+    - stadiumReview : String
+    - userIdNumber : UUID <FK>
+    - @JsonTypeInfo : MatchInfo
+    + getter/setter()
+}
+
+entity TeamEntity {
+    - teamCode : String
+    - teamIdNumber : UUID <PK>
+    - teamName : String
+    - teamLeader : String
+    - teamLevel : String
+    - teamRegion : String
+    - teamPlayDay : List<String>
+    - teamPlayTime : List<LocalTime>
+    - teamImageUrl : String
+    - teamMember : List<String>
+    - teamMemberCount : Integer
+    - teamIntroduce : String
+    - teamByAge : String
+    +getter/setter()
+}
+
+entity PaymentEntity {
+    - id : String
+    - userIdNumber : UUID <FK>
+    - amount : Integer
+    - payNum : UUID <PK>
+    - paymentDate : LocalDateTime
+    - approvalStatus : String
+    + getter/setter()
+}
+
+
+interface PostInfo {
+    + FaqDTO()
+    + MercenaryRecruitmentDTO()
+    + TeamRecruitmentDTO()
+}
+
+class FaqDTO {
+    - like : Integer
+    - dislike : Integer
+    - comment : String
+    + getter/setter()
+}
+
+class MercenaryRecruitmentDTO {
+    - gender : List<String>
+    - matchDate : LocalDateTime
+    - personnel : Integer
+    - location : String
+    + getter/setter()
+}
+
+class TeamRecruitmentDTO {
+    - applicationNumber : Integer
+    - active : boolean
+    + getter/setter()
+}
+
+interface MatchInfo {
+    + socialMatchDTO
+    + teamMatchDTO
+}
+
+class SocialMatchDTO {
+    + social : UserDTO
+'   닉네임이랑 프로필사진만 가져옴
+}
+
+class TeamMatchDTO {
+    + team : teamDTO
+'    팀이름, 팀사진URL, 팀레벨 가져옴
+}
+
+interface UserRepository {
+    +findById() : List<Id>
+    +findByPassword() : List<Password>
+    +findAll() : List<User>
+    + findBySearchCriteria(location: String, gender: String, participants: Integer, dayOfWeek: List,
+    activeTime: String, date: LocalDate, ageRange: String): List
+}
+
+class UserService {
+    - userRepository: UserRepository
+    + findById() : String
+    + updateByPassword() : String
+    + getUserById(userId: String): UserDTO
+    + getAllUsers(): List<UserDTO>
+    + searchUsers(location: String, gender: String, participants: Integer, dayOfWeek: List,
+    activeTime: String, date: LocalDate, ageRange: String): List
+}
+
+interface TeamRepository {
+    + findAll() : List<Team>
+    + deleteByTeamIdNumber() : teamIdNumber
+    + updateByTeamLeader() : teamLeader
+    + updateByTeamMember() : List<String>
+}
+
+class TeamService {
+    - teamRepository : TeamRepository
+    + updateByTeamLeader() : teamLeader
+    + updateByTeamMember() : List<String>
+}
+
+interface PostRepository {
+    + findAll() : List<Post>
+    + findByPostTitle() : String
+    + findBySearchCriteria(criteria: TotalSearchEntity) : List<Post>
+}
+
+class PostService {
+    - postRepository : PostRepository
+    + searchPostsByCriteria(criteria: TotalSearchEntity) : List<PostDTO>
+    + findAll() : List<Post>
+}
+
+interface PaymentRepository {
+    + findAll() : List<Post>
+    + findById(payNum : UUID) : Optional<Payment>
+    + findByApprovalStatus(status : ApprovalStatus) : List<Payment>
+
+}
+
+class PaymentService {
+    - PaymentRepository : paymentRepository
+    + approvePayment(payNum : UUID) : Payment
+    + findPaymentsByApprovalStatus(status : ApprovalStatus) : List<Payment>
+    + getPaymentDetails(payNum : UUID) : Payment
+    + getPaymentsByUser(userId : UUID) : List<Payment>
+    + getAllPayments() : List<Payment>
+}
+
+interface ReservationRepository {
+    + findById(matchNum : UUID) : Optional<Reservation>
+    + findAll() : List<Reservation>
+    + findByUserId(userId : UUID) : List<Reservation>
+    + findByStadiumName(stadiumName : String) : List<Reservation>
+}
+
+class ReservationService {
+    - ReservationRepository : reservationRepository
+    + createReservation(reservationDTO : ReservationDTO) : Reservation
+    + updateReservation(matchNum : UUID, reservationDTO : ReservationDTO) : Reservation
+    + cancelReservation(matchNum : UUID) : void
+    + getReservationDetails(matchNum : UUID) : ReservationDTO
+    + getAllReservations() : List<ReservationDTO>
+    + getReservationsByUser(userId : UUID) : List<ReservationDTO>
+    + getReservationsByStadium(stadiumName : String) : List<ReservationDTO>
+}
+
+class ReservationDTO {
+    - reservationNum : String
+    - stadiumName : String
+    - reservationDate : LocalDateTime
+    - matchDate : LocalDateTime
+    - amount : Integer
+    - personnel : String
+    - stadiumInformation : String
+    - stadiumReview : String
+    - matchType : String
+}
+
+class PostDTO {
+      - @JsonIgnore postId : UUID
+      - postIdNum : Integer
+      - postTitle : String
+      - imageUrl: String
+      - nickname: String
+      - content: String
+      - createdAt: LocalDateTime
+      - updatedAt: LocalDateTime
+      - viewsNumber : Integer
+      - @JsonIgnore userIdNum: UUID
+      - @JsonTypeInfo : PostInfo
+        +getter/setter()
+}
+
+class UserDTO {
+    - cash : Integer
+    - name : String
+    - nickname : String
+    - id : String
+    - @JsonIgnore password : String
+    - email : String
+    - phone : String
+    - birthdate : LocalDate
+    - profileImageUrl : String
+    - preferredTime : List<LocalDateTime>
+    - preferredLocation : String
+    - preferredDay : List<LocalDate>
+    - teamInformation : String
+    - accountNumber : String
+    - introduction : String
+    - role : boolean
+    - @JsonIgnore userIdNum : UUID
+    - adminRights : boolean
+    - gender : List<String>
+    - personnel : List<String>
+    - byAge : List<String>
+    + getter/setter()
+}
+
+class TeamDTO {
+    - teamId : String
+    - @JsonIgnore teamIdNumber : UUID
+    - teamName : String
+    - teamLeader : String
+    - teamLevel : String
+    - teamRegion : String
+    - teamPlayDay : List<String>
+    - teamPlayTime : List<LocalTime>
+    - teamImageUrl : String
+    - teamMember : List<String>
+    - teamIntroduce : String
+    +getter/setter()
+}
+
+class PaymentDTO {
+    - id : String
+    - @JsonIgnore userIdNumber : UUID
+    - amount : Integer
+    - @JsonIgnore payNum : UUID
+    - paymentDate : LocalDateTime
+    - approvalStatus : String
+    + getter/setter()
+}
+
+entity TotalSearchEntity {
+    - region : String
+    - detailRegion : String
+    - gender : List<String>
+    - personnel : List<String>
+    - activeDate : List<String>
+    - activeTime : List<String>
+    - ageRange : List<String>
+}
+
+class TotalSearchDTO {
+    - region : String
+    - detailRegion : String
+    - gender : List<String>
+    - personnel : List<String>
+    - activeDate : List<String>
+    - activeTime : List<String>
+    - ageRange : List<String>
+}
+
+interface TotalSearchMapper {
+    + searchAll(filters: TotalSearchEntity): List<TotalSearchResultDTO>
+}
+
+class TotalSearchService {
+    - totalSearchMapper: TotalSearchMapper
+    + search(filters: TotalSearchDTO): List<TotalSearchResultDTO>
+}
+
+class TotalSearchResultDTO {
+    - @JsonIgnore UserIdNum : UUID
+    - postTitle: String
+    - content : String
+    - nickname : String
+    - createdAt : LocalDateTime
+    - @JsonIgnore matchNum : UUID
+    - matchType: String
+    - stadiumName: String
+    - teamName: String
+    - reservationDate : LocalDateTime
+    - matchDate : LocalDateTime
+    - personnel : String
+    - status : boolean
+    - teamLevel : String
+    - teamRegion : String
+    - teamPlayDay : List<String>
+    - teamPlayTime : List<LocalDate>
+    + getter/setter()
+}
+
+UserEntity -- PostEntity
+UserEntity -- ReservationEntity
+UserEntity -- TeamEntity
+UserEntity -- PaymentEntity
+
+TeamEntity -- ReservationEntity
+TeamEntity -- PaymentEntity
+TeamEntity -- PostEntity
+
+ReservationEntity -- PostEntity
+
+UserEntity -- UserRepository
+UserService -- UserRepository
+
+PostEntity -- PostRepository
+PostService -- PostRepository
+PostService -- PostInfo
+FaqDTO <|-- PostInfo
+MercenaryRecruitmentDTO <|-- PostInfo
+TeamRecruitmentDTO <|-- PostInfo
+
+ReservationEntity -- ReservationRepository
+ReservationService -- ReservationRepository
+ReservationService -- MatchInfo
+SocialMatchDTO <|-- MatchInfo
+TeamMatchDTO <|-- MatchInfo
+
+TeamEntity -- TeamRepository
+TeamService -- TeamRepository
+
+PaymentEntity -- PaymentRepository
+PaymentService -- PaymentRepository
+
+UserEntity -- UserDTO
+PostEntity -- PostDTO
+ReservationEntity -- ReservationDTO
+TeamEntity -- TeamDTO
+PaymentEntity -- PaymentDTO
+TotalSearchEntity --|> PostService
+TotalSearchEntity -- TotalSearchDTO
+
+TeamEntity -- TotalSearchResultDTO
+ReservationEntity -- TotalSearchResultDTO
+PostEntity -- TotalSearchResultDTO
+
+TotalSearchService -- TotalSearchMapper
+TotalSearchDTO -- TotalSearchMapper
+TotalSearchResultDTO -- TotalSearchMapper
+
+
+
+
+
+
+
+
+@enduml
