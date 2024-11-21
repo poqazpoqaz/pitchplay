@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Notification.css'; 
+import './Notification.css';
 
 const Notification = () => {
   const [isOpen, setIsOpen] = useState(false);
