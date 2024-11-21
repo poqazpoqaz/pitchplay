@@ -1,0 +1,33 @@
+.collectionItem-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #F2F2F2;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.collectionItem-flex>div p,
+.collectionItem-flex>div h3 {
+    white-space: nowrap;
+    /* 한 줄로 표시 */
+    overflow: hidden;
+    /* 넘치는 텍스트 숨김 */
+    text-overflow: ellipsis;
+    /* 말줄임표 처리 */
+    max-width: 100%;
+    /* 부모 요소의 크기에 맞춤 */
+    text-align: center;
+}
+
+@media (max-width: 786px) {
+    .collectionItem-flex>div {
+        flex-direction: column;
+    }
+
+    .collectionItem-flex>div p,
+    .collectionItem-flex>div h3 {
+        max-width: 200px;
+    }
+}

@@ -46,7 +46,7 @@
     height: 35px;
 }
 
-@media (max-width: 786px) {
+@media (max-width: 760px) {
     .header-container {
         background-color: var(--main-color);
         display: grid;
