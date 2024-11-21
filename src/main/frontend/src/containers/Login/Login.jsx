@@ -66,7 +66,7 @@ function Login({ gridArea }) {
                 size="small"
             />
 
-            <Button type="button" onClick={handleLogin} color="var(--main-color)" gridArea="logbtn">
+            <Button type="button" onClick={handleLogin} color="var(--main-color)" gridArea="logbtn" size="large">
                 로그인
             </Button>
             <div className={styles['login-link']}>

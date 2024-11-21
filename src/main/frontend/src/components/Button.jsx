@@ -9,6 +9,18 @@ const StyledButton = styled(motion.button)`
         margin: 0 10px 10px 10px;
         border-radius: 10px;
         border: 2px solid var(--main-color);
+        font-size: ${(props) => {
+        switch (props.size) {
+            case 'small':
+                return '10px';
+            case 'medium':
+                return '18px';
+            case 'large':
+                return '20px';
+            default:
+                return '15px';  // 기본값 설정
+        }
+    }};
 
         &:hover{
             background: #ffffff;  // color가 없으면 기본 흰색
@@ -16,13 +28,14 @@ const StyledButton = styled(motion.button)`
         }
     `;
 
-function Button({ color, onClick, children, type, gridArea }) {
+function Button({ color, onClick, children, type, gridArea, size }) {
     return (
         <StyledButton
             color={color}
             onClick={onClick}
             type={type}
             style={{ gridArea: gridArea }}
+            size={size}
         >
             {children}</StyledButton>
     );
