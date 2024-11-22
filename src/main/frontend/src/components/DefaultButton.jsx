@@ -1,14 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
+const StyledLink = styled(Link)`
+  display: inline-block;
+  background: ${(props) => (props.$isActive ? 'var(--main-color)' : '#ffffff')};
+  border-radius: 10px;
+  border: 2px solid #7A7B7A;
+  text-decoration: none; /* 기본적으로 링크의 밑줄 제거 */
+
+  &:hover {
+    background: var(--main-color);
+    color: #ffffff;
+    box-shadow: 1px 2px 2px #898989;
+    border: none;
+  }
+`;
 
 const StyledButton = styled(motion.button)`
-background: #ffffff;  
-color: var(--main-color); 
-font-weight: bold;
-border-radius: 10px;
-border: 2px solid #7A7B7A;
-font-size: ${(props) => {
+  font-size: ${(props) => {
     switch (props.size) {
       case 'small':
         return '10px';
@@ -22,26 +33,30 @@ font-size: ${(props) => {
         return '15px';  // 기본값 설정
     }
   }};
-font-weight: bold;
-
-&:hover{
-    background: var(--main-color);
+  color: ${(props) => (props.$isActive ? '#ffffff' : 'var(--main-color)')}; 
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  
+  &:hover{
     color: #ffffff;
-    box-shadow: 1px 2px 2px #898989;
-    border: none;
-}
-`
+  }
+`;
 
-function DefaultButton({ children, gridArea, size }) {
+function DefaultButton({ children, gridArea, size, isActive, onClick, src }) {
+
   return (
-    <StyledButton
-      initial={{ scale: 1 }}
-      whileTap={{ scale: 0.9 }}
-      style={{ gridArea: gridArea }}
-      size={size}
-    >
-      {children}
-    </StyledButton>
+    <StyledLink to={src} style={{ gridArea: gridArea }} $isActive={isActive}>
+      <StyledButton
+        initial={{ scale: 1 }}
+        whileTap={{ scale: 0.9 }}
+        size={size}
+        $isActive={isActive}
+        onClick={onClick}
+      >
+        {children}
+      </StyledButton>
+    </StyledLink>
   );
 };
 
