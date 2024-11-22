@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './MainSection.css';
 
-const MainSection = () => {
+const MainSection = ({gridArea}) => {
   const [activeImage, setActiveImage] = useState(null);
   const [hoveredImage, setHoveredImage] = useState(null);
   const images = [
@@ -46,7 +46,7 @@ const MainSection = () => {
   };
 
   return (
-    <div className="main-section" >
+    <div className="main-section" style={{gridArea: gridArea}} >
       {images.map((image, index) => (
         <div
           key={image.src}

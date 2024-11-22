@@ -18,7 +18,7 @@ const StyledButton = styled(motion.button)`
     color: ${props => props.color};
 `
 
-function DeleteButton({ onClick, color, size }) {
+function DeleteButton({ onClick, color, size, gridArea }) {
     return (
         <StyledButton
             color = {color}
@@ -26,6 +26,7 @@ function DeleteButton({ onClick, color, size }) {
             initial={{ scale: 1 }}
             whileHover={{ scale: 0.8, color: "#333333" }}
             onClick={onClick}
+            style={{gridArea: gridArea}}
         >X</StyledButton>
     );
 }

@@ -1,0 +1,32 @@
+/* 버튼 컴포넌츠라서 사이즈관련된것들은 전부 주석처리 해두었습니다. */
+.button-container {
+    display: flex;
+    gap: 20px; 
+  }
+  
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 150px;  */
+    /* height: 50px;  */
+    background-color: white;
+    border-radius: 12px; 
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+  }
+  
+  .good {
+    background-color: #2769CC; 
+  }
+  
+  .bad {
+    background-color: #f25235; 
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* 아이콘과 숫자 간 간격 */
+  }

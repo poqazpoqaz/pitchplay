@@ -11,6 +11,8 @@ const StyledH1 = styled.h1`
         return '26px';
       case 'large':
         return '30px';
+      case 'xlarge':
+        return '55px';
       default:
         return '24px';  // 기본값 설정
     }
@@ -18,11 +20,12 @@ const StyledH1 = styled.h1`
   color: ${(props) => props.color};
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
+  text-align: center;
 `;
 
-function TitleText({ color, size, children }) {
+function TitleText({ color, size, children, gridArea }) {
   return (
-    <StyledH1 color={color} size={size} >
+    <StyledH1 color={color} size={size} style={{gridArea: gridArea}}>
       {children}
     </StyledH1>
   );

@@ -1,0 +1,28 @@
+.navbar-grid{
+    display: grid;
+    grid-template:
+    '... ... ... ... ... ... ... ... ...' 1fr
+    '... btn1 ... btn2 ... btn3 ... btn4 ...'80px
+    '... ... ... ... ... ... ... ... ...' 1fr
+    '... search search search search search search search ...' 1fr 
+    '... ... ... ... ... ... ... ... ...' 1fr / 1fr 1fr 30px 1fr 30px 1fr 30px 1fr 1fr;
+    ;
+    border: 3px solid #F1F1F1;
+    padding: 10px;
+    min-width: 700px;
+    border-radius: 10px;
+}
+
+
+@media (max-width: 1024px) {
+    .navbar-grid{
+        grid-template:
+        '... ... ... ... ... ... ... ... ...' 1fr
+        '... btn1 ... btn2 ... btn3 ... btn4 ...'80px
+        '... ... ... ... ... ... ... ... ...' 1fr
+        '... search search search search search search search ...' 1fr 
+        '... ... ... ... ... ... ... ... ...' 1fr / 1fr 145px 30px 145px 30px 145px 30px 145px 1fr;
+        ;
+    }
+    
+}

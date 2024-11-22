@@ -7,6 +7,9 @@
         '... ... ... ... ... ... ...' 1fr / 25px 165px 1fr 350px 1fr 165px 25px;
     height: 129px;
     min-width: 700px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1); 
+    border-bottom: 1px solid #ccc;
+    z-index: 200;
 }
 
 .header-left {
@@ -43,7 +46,7 @@
     height: 35px;
 }
 
-@media (max-width: 786px) {
+@media (max-width: 760px) {
     .header-container {
         background-color: var(--main-color);
         display: grid;

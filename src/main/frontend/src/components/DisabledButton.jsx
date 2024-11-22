@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 // StyledButton 컴포넌트 정의
 const StyledButton = styled(motion.button)`
-        background: ${props => props.color};  
-        color: ${props => props.color ? '#ffffff' : '#000000'}; // background color가 있으면 흰색, 없으면 검정색
+        background: #F1F1F1;  
+        color: #808080; // background color가 있으면 흰색, 없으면 검정색
         font-weight: bold;
         margin: 0 10px 10px 10px;
         border-radius: 10px;
-        border: 2px solid var(--main-color);
+        border: 2px solid #F5F5F5;
         font-size: ${(props) => {
         switch (props.size) {
             case 'small':
@@ -21,19 +21,14 @@ const StyledButton = styled(motion.button)`
                 return '15px';  // 기본값 설정
         }
     }};
-
-        &:hover{
-            background: #ffffff;  // color가 없으면 기본 흰색
-            color: ${props => props.color}; // background color가 있으면 흰색, 없으면 검정색
-        }
+    cursor: default;
     `;
 
-function Button({ color, onClick, children, type, gridArea, size }) {
+function DisabledButton({ children, gridArea, size }) {
     return (
         <StyledButton
-            color={color}
-            onClick={onClick}
-            type={type}
+            disabled
+            type="button"
             style={{ gridArea: gridArea }}
             size={size}
         >
@@ -41,6 +36,4 @@ function Button({ color, onClick, children, type, gridArea, size }) {
     );
 }
 
-export default Button;
-
-// 사용방법 : <Button color='var(--main-color)'>안녕</Button>
+export default DisabledButton;

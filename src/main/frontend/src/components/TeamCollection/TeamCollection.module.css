@@ -1,0 +1,13 @@
+.teamcollection-grid {
+    display: grid;
+    grid-template:
+        'img ... text ... ...' 20px
+        'img ... text ... btn1' 40px
+        'img ... text ... btn2' 40px
+        'img ... text ... ...' 20px /120px 1fr 400px 1fr 150px;
+    padding: 20px;
+    border: 2px solid #07550C;
+    border-radius: 15px;
+    min-width: 700px;
+    background-color: #FFFFFF;
+}

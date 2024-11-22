@@ -10,9 +10,9 @@ const StyledCircleImg = styled.div`
     height: 100%;
 `
 
-function CircleImg({ src }) {
+function CircleImg({ src, gridArea }) {
     return (
-        <StyledCircleImg src={src} />
+        <StyledCircleImg src={src} style={{gridArea: gridArea}}/>
     );
 }
 

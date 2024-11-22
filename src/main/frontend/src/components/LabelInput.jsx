@@ -30,6 +30,18 @@ const StyledInput = styled.input`
     border: 1px solid ${props => props.$isvalid ? 'var(--line-color)' : 'var(--main-color)'};
     padding: 10px;
     margin-top: 5px;
+      font-size: ${(props) => {
+    switch (props.size) {
+      case 'small':
+        return '10px';
+      case 'medium':
+        return '20px';
+      case 'large':
+        return '24px';
+      default:
+        return '16px';  // 기본값 설정
+    }
+  }}
     `;
 
 function Input({ id, text, size, type, placeholder, onChange, value, gridArea, isvalid }) {

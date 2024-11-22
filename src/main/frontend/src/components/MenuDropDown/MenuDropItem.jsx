@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 
-function MenuDropItem({ children, selectedMenu, onClick, index }) {
+function MenuDropItem({ children, selectedMenu, onClick, index, src}) {
 
     return (
-        <a href="#">
+        <a href={src}>
             <motion.li
                 onClick={onClick} // 클릭 시 부모로 전달된 onClick 호출
                 style={{

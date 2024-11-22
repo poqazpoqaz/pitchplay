@@ -3,10 +3,15 @@ import { motion } from "framer-motion";
 import DeleteButton from "../DeleteButton";
 import TitleText from "../TitleText";
 import styles from "./MenuDropDown.module.css";
-import MenuDropItem from "./MenuDropItem"; // MenuDropItem을 임포트
+import MenuDropItem from "./MenuDropItem"; 
 
 function MenuDropdown({ isVisible, onClick }) {
-  const menus = ["소셜매칭", "팀매칭", "구장예약", "공지사항"];
+  const menus = [
+    {"name" : "소셜매칭", "src" : "#"}, 
+    {"name" : "팀매칭", "src" : "/team"}, 
+    {"name" : "구장예약", "src" : "#"}, 
+    {"name" : "공지사항", "src" : "#"}
+  ];
 
   //클릭된 메뉴 확인
   const [selectedMenu, setSelectedMenu] = useState(null);
@@ -48,14 +53,15 @@ function MenuDropdown({ isVisible, onClick }) {
             index={index}
             selectedMenu={selectedMenu} // selectedMenu를 전달
             onClick={() => handleClick(index)} // 클릭 시 해당 메뉴를 선택하도록 처리
+            src={menu.src}
           >
-            {menu}
+            {menu.name}
           </MenuDropItem>
         ))}
       </ul>
 
       {/* dropdown 로그인 */}
-      <a href="#">
+      <a href="/login">
         <motion.p
           whileHover={{
             color: "#000000",
@@ -65,7 +71,7 @@ function MenuDropdown({ isVisible, onClick }) {
           로그인
         </motion.p>
       </a>
-    </motion.div>
+    </motion.div >
   );
 }
 

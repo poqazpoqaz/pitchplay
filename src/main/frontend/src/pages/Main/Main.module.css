@@ -1,0 +1,30 @@
+.main-grid{
+    display: grid;
+    grid-template:
+        'header header header' 128px
+        'section section section' 1fr
+        'footer footer footer' 120px / 1fr 800px 1fr;
+    height: 100vh;
+}
+
+@media (max-width: 1024px) {
+    .main-grid{
+        display: grid;
+        grid-template:
+        'header header header' 128px
+        'section section section' 1fr
+        'footer footer footer' 250px / 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 786px) {
+    .main-grid{
+        display: grid;
+        grid-template:
+        'header header header' 128px
+        'section section section' 1fr
+        'footer footer footer' 250px / 1fr 1fr 1fr;
+    }
+}
+
+
