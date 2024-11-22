@@ -1,13 +1,15 @@
 package kosmo.pitchplay.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(
         name = "reservation",
         indexes = {
@@ -19,28 +21,29 @@ import java.util.UUID;
 public class ReservationEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "match_num", nullable = false, updatable = false, length = 36)
     private UUID matchNum;  // Primary Key (PK)
 
     @Column(name = "reservation_num", nullable = false, updatable = false, unique = true)
     private String reservationNum;
 
-    @Column(name = "stadium_name", nullable = false, length = 50)
+    @Column(name = "stadium_name", nullable = true, length = 50)
     private String stadiumName;
 
-    @Column(name = "reservation_date", nullable = false)
+    @Column(name = "reservation_date", nullable = true)
     private LocalDateTime reservationDate;
 
-    @Column(name = "match_date", nullable = false)
+    @Column(name = "match_date")
     private LocalDateTime matchDate;
 
-    @Column(name = "amount", nullable = false)
+    @Column(name = "amount")
     private Integer amount;
 
-    @Column(name = "personnel", nullable = false)
+    @Column(name = "personnel")
     private String personnel;
 
-    @Column(name = "stadium_information", nullable = false)
+    @Column(name = "stadium_information")
     private String stadiumInformation;
 
     @Column(name = "views_number", nullable = false)
