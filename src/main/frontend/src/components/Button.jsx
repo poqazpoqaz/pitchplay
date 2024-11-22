@@ -36,6 +36,9 @@ function Button({ color, onClick, children, type, gridArea, size }) {
             type={type}
             style={{ gridArea: gridArea }}
             size={size}
+            whileTap={{
+                scale: 0.9
+            }}
         >
             {children}</StyledButton>
     );

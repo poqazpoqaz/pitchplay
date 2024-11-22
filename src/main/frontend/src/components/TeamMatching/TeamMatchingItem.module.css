@@ -1,0 +1,37 @@
+.matchingItem-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #F2F2F2;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+}
+
+.matchingItem-flex>div {
+    display: flex;
+    align-items: center;
+    width: 300px;
+}
+
+.matchingItem-flex>div p,
+.matchingItem-flex>div h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    width: 100%;
+    /* 너비 100%로 설정 */
+}
+
+.matchingItem-flex>div h3 {
+    max-width: 100%;
+    text-align: center;
+}
+
+.matchingItem-flex>div p {
+    max-width: 100%;
+    text-align: center;
+}
+
