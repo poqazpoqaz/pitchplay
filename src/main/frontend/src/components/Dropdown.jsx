@@ -5,6 +5,7 @@ import styled from "styled-components";
 // 드롭다운 Wrapper 
 const DropdownWrapper = styled.div`
   position: relative;
+  z-index: 200;
 `;
 
 // 드롭다운

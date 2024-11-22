@@ -1,10 +1,15 @@
+import TeamMatchings from "./containers/TeamMatchings/TeamMatchings";
 import Main from "./pages/Main/Main";
 
 
+
+
 function App() {
+
   return (
-    <Main/>
+    <div>
+      <Main />
+    </div>
   );
 }
-
 export default App;

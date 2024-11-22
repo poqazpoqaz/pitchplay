@@ -7,9 +7,10 @@ import Register from "../../containers/Register/Register"
 import MainSection from "../../components/MainSection/MainSection";
 import Post from "../Post/Post"
 import TeamCollections from "../../containers/TeamCollections/TeamCollections";
+import TeamMatchings from "../../containers/TeamMatchings/TeamMatchings";
 
 
-const examples = [
+const teamCollectionsData = [
   {
     "src": "/imgs/1.jpg",
     "title": "KOSMO 팀원모집asdasdasdasdasdasdaadasdasdasdasdadsasadasdasdasasdasdasdsdasd",
@@ -111,8 +112,118 @@ const examples = [
     "date": "2023-10-28"
   }
 ];
-
-
+const teamMatchingData = [
+  {
+    team1: "Team Alpha",
+    team1src: "/imgs/1.jpg",
+    team2: "Team Bravo",
+    team2src: "/imgs/team.jpg",
+    date: "2024-11-25",
+    location: "수원 HK 풋살파크",
+    gender: "Mixed",
+    level: "Intermediate",
+    views: "120",
+  },
+  {
+    team1: "Red Dragons",
+    team1src: "/imgs/1.jpg",
+    team2: "Blue Phoenix",
+    team2src: "/imgs/team.jpg",
+    date: "2024-12-01",
+    location: "Busan, South Korea",
+    gender: "Male",
+    level: "Advanced",
+    views: "200",
+  },
+  {
+    team1: "Golden Tigers",
+    team1src: "/imgs/1.jpg",
+    team2: null, // 팀이 아직 미정
+    team2src: null,
+    date: "2024-12-05",
+    location: "가산디지털운동장",
+    gender: "Female",
+    level: "Beginner",
+    views: "85",
+  },
+  {
+    team1: "Silver Wolves",
+    team1src: "/imgs/1.jpg",
+    team2: "Black Panthers",
+    team2src: "/imgs/team.jpg",
+    date: "2024-12-10",
+    location: "Daegu, South Korea",
+    gender: "Mixed",
+    level: "Advanced",
+    views: "310",
+  },
+  {
+    team1: "Green Arrows",
+    team1src: "/imgs/1.jpg",
+    team2: null,
+    team2src: null,
+    date: "2024-12-15",
+    location: "Jeju, South Korea",
+    gender: "Male",
+    level: "Intermediate",
+    views: "50",
+  },
+  {
+    team1: "Black Eagles",
+    team1src: "/imgs/1.jpg",
+    team2: "Red Foxes",
+    team2src: "/imgs/team.jpg",
+    date: "2024-12-20",
+    location: "Incheon, South Korea",
+    gender: "Female",
+    level: "Intermediate",
+    views: "145",
+  },
+  {
+    team1: "Purple Dragons",
+    team1src: "/imgs/1.jpg",
+    team2: "Golden Wolves",
+    team2src: "/imgs/team.jpg",
+    date: "2024-12-25",
+    location: "Seoul, South Korea",
+    gender: "Mixed",
+    level: "Advanced",
+    views: "230",
+  },
+  {
+    team1: "Blue Tigers",
+    team1src: "/imgs/1.jpg",
+    team2: null,
+    team2src: null,
+    date: "2025-01-05",
+    location: "Busan, South Korea",
+    gender: "Male",
+    level: "Beginner",
+    views: "90",
+  },
+  {
+    team1: "White Wolves",
+    team1src: "/imgs/1.jpg",
+    team2: "Red Lions",
+    team2src: "/imgs/team.jpg",
+    date: "2025-01-10",
+    location: "Daegu, South Korea",
+    gender: "Mixed",
+    level: "Intermediate",
+    views: "180",
+  },
+  {
+    team1: "Yellow Sparks",
+    team1src: "/imgs/1.jpg",
+    team2: null,
+    team2src: null,
+    date: "2025-01-15",
+    location: "Gwangju, South Korea",
+    gender: "Female",
+    level: "Advanced",
+    views: "75",
+  },
+];
 
 const router = createBrowserRouter([
   { path: "/", element: <MainSection gridArea={"section"} /> },
@@ -121,8 +232,8 @@ const router = createBrowserRouter([
   {
     path: "/team", element: <Post gridArea={"section"} />,
     children: [
-      { path: "", element: <TeamCollections contents={examples}/> },
-      { path: "member", element: <TeamCollections contents={examples}/>}
+      { path: "", element: <TeamMatchings contents={teamMatchingData}/> },
+      { path: "member", element: <TeamCollections contents={teamCollectionsData}/>}
     ]
   }
 ]);

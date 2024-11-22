@@ -27,6 +27,7 @@
     padding: 30px;
     border-radius: 15px;
     min-width: 500px;
+    background-color: #ffffff;
 }
 
 @media (max-width: 786px) {
