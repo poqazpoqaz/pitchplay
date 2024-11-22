@@ -2,9 +2,9 @@ import DefaultButton from "../DefaultButton";
 import styles from "./Navbar.module.css";
 import SearchInput from "../SearchInput";
 
-function Navbar() {
+function Navbar({gridArea}) {
     return (
-        <div className={styles['navbar-grid']}>
+        <div className={styles['navbar-grid']} style={{gridArea: gridArea}}>
             <DefaultButton color='var(--main-color)' gridArea="btn1" size="xlarge">팀 매칭</DefaultButton>
             <DefaultButton color='var(--main-color)' gridArea="btn2" size="xlarge">팀원모집</DefaultButton>
             <DefaultButton color='var(--main-color)' gridArea="btn3" size="xlarge">용병모집</DefaultButton>
