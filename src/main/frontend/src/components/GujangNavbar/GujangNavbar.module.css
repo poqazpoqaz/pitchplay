@@ -1,0 +1,46 @@
+.navbar-grid {
+    display: grid;
+    grid-template-areas: 
+        '... ... ... ... ... ... ...'
+        '... ... ... title ... ... ...'
+        '... ... ... ... ... ... ...'
+        '... search search search search search ...' 
+        '... ... ... ... ... ... ...';
+    grid-template-rows: 30px 100px 10px 1fr 1fr;
+    grid-template-columns: 1fr 30px 100px 1fr 100px 30px 1fr;
+    border-bottom: 1px solid #F1F1F1;
+    padding: 10px;
+}
+
+.title {
+    font-size: 2.5rem; /* 기본 크기 */
+    grid-area: title; /* 지정된 그리드 영역에 배치 */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+/* 모바일 화면용 반응형 스타일 */
+/* 모바일 화면용 반응형 스타일 */
+@media (max-width: 768px) {
+    .navbar-grid {
+        grid-template-areas: 
+            '...'
+            'title'
+            '...'
+            'search';
+        grid-template-rows: auto auto; /* title과 search가 위아래로 배치 */
+        grid-template-columns: 1fr; /* 한 열로 설정 */
+        justify-content: center; /* 수평 중앙 정렬 */
+        align-items: center; /* 수직 중앙 정렬 */
+        row-gap: 10px; /* 행 간격 조정 (h1과 input 사이의 간격) */
+    }
+
+    .title {
+        font-size: 1.8rem; /* 모바일 화면에서 작은 폰트 크기 */
+        margin-bottom: 10px; /* 추가적인 아래 여백 */
+    }
+}
+
