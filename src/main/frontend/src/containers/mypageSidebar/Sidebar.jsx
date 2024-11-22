@@ -7,7 +7,6 @@ import myactivity from "/imgs/myactivity.svg";
 import commnuity from "/imgs/commnuity.svg";
 import setting from "/imgs/setting.svg";
 
-
 const Sidebar = ({ avatar, userName, userEmail }) => {
 
     const handleLogout = async () => {
@@ -25,61 +24,44 @@ const Sidebar = ({ avatar, userName, userEmail }) => {
         }
     };
     return (
+
         <div className="sidebar">
-            <div className="sidebar-top">
-                <div className="sidebar-user">
-                    {/* <img className="avatar" src={avatar} alt="User Avatar" /> */}
-                    <img className='avatar' src={pachiImage} alt="" />
-                    <div className="user-info">
-                        <div className="user-name">{userName}박상진</div>
-                        <div className="user-email">{userEmail}잉잉</div>
-                    </div>
-                </div>
-                <div className="sidebar-links">
-                    <div className="link-item">
-                        <a href="/my-info" className="link">
-                            <div>
-                                <img src={myinfo} alt="" />
-                            </div>
-                            <span>내 정보</span>
-                        </a>
-                    </div>
-                    <div className="link-item">
-                        <a href="/my-activity" className='link'>
-                        <div>
-                            <img src={myactivity} alt="" />
-                        </div>
-                        <span>내 활동</span>
-                        </a>
-                    </div>
-                    <div className="link-item">
-                        <a href="/community" className='link'>
-                        <div>
-                            <img src={commnuity} alt="" />
-                        </div>
-                        <span>커뮤니티</span>
-                        </a>
-                    </div>
-                    <div className="link-item">
-                        <a href="/setting" className='link'>
-                        <div>
-                            <img src={setting} alt="" />
-                        </div>
-                        <span>설정</span>
-                        </a>
-                    </div>
+            <div className="sidetop">
+                {/* 이미지는 프롭스로 받아올꺼셈 */}
+                {/* <img className="avatar" src={avatar} alt="User Avatar" /> */}
+                <img className="topimg" src={pachiImage} alt="" />
+                <div className="userinfo">
+                    {/* 네임이랑 이메일도 프롭스로 받아올꺼셈 임시로 넣어둠 */}
+                    <p className="username">{userName}박상진</p>
+                    <p className="useremail">{userEmail}kosmo147@kosmo.com</p>
                 </div>
             </div>
-            <div className="sidebar-bottom">
-                <div className="logout">
-                    {/* <img className="avatar_bottom" src={avatar} alt="User Avatar" /> */}
-                    <img className='avatar-bottom' src={pachiImage} />
-
-                    <span className='logout-button' onClick={handleLogout}>로그아웃</span>
-                </div>
+            <div className='sidemid' >
+                <ul>
+                    <li>
+                        <img src={myinfo} alt="" />
+                        <a href="">내 정보</a></li>
+                    <li>
+                        <img src={myactivity} alt="" />
+                        <a href="">내 활동</a></li>
+                    <li>
+                        <img src={commnuity} alt="" />
+                        <a href="">커뮤니티</a></li>
+                    <li>
+                        <img src={setting} alt="" />
+                        <a href="">설정</a></li>
+                </ul>
+            </div>
+            <div className="sidebottom">
+                {/* 이미지는 프롭스로 받아올꺼셈 */}
+                {/* <img className="avatar_bottom" src={avatar} alt="User Avatar" /> */}
+                <img className='botimg' src={pachiImage} alt="" />
+                <span className="logout" onClick={handleLogout}>로그아웃</span>
             </div>
         </div>
-    );
+
+
+    )
 };
 
 export default Sidebar;
