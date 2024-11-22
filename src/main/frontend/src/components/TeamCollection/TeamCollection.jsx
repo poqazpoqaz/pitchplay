@@ -20,6 +20,7 @@ function TeamCollection({ src, content }) {
 
     return (
         <div className={styles['teamcollection-grid']}>
+
             <CircleImg src={src} gridArea="img" />
             <TeamCollectionItem
                 title={content.title}
@@ -47,52 +48,3 @@ function TeamCollection({ src, content }) {
 }
 
 export default TeamCollection;
-
-
-
-
-// 컴포넌트 생성시에 사용한 데이터 포맷
-// const examples = [
-//     {
-//       "src": "/imgs/1.jpg",
-//       "title": "KOSMO 팀원모집asdasdasdasdasdasdasdasd",
-//       "location": "경기도 안양시",
-//       "currentMembers": "2",
-//       "totalMembers": "23",
-//       "gender": "남자",
-//       "views": "207"
-//     },
-//     {
-//       "src": "/imgs/1.jpg",
-//       "title": "123123123 팀원모집",
-//       "location": "경기도 안양시",
-//       "currentMembers": "23",
-//       "totalMembers": "23",
-//       "gender": "여자",
-//       "views": "220"
-//     }
-//   ]
-
-
-{/* <div>
-{
-  examples.map((example, index) => {
-    // currentMembers와 totalMembers를 숫자로 변환
-    const currentMembers = +example.currentMembers;  // +를 사용해 숫자로 변환
-    const totalMembers = +example.totalMembers;      // +를 사용해 숫자로 변환
-
-    // content 객체에 변환된 값을 전달
-    return (
-      <TeamCollection
-        key={index}
-        src={example.src}
-        content={{
-          ...example,
-          currentMembers,
-          totalMembers,
-        }}
-      />
-    );
-  })
-}
-</div> */}

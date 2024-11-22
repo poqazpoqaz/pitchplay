@@ -5,29 +5,32 @@
     align-items: center;
     background: #F2F2F2;
     border-radius: 15px;
-    padding: 20px;
+    padding: 30px;
+    width: 100%;
 }
 
-.collectionItem-flex>div p,
-.collectionItem-flex>div h3 {
+.collectionItem-flex > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.collectionItem-flex > div p,
+.collectionItem-flex > div h3 {
     white-space: nowrap;
-    /* 한 줄로 표시 */
     overflow: hidden;
-    /* 넘치는 텍스트 숨김 */
     text-overflow: ellipsis;
-    /* 말줄임표 처리 */
+    text-align: center;
+    width: 100%; /* 너비 100%로 설정 */
+}
+
+.collectionItem-flex > div h3 {
     max-width: 100%;
-    /* 부모 요소의 크기에 맞춤 */
     text-align: center;
 }
 
-@media (max-width: 786px) {
-    .collectionItem-flex>div {
-        flex-direction: column;
-    }
-
-    .collectionItem-flex>div p,
-    .collectionItem-flex>div h3 {
-        max-width: 200px;
-    }
+.collectionItem-flex > div p {
+    max-width: 100%;
+    text-align: center;
 }

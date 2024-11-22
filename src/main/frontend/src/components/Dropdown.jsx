@@ -18,7 +18,6 @@ const DropdownButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 110px;
   font-size: 0.9rem;
   overflow: hidden;
 
@@ -35,7 +34,6 @@ const DropdownList = styled(motion.div)`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 100;
   margin-top: 3px;
-  min-width: 110px;
   overflow: hidden;
 `;
 
@@ -53,7 +51,7 @@ const DropdownItem = styled.div`
   }
 `;
 
-function Dropdown({ options, selected, onChange, text }) {
+function Dropdown({ options, selected, onChange, text, gridArea }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -67,7 +65,7 @@ function Dropdown({ options, selected, onChange, text }) {
   };
 
   return (
-    <DropdownWrapper>
+    <DropdownWrapper style={{gridArea: gridArea}}>
       <DropdownButton onClick={handleToggle}>
         {selected ? selected : `${text}`}
         {/* 화살표 아이콘 */}

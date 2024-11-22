@@ -4,30 +4,10 @@
         'img ... text ... ...' 20px
         'img ... text ... btn1' 40px
         'img ... text ... btn2' 40px
-        'img ... text ... ...' 20px /120px 20px 2fr 20px 150px;
+        'img ... text ... ...' 20px /120px 1fr 400px 1fr 150px;
     padding: 20px;
     border: 2px solid #07550C;
     border-radius: 15px;
-    min-width: 520px;
-}
-
-@media (max-width: 1024px) {
-    .teamcollection-grid {
-        grid-template:
-            'img ... text ... ...' 20px
-            'img ... text ... btn1' 40px
-            'img ... text ... btn2' 40px
-            'img ... text ... ...' 20px /120px 20px 1fr 20px 150px;
-    }
-}
-
-
-@media (max-width: 600px) {
-    .teamcollection-grid {
-        grid-template:
-            'img ... text ... ...' 20px
-            'img ... text ... btn1' 40px
-            'img ... text ... btn2' 40px
-            'img ... text ... ...' 20px /120px 20px 250px 20px 150px;
-    }
+    min-width: 700px;
+    background-color: #FFFFFF;
 }
