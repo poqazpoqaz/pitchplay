@@ -21,7 +21,7 @@ function Navbar({ gridArea }) {
                 size="xlarge"
                 isActive={activeButton === 'btn1'}
                 onClick={() => handleButtonClick('btn1')}
-                src={"/team"}
+                src="/team"
             >팀 매칭</DefaultButton>
             <DefaultButton
                 color='var(--main-color)'
@@ -29,7 +29,7 @@ function Navbar({ gridArea }) {
                 size="xlarge"
                 isActive={activeButton === 'btn2'}
                 onClick={() => handleButtonClick('btn2')}
-                src={"/team/member"}
+                src="/team/member"
             >팀원모집</DefaultButton>
             <DefaultButton
                 color='var(--main-color)'
@@ -37,6 +37,7 @@ function Navbar({ gridArea }) {
                 size="xlarge"
                 isActive={activeButton === 'btn3'}
                 onClick={() => handleButtonClick('btn3')}
+                src="/team/guestplayer"
             >용병모집</DefaultButton>
 
             <DefaultButton

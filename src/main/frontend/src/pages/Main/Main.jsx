@@ -1,7 +1,7 @@
 import Footer from "../../containers/Footer/Footer";
 import Header from "../../containers/header/Header";
 import styles from "./Main.module.css";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom';
 import Login from "../../containers/Login/Login"
 import Register from "../../containers/Register/Register"
 import MainSection from "../../components/MainSection/MainSection";
@@ -9,6 +9,7 @@ import Post from "../Post/Post"
 import TeamCollections from "../../containers/TeamCollections/TeamCollections";
 import TeamMatchings from "../../containers/TeamMatchings/TeamMatchings";
 import ReservationPage from "../Reservation/ReservationPage";
+import GuestRecruitment from "../../containers/GuestRecruitment/GuestRecruitment";
 
 
 const teamCollectionsData = [
@@ -23,7 +24,7 @@ const teamCollectionsData = [
     "date": "2023-11-20"
   },
   {
-    "src": "/imgs/2.jpg",
+    "src": "/imgs/1.jpg",
     "title": "123123123 팀원모집",
     "location": "서울특별시",
     "currentMembers": "23",
@@ -33,7 +34,7 @@ const teamCollectionsData = [
     "date": "2023-11-18"
   },
   {
-    "src": "/imgs/3.jpg",
+    "src": "/imgs/1.jpg",
     "title": "새로운 팀 모집",
     "location": "부산광역시",
     "currentMembers": "15",
@@ -43,7 +44,7 @@ const teamCollectionsData = [
     "date": "2023-11-15"
   },
   {
-    "src": "/imgs/4.jpg",
+    "src": "/imgs/1.jpg",
     "title": "프로젝트 팀원 모집",
     "location": "대구광역시",
     "currentMembers": "10",
@@ -53,7 +54,7 @@ const teamCollectionsData = [
     "date": "2023-11-10"
   },
   {
-    "src": "/imgs/5.jpg",
+    "src": "/imgs/1.jpg",
     "title": "코딩 팀원 모집",
     "location": "인천광역시",
     "currentMembers": "7",
@@ -63,7 +64,7 @@ const teamCollectionsData = [
     "date": "2023-11-08"
   },
   {
-    "src": "/imgs/6.jpg",
+    "src": "/imgs/1.jpg",
     "title": "디자인 팀원 모집",
     "location": "광주광역시",
     "currentMembers": "5",
@@ -73,7 +74,7 @@ const teamCollectionsData = [
     "date": "2023-11-05"
   },
   {
-    "src": "/imgs/7.jpg",
+    "src": "/imgs/1.jpg",
     "title": "스터디 그룹 모집",
     "location": "대전광역시",
     "currentMembers": "12",
@@ -83,7 +84,7 @@ const teamCollectionsData = [
     "date": "2023-11-03"
   },
   {
-    "src": "/imgs/8.jpg",
+    "src": "/imgs/1.jpg",
     "title": "연구개발 팀원 모집",
     "location": "경기도 성남시",
     "currentMembers": "4",
@@ -93,7 +94,7 @@ const teamCollectionsData = [
     "date": "2023-11-01"
   },
   {
-    "src": "/imgs/9.jpg",
+    "src": "/imgs/1.jpg",
     "title": "기술 지원 팀원 모집",
     "location": "울산광역시",
     "currentMembers": "6",
@@ -103,7 +104,7 @@ const teamCollectionsData = [
     "date": "2023-10-30"
   },
   {
-    "src": "/imgs/10.jpg",
+    "src": "/imgs/1.jpg",
     "title": "웹 개발 팀 모집",
     "location": "제주특별자치도",
     "currentMembers": "3",
@@ -226,6 +227,110 @@ const teamMatchingData = [
   },
 ];
 
+
+const recruitmentData = [
+  {
+    "date": "2024-11-25T20:00:00",
+    "location": "서울 올림픽 공원",
+    "currentMembers": 5,
+    "totalMembers": 10,
+    "team": "A팀",
+    "gender": "남성",
+    "teamSize": "5v5",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-11-26T20:00:00",
+    "location": "부산 해운대",
+    "currentMembers": 3,
+    "totalMembers": 7,
+    "team": "B팀",
+    "gender": "여성",
+    "teamSize": "5v5",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-11-27T20:00:00",
+    "location": "대구 수성못",
+    "currentMembers": 4,
+    "totalMembers": 6,
+    "team": "C팀",
+    "gender": "남성",
+    "teamSize": "3v3",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-11-28T20:00:00",
+    "location": "광주 전남대학교",
+    "currentMembers": 2,
+    "totalMembers": 6,
+    "team": "D팀",
+    "gender": "여성",
+    "teamSize": "3v3",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-11-29T20:00:00",
+    "location": "인천 송도",
+    "currentMembers": 6,
+    "totalMembers": 10,
+    "team": "E팀",
+    "gender": "남성",
+    "teamSize": "5v5",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-11-30T20:00:00",
+    "location": "서울 한강공원",
+    "currentMembers": 7,
+    "totalMembers": 7,
+    "team": "F팀",
+    "gender": "여성",
+    "teamSize": "7v7",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-12-01T20:00:00",
+    "location": "경기도 파주",
+    "currentMembers": 8,
+    "totalMembers": 10,
+    "team": "G팀",
+    "gender": "남성",
+    "teamSize": "5v5",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-12-02T20:00:00",
+    "location": "대전 유성구",
+    "currentMembers": 3,
+    "totalMembers": 6,
+    "team": "H팀",
+    "gender": "여성",
+    "teamSize": "3v3",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-12-03T20:00:00",
+    "location": "울산 문수축구장",
+    "currentMembers": 4,
+    "totalMembers": 8,
+    "team": "I팀",
+    "gender": "남성",
+    "teamSize": "5v5",
+    "src": "/public/imgs/1.jpg"
+  },
+  {
+    "date": "2024-12-04T20:00:00",
+    "location": "강원도 원주",
+    "currentMembers": 5,
+    "totalMembers": 9,
+    "team": "J팀",
+    "gender": "여성",
+    "teamSize": "5v5",
+    "src": "/public/imgs/1.jpg"
+  }
+];
+
 const router = createBrowserRouter([
   { path: "/", element: <MainSection gridArea={"section"} /> },
   { path: "/login", element: <Login gridArea={"section"} /> },
@@ -233,12 +338,13 @@ const router = createBrowserRouter([
   {
     path: "/team", element: <Post gridArea={"section"} />,
     children: [
-      { path: "", element: <TeamMatchings contents={teamMatchingData}/> },
-      { path: "member", element: <TeamCollections contents={teamCollectionsData}/>}
+      { path: "", element: <TeamMatchings contents={teamMatchingData} /> },
+      { path: "member", element: <TeamCollections contents={teamCollectionsData} /> },
+      { path: "guestplayer", element: <GuestRecruitment contents={recruitmentData} /> }
     ]
   },
   {
-    path: "/reservation", element: <ReservationPage gridArea={"section"}/>
+    path: "/reservation", element: <ReservationPage gridArea={"section"} />
   }
 ]);
 
@@ -246,9 +352,10 @@ function Main() {
   return (
     <div className={styles['main-grid']}>
       <Header />
-      <RouterProvider router={router} />
+      <RouterProvider router={router} /> {/* 실제 라우터 렌더링 */}
       <Footer />
     </div>
+
   );
 }
 

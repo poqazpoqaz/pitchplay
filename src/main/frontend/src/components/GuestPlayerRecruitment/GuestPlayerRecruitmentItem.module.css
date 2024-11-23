@@ -1,31 +1,32 @@
-.collectionItem-flex {
+/* 기본 스타일 */
+.guestitem-flex {
     display: flex;
-    flex-direction: column; 
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     background: #F2F2F2;
     border-radius: 15px;
     padding: 20px;
     width: 100%;
-    max-width: 500px; /* 최대 너비 제한 */
+    justify-content: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
 }
 
-.collectionItem-flex > div {
+.guestitem-flex>div {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 10px; 
+    align-items: center;
     width: 100%; 
+    margin-bottom: 10px; 
 }
 
-.collectionItem-flex > div:last-child {
+.guestitem-flex > div:last-child {
     margin-bottom: 0; /* 마지막 요소 여백 제거 */
 }
 
-.collectionItem-flex > div p,
-.collectionItem-flex > div h3 {
+
+.guestitem-flex > div p,
+.guestitem-flex > div h3 {
     white-space: nowrap; /* 텍스트 줄바꿈 방지 */
     overflow: hidden; /* 넘치는 내용 숨기기 */
     text-overflow: ellipsis; /* 말줄임표 처리 */
@@ -38,30 +39,30 @@
 
 /* 반응형 스타일링 */
 @media (max-width: 1024px) {
-    .collectionItem-flex {
+    .guestitem-flex {
         padding: 15px; /* 패딩 축소 */
         max-width: 400px; /* 최대 너비 축소 */
     }
 
-    .collectionItem-flex > div p,
-    .collectionItem-flex > div h3 {
+    .guestitem-flex > div p,
+    .guestitem-flex > div h3 {
         font-size: 0.9rem; /* 글씨 크기 축소 */
         max-width: 240px; /* 텍스트 너비 축소 */
     }
 }
 
 @media (max-width: 760px) {
-    .collectionItem-flex {
+    .guestitem-flex {
         padding: 10px; /* 패딩 축소 */
         max-width: 320px; /* 최대 너비 더 축소 */
     }
 
-    .collectionItem-flex > div {
+    .guestitem-flex > div {
         margin-bottom: 8px; /* 요소 간 간격 축소 */
     }
 
-    .collectionItem-flex > div p,
-    .collectionItem-flex > div h3 {
+    .guestitem-flex > div p,
+    .guestitem-flex> div h3 {
         font-size: 0.8rem; /* 글씨 크기 더 축소 */
         max-width: 200px; /* 텍스트 너비 더 축소 */
     }

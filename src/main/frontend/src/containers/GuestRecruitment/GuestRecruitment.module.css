@@ -1,7 +1,7 @@
-.teamcollections-grid {
+.guestrecruitment-grid {
     display: grid;
     grid-template: 
-        '... ... ... drop ...' 50px
+        '... btn2 ... drop ...' 50px
         '... ... ... ... ...' 20px
         '... items items items ...' 1fr
         '... ... ... ... ...' 50px
@@ -13,7 +13,7 @@
 }
 
 
-.teamcollections-items {
+.guestrecruitment-items {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -21,9 +21,9 @@
 }
 
 @media (max-width: 1024px){
-    .teamcollections-grid{
+    .guestrecruitment-grid{
         grid-template: 
-        '... ... ... drop ...' 50px
+        '... btn2 ... drop ...' 50px
         '... ... ... ... ...' 20px
         '... items items items ...' 1fr
         '... ... ... ... ...' 50px
@@ -33,9 +33,9 @@
 
 
 @media (max-width: 760px){
-    .teamcollections-grid{
+    .guestrecruitment-grid{
         grid-template: 
-        '... ... ... drop ...' 50px
+        '... btn2 ... drop ...' 50px
         '... ... ... ... ...' 20px
         '... items items items ...' 1fr
         '... ... ... ... ...' 50px

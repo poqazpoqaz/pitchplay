@@ -1,4 +1,4 @@
-import TeamMatchings from "./containers/TeamMatchings/TeamMatchings";
+import GuestRecruitment from "./containers/GuestRecruitment/GuestRecruitment";
 import Main from "./pages/Main/Main";
 
 
