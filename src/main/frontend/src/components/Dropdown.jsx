@@ -2,13 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-// 드롭다운 Wrapper 
+// 드롭다운 Wrapper
 const DropdownWrapper = styled.div`
   position: relative;
   z-index: 200;
+  width: 100%;
 `;
 
-// 드롭다운
+// 드롭다운 버튼 스타일
 const DropdownButton = styled.div`
   background-color: #ffffff;
   border: 1px solid #CCCCCC;
@@ -25,7 +26,13 @@ const DropdownButton = styled.div`
   &:hover {
     border-color: #888;
   }
+
+  @media (max-width: 760px) {
+    font-size: 0.6rem; /* 글자 크기 줄이기 */
+    padding: 8px; /* 패딩 조정 */
+  }
 `;
+
 // 드롭다운 목록 스타일
 const DropdownList = styled(motion.div)`
   width: 100%;
@@ -36,6 +43,10 @@ const DropdownList = styled(motion.div)`
   z-index: 100;
   margin-top: 3px;
   overflow: hidden;
+
+  @media (max-width: 760px) {
+    font-size: 0.6rem; /* 글자 크기 줄이기 */
+  }
 `;
 
 // 드롭다운 항목 스타일
@@ -45,10 +56,14 @@ const DropdownItem = styled.div`
   color: #333;
   cursor: pointer;
   font-size: 0.9rem;
-    
 
   &:hover {
     background-color: #f0f0f0;
+  }
+
+  @media (max-width: 760px) {
+    padding: 8px; /* 항목 패딩 조정 */
+    font-size: 0.6rem; /* 글자 크기 줄이기 */
   }
 `;
 

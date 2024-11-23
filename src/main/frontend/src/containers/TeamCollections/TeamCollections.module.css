@@ -1,23 +1,46 @@
-.teamcollections-grid{
+.teamcollections-grid {
     display: grid;
-    grid-template:
-    '... ... ... drop ...' 50px
-    '... ... ... ... ...' 20px
-    '... items items items ...' 1fr
-    '... ... ... ... ...' 50px
-    '... ... btn ... ...' 20px / 1fr 330px 1fr 330px 1fr ; 
-    min-width: 700px;
+    grid-template: 
+        '... ... ... drop ...' 50px
+        '... ... ... ... ...' 20px
+        '... items items items ...' 1fr
+        '... ... ... ... ...' 50px
+        '... ... btn ... ...' 20px / 1fr 200px 500px 200px 1fr;
     padding: 50px;
     background-color: #F1F1F1;
     border: 1px solid #A0A0A0;
     border-radius: 20px;
 }
 
+
 .teamcollections-items {
     display: flex;
     flex-direction: column;
     gap: 10px;
     grid-area: items;
-    min-width: 600px;
 }
 
+@media (max-width: 1024px){
+    .teamcollections-grid{
+        grid-template: 
+        '... ... ... drop ...' 50px
+        '... ... ... ... ...' 20px
+        '... items items items ...' 1fr
+        '... ... ... ... ...' 50px
+        '... ... btn ... ...' 20px / 1fr 7fr 300px 7fr 1fr;
+    }
+}
+
+
+@media (max-width: 760px){
+    .teamcollections-grid{
+        grid-template: 
+        '... ... ... drop ...' 50px
+        '... ... ... ... ...' 20px
+        '... items items items ...' 1fr
+        '... ... ... ... ...' 50px
+        '... ... btn ... ...' 20px / 1fr 5fr 300px 5fr 1fr;
+    }
+
+
+}
