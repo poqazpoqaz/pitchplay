@@ -8,6 +8,7 @@ import MainSection from "../../components/MainSection/MainSection";
 import Post from "../Post/Post"
 import TeamCollections from "../../containers/TeamCollections/TeamCollections";
 import TeamMatchings from "../../containers/TeamMatchings/TeamMatchings";
+import ReservationPage from "../Reservation/ReservationPage";
 
 
 const teamCollectionsData = [
@@ -235,6 +236,9 @@ const router = createBrowserRouter([
       { path: "", element: <TeamMatchings contents={teamMatchingData}/> },
       { path: "member", element: <TeamCollections contents={teamCollectionsData}/>}
     ]
+  },
+  {
+    path: "/reservation", element: <ReservationPage gridArea={"section"}/>
   }
 ]);
 

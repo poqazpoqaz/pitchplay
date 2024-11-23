@@ -4,13 +4,11 @@ import Footer from '../../containers/Footer/Footer';
 import CardContainer from '../../components/CardContainer';
 import GujangNavbar from '../../components/GujangNavbar/GujangNavbar';
 
-function ReservationPage() {
+function ReservationPage({gridArea}) {
     return (
-      <div>
-        <Header />
+      <div style={{gridArea: gridArea}}>
         <GujangNavbar />
         <CardContainer />
-        <Footer />
       </div>
     );
   }
