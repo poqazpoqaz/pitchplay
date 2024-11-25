@@ -1,0 +1,47 @@
+.accordion-header {
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left; 
+  background-color: #f4f4f4;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between; /* 텍스트와 아이콘 간격 */
+  align-items: center;
+}
+
+.accordion-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease; /* 애니메이션효과가 없어도된다싶으면 삭제하셔도됩니다 */
+}
+
+.accordion-content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #fafafa;
+  border-top: 1px solid #ddd;
+  display: none; 
+}
+
+.accordion-content.active {
+  display: flex; /* 'isOpen'이 true일 때만 보이도록 */
+}
+
+.accordion-content div {
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* 애니메이션효과가 없어도된다싶으면 삭제하셔도됩니다 */
+  border-radius: 4px;
+}
+
+.accordion-content div:hover {
+  background-color: #ddd;
+}
+
+.accordion-content div:active {
+  background-color: #ccc;
+}
