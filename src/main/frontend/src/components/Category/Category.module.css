@@ -1,0 +1,52 @@
+.Category-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .category-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .category-title {
+    font-size: 14px;
+    color: rgb(54, 54, 54);
+  }
+  
+  .options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .option-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    white-space: pre-line; /* 두 줄 텍스트 지원 */
+    transition: all 0.3s ease;
+  }
+  
+  .option-box-selected {
+    color: #07550C; /* 진한 초록색 */
+    border-color: #07550C;
+    background-color: #f0fff0; /* 옅은 초록색 배경 (선택 강조) */
+  }
+  
+  /* 카테고리별 옵션 크기 설정 */
+  .options-container:nth-of-type(4) .option-box {
+    flex-basis: calc((100% - 60px) / 7); /* 주활동요일: 7개 기준 */
+  }
+  
+  .options-container:not(:nth-of-type(4)) .option-box {
+    flex-basis: calc((100% - 40px) / 5); /* 나머지: 5개 기준 */
+  }
+  
