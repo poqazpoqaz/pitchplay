@@ -37,7 +37,7 @@ function TeamCollection({ src, content }) {
                 gridArea="text"
             />
             {!isFull ? (
-                <Button color="var(--main-color)" size="medium" gridArea="btn1">
+                <Button color="var(--main-color)" size="medium" gridArea="btn1" to="/team/application">
                     신청하기
                 </Button>
             ) : (

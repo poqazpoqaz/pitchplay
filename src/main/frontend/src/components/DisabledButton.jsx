@@ -6,7 +6,7 @@ const StyledButton = styled(motion.button)`
         background: #F1F1F1;  
         color: #808080; // background color가 있으면 흰색, 없으면 검정색
         font-weight: bold;
-        margin: 0 10px 10px 10px;
+        margin: 5px 0px;
         border-radius: 10px;
         border: 2px solid #F5F5F5;
         font-size: ${(props) => {

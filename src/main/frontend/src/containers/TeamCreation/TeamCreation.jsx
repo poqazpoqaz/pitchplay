@@ -4,10 +4,13 @@ import { TeamCodePattern, TNamePattern, TeamDescriptionPattern } from '../../uti
 import TeamNameCodeInput from '../../components/TeamCreationItem/TeamNameCodeInput';
 import TeamImageInput from '../../components/TeamCreationItem/TeamImageInput';
 import TeamDescriptionInput from '../../components/TeamCreationItem/TeamDescriptionInput';
+import { useNavigate } from 'react-router-dom';
 
 function TeamCreation() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
+
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   // 팀 이름 & 팀 코드 상태
   const [teamName, setTeamName] = useState("");
@@ -75,7 +78,10 @@ function TeamCreation() {
   };
 
   // 모달 닫기
-  const closeTeamModal = () => setIsOpen(false);
+  const closeTeamModal = () => {
+    setIsOpen(false);
+    navigate('/');
+  };
 
   return (
     <Modal isOpen={isOpen} closeModal={closeTeamModal}>

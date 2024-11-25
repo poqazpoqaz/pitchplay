@@ -11,6 +11,7 @@ import TeamMatchings from "../../containers/TeamMatchings/TeamMatchings";
 import ReservationPage from "../Reservation/ReservationPage";
 import GuestRecruitment from "../../containers/GuestRecruitment/GuestRecruitment";
 import TeamCreation from "../../containers/TeamCreation/TeamCreation";
+import TeamApplication from "../../containers/TeamApplication/TeamApplication";
 
 const teamCollectionsData = [
   {
@@ -21,7 +22,11 @@ const teamCollectionsData = [
     "totalMembers": "23",
     "gender": "남자",
     "views": "207",
-    "date": "2023-11-20"
+    "date": "2023-11-20",
+    "stadium": "안산 스타디움",
+    "teamDay": ["금요일", "토요일"],
+    "level": "Intermediate",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -31,7 +36,11 @@ const teamCollectionsData = [
     "totalMembers": "23",
     "gender": "여자",
     "views": "220",
-    "date": "2023-11-18"
+    "date": "2023-11-18",
+    "stadium": "안산 스타디움",
+    "teamDay": ["월요일", "수요일"],
+    "level": "비기너",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -41,7 +50,11 @@ const teamCollectionsData = [
     "totalMembers": "20",
     "gender": "남자",
     "views": "150",
-    "date": "2023-11-15"
+    "date": "2023-11-15",
+    "stadium": "안산 스타디움",
+    "teamDay": ["금요일", "토요일", "일요일"],
+    "level": "비기너",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -51,7 +64,11 @@ const teamCollectionsData = [
     "totalMembers": "15",
     "gender": "여자",
     "views": "320",
-    "date": "2023-11-10"
+    "date": "2023-11-10",
+    "stadium": "안산 스타디움",
+    "teamDay": ["금요일", "토요일", "일요일"],
+    "level": "아마추어",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -61,7 +78,11 @@ const teamCollectionsData = [
     "totalMembers": "10",
     "gender": "남자",
     "views": "100",
-    "date": "2023-11-08"
+    "date": "2023-11-08",
+    "stadium": "안산 스타디움",
+    "teamDay": ["월요일", "수요일"],
+    "level": "중급",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -71,7 +92,11 @@ const teamCollectionsData = [
     "totalMembers": "7",
     "gender": "여자",
     "views": "50",
-    "date": "2023-11-05"
+    "date": "2023-11-05",
+    "stadium": "안산 스타디움",
+    "teamDay": ["월요일", "수요일"],
+    "level": "비기너",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -81,7 +106,11 @@ const teamCollectionsData = [
     "totalMembers": "12",
     "gender": "남자",
     "views": "180",
-    "date": "2023-11-03"
+    "date": "2023-11-03",
+    "stadium": "안산 스타디움",
+    "teamDay": ["금요일", "토요일", "일요일"],
+    "level": "아마추어",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -91,7 +120,11 @@ const teamCollectionsData = [
     "totalMembers": "10",
     "gender": "여자",
     "views": "90",
-    "date": "2023-11-01"
+    "date": "2023-11-01",
+    "stadium": "안산 스타디움",
+    "teamDay": ["금요일", "토요일", "일요일"],
+    "level": "선수",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -101,7 +134,11 @@ const teamCollectionsData = [
     "totalMembers": "8",
     "gender": "남자",
     "views": "75",
-    "date": "2023-10-30"
+    "date": "2023-10-30",
+    "stadium": "안산 스타디움",
+    "teamDay": ["월요일", "수요일", "일요일"],
+    "level": "아마추어",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!격주로 주말에 모이며 실력 관계없이 매너 게임.."
   },
   {
     "src": "/imgs/1.jpg",
@@ -111,7 +148,11 @@ const teamCollectionsData = [
     "totalMembers": "5",
     "gender": "여자",
     "views": "60",
-    "date": "2023-10-28"
+    "date": "2023-10-28",
+    "stadium": "안산 스타디움",
+    "teamDay": ["토요일", "일요일"],
+    "level": "아마추어",
+    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   }
 ];
 const teamMatchingData = [
@@ -340,7 +381,8 @@ const router = createBrowserRouter([
       { path: "", element: <TeamMatchings contents={teamMatchingData} /> },
       { path: "member", element: <TeamCollections contents={teamCollectionsData} /> },
       { path: "guestplayer", element: <GuestRecruitment contents={recruitmentData} /> },
-      { path: "creation", element: <TeamCreation isOpen={true} /> }
+      { path: "creation", element: <TeamCreation isOpen={true} /> },
+      { path: "application", element: <TeamApplication contents={teamCollectionsData} /> }
     ]
   },
   {
@@ -353,7 +395,7 @@ function Main() {
   return (
     <div className={styles['main-grid']}>
       <Header />
-      <RouterProvider router={router} /> 
+      <RouterProvider router={router} />
       <Footer />
     </div>
 

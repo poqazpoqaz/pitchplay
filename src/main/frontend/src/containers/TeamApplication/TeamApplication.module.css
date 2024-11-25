@@ -1,0 +1,33 @@
+.teamapplication-grid {
+    display: grid;
+    grid-template:
+        '... ... ... ...' 20px
+        '... teamprofile teamprofile ...' 2fr
+        '... ... ... ...' 50px
+        '... teamIntro teamIntro ...' 2fr 
+        '... ... ... ...' 30px
+        '... ... btn ... ' 80px / 1fr 5fr 1fr 1fr;
+    padding: 50px;
+    background-color: #F1F1F1;
+    border: 1px solid #A0A0A0;
+    border-radius: 20px;
+}
+
+
+/* 1024px 이하 화면에서 레이아웃 조정 */
+@media (max-width: 1024px) {
+    .teamapplication-grid {
+        display: grid;
+        grid-template:
+            '... ...' 20px
+            'teamprofile teamprofile' 2fr
+            '... ...' 50px
+            'teamIntro teamIntro' 2fr 
+            '... ...' 30px
+            'btn btn' 80px /1fr 1fr;
+        padding: 50px;
+        background-color: #F1F1F1;
+        border: 1px solid #A0A0A0;
+        border-radius: 20px;
+    }
+}

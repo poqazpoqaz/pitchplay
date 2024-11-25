@@ -23,4 +23,15 @@
     .navbar-grid button{
         font-size: 0.9rem;
     }
+
+    .navbar-grid{
+        grid-template:
+        '... ... ... ... ... ... ... ... ...' 1fr
+        '... btn1 ... btn2 ... btn3 ... btn4 ...'80px
+        '... ... ... ... ... ... ... ... ...' 1fr
+        '... search search search search search search search ...' 1fr 
+        '... ... ... ... ... ... ... ... ...' 1fr / 1fr 1fr 30px 1fr 30px 1fr 30px 1fr 1fr;
+        
+    }
+
 }
