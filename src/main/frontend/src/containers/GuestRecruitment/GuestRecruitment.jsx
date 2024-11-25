@@ -54,12 +54,12 @@ function GuestRecruitment({ contents, gridArea }) {
                         key={index}
                         content={content}
                     />
-                ))};
+                ))}
             </div>
             {/* 더 보기 버튼 */}
             <CircularButton onClick={handleLoadMore} gridArea="btn" />
         </div>
-    );
+    )
 }
 
 export default GuestRecruitment;

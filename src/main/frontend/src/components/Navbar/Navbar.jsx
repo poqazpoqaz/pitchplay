@@ -46,6 +46,7 @@ function Navbar({ gridArea }) {
                 size="xlarge"
                 isActive={activeButton === 'btn4'}
                 onClick={() => handleButtonClick('btn4')}
+                src="/team/creation"
             >팀만들기</DefaultButton>
 
             <SearchInput gridArea="search" size="large" placeholder="검색할 단어를 작성해주세요." />

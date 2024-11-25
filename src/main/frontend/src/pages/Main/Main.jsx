@@ -10,7 +10,7 @@ import TeamCollections from "../../containers/TeamCollections/TeamCollections";
 import TeamMatchings from "../../containers/TeamMatchings/TeamMatchings";
 import ReservationPage from "../Reservation/ReservationPage";
 import GuestRecruitment from "../../containers/GuestRecruitment/GuestRecruitment";
-
+import TeamCreation from "../../containers/TeamCreation/TeamCreation";
 
 const teamCollectionsData = [
   {
@@ -328,8 +328,7 @@ const recruitmentData = [
     "gender": "여성",
     "teamSize": "5v5",
     "src": "/public/imgs/1.jpg"
-  }
-];
+  }];
 
 const router = createBrowserRouter([
   { path: "/", element: <MainSection gridArea={"section"} /> },
@@ -340,7 +339,8 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <TeamMatchings contents={teamMatchingData} /> },
       { path: "member", element: <TeamCollections contents={teamCollectionsData} /> },
-      { path: "guestplayer", element: <GuestRecruitment contents={recruitmentData} /> }
+      { path: "guestplayer", element: <GuestRecruitment contents={recruitmentData} /> },
+      { path: "creation", element: <TeamCreation isOpen={true} /> }
     ]
   },
   {
@@ -349,10 +349,11 @@ const router = createBrowserRouter([
 ]);
 
 function Main() {
+
   return (
     <div className={styles['main-grid']}>
       <Header />
-      <RouterProvider router={router} /> {/* 실제 라우터 렌더링 */}
+      <RouterProvider router={router} /> 
       <Footer />
     </div>
 
