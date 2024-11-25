@@ -37,7 +37,7 @@ function TeamCollection({ src, content }) {
                 gridArea="text"
             />
             {!isFull ? (
-                <Button color="var(--main-color)" size="medium" gridArea="btn1" to="/team/application">
+                <Button color="var(--main-color)" size="medium" gridArea="btn1">
                     신청하기
                 </Button>
             ) : (
@@ -45,7 +45,7 @@ function TeamCollection({ src, content }) {
                     정원마감
                 </DisabledButton>
             )}
-            <Button color="var(--main-color)" size="medium" gridArea="btn2">
+            <Button color="var(--main-color)" size="medium" gridArea="btn2"  to="/team/application">
                 자세히 보기
             </Button>
         </motion.div>
