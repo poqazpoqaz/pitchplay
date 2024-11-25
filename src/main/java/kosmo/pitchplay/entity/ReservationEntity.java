@@ -1,9 +1,11 @@
 package kosmo.pitchplay.entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -13,10 +15,8 @@ import java.util.UUID;
 @Table(
         name = "reservation",
         indexes = {
-                @Index(name = "idx_reservation_num", columnList = "reservation_num"),
+                @Index(name = "idx_stadium_region", columnList = "stadium_region"),
                 @Index(name = "idx_mach_date", columnList = "mach_date"),
-                @Index(name = "idx_stadium_information", columnList = "stadium_information"),
-                @Index(name = "idx_stadium_information_mach_date", columnList = "stadium_information, mach_date")
         })
 public class ReservationEntity {
 
@@ -25,27 +25,70 @@ public class ReservationEntity {
     @Column(name = "match_num", nullable = false, updatable = false, length = 36)
     private UUID matchNum;  // Primary Key (PK)
 
-    @Column(name = "reservation_num", nullable = false, updatable = false, unique = true)
+    @Column(name = "reservation_num", nullable = false, updatable = false, unique = true, length = 20)
     private String reservationNum;
 
-    @Column(name = "stadium_name", nullable = true, length = 50)
+    @Column(name = "stadium_name", length = 50)
     private String stadiumName;
 
-    @Column(name = "reservation_date", nullable = true)
-    private LocalDateTime reservationDate;
+    @Column(name = "stadium_state", length = 10)
+    private String stadiumState;
 
-    @Column(name = "match_date")
-    private LocalDateTime matchDate;
+    @Column(precision = 17, scale = 14)
+    private BigDecimal latitude;
 
-    @Column(name = "amount")
-    private Integer amount;
+    @Column(precision = 17, scale = 14)
+    private BigDecimal longitude;
+
+    @Column(name = "stadium_region", length = 6)
+    private String stadiumRegion;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(name = "stadium_text", length = 500)
+    private String stadiumText;
+
+    @Column
+    private Integer price;
 
     @Column(name = "personnel")
     private String personnel;
 
-    @Column(name = "stadium_information")
-    private String stadiumInformation;
-
     @Column(name = "views_number", nullable = false)
     private Integer viewsNumber;
+
+    @Column(name = "match_date")
+    private LocalDateTime matchDate;
+
+    @Column(name = "reservation_date")
+    private LocalDateTime reservationDate;
+
+    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+    @Column(name = "match_info")
+    private MatchInfo postInfo;
+
+    @Column(name = "user_id_num", nullable = false, length = 36)
+    private String userIdNum; // Foreign Key (FK)
+
+    @Override
+    public String toString() {
+        return "ReservationEntity{" +
+                "matchNum=" + matchNum +
+                ", reservationNum='" + reservationNum + '\'' +
+                ", stadiumName='" + stadiumName + '\'' +
+                ", stadiumState='" + stadiumState + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", stadiumRegion='" + stadiumRegion + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", stadiumText='" + stadiumText + '\'' +
+                ", price=" + price +
+                ", personnel='" + personnel + '\'' +
+                ", viewsNumber=" + viewsNumber +
+                ", matchDate=" + matchDate +
+                ", reservationDate=" + reservationDate +
+                ", userIdNum=" + userIdNum +
+                '}';
+    }
 }
