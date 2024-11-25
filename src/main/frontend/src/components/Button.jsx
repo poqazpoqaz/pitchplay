@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 const StyledLink = styled(motion.create(Link))`
+    display: flex;
+    justify-content: center;
     border-radius: 10px;
     border: 2px solid var(--main-color);
     background: ${props => props.color};  
@@ -51,7 +53,6 @@ const StyledButton = styled(motion.button)`
                 return '14px'; // 기본값 조정
         }
     }};
-        margin: 0 8px 8px 8px;  // 화면이 작아질수록 margin 좁히기
     }
 
     @media (max-width: 760px) {
@@ -67,7 +68,6 @@ const StyledButton = styled(motion.button)`
                 return '0.8rem';  // 기본값을 좀 더 작은 크기로 설정
         }
     }};
-        margin: 0 5px 5px 5px;  // 더 작은 화면에서는 margin 더욱 좁히기
     }
 `;
 

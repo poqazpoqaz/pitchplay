@@ -1,24 +1,25 @@
 .Category-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+
   }
   
   .category-block {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    text-align: left;
   }
   
   .category-title {
     font-size: 14px;
     color: rgb(54, 54, 54);
+    font-weight: bold;
+    margin-bottom: 10px;
   }
   
   .options-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    justify-content: space-between;
   }
   
   .option-box {
@@ -27,11 +28,11 @@
     align-items: center;
     text-align: center;
     font-size: 14px;
-    border: 1px solid black;
+    border: 1px solid #898989;
     border-radius: 8px;
     padding: 10px;
+    margin: 5px;
     cursor: pointer;
-    white-space: pre-line; /* 두 줄 텍스트 지원 */
     transition: all 0.3s ease;
   }
   

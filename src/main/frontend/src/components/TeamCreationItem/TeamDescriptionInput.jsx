@@ -7,8 +7,6 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  align-items: center;
 `;
 
 const StyledDiv2 = styled.div`
@@ -26,6 +24,7 @@ const StyledTextarea = styled.textarea`
   font-family: "Arial", sans-serif;
   resize: none;
   outline: none;
+  margin: 0 auto;
 
   &:focus {
     border-color: var(--accent-color);
@@ -55,7 +54,6 @@ function TeamDescriptionInput({
         value={description}
         onChange={handleTeamDescription}
       />
-
       <StyledDiv2>
         <Button color="var(--main-color)" size="large" onClick={handleBeforeButtonClick}>
           이전
