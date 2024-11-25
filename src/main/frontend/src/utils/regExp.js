@@ -28,3 +28,9 @@ export const ReportPattern = /^[a-zA-Z0-9ㄱ-ㅎ가-힣!@#$%^&*()_+={}\[\]:;"'<>
 
 // 검색 유효성 검사 정규표현식 (한글,영어,숫자,특수문자 1~50글자 이내 첫글자는 특수문자 제외)
 export const SearchPattern = /^[a-zA-Z0-9가-힣][a-zA-Z0-9가-힣!@#$%^&*()_+={}\[\]:;"'<>,.?/-]*$/;
+
+// 팀 코드 생성 유효성 검사 정규표현식 (영문, 숫자만 1~20자 첫글자 영문)
+export const TeamCodePattern = /^[A-Za-z][A-Za-z0-9]{0,19}$/;
+
+// 팀 소개글 유효성 검사 정규표현식
+export const TeamDescriptionPattern = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{0,300}$/;

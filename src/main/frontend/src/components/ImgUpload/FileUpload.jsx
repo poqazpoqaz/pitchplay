@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './TeamImg.css';
 
-function FileUpload() {
-  const [image, setImage] = useState(null);
+function FileUpload({image, setImage}) {
+
 
   const handleDrop = (event) => {
     event.preventDefault();
