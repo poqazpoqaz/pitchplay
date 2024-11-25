@@ -1,0 +1,44 @@
+.matching-box {
+    position: relative;
+}
+
+.matching-top {
+    background: var(--main-color);
+    grid-area: status;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 20px 0px 0px;
+    width: 120px;
+    height: 50px;
+    position: relative;
+    left: 15px;
+}
+
+
+.matching-grid {
+    display: grid;
+    grid-template:
+        '... team1 ... text ... team2 ...' 120px / 1fr 120px 1fr 400px 1fr 120px 1fr;
+    border: 3px solid var(--main-color);
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+    .matching-grid {
+        grid-template:
+            '... text ... team2 ...' 120px / 1fr 400px 1fr 120px 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .matching-grid {
+        grid-template:
+            '... text ... team2 ...' 120px / 1fr 200px 1fr 120px 1fr;
+    }
+}

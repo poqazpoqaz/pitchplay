@@ -1,0 +1,24 @@
+.guestplayer-grid {
+    display: grid;
+    grid-template:
+        'img ... text ... ...' 30px
+        'img ... text ... btn' 80px
+        'img ... text ... ...' 30px / 120px 1fr 5fr 1fr 150px;
+    padding: 20px;
+    border: 2px solid #07550C;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+}
+
+@media (max-width: 760px) {
+    .guestplayer-grid {
+        grid-template:
+            'text text text' 1fr
+            '... ... ...' 20px
+            '... btn ...' 40px / 1fr 100px 1fr;
+    }
+
+    .guestplayer-grid>button{
+        font-size: 0.9rem;
+    }
+}

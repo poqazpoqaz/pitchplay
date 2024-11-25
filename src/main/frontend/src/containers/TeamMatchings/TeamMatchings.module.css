@@ -1,27 +1,26 @@
-.teamcollections-grid {
+.teamMatching-grid{
     display: grid;
-    grid-template: 
-        '... ... ... drop ...' 50px
-        '... ... ... ... ...' 20px
-        '... items items items ...' 1fr
-        '... ... ... ... ...' 50px
-        '... ... btn ... ...' 20px / 1fr 200px 500px 200px 1fr;
+    grid-template:
+    '... ... ... drop ...' 50px
+    '... ... ... ... ...' 20px
+    '... items items items ...' 1fr
+    '... ... ... ... ...' 50px
+    '... ... btn ... ...' 20px / 1fr 200px 500px 200px 1fr; 
     padding: 50px;
     background-color: #F1F1F1;
     border: 1px solid #A0A0A0;
     border-radius: 20px;
 }
 
-
-.teamcollections-items {
+.teamMatching-items {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     grid-area: items;
 }
 
 @media (max-width: 1024px){
-    .teamcollections-grid{
+    .teamMatching-grid{
         grid-template: 
         '... ... ... drop ...' 50px
         '... ... ... ... ...' 20px
@@ -33,7 +32,7 @@
 
 
 @media (max-width: 760px){
-    .teamcollections-grid{
+    .teamMatching-grid{
         grid-template: 
         '... ... ... drop ...' 50px
         '... ... ... ... ...' 20px

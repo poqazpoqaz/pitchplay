@@ -6,10 +6,10 @@
         '... left ... middle ... right ...' 130px
         '... ... ... ... ... ... ...' 1fr / 25px 165px 1fr 350px 1fr 165px 25px;
     height: 129px;
-    min-width: 700px;
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1); 
     border-bottom: 1px solid #ccc;
     z-index: 200;
+    min-width: 600px;
 }
 
 .header-left {
@@ -47,14 +47,16 @@
 }
 
 @media (max-width: 760px) {
+    .header-menu>h1{
+        display: none;
+    }
     .header-container {
         background-color: var(--main-color);
         display: grid;
         grid-template:
             '... ... ... ... ... ... ...' 1fr
             '... left ... middle ... right ...' 130px
-            '... ... ... ... ... ... ...' 1fr / 25px 165px 20px 350px 20px 165px 25px;
+            '... ... ... ... ... ... ...' 1fr / 20px 1fr 1fr 1fr 1fr 140px 20px;
         height: 129px;
-        min-width: 700px;
     }
 }

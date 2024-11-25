@@ -33,6 +33,7 @@ function TeamCollections({ contents }) {
     const handleLoadMore = () => {
         setVisibleCount((prevCount) => Math.min(prevCount + 5, contents.length));
     };
+    
 
     return (
         <div className={styles['teamcollections-grid']}>

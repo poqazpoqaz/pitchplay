@@ -6,6 +6,7 @@ import Button from "../Button";
 import CircleImg from "../CircleImg";
 import styles from "./TeamCollection.module.css";
 import TeamCollectionItem from "./TeamCollectionItem";
+import { motion } from "framer-motion";
 
 function TeamCollection({ src, content }) {
     const [isFull, setIsFull] = useState(false);
@@ -19,7 +20,11 @@ function TeamCollection({ src, content }) {
     }, [content]); // content가 변경될 때마다 실행
 
     return (
-        <div className={styles['teamcollection-grid']}>
+        <motion.div
+            className={styles['teamcollection-grid']}
+            whileHover={{ scale: 1.02, boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.1)" }}  // Hover 시 확대와 그림자
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}  // 애니메이션 전환
+        >
 
             <CircleImg src={src} gridArea="img" />
             <TeamCollectionItem
@@ -43,7 +48,7 @@ function TeamCollection({ src, content }) {
             <Button color="var(--main-color)" size="medium" gridArea="btn2">
                 자세히 보기
             </Button>
-        </div>
+        </motion.div>
     );
 }
 
