@@ -27,26 +27,20 @@ const DropdownButton = styled.div`
     border-color: #888;
   }
 
-  @media (max-width: 760px) {
-    font-size: 0.6rem; /* 글자 크기 줄이기 */
-    padding: 8px; /* 패딩 조정 */
-  }
 `;
 
 // 드롭다운 목록 스타일
 const DropdownList = styled(motion.div)`
   width: 100%;
+  max-height: 200px; 
   background-color: #ffffff;
   border: 1px solid #CCCCCC;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 100;
   margin-top: 3px;
-  overflow: hidden;
+  overflow-y : auto;
 
-  @media (max-width: 760px) {
-    font-size: 0.6rem; /* 글자 크기 줄이기 */
-  }
 `;
 
 // 드롭다운 항목 스타일
@@ -63,7 +57,7 @@ const DropdownItem = styled.div`
 
   @media (max-width: 760px) {
     padding: 8px; /* 항목 패딩 조정 */
-    font-size: 0.6rem; /* 글자 크기 줄이기 */
+
   }
 `;
 
@@ -81,7 +75,7 @@ function Dropdown({ options, selected, onChange, text, gridArea }) {
   };
 
   return (
-    <DropdownWrapper style={{gridArea: gridArea}}>
+    <DropdownWrapper style={{ gridArea: gridArea }}>
       <DropdownButton onClick={handleToggle}>
         {selected ? selected : `${text}`}
         {/* 화살표 아이콘 */}
@@ -91,8 +85,8 @@ function Dropdown({ options, selected, onChange, text, gridArea }) {
       {isOpen && (
         <DropdownList
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1}}
-          transition={{ duration: 0.8 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
         >
           {options.map((option, index) => (
             <DropdownItem key={index} onClick={() => handleSelect(option)}>
