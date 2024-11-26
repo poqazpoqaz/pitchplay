@@ -12,7 +12,7 @@ export const CHANGE_TEAM_AGE = "CHANGE_TEAM_AGE";
 export const CHANGE_TEAM_GENDER = "CHANGE_TEAM_GENDER";
 
 // 액션생성자 
-export const changeTeamName = (teanName) => ({type: CHANGE_TEAM_NAME, payload: teanName});
+export const changeTeamName = (teamName) => ({type: CHANGE_TEAM_NAME, payload: teamName});
 export const changeTeamCode = (teamCode) => ({type: CHANGE_TEAM_CODE, payload: teamCode});
 export const changeTeamImg = (teamImg) => ({type: CHANGE_TEAM_IMG, payload: teamImg});
 export const changeTeamDescription = (teamDescription) => ({type: CHANGE_TEAM_DESCRIPTION, payload: teamDescription});

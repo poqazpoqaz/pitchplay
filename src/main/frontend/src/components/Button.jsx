@@ -91,5 +91,4 @@ function Button({ color, onClick, children, type, gridArea, size, to }) {
         </StyledLink>
     );
 }
-
 export default Button;
