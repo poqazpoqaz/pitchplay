@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import Button from "../Button";
 
 // StyledDiv1 스타일을 추가하여 좀 더 멋지게 만듦
-const StyledDiv1 = styled(motion.div)`
+const Wrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -37,7 +36,7 @@ const StyledDiv2 = styled.div`
 
 function TeamCreationEnd() {
     return (
-        <StyledDiv1
+        <Wrapper
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -46,8 +45,7 @@ function TeamCreationEnd() {
                 <p>축하합니다.</p>
                 <p>팀 생성이 완료되었습니다.</p>
             </StyledDiv2>
-            <Button color="var(--main-color)" size="large" to="/">돌아가기</Button>
-        </StyledDiv1>
+        </Wrapper>
     );
 }
 

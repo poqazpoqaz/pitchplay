@@ -1,0 +1,25 @@
+// 액션타입
+export const CHANGE_TEAM_NAME = "CHANGE_TEAM_NAME";
+export const CHANGE_TEAM_CODE = "CHANGE_TEAM_CODE"; 
+export const CHANGE_TEAM_IMG = "CHANGE_TEAM_IMG"; 
+export const CHANGE_TEAM_DESCRIPTION = "CHANGE_TEAM_DESCRIPTION";
+export const CHANGE_TEAM_LEVEL = "CHANGE_TEAM_LEVEL";
+export const CHANGE_TEAM_DAY = "CHANGE_TEAM_DAY";
+export const CHANGE_TEAM_TIME = "CHANGE_TEAM_TIME";
+export const CHANGE_TEAM_CITY = "CHANGE_TEAM_CITY";
+export const CHANGE_TEAM_LOC = "CHANGE_TEAM_LOC";
+export const CHANGE_TEAM_AGE = "CHANGE_TEAM_AGE";
+export const CHANGE_TEAM_GENDER = "CHANGE_TEAM_GENDER";
+
+// 액션생성자 
+export const changeTeamName = (teanName) => ({type: CHANGE_TEAM_NAME, payload: teanName});
+export const changeTeamCode = (teamCode) => ({type: CHANGE_TEAM_CODE, payload: teamCode});
+export const changeTeamImg = (teamImg) => ({type: CHANGE_TEAM_IMG, payload: teamImg});
+export const changeTeamDescription = (teamDescription) => ({type: CHANGE_TEAM_DESCRIPTION, payload: teamDescription});
+export const changeTeamLevel = (teamLevel) => ({type: CHANGE_TEAM_LEVEL, payload: teamLevel});
+export const changeTeamDay = (teamDay) => ({type: CHANGE_TEAM_DAY, payload: teamDay});
+export const changeTeamTime = (teamTime) => ({type: CHANGE_TEAM_TIME, payload: teamTime});
+export const changeTeamCity = (teamCity) => ({type: CHANGE_TEAM_CITY, payload: teamCity});
+export const changeTeamLoc = (teamLoc) => ({type: CHANGE_TEAM_LOC, payload: teamLoc});
+export const changeTeamAge = (teamAge) => ({type: CHANGE_TEAM_AGE, payload: teamAge});
+export const changeTeamGender = (teamGender) => ({type: CHANGE_TEAM_GENDER, payload: teamGender});

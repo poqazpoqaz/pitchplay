@@ -7,7 +7,7 @@ import TeamCollections from "../src/containers/TeamCollections/TeamCollections";
 import TeamMatchings from "../src/containers/TeamMatchings/TeamMatchings";
 import ReservationPage from "../src/pages/Reservation/ReservationPage";
 import GuestRecruitment from "../src/containers/GuestRecruitment/GuestRecruitment";
-import TeamCreation from "../src/containers/TeamCreation/TeamCreation";
+import TeamCreation from "../src/pages/TeamCreation/TeamCreation";
 import TeamApplication from "../src/containers/TeamApplication/TeamApplication";
 import { createBrowserRouter, Outlet, Router, RouterProvider } from 'react-router-dom';
 

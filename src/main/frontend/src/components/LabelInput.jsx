@@ -36,7 +36,7 @@ const StyledInput = styled.input`
         return '10px';
       case 'medium':
         return '20px';
-      case 'large':
+      case 'large': 
         return '24px';
       default:
         return '16px';  // 기본값 설정
