@@ -1,14 +1,14 @@
 import Main from "./pages/Main/Main";
-import Login from "../src/containers/Login/Login"
-import Register from "../src/containers/Register/Register"
-import MainSection from "../src/components/MainSection/MainSection";
+import Login from "./pages/Login/Login"
+import Register from "./pages/Register/Register"
+import MainSection from "./pages/MainSection/MainSection";
 import Post from "../src/pages/Post/Post"
-import TeamCollections from "../src/containers/TeamCollections/TeamCollections";
-import TeamMatchings from "../src/containers/TeamMatchings/TeamMatchings";
+import TeamCollections from "./pages/TeamCollections/TeamCollections";
+import TeamMatchings from "./pages/TeamMatchings/TeamMatchings";
 import ReservationPage from "../src/pages/Reservation/ReservationPage";
-import GuestRecruitment from "../src/containers/GuestRecruitment/GuestRecruitment";
+import GuestRecruitment from "./pages/GuestRecruitment/GuestRecruitment";
 import TeamCreation from "../src/pages/TeamCreation/TeamCreation";
-import TeamApplication from "../src/containers/TeamApplication/TeamApplication";
+import TeamApplication from "./pages/TeamApplication/TeamApplication";
 import { createBrowserRouter, Outlet, Router, RouterProvider } from 'react-router-dom';
 
 
