@@ -5,6 +5,8 @@ const StyledButton = styled(motion.button)`
     font-weight: bold;
     font-size: ${(props) => {
         switch (props.size) {
+            case 'xsmall': 
+                return '10px';
             case 'small':
                 return '20px';
             case 'medium':

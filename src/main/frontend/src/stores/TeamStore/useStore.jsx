@@ -12,6 +12,9 @@ import {
     changeTeamLoc,
     changeTeamAge,
     changeTeamGender,
+    changeCurrentMember,
+    changeTotalMember,
+    changeCollectionTitle,
     resetState
 } from "./action.js";
 
@@ -42,6 +45,12 @@ export const useStore = () => {
         changeTeamAge: (teamAge) => dispatch(changeTeamAge(teamAge)),
         // 팀 구성요인 변경 메서드
         changeTeamGender: (teamGender) => dispatch(changeTeamGender(teamGender)),
+        // 팀 구하는 인원
+        changeCurrentMember: (currentMember) => dispatch(changeCurrentMember(currentMember)),
+        // 팀 토탈 인원
+        changeTotalMember: (totalMember) => dispatch(changeTotalMember(totalMember)),
+        // 팀 모집 제목
+        changeCollectionTitle: (collectionTitle) => dispatch(changeCollectionTitle(collectionTitle)),
         // 팀 state 초기화 메서드
         resetState : () => dispatch(resetState())
     };

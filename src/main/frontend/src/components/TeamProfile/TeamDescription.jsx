@@ -39,11 +39,11 @@ const Wrapper = styled.div`
     height: 100%; 
 `;
 
-function TeamDescription({ contents, gridArea }) {
+function TeamDescription({ content, gridArea }) {
     return (
         <Wrapper style={{ gridArea: gridArea }}>
             <StyledDiv>팀 소개</StyledDiv>
-            <StyleP>{contents[2].teamDescription}</StyleP>
+            <StyleP>{content.teamDescription}</StyleP>
         </Wrapper>
     );
 }

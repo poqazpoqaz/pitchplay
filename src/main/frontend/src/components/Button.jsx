@@ -79,7 +79,7 @@ function Button({ color, onClick, children, type, gridArea, size, to }) {
             color={color}
             onClick={onClick}
             whileTap={{
-                scale: 0.9
+                scale: 0.9,
             }}>
             <StyledButton
                 color={color}

@@ -98,7 +98,7 @@ export const initialState = [
         teamLoc: "중구",
         teamGender: "혼성",
         viewCount: "95",
-        activeStatus: "true",
+        activeStatus: "false",
         writtenDate: "2024-11-15",
         teamSize: "7vs7",
         stadium: "도봉구 어쩌구 스타디움"
@@ -132,7 +132,7 @@ export const initialState = [
         teamLoc: "수성구",
         teamGender: "남자",
         viewCount: "180",
-        activeStatus: "true",
+        activeStatus: "false",
         writtenDate: "2024-11-25",
         teamSize: "6vs6",
         stadium: "용인 어쩌구 스타디움"
@@ -149,7 +149,7 @@ export const initialState = [
         teamLoc: "남구",
         teamGender: "여자",
         viewCount: "300",
-        activeStatus: "true",
+        activeStatus: "false",
         writtenDate: "2024-11-30",
         teamSize: "5vs5",
         stadium: "용인 어쩌구 스타디움"
@@ -183,7 +183,7 @@ export const initialState = [
         teamLoc: "노원구",
         teamGender: "혼성",
         viewCount: "220",
-        activeStatus: "true",
+        activeStatus: "false",
         writtenDate: "2024-11-22",
         teamSize: "6vs6",
         stadium: "용인 어쩌구 스타디움"
