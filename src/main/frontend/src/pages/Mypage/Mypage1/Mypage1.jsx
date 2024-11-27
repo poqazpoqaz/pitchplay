@@ -1,10 +1,9 @@
 import { useState } from "react";
-import "./Mypage1.css";
-import Sidebar from "./Sidebar";
+import styles from "./Mypage1.module.css";
 import Top1 from './Top1';
 import Top2 from './Top2';
 import Bottom from '../Bottom';
-import { useStore } from '../../../stores/MypageStore/useStore';
+import { useStore } from '../../../stores/useStore';
 import axios from 'axios';
 
 const Mypage1 = ({ username, usercash }) => {
@@ -75,7 +74,7 @@ const Mypage1 = ({ username, usercash }) => {
         actions.toggleEditMode();
 
         if (!newEditableState) {
-            await saveProfileData(state); 
+            await saveProfileData(state);
         }
     };
 
@@ -85,10 +84,9 @@ const Mypage1 = ({ username, usercash }) => {
     };
 
     return (
-        <div className="mypage-grid">
-            <div className="container">
-                <Sidebar />
-                <div className="top">
+        <div>
+            <div className={styles.container}>
+                <div className={styles.top}>
                     <Top1
                         fileInput={fileInput}
                         errorMessage={errorMessage}
