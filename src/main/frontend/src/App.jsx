@@ -26,7 +26,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["금요일", "토요일"],
     "level": "Intermediate",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -40,7 +40,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["월요일", "수요일"],
     "level": "비기너",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -54,7 +54,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["금요일", "토요일", "일요일"],
     "level": "비기너",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -68,7 +68,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["금요일", "토요일", "일요일"],
     "level": "아마추어",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -82,7 +82,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["월요일", "수요일"],
     "level": "중급",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -96,7 +96,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["월요일", "수요일"],
     "level": "비기너",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -110,7 +110,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["금요일", "토요일", "일요일"],
     "level": "아마추어",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -124,7 +124,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["금요일", "토요일", "일요일"],
     "level": "선수",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   },
   {
     "src": "/imgs/1.jpg",
@@ -138,7 +138,7 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["월요일", "수요일", "일요일"],
     "level": "아마추어",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!격주로 주말에 모이며 실력 관계없이 매너 게임.."
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!격주로 주말에 모이며 실력 관계없이 매너 게임.."
   },
   {
     "src": "/imgs/1.jpg",
@@ -152,15 +152,15 @@ const teamCollectionsData = [
     "stadium": "안산 스타디움",
     "teamDay": ["토요일", "일요일"],
     "level": "아마추어",
-    "teamDescription" : "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
+    "teamDescription": "안녕하세요. 여기는 kosmo 팀입니다. 함께 즐거운 경기 할 사람을 구합니다!!!!!!"
   }
 ];
 const teamMatchingData = [
   {
-    team1: "Team Alpha",
-    team1src: "/imgs/1.jpg",
-    team2: "Team Bravo",
-    team2src: "/imgs/team.jpg",
+    teams: {
+      team1: { name: "Team Alpha", src: "/imgs/1.jpg" },
+      team2: { name: "Team Bravo", src: "/imgs/team.jpg" },
+    },
     date: "2024-11-25",
     location: "수원 HK 풋살파크",
     gender: "Mixed",
@@ -168,10 +168,10 @@ const teamMatchingData = [
     views: "120",
   },
   {
-    team1: "Red Dragons",
-    team1src: "/imgs/1.jpg",
-    team2: "Blue Phoenix",
-    team2src: "/imgs/team.jpg",
+    teams: {
+      team1: { name: "Red Dragons", src: "/imgs/1.jpg" },
+      team2: { name: "Blue Phoenix", src: "/imgs/1.jpg" }
+    },
     date: "2024-12-01",
     location: "Busan, South Korea",
     gender: "Male",
@@ -374,9 +374,9 @@ const recruitmentData = [
 
 const router = createBrowserRouter([
   {
-    path: "/", element: <Main/>,
+    path: "/", element: <Main />,
     children: [
-      { path : "/", element: <MainSection gridArea={"section"}/>},
+      { path: "/", element: <MainSection gridArea={"section"} /> },
       { path: "/login", element: <Login gridArea={"section"} /> },
       { path: "/register", element: <Register gridArea={"section"} /> },
       {
