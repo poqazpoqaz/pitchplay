@@ -2,11 +2,18 @@ import TeamCollection from "../../components/TeamCollection/TeamCollection";
 import Dropdown from "../../components/Dropdown";
 import CircularButton from "../../components/CircularButton/CircularButton";
 import styles from "./TeamCollections.module.css";
+import JoinRequestModal from "../../components/JoinRequestModal";
 import { useState, useEffect } from "react";
 import { useStore } from "../../stores/CollectionStore/useStore";
 
 function TeamCollections() {
     const { state, actions } = useStore();
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // 모달 열기/닫기 함수
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     // 드롭다운 옵션
     const dropdownoption = ["최신순", "오래된순"];
@@ -39,7 +46,7 @@ function TeamCollections() {
     const handleLoadMore = () => {
         setVisibleCount((prevCount) => Math.min(prevCount + 5, sortedContents.length));
     };
-    
+
     //useEffect
     // 초기 및 옵션 변경 시 정렬 실행
     useEffect(() => {
@@ -73,6 +80,7 @@ function TeamCollections() {
                         <TeamCollection
                             key={index}
                             content={content}
+                            openModal={openModal}
                         />
                     );
                 })}
@@ -80,6 +88,8 @@ function TeamCollections() {
 
             {/* 더 보기 버튼 */}
             <CircularButton onClick={handleLoadMore} gridArea="btn" />
+
+            {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} />}
         </div>
     );
 }

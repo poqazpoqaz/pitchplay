@@ -13,13 +13,13 @@ const SidebarContainer = styled.div`
   height: 100%;
   border-right: 1px solid #efefef;
   grid-template:
-    "... ... ..." 1fr
+    "... ... ..." 50px
     "... sidetop ..." 90px
-    "... ... ..." 0.3fr
+    "... ... ..." 60px
     "... sidemid ..." 240px
     "... ... ..." 1fr
     "... sidebottom ..." 50px
-    "... ... ..." 1fr / 10px 240px 10px;
+    "... ... ..." 50px / 10px 240px 10px;
 `;
 
 const Sidetop = styled.div`
@@ -131,12 +131,12 @@ const Sidebar = ({ avatar, userName, userEmail, gridArea }) => {
           <ListItem>
             <img src={myinfo} alt="내 정보" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="">내 정보</Link>
+            <Link href="/mypage">내 정보</Link>
           </ListItem>
           <ListItem>
             <img src={myactivity} alt="내 활동" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="">내 활동</Link>
+            <Link href="/mypage/act">내 활동</Link>
           </ListItem>
           <ListItem>
             <img src={commnuity} alt="커뮤니티" />

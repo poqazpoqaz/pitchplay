@@ -11,6 +11,7 @@ import TeamCreation from "../src/pages/TeamCreation/TeamCreation";
 import TeamApplication from "./pages/TeamApplication/TeamApplication";
 import MyPage from "./pages/Mypage/Mypage1/Mypage";
 import Mypage1 from "./pages/Mypage/Mypage1/Mypage1";
+import MypageAct from "./pages/Mypage/MypageAct/MypageAct";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
@@ -31,14 +32,14 @@ const router = createBrowserRouter([
           { path: "application", element: <TeamApplication /> }
         ]
       },
-      { path: "/mypage", element: <MyPage gridArea={"section"} />, 
-      children : [
-        {path: "", element: <Mypage1/>}
-        
-      ]},
       {
-        path: "/reservation", element: <ReservationPage gridArea={"section"} />
-      }
+        path: "/mypage", element: <MyPage gridArea={"section"} />,
+        children: [
+          { path: "", element: <Mypage1 /> },
+          { path: "act", element: <MypageAct gridArea={"section"} /> }
+        ]
+      },
+      { path: "/reservation", element: <ReservationPage gridArea={"section"} /> },
     ]
   },
 ]);
@@ -48,7 +49,7 @@ function App() {
 
   return (
     <div>
-      <RouterProvider router={router} />/
+      <RouterProvider router={router} />
     </div>
   );
 }
