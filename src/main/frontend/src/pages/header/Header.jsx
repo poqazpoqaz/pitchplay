@@ -7,6 +7,7 @@ import setting from "./setting.svg";
 import menu from "./menu.svg";
 import TitleText from "../../components/TitleText";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function Header() {
@@ -35,7 +36,7 @@ function Header() {
                 <HeaderLogo />
             </div>
             <ul className={styles['header-right']}>
-                <a href="#"><img src={mypage} /></a>
+                <Link to="mypage"><img src={mypage} /></Link>
                 <a href="#"><img src={search} /></a>
                 <a href="#"><img src={setting} /></a>
             </ul>
