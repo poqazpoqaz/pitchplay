@@ -1,5 +1,6 @@
 export const CHANGE_TEAM_NUMBER = "CHANGE_TEAM_NUMBER";
 export const CHANGE_COLLECTION_TITLE = "CHANGE_COLLECTION_TITLE";
+export const CHANGE_COLLECTION_TIME = "CHANGE_COLLECTION_TIME";
 export const CHANGE_CURRENT_MEMBER = "CHANGE_CURRENT_MEMBER";
 export const CHANGE_TOTAL_MEMBER = "CHANGE_TOTAL_MEMBER";
 export const CHANGE_TEAM_NAME = "CHANGE_TEAM_NAME";
@@ -10,10 +11,13 @@ export const CHANGE_TEAM_GENDER = "CHANGE_TEAM_GENDER";
 export const CHANGE_VIEW_COUNT = "CHANGE_VIEW_COUNT";
 export const CHANGE_ACTIVE_STATUS = "CHANGE_ACTIVE_STATUS";
 export const CHANGE_WRITTEN_DATE = "CHANGE_WRITTEN_DATE";
+export const CHANGE_TEAM_SIZE = "CHANGE_TEAM_SIZE";
+export const CHANGE_STADIUM = "CHANGE_STADIUM";
 export const RESET_STATE = "RESET_STATE";
 
 export const changeTeamNumber = (teamNumber) => ({ type: CHANGE_TEAM_NUMBER, payload: teamNumber });
 export const changeCollectionTitle = (collectionTitle) => ({ type: CHANGE_COLLECTION_TITLE, payload: collectionTitle });
+export const changeCollectionTime = (collectionTime) => ({type: CHANGE_COLLECTION_TIME, payload: collectionTime});
 export const changeCurrentMember = (currentMember) => ({ type: CHANGE_CURRENT_MEMBER, payload: currentMember });
 export const changeTotalMember = (totalMember) => ({ type: CHANGE_TOTAL_MEMBER, paylaod: totalMember });
 export const changeTeamName = (teamName) => ({ type: CHANGE_TEAM_NAME, payload: teamName });
@@ -24,4 +28,6 @@ export const changeTeamGender = (teamGender) => ({ type: CHANGE_TEAM_GENDER, pay
 export const changeViewCount = (viewCount) => ({ type: CHANGE_VIEW_COUNT, payload: viewCount });
 export const changeActiveStatus = (activeStatus) => ({type: CHANGE_ACTIVE_STATUS, payload: activeStatus});
 export const changeWrittenDate = (writtenDate) => ({type: CHANGE_WRITTEN_DATE, payload: writtenDate});
+export const changeTeamSize = (teamSize) => ({type: CHANGE_TEAM_SIZE, paylaod: teamSize});
+export const changeStadium = (stadium) => ({type: CHANGE_STADIUM, payload: stadium});
 export const resetState = () => ({ type: RESET_STATE });

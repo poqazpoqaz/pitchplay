@@ -15,7 +15,7 @@ function TeamMatching({ content }) {
 
             {/* 상태 텍스트 */}
             <div className={styles["matching-top"]}>
-                {team2?.name && team2.name !== "null" ? "매칭완료" : "신청가능"}
+                {team2.name && team2.name !== "null" ? "매칭완료" : "신청가능"}
             </div>
 
             <motion.div

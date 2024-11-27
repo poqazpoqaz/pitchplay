@@ -1,5 +1,4 @@
 import GuestPlayerRecruitmentItem from "./GuestPlayerRecruitmentItem";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import CircleImg from "../CircleImg";
 import Button from "../Button";
@@ -7,20 +6,9 @@ import DisabledButton from "../DisabledButton";
 import styles from "./GuestPlayerRecruitment.module.css"
 
 function GuestPlayerRecruitment({ content }) {
-    const [isFull, setIsFull] = useState(false);
-
-    // content 변경 시 isFull 상태를 업데이트
-    useEffect(() => {
-        if (content.currentMembers && content.totalMembers) {
-            const isFullCapacity = content.currentMembers / content.totalMembers === 1;
-            setIsFull(isFullCapacity);
-        }
-    }, [content]); // content가 변경될 때마다 실행
-
     // 날짜 포맷 함수
     function formatDate(dateString) {
         const date = new Date(dateString);
-
         const options = {
             weekday: 'long', // 요일
             year: 'numeric', // 년도
@@ -35,7 +23,7 @@ function GuestPlayerRecruitment({ content }) {
     }
 
     // 날짜 포맷 적용
-    const formattedDate = formatDate(content.date);
+    const formattedDate = formatDate(content.collectionTime);
 
     return (
         <motion.div
@@ -44,20 +32,20 @@ function GuestPlayerRecruitment({ content }) {
             className={styles['guestplayer-grid']}
         >
 
-            <CircleImg src={content.src} gridArea="img"/>
+            <CircleImg src={content.teamImg} gridArea="img" />
 
             <GuestPlayerRecruitmentItem
                 date={formattedDate} // 포맷된 날짜 전달
-                location={content.location}
-                currentMembers={content.currentMembers}
-                totalMembers={content.totalMembers}
-                team={content.team}
-                gender={content.gender}
+                location={content.teamLoc}
+                currentMember={content.currentMember}
+                totalMember={content.totalMember}
+                team={content.teamName}
+                gender={content.teamGender}
                 teamSize={content.teamSize}
                 gridArea="text"
             />
 
-            {!isFull ? (
+            {content.activeStatus == "false" ? (
                 <Button color="var(--main-color)" size="medium" gridArea="btn">
                     지원하기
                 </Button>

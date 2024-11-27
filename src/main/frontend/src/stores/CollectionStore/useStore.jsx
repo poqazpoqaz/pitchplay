@@ -3,6 +3,7 @@ import { initialState, reducer } from "./reducer";
 import {
     changeTeamNumber,
     changeCollectionTitle,
+    changeCollectionTime,
     changeCurrentMember,
     changeTotalMember,
     changeTeamName,
@@ -13,6 +14,7 @@ import {
     changeViewCount,
     changeActiveStatus,
     changeWrittenDate,
+    changeTeamSize,
     resetState
 } from "./action";
 
@@ -24,6 +26,8 @@ export const useStore = () => {
         changeTeamNumber: (teamNumber) => dispatch(changeTeamNumber(teamNumber)),
         //팀원 모집 게시물 제목 변경 메서드
         changeCollectionTitle: (collectionTitle) => dispatch(changeCollectionTitle(collectionTitle)),
+        //용병 모집시에 시간 변경 메서드
+        changeCollectionTime : (collectionTime) => dispatch(changeCollectionTime(collectionTime)),
         //팀원 모집 현 멤버수 변경 메서드
         changeCurrentMember: (currentMember) => dispatch(changeCurrentMember(currentMember)),
         //팀원 모집 총 멤버수 변경 메서드
@@ -44,6 +48,8 @@ export const useStore = () => {
         changeActiveStatus: (activeStatus) => dispatch(changeActiveStatus(activeStatus)),
         // 게시물 작성날짜 변경메서드
         changeWrittenDate: (writtenDate) => dispatch(changeWrittenDate(writtenDate)),
+        // 팀 사이즈 변경 메서드
+        changeTeamSize: (teamSize) => dispatch(changeTeamSize(teamSize)),
         //상태 초기화 메서드
         resetState: () => dispatch(resetState())
     };

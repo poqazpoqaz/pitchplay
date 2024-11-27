@@ -31,6 +31,11 @@
     text-align: center; /* 텍스트 가운데 정렬 */
     font-size: 1rem; /* 기본 글꼴 크기 */
     color: #333; /* 텍스트 색상 */
+    margin-right: 10px;
+}
+
+.collectionItem-flex > div h3:nth-of-type(2){
+    min-width: 100px;
 }
 
 /* 반응형 스타일링 */

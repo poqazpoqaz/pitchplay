@@ -13,7 +13,7 @@ import {
     changeTeamAge,
     changeTeamGender,
     resetState
-} from "./action";
+} from "./action.js";
 
 export const useStore = () => {
     

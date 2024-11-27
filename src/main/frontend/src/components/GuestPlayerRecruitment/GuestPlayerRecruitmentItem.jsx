@@ -1,7 +1,7 @@
 import styles from "./GuestPlayerRecruitmentItem.module.css"
 import guest from "./guest.svg"
 
-function GuestPlayerRecruitmentItem({ gridArea, date, location, currentMembers, totalMembers, team, gender, teamSize }) {
+function GuestPlayerRecruitmentItem({ gridArea, date, location, currentMember, totalMember, team, gender, teamSize }) {
     return (
         <div style={{ gridArea: gridArea }} className={styles['guestitem-flex']}>
             <div>
@@ -9,7 +9,7 @@ function GuestPlayerRecruitmentItem({ gridArea, date, location, currentMembers, 
             </div>
             <div>
                 <p>{location}</p>
-                <p><img src={guest} /> {currentMembers} / {totalMembers} 명</p>
+                <p><img src={guest} /> {currentMember} / {totalMember} 명</p>
             </div>
             <div>
                 <p>{team} - {gender}, {teamSize}</p>

@@ -3,7 +3,7 @@ import Dropdown from "../../components/Dropdown";
 import CircularButton from "../../components/CircularButton/CircularButton";
 import styles from "./TeamCollections.module.css";
 import { useState, useEffect } from "react";
-import { useStore } from "../../stores/TeamCollectionStore/useStore";
+import { useStore } from "../../stores/CollectionStore/useStore";
 
 function TeamCollections() {
     const { state, actions } = useStore();

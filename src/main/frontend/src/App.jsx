@@ -156,109 +156,6 @@ const teamCollectionsData = [
   }
 ];
 
-const recruitmentData = [
-  {
-    "date": "2024-11-25T20:00:00",
-    "location": "서울 올림픽 공원",
-    "currentMembers": 5,
-    "totalMembers": 10,
-    "team": "A팀",
-    "gender": "남성",
-    "teamSize": "5v5",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-11-26T20:00:00",
-    "location": "부산 해운대",
-    "currentMembers": 3,
-    "totalMembers": 7,
-    "team": "B팀",
-    "gender": "여성",
-    "teamSize": "5v5",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-11-27T20:00:00",
-    "location": "대구 수성못",
-    "currentMembers": 4,
-    "totalMembers": 6,
-    "team": "C팀",
-    "gender": "남성",
-    "teamSize": "3v3",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-11-28T20:00:00",
-    "location": "광주 전남대학교",
-    "currentMembers": 2,
-    "totalMembers": 6,
-    "team": "D팀",
-    "gender": "여성",
-    "teamSize": "3v3",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-11-29T20:00:00",
-    "location": "인천 송도",
-    "currentMembers": 6,
-    "totalMembers": 10,
-    "team": "E팀",
-    "gender": "남성",
-    "teamSize": "5v5",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-11-30T20:00:00",
-    "location": "서울 한강공원",
-    "currentMembers": 7,
-    "totalMembers": 7,
-    "team": "F팀",
-    "gender": "여성",
-    "teamSize": "7v7",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-12-01T20:00:00",
-    "location": "경기도 파주",
-    "currentMembers": 8,
-    "totalMembers": 10,
-    "team": "G팀",
-    "gender": "남성",
-    "teamSize": "5v5",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-12-02T20:00:00",
-    "location": "대전 유성구",
-    "currentMembers": 3,
-    "totalMembers": 6,
-    "team": "H팀",
-    "gender": "여성",
-    "teamSize": "3v3",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-12-03T20:00:00",
-    "location": "울산 문수축구장",
-    "currentMembers": 4,
-    "totalMembers": 8,
-    "team": "I팀",
-    "gender": "남성",
-    "teamSize": "5v5",
-    "src": "/public/imgs/1.jpg"
-  },
-  {
-    "date": "2024-12-04T20:00:00",
-    "location": "강원도 원주",
-    "currentMembers": 5,
-    "totalMembers": 9,
-    "team": "J팀",
-    "gender": "여성",
-    "teamSize": "5v5",
-    "src": "/public/imgs/1.jpg"
-  }];
-
-
 const router = createBrowserRouter([
   {
     path: "/", element: <Main />,
@@ -271,7 +168,7 @@ const router = createBrowserRouter([
         children: [
           { path: "", element: <TeamMatchings/> },
           { path: "member", element: <TeamCollections/> },
-          { path: "guestplayer", element: <GuestRecruitment contents={recruitmentData} /> },
+          { path: "guestplayer", element: <GuestRecruitment/> },
           { path: "creation", element: <TeamCreation isOpen={true} /> },
           { path: "application", element: <TeamApplication contents={teamCollectionsData} /> }
         ]

@@ -3,7 +3,7 @@ import CircularButton from "../../components/CircularButton/CircularButton";
 import Dropdown from "../../components/Dropdown";
 import styles from "./TeamMatchings.module.css";
 import { useState, useEffect } from "react";
-import { useStore } from "../../stores/TeamMachingStore/useStore";
+import { useStore } from "../../stores/MatchingStore/useStore";
 
 function TeamMatchings() {
     const { state, actions } = useStore();

@@ -23,5 +23,5 @@ export const changeTeamTime = (teamTime) => ({type: CHANGE_TEAM_TIME, payload: t
 export const changeTeamCity = (teamCity) => ({type: CHANGE_TEAM_CITY, payload: teamCity});
 export const changeTeamLoc = (teamLoc) => ({type: CHANGE_TEAM_LOC, payload: teamLoc});
 export const changeTeamAge = (teamAge) => ({type: CHANGE_TEAM_AGE, payload: teamAge});
-export const changeTeamGender = (teamGender) => ({type: CHANGE_TEAM_GENDER, payload: teamGender});
+export const changeTeamGender = (teamGender) => ({ type: CHANGE_TEAM_GENDER, payload: teamGender });
 export const resetState = () => ({type: RESET_STATE});

@@ -14,7 +14,7 @@ export const initialState = [
     {
         teams: {
             team1: { name: "Team Alpha", src: "/imgs/1.jpg" },
-            team2: { name: "Team Bravo", src: "/imgs/team.jpg" },
+            team2: { name: "Team Bravo", src: "/imgs/1.jpg" },
         },
         date: "2024-11-25",
         location: "수원 HK 풋살파크",
@@ -38,7 +38,7 @@ export const initialState = [
     {
         teams: {
             team1: { name: "Team Alpha", src: "/imgs/1.jpg" },
-            team2: { name: "Team Bravo", src: "/imgs/team.jpg" },
+            team2: { name: "Team Bravo", src: "/imgs/1.jpg" },
         },
         date: "2024-11-25",
         location: "수원 HK 풋살파크",
@@ -62,7 +62,7 @@ export const initialState = [
     {
         teams: {
             team1: { name: "Team Alpha", src: "/imgs/1.jpg" },
-            team2: { name: "Team Bravo", src: "/imgs/team.jpg" },
+            team2: { name: "Team Bravo", src: "/imgs/1.jpg" },
         },
         date: "2024-11-25",
         location: "수원 HK 풋살파크",

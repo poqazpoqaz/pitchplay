@@ -9,7 +9,7 @@ import TeamLocation from '../../components/TeamCreationItem/TeamLocation';
 import TeamMemberGender from '../../components/TeamCreationItem/TeamMemberGender';
 import TeamCreationEnd from '../../components/TeamCreationItem/TeamCreationEnd';
 import Button from '../../components/Button';
-import { useStore } from "../../stores/TeamCreationStore/useStore";
+import { useStore } from "../../stores/TeamStore/useStore";
 import { useNavigate } from 'react-router-dom';
 import { TeamCodePattern, TNamePattern, TeamDescriptionPattern } from '../../utils/regExp';
 
