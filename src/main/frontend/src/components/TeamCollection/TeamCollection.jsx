@@ -4,10 +4,15 @@ import CircleImg from "../CircleImg";
 import styles from "./TeamCollection.module.css";
 import TeamCollectionItem from "./TeamCollectionItem";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import JoinRequestModal from "../JoinRequestModal";
 
 function TeamCollection({ content }) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-
+    // 모달 열기/닫기 함수
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     return (
         <motion.div
@@ -28,7 +33,7 @@ function TeamCollection({ content }) {
                 gridArea="text"
             />
             {content.activeStatus == "false" ? (
-                <Button color="var(--main-color)" size="medium" gridArea="btn1">
+                <Button color="var(--main-color)" size="medium" gridArea="btn1" onClick={openModal}>
                     신청하기
                 </Button>
             ) : (
@@ -39,6 +44,8 @@ function TeamCollection({ content }) {
             <Button color="var(--main-color)" size="medium" gridArea="btn2" to="/team/application">
                 자세히 보기
             </Button>
+
+            {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal}/>}
         </motion.div>
     );
 }
