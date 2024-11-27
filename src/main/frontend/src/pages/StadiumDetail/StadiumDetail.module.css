@@ -100,6 +100,43 @@
     color: blue;
 }
 
+
+/* 아코디언 아이템 */
+.accordionItem {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* 아코디언 버튼 */
+.accordionButton {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.accordionButton:hover {
+    background-color: #e9ecef;
+}
+
+/* 아코디언 내용 */
+.accordionContent {
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+
 /* DTLCONT 관련 스타일 */
 .dtlContentWrapper {
     margin-top: 20px;
@@ -108,8 +145,14 @@
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 2px solid #ddd;
+    max-width: 100%;
 }
 
+.dtlContentSection {
+    margin-bottom: 20px;
+}
+
+/* 제목 스타일 */
 .dtlTitle {
     font-size: 1.5rem;
     font-weight: bold;
@@ -117,22 +160,26 @@
     margin-bottom: 10px;
 }
 
+/* DTLCONT 관련 스타일 */
 .dtlContentList {
-    list-style-type: none;
-    padding-left: 0;
+    list-style: none;
+    padding-left: 20px;
 }
 
-.dtlContent {
+.dtlContentItem {
     font-size: 1rem;
     color: #555;
     line-height: 1.6;
     margin-bottom: 8px;
-    margin-left: 20px;
+    position: relative;
 }
 
-.dtlContent a {
-    color: #07550C;
-    text-decoration: underline;
+.dtlContentItem::before {
+    content: '•';
+    color: #007BFF;
+    position: absolute;
+    left: -15px;
+    font-weight: bold;
 }
 
 /* 오른쪽 사이드바 */
@@ -140,12 +187,12 @@
     position: -webkit-sticky;
     position: sticky;
     top: 20px;
-    width: 300px; /* 사이드바 너비 */
+    width: 300px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    align-self: flex-start; /* 사이드바를 상단에 고정 */
+    align-self: flex-start;
 }
 
 .rightSidebar h3 {
@@ -161,7 +208,7 @@
 }
 
 /* 주소 복사 버튼, 지도 보기 버튼, 예약하기 버튼 공통 스타일 */
-.copyButton, .reserveButton, .openMapButton {
+.copyButton, .reserveButton {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -182,4 +229,3 @@
     background-color: #4CAF50;
     color: white;
 }
-

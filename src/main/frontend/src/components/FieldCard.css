@@ -1,4 +1,4 @@
-/* 공통 카드 스타일 */
+/* 카드 스타일 */
 .card {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -9,11 +9,11 @@
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 애니메이션 효과 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* hover 시 살짝 올라오는 효과 */
+    transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -58,8 +58,8 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    min-width: 120px;
-    transition: background-color 0.3s ease; /* 애니메이션 효과 */
+    width: auto; /* min-width 제거, width를 auto로 설정 */
+    transition: background-color 0.3s ease;
 }
 
 .button:hover {
@@ -67,27 +67,29 @@
 }
 
 /* 반응형 디자인 */
-@media (max-width: 768px) { /* 모바일 화면 */
+@media (max-width: 768px) { 
+    /* 모바일 화면 */
     .card {
-        max-width: 100%; /* 가로 크기를 부모 요소에 맞게 줄임 */
-        padding: 12px; /* 내부 여백 조정 */
+        max-width: 100%;
+        padding: 12px;
     }
 
     .info-box {
         flex-direction: column; /* 세로 배치 */
-        align-items: flex-start; /* 텍스트가 왼쪽 정렬되도록 조정 */
-        gap: 5px; /* 간격 조정 */
+        align-items: flex-start;
+        gap: 5px; 
     }
 
     .info-text {
-        text-align: center; /* 텍스트 왼쪽 정렬 */
+        text-align: center;
         min-width: auto; /* 최소 크기 제한 해제 */
-        font-size: 0.9rem; /* 글자 크기 줄임 */
+        font-size: 0.9rem;
     }
 
+    /* 버튼 스타일 수정 */
     .button {
-        min-width: 100%; /* 버튼이 가로로 꽉 차도록 설정 */
-        font-size: 0.9rem; /* 버튼 글자 크기 줄임 */
-        padding: 8px 16px; /* 버튼 패딩 조정 */
+        width: 100%; /* 버튼이 부모 크기에 맞게 꽉 차도록 설정 */
+        font-size: 1rem; /* 버튼 글자 크기 줄이기 */
+        padding: 12px 16px; /* 버튼 패딩을 조금 더 여유 있게 설정 */
     }
 }

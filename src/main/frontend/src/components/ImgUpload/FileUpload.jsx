@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import './TeamImg.css';
 
 function FileUpload({image, setImage}) {
-
-
   const handleDrop = (event) => {
     event.preventDefault();
+
     const file = event.dataTransfer.files[0];
+    
     if (file && file.type.startsWith("image/")) {
       previewImage(file);
     } else {

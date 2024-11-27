@@ -1,17 +1,70 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './StadiumDetail.module.css';
 
-function StadiumDetail() {
-    const [stadiumData, setStadiumData] = useState(null); // JSON 데이터 상태
-    const [isAddressCopied, setIsAddressCopied] = useState(false); // 주소 복사 여부 상태
+// 아코디언 컴포넌트
+function Accordion({ title, content }) {
+    const [isOpen, setIsOpen] = useState(false);
 
-    // stadiumData.json 파일을 불러옴
+    return (
+        <div className={styles.accordionItem}>
+            <button className={styles.accordionButton} onClick={() => setIsOpen(!isOpen)}>
+                {title}
+            </button>
+            {isOpen && <div className={styles.accordionContent}>{content}</div>}
+        </div>
+    );
+}
+
+function StadiumDetail() {
+    const { id } = useParams();
+    const [stadiumData, setStadiumData] = useState(null);
+    const [isAddressCopied, setIsAddressCopied] = useState(false);
+
+    // JSON 데이터를 배열 형태로 변환하는 함수
+    function convertToArray(jsonData) {
+        if (Array.isArray(jsonData)) {
+            return jsonData.map(item => convertToArray(item));
+        }
+    
+        if (jsonData && typeof jsonData === 'object') {
+            const newObj = {};
+            for (let key in jsonData) {
+                if (key === 'DTLCONT' && typeof jsonData[key] === 'string') {
+                    // DTLCONT 문자열을 객체 배열로 변환
+                    newObj[key] = splitContentIntoSections(jsonData[key]);
+                } else {
+                    newObj[key] = convertToArray(jsonData[key]);
+                }
+            }
+            return newObj;
+        }
+    
+        return jsonData;
+    }
+    // DTLCONT 문자열을 'title'과 'content' 객체 배열로 분리
+function splitContentIntoSections(content) {
+    const sections = content.split(/\d+\.\s+/).slice(1); // 숫자로 시작하는 제목 기준으로 분리
+    return sections.map(section => {
+        const [title, ...rest] = section.split(/\r?\n/); // 첫 줄을 'title', 나머지를 'content'로 구분
+        return {
+            title: title.trim(),
+            content: rest.filter(line => line.trim() !== '').map(line => line.trim()), // 빈 줄 제거
+        };
+    });
+}
+
+    // 데이터 불러오기
     useEffect(() => {
         fetch('/data/stadiumData.json')
-            .then((response) => response.json())
-            .then((data) => setStadiumData(data))
-            .catch((error) => console.error('Error loading stadium data:', error));
-    }, []);
+            .then(response => response.json())
+            .then(data => {
+                const selectedStadium = data.find(stadium => stadium.SVCID === id);
+                const convertedStadium = convertToArray(selectedStadium);
+                setStadiumData(convertedStadium);
+            })
+            .catch(error => console.error('Error loading stadium data:', error));
+    }, [id]);
 
     // 주소 복사 기능
     const handleCopyAddress = () => {
@@ -22,19 +75,18 @@ function StadiumDetail() {
         }
     };
 
-    // 데이터가 로딩 중일 경우 처리
-    if (!stadiumData) {
-        return <div>Loading...</div>; // 로딩 중일 때 "Loading..." 메시지를 보여줌
-    }
-
-    // 구장 주소로 구글 지도 열기
+    // 구글 지도 열기
     const openGoogleMap = () => {
         if (stadiumData && stadiumData.PLACENM) {
-            // 구장 주소로 구글 지도 열기
             const googleMapUrl = `https://www.google.com/maps/search/?q=${encodeURIComponent(stadiumData.PLACENM)}`;
             window.open(googleMapUrl, '_blank');
         }
     };
+
+    // 로딩 처리
+    if (!stadiumData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className={styles.container}>
@@ -44,48 +96,25 @@ function StadiumDetail() {
 
             <div className={styles.contentWrapper}>
                 <div className={styles.infoWrapper}>
-                    <div className={styles.infoSection}>
-                        <h2>{stadiumData.SVCNM}</h2>
-                        <div className={styles.rulesText}>
-                            <p><strong>구장 주소:</strong> {stadiumData.PLACENM}</p>
-                            <p><strong>구장 소개:</strong></p>
-                            <div className={styles.dtlContentWrapper}>
-                                {stadiumData.DTLCONT.map((item, index) => (
-                                    <div key={index}>
-                                        <h4 className={styles.dtlTitle}>{item.title}</h4>
-                                        <ul className={styles.dtlContentList}>
-                                            {item.content.map((line, idx) => (
-                                                <li key={idx} className={styles.dtlContent}>{line}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={styles.rulesSection}>
-                        <h3>시설 및 이용 규칙</h3>
-                        <div className={styles.rulesText}>
-                            {stadiumData.DTLCONT.map((item, index) => (
-                                <div key={index} className={styles.dtlContentWrapper}>
-                                    <h4 className={styles.dtlTitle}>{item.title}</h4>
-                                    <ul className={styles.dtlContentList}>
-                                        {item.content.map((line, idx) => (
-                                            <li key={idx} className={styles.dtlContent}>{line}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className={styles.rulesSection}>
-                        <h3>주의사항</h3>
-                        <div className={styles.rulesText}>
-                            <p>■ 전화 문의: {stadiumData.TELNO}</p>
-                        </div>
-                    </div>
+                    <h2>{stadiumData.SVCNM}</h2>
+                    <p><strong>구장 주소:</strong> {stadiumData.PLACENM}</p>
+                    <div className={styles.dtlContentWrapper}>
+    <h3>구장 소개</h3>
+    {stadiumData.DTLCONT && Array.isArray(stadiumData.DTLCONT) ? (
+        stadiumData.DTLCONT.map((item, index) => (
+            <div key={index} className={styles.dtlContentSection}>
+                <h4 className={styles.dtlTitle}>{item.title}</h4>
+                <ul className={styles.dtlContentList}>
+                    {item.content.map((line, idx) => (
+                        <li key={idx} className={styles.dtlContentItem}>{line}</li>
+                    ))}
+                </ul>
+            </div>
+        ))
+    ) : (
+        <p>구장에 대한 정보가 없습니다.</p>
+    )}
+</div>
                 </div>
 
                 <div className={styles.rightSidebar}>
@@ -97,16 +126,12 @@ function StadiumDetail() {
                         <li><strong>운영 시간:</strong> {stadiumData.V_MIN} ~ {stadiumData.V_MAX}</li>
                     </ul>
 
-                    {/* 주소 복사 기능 */}
                     <button className={styles.copyButton} onClick={handleCopyAddress}>
                         {isAddressCopied ? '주소가 복사되었습니다!' : '주소 복사'}
                     </button>
-
-                    {/* 지도 보기 버튼 */}
                     <button className={styles.copyButton} onClick={openGoogleMap}>
                         지도 보기
                     </button>
-                    {/* 예약하기 버튼 */}
                     <button className={styles.reserveButton}>
                         예약하기
                     </button>

@@ -1,123 +1,56 @@
-import React, { useState } from 'react';
-import FieldCard from './FieldCard'; // FieldCard 컴포넌트 임포트
+import React, { useState, useEffect } from 'react';
+import FieldCard from './FieldCard';  // FieldCard 컴포넌트 임포트
 import CircularButton from '../components/CircularButton/CircularButton'; // CircularButton 임포트
 
-const fields = [
-  {
-    id: 1,
-    image: '/imgs/gujang.png',
-    name: '신림체육공원',
-    address: '서울 관악구 신림동 123-45',
-    type: '잔디구장',
-    area: '실외'
-  },
-  {
-    id: 2,
-    image: '/imgs/1.jpg',
-    name: '관악체육공원',
-    address: '서울 관악구 관악로 123',
-    type: '잔디구장',
-    area: '실내'
-  },
-  {
-    id: 3,
-    image: '/imgs/team.jpg',
-    name: '봉천체육공원',
-    address: '서울 관악구 봉천동 789-12',
-    type: '잔디구장',
-    area: '실외'
-  },
-  {
-    id: 4,
-    image: '/imgs/gujang.png',
-    name: '봉천체육공원',
-    address: '서울 관악구 봉천동 789-12',
-    type: '잔디구장',
-    area: '실외'
-  },
-  {
-    id: 5,
-    image: '/imgs/gujang.png',
-    name: '신림체육공원',
-    address: '서울 관악구 신림동 123-45',
-    type: '잔디구장',
-    area: '실외'
-  },
-  {
-    id: 6,
-    image: '/imgs/1.jpg',
-    name: '관악체육공원',
-    address: '서울 관악구 관악로 123',
-    type: '잔디구장',
-    area: '실내'
-  },
-  {
-    id: 7,
-    image: '/imgs/team.jpg',
-    name: '봉천체육공원',
-    address: '서울 관악구 봉천동 789-12',
-    type: '잔디구장',
-    area: '실외'
-  },
-  {
-    id: 8,
-    image: '/imgs/gujang.png',
-    name: '봉천체육공원',
-    address: '서울 관악구 봉천동 789-12',
-    type: '잔디구장',
-    area: '실외'
-  },
-  {
-    id: 9,
-    image: '/imgs/gujang.png',
-    name: '신림체육공원',
-    address: '서울 관악구 신림동 123-45',
-    type: '잔디구장',
-    area: '실외'
-  },
-  {
-    id: 10,
-    image: '/imgs/1.jpg',
-    name: '관악체육공원',
-    address: '서울 관악구 관악로 123',
-    type: '잔디구장',
-    area: '실내'
-  },
-  {
-    id: 11,
-    image: '/imgs/team.jpg',
-    name: '봉천체육공원',
-    address: '서울 관악구 봉천동 789-12',
-    type: '잔디구장',
-    area: '실외'
-  },
-  {
-    id: 12,
-    image: '/imgs/gujang.png',
-    name: '봉천체육공원',
-    address: '서울 관악구 봉천동 789-12',
-    type: '잔디구장',
-    area: '실외'
-  },
-];
-
 function CardContainer() {
-  // visibleCount 상태: 표시할 카드의 수를 관리
+  const [fieldsData, setFieldsData] = useState([]); // stadiumData.json 데이터를 저장할 상태
   const [visibleCount, setVisibleCount] = useState(1); // 처음에 1개의 카드만 표시
+  const [loading, setLoading] = useState(true); // 로딩 상태 추가
+  const [error, setError] = useState(null); // 에러 상태 추가
 
-  // 더 보기 버튼 클릭 시 실행되는 함수
+  // JSON 데이터를 비동기적으로 로드
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/data/stadiumData.json');  // stadiumData.json 파일 경로
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        setFieldsData(data);  // 데이터를 state에 저장
+      } catch (error) {
+        console.error("Error loading data:", error);
+        setError(error.message);  // 에러 메시지 저장
+      } finally {
+        setLoading(false); // 로딩 완료
+      }
+    };
+
+    fetchData();
+  }, []);  // 컴포넌트가 처음 마운트될 때만 실행
+
   const handleLoadMore = () => {
-    setVisibleCount((prevCount) => Math.min(prevCount + 5, fields.length)); // 더 많은 카드 표시
+    setVisibleCount((prevCount) => Math.min(prevCount + 5, fieldsData.length));
   };
+
+  // 로딩 중일 때 표시할 내용
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // 에러가 있을 경우 표시할 내용
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div style={containerStyle}>
-      {fields.slice(0, visibleCount).map((field) => (
-        <FieldCard key={field.id} {...field} />
+      {fieldsData.slice(0, visibleCount).map((field) => (
+        <FieldCard key={field.SVCID} {...field} />
       ))}
 
       {/* 더 보기 버튼 */}
-      {visibleCount < fields.length && (
+      {visibleCount < fieldsData.length && (
         <CircularButton onClick={handleLoadMore} />
       )}
     </div>
@@ -126,11 +59,11 @@ function CardContainer() {
 
 const containerStyle = {
   display: 'grid',
-  gridTemplateColumns: '1fr', // 1열 (반응형 조정 가능)
-  gap: '20px',               // 카드 간격
-  maxWidth: '1000px',        // 컨테이너 최대 너비
-  margin: '0 auto',          // 화면 중앙 정렬
-  padding: '20px',           // 내부 여백
+  gridTemplateColumns: '1fr',
+  gap: '20px',
+  maxWidth: '1000px',
+  margin: '0 auto',
+  padding: '20px',
 };
 
 export default CardContainer;

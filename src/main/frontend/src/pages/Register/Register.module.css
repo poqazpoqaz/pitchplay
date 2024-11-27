@@ -1,0 +1,26 @@
+.register{
+    background: #F1F1F1;
+    min-width: 450px;
+}
+
+.register-grid{
+    display: grid;
+    grid-template:
+    "... ... ... ... ..." 30px
+    "... inp1 inp1 inp1 ..." 80px
+    "... inp2 inp2 inp2 ..." 80px
+    "... inp3 inp3 inp3 ..." 80px
+    "... inp4 ... ... ..." 30px
+    "... inp4 ... btn4 ..." 50px
+    "... inp5 ... ... ..." 30px
+    "... inp5 ... btn5 ..." 50px
+    "... inp6 ... ... ..." 30px
+    "... inp6 ... btn6 ..." 50px
+    "... inp7 ... ... ..." 30px
+    "... inp7 ... btn7 ..." 50px
+    "... inp8 inp8 inp8 ..." 80px
+    "... inp9 inp9 inp9 ..." 80px
+    "... ... ... ... ..." 20px
+    "... sumbtn sumbtn sumbtn ..." 70px
+    "... ... ... ... ..." 30px/ 1fr 1fr 20px 200px 1fr;
+}

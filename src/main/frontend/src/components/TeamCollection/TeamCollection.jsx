@@ -45,7 +45,7 @@ function TeamCollection({ src, content }) {
                     정원마감
                 </DisabledButton>
             )}
-            <Button color="var(--main-color)" size="medium" gridArea="btn2">
+            <Button color="var(--main-color)" size="medium" gridArea="btn2"  to="/team/application">
                 자세히 보기
             </Button>
         </motion.div>

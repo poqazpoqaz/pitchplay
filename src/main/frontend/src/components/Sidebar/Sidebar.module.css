@@ -1,0 +1,50 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start; 
+  background-color: #07550C; /* 피플 Default 색상입니다 */
+  width: 100px; 
+  height: 600px; 
+  padding: 10px;
+  box-sizing: border-box; 
+  border-radius: 10px; /* 꼭지점 곡선 추가 */
+}
+
+.sidebarItem {
+  display: flex;
+  flex-direction: column; /* SVG와 텍스트를 수직으로 정렬 */
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+  max-width: 150px;
+  height: 80px; 
+  margin-bottom: 10px; 
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease; /* 가벼운 애니메이션을 먹여봤습니다 */
+  text-align: center;
+  overflow: hidden; 
+  border-radius: 10px; 
+}
+
+.sidebarItem.active {
+  background-color: #42a946; /* figma 색상 그대로썼습니다 */
+  border-radius: 10px; 
+}
+
+.sidebarIcon {
+  width: 36px; 
+  height: 36px;
+  margin-bottom: 5px; 
+  border-radius: 50%;
+}
+
+.sidebarText {
+  font-size: 14px;
+  line-height: 1.2; 
+  word-break: break-word;
+  text-align: center;
+}

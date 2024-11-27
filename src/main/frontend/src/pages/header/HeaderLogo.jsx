@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import soccer from "../../assets/soccer.svg";
+import { Link } from "react-router-dom";
 
 const StyledDiv = styled.div`
     display: flex;
@@ -20,14 +21,14 @@ const StyledImg = styled.img`
 
 function HeaderLogo() {
     return (
-        <a href="/">
+        <Link to = "/">
         <StyledDiv>
                 <h1>PITCH</h1>
                 <StyledImg src={soccer} />
                 <h1>PLAY</h1>
 
         </StyledDiv>
-        </a>
+        </Link>
     );
 }
 

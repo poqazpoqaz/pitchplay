@@ -1,0 +1,49 @@
+.teamprofile-grid {
+    display: grid;
+    grid-template:
+        '... ... ... title ...' 1fr
+        '... ... ... ... ...' 60px
+        '... img ... content ...' 150px
+        '... img ... content ...' 150px
+        '... ... ... ... ...' 50px / 1fr 300px 1fr 6fr 1fr;
+    border: 2px solid #07550C;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.teamprofile-title {
+    grid-area: title;
+    font-size: 1.8rem;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    white-space: nowrap;  /* 텍스트를 한 줄로 유지 */
+    text-overflow: ellipsis; /* 넘치는 텍스트에 '...' 표시 */
+}
+
+.teamprofile-content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+@media (max-width: 1024px) {
+    .teamprofile-grid {
+        grid-template:
+            '... img ... title ...' 150px
+            '... ... ... ... ...' 20px
+            'content content content content content' 1fr/ 1fr 150px 20px 1fr 1fr;
+        padding: 15px;  /* 모바일 화면에서 여백 줄이기 */
+    }
+
+    .teamprofile-title {
+        font-size: 1.6rem; /* 제목 폰트 크기 줄이기 */
+    }
+
+    .teamprofile-content p {
+        font-size: 1.2rem; /* 내용 폰트 크기 줄이기 */
+    }
+}
