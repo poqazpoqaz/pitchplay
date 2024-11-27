@@ -8,6 +8,7 @@ import {
     changeTeamGender,
     changeTeamLevel,
     changeViewCount,
+    changeWrittenDate,
     resetState
 } from "./action";
 
@@ -29,6 +30,8 @@ export const useStore = () => {
         changeTeamLevel: (teamLevel) => dispatch(changeTeamLevel(teamLevel)),
         // 게시물 조회수 변경메서드
         changeViewCount: (viewCount) => dispatch(changeViewCount(viewCount)),
+        // 게시물 작성날짜 변경메서드
+        changeWrittenDate: (writtenDate) => dispatch(changeWrittenDate(writtenDate)),
         // 팀 매칭 state 초기화 메서드
         resetState: () => dispatch(resetState())
     }

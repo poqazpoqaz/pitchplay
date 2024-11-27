@@ -21,6 +21,36 @@ const StyledButton = styled(motion.button)`
                 return '15px';  // 기본값 설정
         }
     }};
+        /* 미디어 쿼리로 반응형 스타일 추가 */
+    @media (max-width: 1024px) {
+        font-size: ${(props) => {
+        switch (props.size) {
+            case 'small':
+                return '12px';
+            case 'medium':
+                return '16px';
+            case 'large':
+                return '18px';
+            default:
+                return '14px'; // 기본값 조정
+        }
+    }};
+    }
+
+    @media (max-width: 760px) {
+        font-size: ${(props) => {
+        switch (props.size) {
+            case 'small':
+                return '0.5rem';
+            case 'medium':
+                return '0.7rem';
+            case 'large':
+                return '0.9rem';
+            default:
+                return '0.8rem';  // 기본값을 좀 더 작은 크기로 설정
+        }
+    }};
+    }
     cursor: default;
     `;
 

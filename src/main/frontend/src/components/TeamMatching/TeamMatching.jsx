@@ -42,7 +42,7 @@ function TeamMatching({ content }) {
                 />
 
                 {/* 팀 2 이미지 또는 버튼 */}
-                {team2?.name && team2.name !== "null" ? (
+                {team2.name && team2.name !== "null" ? (
                     <CircleImg src={team2.src} alt={`${team2.name} 이미지`} gridArea="team2" />
                 ) : (
                     <Button color="var(--main-color)" gridArea="team2">

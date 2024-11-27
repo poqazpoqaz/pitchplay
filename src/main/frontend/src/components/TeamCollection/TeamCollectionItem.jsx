@@ -1,14 +1,14 @@
 import styles from "./TeamCollectionItem.module.css";
 
-function TeamCollectionItem({ gridArea, title, currentMembers, totalMembers, location, gender, views }) {
+function TeamCollectionItem({ gridArea, title, currentMember, totalMember, city, loc, gender, views }) {
     return (
         <div style={{ gridArea: gridArea }} className={styles['collectionItem-flex']}>
             <div>
                 <h3>{title}</h3>
-                <h3>（{currentMembers} / {totalMembers}명）</h3>
+                <h3>（{currentMember} / {totalMember}명）</h3>
             </div>
             <div>
-                <p>{location}</p>
+                <p>{city} {loc}</p>
                 <p>{gender}</p>
             </div>
             <div>

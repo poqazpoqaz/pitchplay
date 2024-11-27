@@ -6,6 +6,7 @@ import {
     CHANGE_TEAM_GENDER,
     CHANGE_TEAM_LEVEL,
     CHANGE_VIEW_COUNT,
+    CHANGE_WRITTEN_DATE,
     RESET_STATE
 } from './action';
 
@@ -20,6 +21,7 @@ export const initialState = [
         gender: "Mixed",
         level: "Intermediate",
         views: "120",
+        writtenDate: "2024-11-01"
     },
     {
         teams: {
@@ -31,6 +33,7 @@ export const initialState = [
         gender: "Male",
         level: "Advanced",
         views: "200",
+        writtenDate: "2024-12-15"
     },
     {
         teams: {
@@ -42,6 +45,7 @@ export const initialState = [
         gender: "Mixed",
         level: "Intermediate",
         views: "120",
+        writtenDate: "2024-11-15"
     },
     {
         teams: {
@@ -53,6 +57,7 @@ export const initialState = [
         gender: "Male",
         level: "Advanced",
         views: "200",
+        writtenDate: "2024-12-20"
     },
     {
         teams: {
@@ -64,6 +69,7 @@ export const initialState = [
         gender: "Mixed",
         level: "Intermediate",
         views: "120",
+        writtenDate: "2024-12-23"
     },
     {
         teams: {
@@ -75,6 +81,7 @@ export const initialState = [
         gender: "Male",
         level: "Advanced",
         views: "200",
+        writtenDate: "2024-12-25"
     }
 ]
 
@@ -116,9 +123,12 @@ export const reducer = (state, action) => {
         case CHANGE_VIEW_COUNT:
             return state.map(data => ({ ...data, views: action.payload }));
 
+        case CHANGE_WRITTEN_DATE:
+            return state.map(data => ({ ...data, writtenDate: action.payload }));
+
         case RESET_STATE:
             return initialState;
-            
+
         default:
             return state;
     }

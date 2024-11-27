@@ -26,7 +26,10 @@ const DropdownButton = styled.div`
   &:hover {
     border-color: #888;
   }
-
+  @media (max-width: 760px) {
+    padding: 8px; /* 항목 패딩 조정 */
+    font-size: 0.6rem;
+  }
 `;
 
 // 드롭다운 목록 스타일
@@ -57,7 +60,7 @@ const DropdownItem = styled.div`
 
   @media (max-width: 760px) {
     padding: 8px; /* 항목 패딩 조정 */
-
+    font-size: 0.6rem;
   }
 `;
 

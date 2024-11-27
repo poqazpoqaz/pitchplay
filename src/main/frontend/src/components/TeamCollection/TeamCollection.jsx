@@ -1,6 +1,3 @@
-// 나중에 데이터 연동할때 변수명 바꿔야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-
-import { useState, useEffect } from "react";
 import DisabledButton from "../DisabledButton";
 import Button from "../Button";
 import CircleImg from "../CircleImg";
@@ -8,16 +5,9 @@ import styles from "./TeamCollection.module.css";
 import TeamCollectionItem from "./TeamCollectionItem";
 import { motion } from "framer-motion";
 
-function TeamCollection({ src, content }) {
-    const [isFull, setIsFull] = useState(false);
+function TeamCollection({ content }) {
 
-    // content 변경 시 isFull 상태를 업데이트
-    useEffect(() => {
-        if (content.currentMembers && content.totalMembers) {
-            const isFullCapacity = content.currentMembers / content.totalMembers === 1;
-            setIsFull(isFullCapacity);
-        }
-    }, [content]); // content가 변경될 때마다 실행
+
 
     return (
         <motion.div
@@ -26,17 +16,18 @@ function TeamCollection({ src, content }) {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}  // 애니메이션 전환
         >
 
-            <CircleImg src={src} gridArea="img" />
+            <CircleImg src={content.teamImg} gridArea="img" />
             <TeamCollectionItem
-                title={content.title}
-                currentMembers={content.currentMembers}
-                totalMembers={content.totalMembers}
-                location={content.location}
-                gender={content.gender}
-                views={content.views}
+                title={content.collectionTitle}
+                currentMember={content.currentMember}
+                totalMember={content.totalMember}
+                city={content.teamCity}
+                loc={content.teamLoc}
+                gender={content.teamGender}
+                views={content.viewCount}
                 gridArea="text"
             />
-            {!isFull ? (
+            {content.activeStatus == "false" ? (
                 <Button color="var(--main-color)" size="medium" gridArea="btn1">
                     신청하기
                 </Button>
@@ -45,7 +36,7 @@ function TeamCollection({ src, content }) {
                     정원마감
                 </DisabledButton>
             )}
-            <Button color="var(--main-color)" size="medium" gridArea="btn2"  to="/team/application">
+            <Button color="var(--main-color)" size="medium" gridArea="btn2" to="/team/application">
                 자세히 보기
             </Button>
         </motion.div>

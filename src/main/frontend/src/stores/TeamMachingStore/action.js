@@ -5,6 +5,7 @@ export const CHANGE_MATCHING_LOC = "CHANGE_MATCHING_LOC";
 export const CHANGE_TEAM_GENDER = "CHANGE_TEAM_GENDER";
 export const CHANGE_TEAM_LEVEL = "CHANGE_TEAM_LEVEL";
 export const CHANGE_VIEW_COUNT = "CHANGE_VIEW_COUNT";
+export const CHANGE_WRITTEN_DATE = "CHANGE_WRITTEN_DATE";
 export const RESET_STATE = "RESET_STATE";
 
 //teamId = team1 인지 team2인지 선택
@@ -15,4 +16,5 @@ export const changeMatchingLoc = (matchingLoc) => ({type: CHANGE_MATCHING_LOC, p
 export const changeTeamGender = (teamGender) => ({type: CHANGE_TEAM_GENDER, payload: teamGender});
 export const changeTeamLevel = (teamLevel) => ({type: CHANGE_TEAM_LEVEL, payload: teamLevel});
 export const changeViewCount = (viewCount) => ({type: CHANGE_VIEW_COUNT, payload: viewCount});
+export const changeWrittenDate = (writtenDate) => ({type: CHANGE_WRITTEN_DATE, payload: writtenDate});
 export const resetState = () => ({type: RESET_STATE});
