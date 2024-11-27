@@ -11,7 +11,8 @@ import {
     changeTeamCity,
     changeTeamLoc,
     changeTeamAge,
-    changeTeamGender
+    changeTeamGender,
+    resetState
 } from "./action";
 
 export const useStore = () => {
@@ -19,17 +20,30 @@ export const useStore = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const actions = {
+        //팀 이름 변경 메서드
         changeTeamName: (teamName) => dispatch(changeTeamName(teamName)),
+        //팀 코드 변경 메서드
         changeTeamCode: (teamCode) => dispatch(changeTeamCode(teamCode)),
+        // 팀 이미지 변경 메서드
         changeTeamImg: (teamImg) => dispatch(changeTeamImg(teamImg)),
+        // 팀 소개 변경 메서드
         changeTeamDescription: (teamDescription) => dispatch(changeTeamDescription(teamDescription)),
+        // 팀 레벨 변경 메서드
         changeTeamLevel: (teamLevel) => dispatch(changeTeamLevel(teamLevel)),
+        // 팀 주요 요일 변경 메서드
         changeTeamDay: (teamDay) => dispatch(changeTeamDay(teamDay)),
+        // 팀 주요 시간 변경 메서드
         changeTeamTime: (teamTime) => dispatch(changeTeamTime(teamTime)),
+        // 팀 주요 도시 변경 메서드
         changeTeamCity: (teamCity) => dispatch(changeTeamCity(teamCity)),
+        // 팀 주요 구 변경 메서드
         changeTeamLoc: (teamLoc) => dispatch(changeTeamLoc(teamLoc)),
+        // 팀 나이대 변경 메서드
         changeTeamAge: (teamAge) => dispatch(changeTeamAge(teamAge)),
-        changeTeamGender: (teamGender) => dispatch(changeTeamGender(teamGender))
+        // 팀 구성요인 변경 메서드
+        changeTeamGender: (teamGender) => dispatch(changeTeamGender(teamGender)),
+        // 팀 state 초기화 메서드
+        resetState : () => dispatch(resetState())
     };
 
     return { state, actions };

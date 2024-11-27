@@ -10,6 +10,7 @@ export const CHANGE_TEAM_CITY = "CHANGE_TEAM_CITY";
 export const CHANGE_TEAM_LOC = "CHANGE_TEAM_LOC";
 export const CHANGE_TEAM_AGE = "CHANGE_TEAM_AGE";
 export const CHANGE_TEAM_GENDER = "CHANGE_TEAM_GENDER";
+export const RESET_STATE = "RESET_STATE";
 
 // 액션생성자 
 export const changeTeamName = (teamName) => ({type: CHANGE_TEAM_NAME, payload: teamName});
@@ -23,3 +24,4 @@ export const changeTeamCity = (teamCity) => ({type: CHANGE_TEAM_CITY, payload: t
 export const changeTeamLoc = (teamLoc) => ({type: CHANGE_TEAM_LOC, payload: teamLoc});
 export const changeTeamAge = (teamAge) => ({type: CHANGE_TEAM_AGE, payload: teamAge});
 export const changeTeamGender = (teamGender) => ({type: CHANGE_TEAM_GENDER, payload: teamGender});
+export const resetState = () => ({type: RESET_STATE});
