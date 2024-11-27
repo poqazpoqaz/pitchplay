@@ -2,8 +2,8 @@ import { useState } from "react";
 import styles from "./Mypage1.module.css";
 import Top1 from './Top1';
 import Top2 from './Top2';
-import Bottom from '../Bottom';
-import { useStore } from '../../../stores/useStore';
+import Bottom from './Bottom';
+import { useStore } from '../../../stores/MypageStore/useStore';
 import axios from 'axios';
 
 const Mypage1 = ({ username, usercash }) => {
