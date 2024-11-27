@@ -1,0 +1,10 @@
+
+.mypage-grid {
+    display: grid;
+    grid-template: 
+    'sidebar section' 1fr/ 260px 1fr;
+}
+
+.mypage-content{
+    grid-area: section;
+}

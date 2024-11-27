@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./Mypage1.css";
-import Sidebar from "./Sidebar";
+import "./Mypage1.module.css";
+import Sidebar from "../../../containers/mypageSidebar/Sidebar";
 import Top1 from './Top1';
 import Top2 from './Top2';
-import Bottom from '../Bottom';
+import Bottom from './Bottom';
 import { useStore } from '../../../stores/MypageStore/useStore';
 import axios from 'axios';
 
@@ -87,7 +87,6 @@ const Mypage1 = ({ username, usercash }) => {
     return (
         <div className="mypage-grid">
             <div className="container">
-                <Sidebar />
                 <div className="top">
                     <Top1
                         fileInput={fileInput}

@@ -100,7 +100,7 @@ const Link = styled.a`
 
 
 // Sidebar Component
-const Sidebar = ({ avatar, userName, userEmail }) => {
+const Sidebar = ({ avatar, userName, userEmail, gridArea }) => {
 
   const handleLogout = async () => {
     try {
@@ -118,7 +118,7 @@ const Sidebar = ({ avatar, userName, userEmail }) => {
   };
 
   return (
-    <SidebarContainer>
+    <SidebarContainer style={{gridArea: gridArea}}>
       <Sidetop>
         <TopImg src={pachiImage} alt="User Avatar" />
         <UserInfo>
