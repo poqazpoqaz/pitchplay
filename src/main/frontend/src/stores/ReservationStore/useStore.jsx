@@ -4,6 +4,7 @@ import {
     changeReservationDate,
     changeStadium,
     changeStadiumAddress,
+    changeStadiumImg,
     changeStadiumPrice,
     reserState
 } from "./action";
@@ -20,7 +21,10 @@ export const useStore = () => {
 
         // 예약 구장 주소 변경 메서드
         changeStadiumAddress: (stadiumAddress) => dispatch(changeStadiumAddress(stadiumAddress)),
-
+        
+        // 예약 구장 사진 변경 메서드
+        changeStadiumImg: (stadiumImg) => dispatch(changeStadiumImg(stadiumImg)),
+        
         // 예약 구장 가격 변경 메서드
         changeStadiumPrice: (stadiumPrice) => dispatch(changeStadiumPrice(stadiumPrice)),
 

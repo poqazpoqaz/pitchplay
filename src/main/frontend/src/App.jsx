@@ -35,16 +35,17 @@ const router = createBrowserRouter([
           { path: "application", element: <TeamApplication /> }
         ]
       },
+      { path: "/guestapplication", element: <GuestRecruitmentDetail gridArea={"section"}/> },
       {
         path: "/mypage", element: <MyPage gridArea={"section"} />,
         children: [
           { path: "", element: <Mypage1 /> },
-          { path: "act", element: <MypageAct gridArea={"section"} />},
-  
+          { path: "act", element: <MypageAct gridArea={"section"} /> },
+
         ]
       },
       { path: "/reservation", element: <ReservationPage gridArea={"section"} /> },
-      { path: "/details", element: <GuestRecruitmentDetail/>}
+
     ]
   },
 ]);
