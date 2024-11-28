@@ -5,7 +5,7 @@
     '... ... ...' 20px
     'profile profile profile' 1fr
     '... ... ...' 20px
-    'text text text' 400px
+    'text text text' auto
     '... ... ...' 20px
     'policy policy policy' 1fr /1fr 1fr 1fr;
 }
@@ -25,7 +25,7 @@
         '... ... ...' 20px
         'profile profile profile' 1fr
         '... ... ...' 20px
-        'text text text' 400px
+        'text text text' auto
         '... ... ...' 20px
         'policy policy policy' 1fr / 1fr 1fr 1fr;
 }
@@ -34,8 +34,9 @@
 .recruitment-post {
     grid-area: text;
     border: 1px solid #F2F2F2;
-    padding: 20px;
+    padding:50px;
     border-radius: 15px;
+    min-height: 400px;
 }
 
 /* 반응형 스타일 추가 */
