@@ -1,10 +1,10 @@
 import styles from "./TeamCollectionItem.module.css";
 
-function TeamCollectionItem({ gridArea, title, currentMember, totalMember, city, loc, gender, views }) {
+function TeamCollectionItem({ gridArea, teamName, currentMember, totalMember, city, loc, gender, views }) {
     return (
         <div style={{ gridArea: gridArea }} className={styles['collectionItem-flex']}>
             <div>
-                <h3>{title}</h3>
+                <h3>{teamName} 팀원모집</h3>
                 <h3>（{currentMember} / {totalMember}명）</h3>
             </div>
             <div>

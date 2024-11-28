@@ -16,7 +16,7 @@ function TeamCollection({ content, openModal}) {
 
             <CircleImg src={content.teamImg} gridArea="img" />
             <TeamCollectionItem
-                title={content.collectionTitle}
+                teamName={content.teamName}
                 currentMember={content.currentMember}
                 totalMember={content.totalMember}
                 city={content.teamCity}

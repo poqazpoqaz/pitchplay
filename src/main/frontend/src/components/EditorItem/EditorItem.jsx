@@ -4,11 +4,11 @@ import 'quill/dist/quill.snow.css'; // Quill 스타일을 임포트
 import axios from 'axios'; // axios 임포트
 import './EditorItem.css'; // CSS를 임포트
 
-const Editor = () => {
+const Editor = ({ setEditorContent, quillRef, isQuillReady, setIsQuillReady}) => {
+  // const quillRef = useRef(null);   // 사용하는 부모 컴포넌트에서 사용해야하는 것
+  // const [editorContent, setEditorContent] = useState(""); // 사용하는 부모 컴포넌트에서 사용해야하는 것
+
   const editorRef = useRef(null); // Quill을 사용할 DOM 참조
-  const quillRef = useRef(null); // Quill 인스턴스를 useRef로 관리
-  const [isQuillReady, setIsQuillReady] = useState(false); // Quill 초기화 완료 여부
-  const [editorContent, setEditorContent] = useState("");
 
   // 툴바 옵션 세팅
   const toolbarOptions = useMemo(() => [
@@ -20,7 +20,7 @@ const Editor = () => {
     [{ 'color': [] }, { 'background': [] }],
   ], []);
 
-  // 이미지 핸들러 함수(img는 temp에 저장되고(원래는 서버 클라우드에 저장), 해당하는 temp를 불러옴)
+  // 나중에 이미지 핸들러는 빌드 한다음에 연결 ( uuid로 저장해놓을 예정, 백에 저장 받아오기)
   // const imageHandler = () => {
   //   const input = document.createElement('input');
   //   input.setAttribute('type', 'file');
@@ -59,7 +59,7 @@ const Editor = () => {
   //   });
   // };
 
-  // 모듈 설정 ( 나중에 서버랑 연동할때 모듈 이렇게 설정!!!!!!!!!!! )
+  // 모듈 설정 ( 나중에 서버랑 연동할때 모듈 설정 )
   // const modules = useMemo(() => ({
   //   toolbar: {
   //     container: toolbarOptions,
@@ -68,7 +68,8 @@ const Editor = () => {
   //     },
   //   },
   // }), [toolbarOptions]);
-
+  
+  // 스프링이랑 연결하면 위에 모듈 사용해야함
   const modules = useMemo(() => ({
     toolbar: {
       container: toolbarOptions,
@@ -99,29 +100,9 @@ const Editor = () => {
     };
   }, [modules, isQuillReady]);
 
-  // Quill은 delta 형식으로 데이터를 다룸
-  const handleSave = () => {
-    if (quillRef.current) {
-      const deltaContent = quillRef.current.getContents();
-      console.log(JSON.stringify(deltaContent)); // delta 형식의 데이터 출력
-      // 서버로 데이터 전송 로직을 추가할 수 있습니다.
-    }
-  };
-
-  // 취소 버튼 클릭 시 처리할 함수
-  const handleCancel = () => {
-    // 에디터 내용을 초기화하는 로직
-    setEditorContent("");  // 내용 초기화
-    console.log("내용이 취소되었습니다.");
-  };
-
   return (
     <div>
       <div ref={editorRef}></div>
-      <div className='button-container'>
-        <button onClick={handleSave}>등록</button>
-        <button onClick={handleCancel}>취소</button>
-      </div>
     </div>
   );
 };

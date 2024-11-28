@@ -5,7 +5,6 @@ import { useStore } from '../../../../stores/MatchingStore/useStore';
 
 const MypageAct01 = ({ gridArea }) => {
   const { state } = useStore();
-  const matches = state;
 
 
   return (
@@ -13,7 +12,7 @@ const MypageAct01 = ({ gridArea }) => {
       <div className={styles.content}>
         <h1 className={styles.title}>마이페이지 &gt; 내활동 &gt; 예약한 경기 목록</h1>
         <div className={styles.actbox}>
-          <MatchList matches={matches} />
+          <MatchList matches={state} />
         </div>
       </div>
     </div>
