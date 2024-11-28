@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         
         ]
       },
-      { path: "/reservation", element: <ReservationPage gridArea={"section"} /> },
+      { path: "/reservation", element: <ReservationPage gridArea={"section"}/> },
     ]
   },
 ]);
