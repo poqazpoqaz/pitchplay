@@ -101,42 +101,6 @@
 }
 
 
-/* 아코디언 아이템 */
-.accordionItem {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-/* 아코디언 버튼 */
-.accordionButton {
-    width: 100%;
-    text-align: left;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    outline: none;
-    transition: background-color 0.3s ease;
-}
-
-.accordionButton:hover {
-    background-color: #e9ecef;
-}
-
-/* 아코디언 내용 */
-.accordionContent {
-    padding: 15px;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-    font-size: 14px;
-    color: #333;
-}
-
 /* DTLCONT 관련 스타일 */
 .dtlContentWrapper {
     margin-top: 20px;
@@ -149,13 +113,14 @@
 }
 
 .dtlContentSection {
+    font-size: 1rem;
     margin-bottom: 20px;
 }
 
 /* 제목 스타일 */
 .dtlTitle {
-    font-size: 1.5rem;
-    font-weight: bold;
+    /* 여기 폰트사이즈만 수정 */
+    font-size: 1rem; 
     color: #333;
     margin-bottom: 10px;
 }
@@ -229,3 +194,23 @@
     background-color: #4CAF50;
     color: white;
 }
+
+/* --------------------------------------------------- */
+.stadiumImageModal {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+.stadiumImageWrapper {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reserveButton:hover {
+    background-color: #0056b3;
+}
+
+
