@@ -10,7 +10,7 @@ function MenuDropdown({ isVisible, onClick }) {
     {"name" : "소셜매칭", "src" : "#"}, 
     {"name" : "팀매칭", "src" : "/team"}, 
     {"name" : "구장예약", "src" : "/reservation"}, 
-    {"name" : "공지사항", "src" : "#"}
+    {"name" : "공지사항", "src" : "/notices"}
   ];
 
   //클릭된 메뉴 확인

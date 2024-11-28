@@ -19,6 +19,10 @@ import MypageAct01 from "./pages/Mypage/MypageAct/MypageAct01/MypageAct01";
 import MypageAct02 from "./pages/Mypage/MypageAct/MypageAct02/MypageAct02";
 import MypageAct03 from "./pages/Mypage/MypageAct/MypageAct03/MypageAct03";
 import MypageAct04 from "./pages/Mypage/MypageAct/MypageAct04/MypageAct04";
+import NoticeAccordion from "./components/NoticeAccordion/NoticeAccordion";
+import FAQAccordion from "./components/FAQAccordion/FAQAccordion";
+import NoticePost from "./components/NoticePost/NoticePost";
+
 
 
 const router = createBrowserRouter([
@@ -51,6 +55,15 @@ const router = createBrowserRouter([
         ]
       },
       { path: "/reservation", element: <ReservationPage gridArea={"section"}/> },
+      {
+         path : "/notices", element: <NoticePost gridArea={"section"}/>, 
+         children: [
+          {path : "", element : <NoticeAccordion />},
+          {path : "faq", element : <FAQAccordion />},
+          {path : "feedback", element : <NoticeAccordion />},
+          {path : "conduct", element : <NoticeAccordion />}
+         ]
+        },
     ]
   },
 ]);

@@ -1,0 +1,23 @@
+.post-grid {
+    display: grid;
+    grid-template:
+        '... ... ...' 20px
+        '... nav ...' 390px
+        '... ... ...' 20px
+        '... posts ...' 1fr
+        '... ... ...' 20px / 20px 1fr 20px;
+}
+
+
+@media (max-width: 760px) {
+    .post-grid {
+        grid-template:
+            '... ... ...' 20px
+            '... nav ...' 200px
+            '... ... ...' 20px
+            '... posts ...' 1fr
+            '... ... ...' 20px / 20px 1fr 20px;
+    }
+
+
+}
