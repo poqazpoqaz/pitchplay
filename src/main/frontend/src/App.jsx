@@ -12,7 +12,9 @@ import TeamApplication from "./pages/TeamApplication/TeamApplication";
 import MyPage from "./pages/Mypage/Mypage1/Mypage";
 import Mypage1 from "./pages/Mypage/Mypage1/Mypage1";
 import MypageAct from "./pages/Mypage/MypageAct/MypageAct";
+import GuestRecruitmentDetail from "./pages/GuestRecruitmentDetail/GuestRecruitmentDetail";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 
 
 
@@ -37,10 +39,12 @@ const router = createBrowserRouter([
         path: "/mypage", element: <MyPage gridArea={"section"} />,
         children: [
           { path: "", element: <Mypage1 /> },
-          { path: "act", element: <MypageAct gridArea={"section"} /> }
+          { path: "act", element: <MypageAct gridArea={"section"} />},
+  
         ]
       },
       { path: "/reservation", element: <ReservationPage gridArea={"section"} /> },
+      { path: "/details", element: <GuestRecruitmentDetail/>}
     ]
   },
 ]);

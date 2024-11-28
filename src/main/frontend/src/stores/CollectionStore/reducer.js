@@ -1,6 +1,7 @@
 import {
     CHANGE_TEAM_NUMBER,
     CHANGE_COLLECTION_TITLE,
+    CHANGE_COLLECTION_DESCRIPTION,
     CHANGE_COLLECTION_TIME,
     CHANGE_CURRENT_MEMBER,
     CHANGE_TOTAL_MEMBER,
@@ -21,6 +22,7 @@ export const initialState = [
     {
         teamNumber: "123123",
         collectionTitle: "KOSMO 팀원모집합니다. 많은 참여부탁드려요.",
+        collectionDescription: "용병모집에 대한 글은 여기다가 작성!!!!",
         collectionTime: "2024-11-25T20:00:00",
         currentMember: "20",
         totalMember: "20",
@@ -197,6 +199,8 @@ export const reducer = (state, action) => {
             return state.map(data => ({ ...data, teamNumber: action.payload }));
         case CHANGE_COLLECTION_TITLE:
             return state.map(data => ({ ...data, collectionTitle: action.payload }));
+        case CHANGE_COLLECTION_DESCRIPTION:
+            return state.map(data => ({ ...data, collectionDescription: action.payload }));
         case CHANGE_COLLECTION_TIME:
             return state.map(data => ({ ...data, collectionTime: action.payload }));
         case CHANGE_CURRENT_MEMBER:
@@ -222,7 +226,7 @@ export const reducer = (state, action) => {
         case CHANGE_TEAM_SIZE:
             return state.map(data => ({ ...data, teamSize: action.payload }));
         case CHANGE_STADIUM:
-            return state.map(data => ({ ...data, stadium: action.payload}));
+            return state.map(data => ({ ...data, stadium: action.payload }));
         case RESET_STATE:
             return initialState;
         default:

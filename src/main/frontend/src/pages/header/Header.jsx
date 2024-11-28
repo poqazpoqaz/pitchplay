@@ -36,7 +36,7 @@ function Header() {
                 <HeaderLogo />
             </div>
             <ul className={styles['header-right']}>
-                <Link to="mypage"><img src={mypage} /></Link>
+                <Link to="mypage"><img src={mypage} /></Link>   
                 <a href="#"><img src={search} /></a>
                 <a href="#"><img src={setting} /></a>
             </ul>
