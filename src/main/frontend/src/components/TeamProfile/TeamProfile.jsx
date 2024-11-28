@@ -7,7 +7,7 @@ function TeamProfile({ content, gridArea }) {
         <div className={styles['teamprofile-grid']} style={{ gridArea: gridArea }}>
             <CircleImg src={content.teamImg} gridArea="img" />
             <div className={styles['teamprofile-title']}>
-                <h3>{content.collectionTitle}</h3>
+                <h3>{content.teamName}</h3>
                 <h3>（{content.currentMember} / {content.totalMember}명）</h3>
             </div>
             <div className={styles['teamprofile-content']}>

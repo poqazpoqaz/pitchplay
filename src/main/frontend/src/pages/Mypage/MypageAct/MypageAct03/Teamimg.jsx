@@ -34,22 +34,22 @@ const TeamImg = styled.img`
   margin-left: 50px;
 `;
 
-const TeamName = styled.h2`
+const TeamName = styled.h1`
   margin: 0;
+  
 `;
 
 const Members = styled.p`
   margin: 0;
 `;
 const Teamcode = styled.div`
-  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 15px;
-  height : 20px;
   background-color: #f9f9f9;
-  width : 200px;
+  width : auto;
   height : 50px;
-  margin-top : 10px;
+  margin-top : 5px;
+  
 `;
 const BtnEnd = styled.div`
   display: flex;
@@ -108,6 +108,11 @@ const Gapgap = styled.ul`
 gap : 15px;
 list-style : none;
 display : flex;
+
+`
+
+const Temp = styled.p `
+margin : 12px;
 `
 
 const Teamimg = ({ teamInfo }) => {
@@ -116,7 +121,8 @@ const Teamimg = ({ teamInfo }) => {
             <Gapgap>
                 <li>
                     <LinkButton>팀 정보</LinkButton>
-                </li><li>
+                </li>
+                <li>
                     <LinkButton1 to="/mypage/teamschedule">팀 일정</LinkButton1>
                 </li>
             </Gapgap>
@@ -128,12 +134,12 @@ const Teamimg = ({ teamInfo }) => {
                     />
                 </TeamInfo>
                 <TeamDetails>
-                    <TeamName>{teamInfo.teamName}</TeamName>
+                    <TeamName>{teamInfo.name}</TeamName>
                     <Members>
-                        {`${teamInfo.teamCity} ${teamInfo.teamLoc}`/ teamInfo.totalMember }
+                    {teamInfo.location} / {teamInfo.teamMembers}
                     </Members>
                     <Teamcode>
-                        팀 코드 : {teamInfo.teamCode}
+                        <Temp>팀 코드 : {teamInfo.teamCode}</Temp>
                     </Teamcode>
                 </TeamDetails>
             </Top3Item>

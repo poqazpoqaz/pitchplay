@@ -1,6 +1,5 @@
 import {
     CHANGE_TEAM_NUMBER,
-    CHANGE_COLLECTION_TITLE,
     CHANGE_COLLECTION_DESCRIPTION,
     CHANGE_COLLECTION_TIME,
     CHANGE_CURRENT_MEMBER,
@@ -22,7 +21,7 @@ export const initialState = [
     {
         teamNumber: "123123",
         collectionTitle: "KOSMO 팀원모집합니다. 많은 참여부탁드려요.",
-        collectionDescription: "10시00분 ~ 12시 00분이고, 장소는 서울 디지털운동장 A구장입니다. 회사 동호회 수준이니까 다들 걱정없이 오세요!! 회사팀이라서 땀흘리고 운동하는 것을 목적으로 하고 있습니다. 고레벨의 플레이를 원하시거나 과도한 경쟁심이 있으신분들은 정중히 사양하겠습니다",
+        collectionDescription: "10시00분 ~ 12시 00분, 장소는 서울 디지털운동장 A구장입니다. 회사 동호회 수준이니까 다들 걱정없이 오세요!! 회사팀이라서 땀흘리고 운동하는 것을 목적으로 하고 있습니다. 고레벨의 플레이를 원하시거나 과도한 경쟁심이 있으신분들은 정중히 사양하겠습니다",
         collectionTime: "2024-11-25T20:00:00",
         currentMember: "20",
         totalMember: "20",
@@ -197,8 +196,6 @@ export const reducer = (state, action) => {
     switch (action.type) {
         case CHANGE_TEAM_NUMBER:
             return state.map(data => ({ ...data, teamNumber: action.payload }));
-        case CHANGE_COLLECTION_TITLE:
-            return state.map(data => ({ ...data, collectionTitle: action.payload }));
         case CHANGE_COLLECTION_DESCRIPTION:
             return state.map(data => ({ ...data, collectionDescription: action.payload }));
         case CHANGE_COLLECTION_TIME:

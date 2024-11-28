@@ -74,14 +74,14 @@ const TeamSection = ({ teamInfo }) => {
       <Top3Item>
         <TeamInfo>
           <TeamImg
-            src={teamInfo?.image || pachiImage}
+            src={teamInfo.teamImg || pachiImage}
             alt="팀 이미지"
           />
         </TeamInfo>
         <TeamDetails>
-          <TeamName>{teamInfo?.name || "안산 그리너스"}</TeamName>
+          <TeamName>{teamInfo.teamName || "안산 그리너스"}</TeamName>
           <Members>
-            {teamInfo?.location || "안산 고잔동"} / {teamInfo?.members || 24}명
+            {teamInfo.teamLoc || "안산 고잔동"} / {teamInfo.currentMember || 24}명
           </Members>
         </TeamDetails>
       </Top3Item>

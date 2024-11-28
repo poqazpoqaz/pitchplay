@@ -27,7 +27,7 @@ const BoxCal = styled.span`
 
 `;
 
-const MatchesListPage = ({ matches = [] }) => {
+const MatcheList = ({ matches = [] }) => {
   const filledMatches = matches.length > 0 
     ? matches.slice(0, 10) 
     : Array.from({ length: 3 }, () => ({ location: ''}));
@@ -36,15 +36,15 @@ const MatchesListPage = ({ matches = [] }) => {
     <Container>
       <Title>예약한 경기 목록</Title>
       {filledMatches.map((match, index) => (
-        <Box key={index}>
-          <h1>{match.location}</h1>
-          <BoxCal>
-            <p>{match.date}</p>
-          </BoxCal>
-        </Box>
-      ))}
+  <Box key={index}>
+    <h1>{match.location || '위치 정보 없음'}</h1>
+    <BoxCal>
+      <p>{match.date || '날짜 정보 없음'}</p>
+    </BoxCal>
+  </Box>
+))}
     </Container>
   );
 };
 
-export default MatchesListPage;
+export default MatcheList;

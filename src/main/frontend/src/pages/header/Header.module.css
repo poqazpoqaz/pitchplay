@@ -19,9 +19,16 @@
     justify-content: center;
 }
 
+
 .header-menu {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
+}
+
+.header-menu>h1{
+    margin: 0 auto;
 }
 
 .header-menu>img {

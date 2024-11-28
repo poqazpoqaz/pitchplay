@@ -2,7 +2,6 @@ import { useReducer } from "react";
 import { initialState, reducer } from "./reducer";
 import {
     changeTeamNumber,
-    changeCollectionTitle,
     changeCollectionDescription,
     changeCollectionTime,
     changeCurrentMember,
@@ -25,12 +24,10 @@ export const useStore = () => {
     const actions = {
         //팀 번호 변경 메서드
         changeTeamNumber: (teamNumber) => dispatch(changeTeamNumber(teamNumber)),
-        //팀원 모집 게시물 제목 변경 메서드
-        changeCollectionTitle: (collectionTitle) => dispatch(changeCollectionTitle(collectionTitle)),
         //용병 모집 게시물 내용 변경 메서드
-        changeCollectionDescription : (collectionDescription) => dispatch(changeCollectionDescription(collectionDescription)),
+        changeCollectionDescription: (collectionDescription) => dispatch(changeCollectionDescription(collectionDescription)),
         //용병 모집시에 시간 변경 메서드
-        changeCollectionTime : (collectionTime) => dispatch(changeCollectionTime(collectionTime)),
+        changeCollectionTime: (collectionTime) => dispatch(changeCollectionTime(collectionTime)),
         //팀원 모집 현 멤버수 변경 메서드
         changeCurrentMember: (currentMember) => dispatch(changeCurrentMember(currentMember)),
         //팀원 모집 총 멤버수 변경 메서드
