@@ -1,0 +1,32 @@
+.recruitment-creation-grid {
+    display: grid;
+    grid-template:
+        'img img img img img' 400px
+        '... ... ... ... ...' 20px
+        '... team ... reservation ...' 1fr
+        '... team ... ... ...' 1fr
+        '... ... ... ... ...' 20px / 50px 3fr 50px 1fr 50px;
+}
+
+.recruitment-creation-grid>img {
+    width: 100%;
+    height: 100%;
+    grid-area: img;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 1024px) {
+
+    /* 데스크탑 화면 */
+    .recruitment-creation-grid {
+        grid-template:
+            '...' 20px
+            'img' 350px
+            '...' 20px
+            'team' auto
+            '...' 20px
+            'reservation' auto
+            '...' 20px / 1fr;
+    }
+}

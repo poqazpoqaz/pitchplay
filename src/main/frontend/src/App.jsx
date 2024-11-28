@@ -44,16 +44,16 @@ const router = createBrowserRouter([
         ]
       },
       { path: "/guestapplication", element: <GuestRecruitmentDetail gridArea={"section"}/> },
-      { path: "/guestnew", element: <GuestRecruitmentCreation gridArea={"section"}/>},
+      { path: "/:teamNumber/guestnew", element: <GuestRecruitmentCreation gridArea={"section"}/> }, 
       {
         path: "/mypage", element: <MyPage gridArea={"section"} />,
         children: [
           { path: "", element: <Mypage1 /> },
           { path: "act", element: <MypageAct gridArea={"section"} />},
-          { path : "matches", element : <MypageAct01 gridArea={"section"}/>} ,
-          { path : "records", element : <MypageAct02 gridArea={"section"}/>},
-          { path : "teamsection", element : <MypageAct03 gridArea={"section"}/>},
-          { path : "teamschedule" , element : <MypageAct04 gridArea={"section"}/>}
+          { path: "matches", element: <MypageAct01 gridArea={"section"}/>} ,
+          { path: "records", element: <MypageAct02 gridArea={"section"}/>},
+          { path: "teamsection", element: <MypageAct03 gridArea={"section"}/>},
+          { path: "teamschedule", element: <MypageAct04 gridArea={"section"}/>}
 
         ]
       },

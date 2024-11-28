@@ -24,7 +24,7 @@ export const initialState = {
     teamDescription: "피치플레이는 피치플레이 시작때부터 만들었던 팀입니다. ",
     teamLevel: ["비기너"],
     teamDay: ["월", "목"],
-    teamTime: ["6~10시"],
+    teamTime: [],
     teamCity: "서울",
     teamLoc: "동작구",
     teamAge: ["10대", "40대"],

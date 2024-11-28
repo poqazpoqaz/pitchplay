@@ -4,11 +4,12 @@ import 'quill/dist/quill.snow.css'; // Quill 스타일을 임포트
 import axios from 'axios'; // axios 임포트
 import './EditorItem.css'; // CSS를 임포트
 
-const Editor = ({ setEditorContent, quillRef, isQuillReady, setIsQuillReady}) => {
+const Editor = ({ setEditorContent, quillRef }) => {
   // const quillRef = useRef(null);   // 사용하는 부모 컴포넌트에서 사용해야하는 것
   // const [editorContent, setEditorContent] = useState(""); // 사용하는 부모 컴포넌트에서 사용해야하는 것
 
   const editorRef = useRef(null); // Quill을 사용할 DOM 참조
+  const [isQuillReady, setIsQuillReady] = useState(false); // Quill 초기화 완료 여부
 
   // 툴바 옵션 세팅
   const toolbarOptions = useMemo(() => [

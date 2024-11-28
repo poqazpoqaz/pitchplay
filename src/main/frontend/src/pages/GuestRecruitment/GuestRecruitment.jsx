@@ -59,7 +59,7 @@ function GuestRecruitment() {
     return (
         <div className={styles['guestrecruitment-grid']}>
             {/* 새글작성 버튼의 경우에는 팀 리더일 경우만 렌더링될 수 있게 추후에 고쳐야함 !!!!! */}
-            <Button gridArea="btn2" color="#606060" size="large" to="/guestnew">새 글 작성</Button>
+            <Button gridArea="btn2" color="#606060" size="large" to="/124124/guestnew">새 글 작성</Button>
             <Dropdown
                 options={dropdownoption}
                 selected={selectedOption}

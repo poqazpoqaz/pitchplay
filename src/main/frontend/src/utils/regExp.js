@@ -34,3 +34,6 @@ export const TeamCodePattern = /^[A-Za-z][A-Za-z0-9]{0,19}$/;
 
 // 팀 소개글 유효성 검사 정규표현식
 export const TeamDescriptionPattern = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣\s]{0,300}$/;
+
+// 모집 게시글 유효성 검사 정규표현식 ( 100~ 2000자 ) 
+export const postDescriptionPattern = /^.{100,2000}$/;

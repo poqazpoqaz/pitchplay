@@ -40,7 +40,7 @@ export const initialState = [
         teamNumber: "124124",
         collectionTitle: "축구 즐기실 분 모집합니다!",
         collectionTime: "2024-12-05T18:00:00",
-        currentMember: "10",
+        currentMember: "0",
         totalMember: "20",
         teamName: "도봉FC",
         teamImg: "/imgs/1.jpg",
@@ -191,39 +191,84 @@ export const initialState = [
     }
 ];
 
-
 export const reducer = (state, action) => {
     switch (action.type) {
         case CHANGE_TEAM_NUMBER:
-            return state.map(data => ({ ...data, teamNumber: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, teamNumber: action.payload.newTeamNumber } : data
+            );
+
         case CHANGE_COLLECTION_DESCRIPTION:
-            return state.map(data => ({ ...data, collectionDescription: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, collectionDescription: action.payload.newDescription } : data
+            );
         case CHANGE_COLLECTION_TIME:
-            return state.map(data => ({ ...data, collectionTime: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, collectionTime: action.payload.newTime } : data
+            );
         case CHANGE_CURRENT_MEMBER:
-            return state.map(data => ({ ...data, currentMember: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, currentMember: action.payload.currentMember } : data
+            );
         case CHANGE_TOTAL_MEMBER:
-            return state.map(data => ({ ...data, totalMember: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, totalMember: action.payload.newTotalMember } : data
+            );
         case CHANGE_TEAM_NAME:
-            return state.map(data => ({ ...data, teamName: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, teamName: action.payload.newTeamName } : data
+            );
         case CHANGE_TEAM_IMG:
-            return state.map(data => ({ ...data, teamImg: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, teamImg: action.payload.newTeamImg } : data
+            );
         case CHANGE_TEAM_CITY:
-            return state.map(data => ({ ...data, teamCity: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, teamCity: action.payload.newTeamCity } : data
+            );
         case CHANGE_TEAM_LOC:
-            return state.map(data => ({ ...data, teamLoc: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, teamLoc: action.payload.newTeamLoc } : data
+            );
         case CHANGE_TEAM_GENDER:
-            return state.map(data => ({ ...data, teamGender: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, teamGender: action.payload.newTeamGender } : data
+            );
         case CHANGE_VIEW_COUNT:
-            return state.map(data => ({ ...data, viewCount: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, viewCount: action.payload.newViewCount } : data
+            );
         case CHANGE_ACTIVE_STATUS:
-            return state.map(data => ({ ...data, activeStatus: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, activeStatus: action.payload.newActiveStatus } : data
+            );
         case CHANGE_WRITTEN_DATE:
-            return state.map(data => ({ ...data, writtenDate: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, writtenDate: action.payload.newWrittenDate } : data
+            );
         case CHANGE_TEAM_SIZE:
-            return state.map(data => ({ ...data, teamSize: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, teamSize: action.payload.newTeamSize } : data
+            );
         case CHANGE_STADIUM:
-            return state.map(data => ({ ...data, stadium: action.payload }));
+            return state.map(data =>
+                data.teamNumber === action.payload.teamNumber ?
+                    { ...data, stadium: action.payload.newStadium } : data
+            );
         case RESET_STATE:
             return initialState;
         default:

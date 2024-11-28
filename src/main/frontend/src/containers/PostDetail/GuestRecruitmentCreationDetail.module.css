@@ -1,0 +1,53 @@
+
+.recruitment-creation{
+    grid-area: text;
+    border: 1px solid #F2F2F2;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+.recruitment-creation-grid {
+    display: grid;
+    grid-template:
+        'title ... ...' 30px
+        '... ... ...' 20px
+        'profile profile profile' 1fr
+        '... ... ...' 20px
+        'text text text' auto
+        '... ... ...' 20px
+        'inp ... ...' auto
+        '... ... ...' 20px
+        'policy policy policy' 1fr / 300px 1fr 1fr;
+}
+
+/* 반응형 스타일 추가 */
+@media (max-width: 768px) {
+    .recruitment-post-grid {
+        grid-template:
+            'title' auto
+            'profile' auto
+            'text' auto
+            'policy' auto / 1fr;
+        row-gap: 20px;
+    }
+
+    .recruitment-post {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recruitment-post-grid {
+        grid-template:
+            'title' auto
+            'profile' auto
+            'text' auto
+            'policy' auto / 1fr;
+        row-gap: 15px;
+    }
+
+    .recruitment-post {
+        padding: 10px;
+    }
+}

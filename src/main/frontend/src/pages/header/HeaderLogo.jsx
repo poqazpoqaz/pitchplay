@@ -11,6 +11,10 @@ const StyledDiv = styled.div`
     font-family: 'Lalezar', sans-serif;
     height: 100%;
     width: 100%;
+    
+    h1{
+        margin: 0 auto;
+    }
 `;
 
 const StyledImg = styled.img`
@@ -21,13 +25,13 @@ const StyledImg = styled.img`
 
 function HeaderLogo() {
     return (
-        <Link to = "/">
-        <StyledDiv>
+        <Link to="/">
+            <StyledDiv>
                 <h1>PITCH</h1>
                 <StyledImg src={soccer} />
                 <h1>PLAY</h1>
 
-        </StyledDiv>
+            </StyledDiv>
         </Link>
     );
 }

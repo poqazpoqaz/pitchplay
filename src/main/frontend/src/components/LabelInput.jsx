@@ -44,7 +44,7 @@ const StyledInput = styled.input`
   }}
     `;
 
-function Input({ id, text, size, type, placeholder, onChange, value, gridArea, isvalid }) {
+function Input({ id, text, size, type, placeholder, onChange, value, gridArea, min, max, isvalid }) {
   return (
     <StyledDiv
       style={{ gridArea: gridArea }}>
@@ -55,6 +55,8 @@ function Input({ id, text, size, type, placeholder, onChange, value, gridArea, i
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        min={min}
+        max={max}
         $isvalid={isvalid}
       />
     </StyledDiv>
