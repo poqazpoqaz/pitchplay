@@ -1,5 +1,6 @@
 export const CHANGE_TEAM_NUMBER = "CHANGE_TEAM_NUMBER";
 export const CHANGE_COLLECTION_TITLE = "CHANGE_COLLECTION_TITLE";
+export const CHANGE_COLLECTION_DESCRIPTION = "CHANGE_COLLECTION_DESCRIPTION";
 export const CHANGE_COLLECTION_TIME = "CHANGE_COLLECTION_TIME";
 export const CHANGE_CURRENT_MEMBER = "CHANGE_CURRENT_MEMBER";
 export const CHANGE_TOTAL_MEMBER = "CHANGE_TOTAL_MEMBER";
@@ -17,6 +18,7 @@ export const RESET_STATE = "RESET_STATE";
 
 export const changeTeamNumber = (teamNumber) => ({ type: CHANGE_TEAM_NUMBER, payload: teamNumber });
 export const changeCollectionTitle = (collectionTitle) => ({ type: CHANGE_COLLECTION_TITLE, payload: collectionTitle });
+export const changeCollectionDescription = (collectionDescription) => ({type: CHANGE_COLLECTION_DESCRIPTION, payload: collectionDescription});
 export const changeCollectionTime = (collectionTime) => ({type: CHANGE_COLLECTION_TIME, payload: collectionTime});
 export const changeCurrentMember = (currentMember) => ({ type: CHANGE_CURRENT_MEMBER, payload: currentMember });
 export const changeTotalMember = (totalMember) => ({ type: CHANGE_TOTAL_MEMBER, paylaod: totalMember });

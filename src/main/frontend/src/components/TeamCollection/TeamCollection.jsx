@@ -6,7 +6,7 @@ import TeamCollectionItem from "./TeamCollectionItem";
 import { motion } from "framer-motion";
 
 
-function TeamCollection({ content, openModal }) {
+function TeamCollection({ content, openModal}) {
     return (
         <motion.div
             className={styles['teamcollection-grid']}

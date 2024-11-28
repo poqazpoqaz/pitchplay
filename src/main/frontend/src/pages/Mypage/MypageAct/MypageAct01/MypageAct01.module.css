@@ -1,0 +1,11 @@
+.content { 
+    padding: 50px;
+}
+
+.actbox {
+    border: 2px dashed black;
+    padding: 20px;
+}
+h1 {
+    margin: 0 0 30px;
+}

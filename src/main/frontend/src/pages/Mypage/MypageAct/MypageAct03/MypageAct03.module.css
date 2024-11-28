@@ -1,0 +1,32 @@
+.content { 
+    padding: 50px;
+}
+
+.actbox {
+    border: 2px dashed black;
+    padding: 20px;
+}
+.title {
+    margin: 0 0 30px;
+}
+Link {
+    display: inline-block;
+    background-color: #07550C;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10000;
+}
+Link:hover {
+    background-color: #063e09;
+}
+
+.btnend {
+    display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 20px;
+}

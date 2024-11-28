@@ -19,18 +19,18 @@ const AlarmBox = styled.div`
     display: grid;
     grid-template: 
     '... ... del' 10px
-    'text text text' 1fr
+    'text text text' auto
     '... btn btn' 20px / 1fr 30px 30px;
-    background: white; /* 알람 박스 배경 */
+    background: white;
     padding: 20px;
-    border-radius: 10px; /* 모서리를 둥글게 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-    width: 300px; /* 알람 박스 너비 */
-    height: 200px; /* 알람 박스 높이 */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 350px;
 
     p {
     grid-area: text;
     padding: 20px;
+    text-align: center;
     }
 
     `;

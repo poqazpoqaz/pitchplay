@@ -30,6 +30,8 @@ const StyledButton = styled(motion.button)`
                 return '18px';
             case 'large':
                 return '20px';
+            case 'xlarge':
+                return '30px';
             default:
                 return '15px';  // 기본값 설정
         }
@@ -49,6 +51,8 @@ const StyledButton = styled(motion.button)`
                 return '16px';
             case 'large':
                 return '18px';
+            case 'xlarge':
+                return '25px';
             default:
                 return '14px'; // 기본값 조정
         }
@@ -64,6 +68,8 @@ const StyledButton = styled(motion.button)`
                 return '0.7rem';
             case 'large':
                 return '0.9rem';
+            case 'xlarge':
+                return '1rem';
             default:
                 return '0.8rem';  // 기본값을 좀 더 작은 크기로 설정
         }

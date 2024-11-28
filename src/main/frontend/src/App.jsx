@@ -14,6 +14,11 @@ import Mypage1 from "./pages/Mypage/Mypage1/Mypage1";
 import MypageAct from "./pages/Mypage/MypageAct/MypageAct";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Alarm from "./components/Alarm";
+import { path } from "framer-motion/client";
+import MypageAct01 from "./pages/Mypage/MypageAct/MypageAct01/MypageAct01";
+import MypageAct02 from "./pages/Mypage/MypageAct/MypageAct02/MypageAct02";
+import MypageAct03 from "./pages/Mypage/MypageAct/MypageAct03/MypageAct03";
+import MypageAct04 from "./pages/Mypage/MypageAct/MypageAct04/MypageAct04";
 
 
 const router = createBrowserRouter([
@@ -37,10 +42,15 @@ const router = createBrowserRouter([
         path: "/mypage", element: <MyPage gridArea={"section"} />,
         children: [
           { path: "", element: <Mypage1 /> },
-          { path: "act", element: <MypageAct gridArea={"section"} /> }
+          { path: "act", element: <MypageAct gridArea={"section"} />},
+          { path : "matches", element : <MypageAct01 gridArea={"section"}/>} ,
+          { path : "records", element : <MypageAct02 gridArea={"section"}/>},
+          { path : "teamsection", element : <MypageAct03 gridArea={"section"}/>},
+          { path : "teamschedule" , element : <MypageAct04 gridArea={"section"}/>}
+        
         ]
       },
-      { path: "/reservation", element: <ReservationPage gridArea={"section"} /> },
+      { path: "/reservation", element: <ReservationPage gridArea={"section"}/> },
     ]
   },
 ]);
