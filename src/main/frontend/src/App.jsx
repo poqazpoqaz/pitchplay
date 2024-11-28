@@ -13,7 +13,7 @@ import MyPage from "./pages/Mypage/Mypage1/Mypage";
 import Mypage1 from "./pages/Mypage/Mypage1/Mypage1";
 import MypageAct from "./pages/Mypage/MypageAct/MypageAct";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Alarm from "./components/Alarm";
+
 
 
 const router = createBrowserRouter([

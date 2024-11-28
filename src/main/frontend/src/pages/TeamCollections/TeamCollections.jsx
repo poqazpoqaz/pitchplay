@@ -3,17 +3,27 @@ import Dropdown from "../../components/Dropdown";
 import CircularButton from "../../components/CircularButton/CircularButton";
 import styles from "./TeamCollections.module.css";
 import JoinRequestModal from "../../components/JoinRequestModal";
+import Alarm from "../../components/Alarm";
 import { useState, useEffect } from "react";
 import { useStore } from "../../stores/CollectionStore/useStore";
 
 function TeamCollections() {
     const { state, actions } = useStore();
-
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAlarmOpen, setIsAlarmOpen] = useState(false);
 
     // 모달 열기/닫기 함수
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    // 알람 열기/닫기 함수
+    const openAlarm = () => {
+        setIsAlarmOpen(true);
+        setIsModalOpen(false);
+    };
+    const closeAlarm = () => setIsAlarmOpen(false);
+
 
     // 드롭다운 옵션
     const dropdownoption = ["최신순", "오래된순"];
@@ -81,6 +91,7 @@ function TeamCollections() {
                             key={index}
                             content={content}
                             openModal={openModal}
+                            openAlarm={openAlarm}
                         />
                     );
                 })}
@@ -89,7 +100,9 @@ function TeamCollections() {
             {/* 더 보기 버튼 */}
             <CircularButton onClick={handleLoadMore} gridArea="btn" />
 
-            {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} />}
+            {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm} />}
+            {isAlarmOpen && <Alarm btntext="확인" isOpen={isAlarmOpen} closeAlarm={closeAlarm} onClick={closeAlarm}>가입신청이 완료되었습니다.</Alarm>}
+                
         </div>
     );
 }
