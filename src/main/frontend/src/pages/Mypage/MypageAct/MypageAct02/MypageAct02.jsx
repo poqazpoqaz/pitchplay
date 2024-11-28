@@ -13,7 +13,7 @@ const MypageAct02 = ({gridArea}) => {
   return (
     <div style={{ gridArea: gridArea }}>
     <div className={styles.content}>
-      <h1 className={styles.title}>마이페이지 &gt; 내활동 &gt; 예약한 경기 목록</h1>
+      <h1 className={styles.title}>마이페이지 &gt; 내활동 &gt; 참가한 경기 목록</h1>
       <div className={styles.actbox}>
       <MatchList matches={records}/>
       </div>
