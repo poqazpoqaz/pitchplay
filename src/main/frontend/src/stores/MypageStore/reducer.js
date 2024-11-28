@@ -10,7 +10,8 @@ import {
 export const initialState = {
     name: "",
     nickname: "",
-    region: "",
+    city: "",
+    loc: "",
     time: "",
     team: "",
     intro: "",

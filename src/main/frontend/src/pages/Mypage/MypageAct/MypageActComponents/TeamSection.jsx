@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import pachiImage from './pachi.jpg';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   padding: 20px;
@@ -49,9 +50,9 @@ const BtnEnd = styled.div`
   align-items: flex-end;
 `;
 
-const LinkButton = styled.a`
+const LinkButton = styled(Link)`
   display: inline-block;
-  background-color: #07550c;
+  background-color: #07550C;
   color: white;
   padding: 10px 20px;
   text-decoration: none;
@@ -60,6 +61,10 @@ const LinkButton = styled.a`
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #063e09;
+  }
 `;
 
 const TeamSection = ({ teamInfo }) => {
@@ -81,7 +86,7 @@ const TeamSection = ({ teamInfo }) => {
         </TeamDetails>
       </Top3Item>
       <BtnEnd>
-        <LinkButton href="/team">나의 팀</LinkButton>
+        <LinkButton to="/mypage/teamsection">나의 팀</LinkButton>
       </BtnEnd>
     </Container>
   );

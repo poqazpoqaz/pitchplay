@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Top1 = styled.div`
   padding: 20px;
@@ -12,15 +13,20 @@ const Subtitle = styled.h1`
 
 const Box = styled.div`
   background-color: #f4f4f4;
-  padding: 20px;
-  margin-bottom: 10px;
   border-radius: 5px;
+  height : 60px;
+  width : 100%;
+  display : flex;
+  justify-content : space-between;
+  margin : 10px;
+  padding : 5px;
 `;
 
-const BoxCal = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  font-size: 20px;
+const BoxCal = styled.span`
+  margin-top : 30px;
+  margin-right : 15px;
+
+
 `;
 
 const BtnEnd = styled.div`
@@ -30,7 +36,7 @@ const BtnEnd = styled.div`
   margin-top: 20px;
 `;
 
-const LinkButton = styled.a`
+const LinkButton = styled(Link)`
   display: inline-block;
   background-color: #07550C;
   color: white;
@@ -51,7 +57,6 @@ const MatchesSection = ({ matches = [] }) => {
   return (
     <Top1>
       <Subtitle>예약한 경기 목록</Subtitle>
-      {/* 항상 두 개의 Box는 화면에 표시되도록 설정 */}
       <Box>
         <h1>{matches[0]?.location}</h1>
         <BoxCal>
@@ -66,7 +71,7 @@ const MatchesSection = ({ matches = [] }) => {
       </Box>
 
       <BtnEnd>
-        <LinkButton href="/matches">더 보기</LinkButton>
+        <LinkButton to="/mypage/matches">더 보기</LinkButton>
       </BtnEnd>
     </Top1>
   );

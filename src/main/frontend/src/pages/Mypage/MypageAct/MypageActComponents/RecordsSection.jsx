@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   padding: 20px;
@@ -12,15 +13,20 @@ const Subtitle = styled.h1`
 
 const Box = styled.div`
   background-color: #f4f4f4;
-  padding: 20px;
-  margin-bottom: 10px;
   border-radius: 5px;
+  height : 60px;
+  width : 100%;
+  display : flex;
+  justify-content : space-between;
+  margin : 10px;
+  padding : 5px;
 `;
 
-const BoxCal = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  font-size: 20px;
+const BoxCal = styled.span`
+  margin-top : 30px;
+  margin-right : 15px;
+
+
 `;
 
 const BtnEnd = styled.div`
@@ -30,9 +36,9 @@ const BtnEnd = styled.div`
   margin-top: 20px;
 `;
 
-const LinkButton = styled.a`
+const LinkButton = styled(Link)`
   display: inline-block;
-  background-color: #07550c;
+  background-color: #07550C;
   color: white;
   padding: 10px 20px;
   text-decoration: none;
@@ -66,7 +72,7 @@ const RecordsSection = ({ records = [] }) => {
       </Box>
 
       <BtnEnd>
-        <LinkButton href="/records">더 보기</LinkButton>
+        <LinkButton to="/mypage/records">더 보기</LinkButton>
       </BtnEnd>
     </Container>
   );

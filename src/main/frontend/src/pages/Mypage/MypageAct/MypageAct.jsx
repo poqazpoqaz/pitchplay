@@ -8,8 +8,8 @@ import styles from "./MypageAct.module.css";
 
 
 const MypageAct = ({gridArea}) => {
-  const { state, actions } = useStore();  // 스토어에서 상태와 액션을 가져옵니다.
-  const { matches, records, teamInfo, posts } = state;  // 필요한 데이터 가져오기
+  const { state, actions } = useStore();
+  const { matches, records, teamInfo, posts } = state;
 
 
 
@@ -17,7 +17,7 @@ const MypageAct = ({gridArea}) => {
     <div style={{gridArea:gridArea}}>
       <div>
         <div className={styles.content}>
-          <h1>마이페이지 &gt; 내 활동</h1>
+          <h1 className={styles.title}>마이페이지 &gt; 내 활동</h1>
           <MatchesSection matches={matches} />
           <RecordsSection records={records} />
           <TeamSection teamInfo={teamInfo} />
