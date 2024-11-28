@@ -25,6 +25,7 @@ const MypageAct03 = ({gridArea}) => {
         { label: "주요 나이대", name: "age", value: state.teamAge },
         { label: "레벨", name: "level", value: state.teamLevel },
         { label: "팀 소개", name: "intro", value: state.teamDescription },
+
     ];
 
 

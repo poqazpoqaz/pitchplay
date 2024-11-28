@@ -8,7 +8,7 @@ import styles from "./MypageAct.module.css";
 
 
 const MypageAct = ({gridArea}) => {
-  const { state, actions } = useStore();
+  const { state } = useStore();
   const { matches, records, teamInfo, posts } = state;
 
 
