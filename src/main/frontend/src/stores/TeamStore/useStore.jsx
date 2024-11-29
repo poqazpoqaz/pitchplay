@@ -15,7 +15,8 @@ import {
     changeCurrentMember,
     changeTotalMember,
     changeCollectionTitle,
-    resetState
+    changeTeamMember,
+    resetState,
 } from "./action.js";
 
 export const useStore = () => {
@@ -51,6 +52,8 @@ export const useStore = () => {
         changeTotalMember: (totalMember) => dispatch(changeTotalMember(totalMember)),
         // 팀 모집 제목
         changeCollectionTitle: (collectionTitle) => dispatch(changeCollectionTitle(collectionTitle)),
+        // 팀원 정보 변경 
+        changeTeamMember: (teamMember) => dispatch(changeTeamMember(teamMember)),
         // 팀 state 초기화 메서드
         resetState : () => dispatch(resetState())
     };

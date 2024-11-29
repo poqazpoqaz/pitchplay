@@ -13,6 +13,7 @@ export const CHANGE_TEAM_GENDER = "CHANGE_TEAM_GENDER";
 export const CHANGE_CURRENT_MEMBER = "CHANGE_CURRENT_MEMBER";
 export const CHANGE_TOTAL_MEMBER = "CHANGE_TOTAL_MEMBER";
 export const CHANGE_COLLECTION_TITLE = "CHANGE_COLLECTION_TITLE";
+export const CHANGE_TEAM_MEMBER = "CHANGE_TEAM_MEMBER";
 export const RESET_STATE = "RESET_STATE";
 
 // 액션생성자 
@@ -28,6 +29,7 @@ export const changeTeamLoc = (teamLoc) => ({ type: CHANGE_TEAM_LOC, payload: tea
 export const changeTeamAge = (teamAge) => ({ type: CHANGE_TEAM_AGE, payload: teamAge });
 export const changeTeamGender = (teamGender) => ({ type: CHANGE_TEAM_GENDER, payload: teamGender });
 export const changeCurrentMember = (currentMember) => ({ type: CHANGE_CURRENT_MEMBER, payload: currentMember });
-export const changeTotalMember = (totalMember) => ({ type: CHANGE_TOTAL_MEMBER, paylaod: totalMember });
+export const changeTotalMember = (totalMember) => ({ type: CHANGE_TOTAL_MEMBER, payload: totalMember });
 export const changeCollectionTitle = (collectionTitle) => ({ type: CHANGE_COLLECTION_TITLE, payload: collectionTitle });
+export const changeTeamMember = (teamMember) => ({ type: CHANGE_TEAM_MEMBER, payload: teamMember });
 export const resetState = () => ({ type: RESET_STATE });
