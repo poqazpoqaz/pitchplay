@@ -1,3 +1,4 @@
+export const CHANGE_MATCHING_NUMBER = "CHANGE_MATCHING_NUMBER";
 export const CHANGE_TEAM_NAME = "CHANGE_TEAM_NAME";
 export const CHANGE_TEAM_IMG = "CHANGE_TEAM_IMG";
 export const CHANGE_MATCHING_DATE = "CHANGE_MATCHING_DATE";
@@ -9,12 +10,46 @@ export const CHANGE_WRITTEN_DATE = "CHANGE_WRITTEN_DATE";
 export const RESET_STATE = "RESET_STATE";
 
 //teamId = team1 인지 team2인지 선택
-export const changeTeamName = (teamId, teamName) => ({type: CHANGE_TEAM_NAME, payload: {teamId, teamName}});
-export const changeTeamImg = (teamId, teamImg) => ({type: CHANGE_TEAM_IMG, payload : {teamId, teamImg}});
-export const changeMatchingDate = (matchingDate) => ({type: CHANGE_MATCHING_DATE, payload: matchingDate});
-export const changeMatchingLoc = (matchingLoc) => ({type: CHANGE_MATCHING_LOC, payload: matchingLoc});
-export const changeTeamGender = (teamGender) => ({type: CHANGE_TEAM_GENDER, payload: teamGender});
-export const changeTeamLevel = (teamLevel) => ({type: CHANGE_TEAM_LEVEL, payload: teamLevel});
-export const changeViewCount = (viewCount) => ({type: CHANGE_VIEW_COUNT, payload: viewCount});
-export const changeWrittenDate = (writtenDate) => ({type: CHANGE_WRITTEN_DATE, payload: writtenDate});
-export const resetState = () => ({type: RESET_STATE});
+export const changeMatchingNumber = (matchingNum) => ({
+    type: CHANGE_MATCHING_NUMBER, payload: { matchingNum }
+})
+
+export const changeTeamName = (matchingNum, teamId, teamName) => ({
+    type: CHANGE_TEAM_NAME,
+    payload: { matchingNum, teamId, teamName }
+});
+
+export const changeTeamImg = (matchingNum, teamId, teamImg) => ({
+    type: CHANGE_TEAM_IMG,
+    payload: { matchingNum, teamId, teamImg }
+});
+
+export const changeMatchingDate = (matchingNum, matchingDate) => ({
+    type: CHANGE_MATCHING_DATE,
+    payload: { matchingNum, matchingDate }
+});
+
+export const changeMatchingLoc = (matchingNum, matchingLoc) => ({
+    type: CHANGE_MATCHING_LOC,
+    payload: { matchingNum, matchingLoc }
+});
+
+export const changeTeamGender = (matchingNum, teamGender) => ({
+    type: CHANGE_TEAM_GENDER,
+    payload: { matchingNum, teamGender }
+});
+
+export const changeTeamLevel = (matchingNum, teamLevel) => ({
+    type: CHANGE_TEAM_LEVEL,
+    payload: { matchingNum, teamLevel }
+});
+
+export const changeViewCount = (matchingNum, viewCount) => ({
+    type: CHANGE_VIEW_COUNT,
+    payload: { matchingNum, viewCount }
+});
+
+export const changeWrittenDate = (matchingNum, writtenDate) => ({
+    type: CHANGE_WRITTEN_DATE,
+    payload: { matchingNum, writtenDate }
+});
