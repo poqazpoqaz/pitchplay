@@ -4,12 +4,17 @@ import pachiImage from './pachi.jpg';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-  padding: 20px;
-  border: 2px dashed black;
+  padding: 25px;
+  border: none;
+  background-color: #f9fafc;
+  border-radius : 25px;
 `;
 
 const Subtitle = styled.h1`
   margin-bottom: 25px;
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
 `;
 
 const Top3Item = styled.div`
@@ -59,11 +64,13 @@ const LinkButton = styled(Link)`
   text-align: center;
   border-radius: 5px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
     background-color: #063e09;
+    transform: scale(1.05); /* 버튼 확대 효과 */
   }
 `;
 

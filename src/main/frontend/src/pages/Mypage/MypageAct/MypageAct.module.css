@@ -1,9 +1,13 @@
-
+.congrid {
+  display: flex; /* 부모의 크기를 채우기 위한 플렉스 사용 */
+  flex-direction: column;
+  padding: 20px;
+  height: 100%; /* 부모 요소의 높이를 따라감 */
+}
 .content {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-bottom: 30px;
   padding: 50px;
-
 }

@@ -5,12 +5,15 @@ import styled from 'styled-components';
 
 
 const BottomContainer = styled.div`
-  padding: 1rem;
-  border-radius: 8px;
+margin-top : 30px;  
+padding: 1rem;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 10px;
+  background-color: #f9fafc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 `;
 
 const Title = styled.h1`
@@ -33,6 +36,7 @@ const FormItem = styled.li`
   justify-content: flex-start;
   gap: 1rem;
 
+
   &.textarea {
     align-items: flex-start;
   }
@@ -42,16 +46,26 @@ const Label = styled.label`
   font-size: 1.2rem;
   font-weight: bold;
   width: 120px;
+  color : black;
 `;
 
 const Value = styled.div`
   flex: 1;
   padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
   height: ${(props) => (props.textarea ? '40px' : '40px')};
   resize: ${(props) => (props.textarea ? 'none' : 'auto')};
-  background-color: #f9f9f9;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 카드형 그림자 */
+  transition: transform 0.3s ease;
+  font-size : 18px;
+  color : #555;
+  
+  
+  &:hover {
+    transform: translateY(-5px); /* 호버 시 살짝 떠오르는 효과 */
+  }
 `;
 const BtnEnd = styled.div`
   display: flex;
@@ -68,13 +82,15 @@ const LinkButton = styled(Link)`
   text-align: center;
   border-radius: 5px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
     background-color: #063e09;
-  }`;
-
+    transform: scale(1.05); /* 버튼 확대 효과 */
+  }
+`;
 const Bottom = ({ formFields }) => {
   return (
     <BottomContainer>

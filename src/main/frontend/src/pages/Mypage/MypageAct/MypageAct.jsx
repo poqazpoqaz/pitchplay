@@ -16,8 +16,8 @@ const MypageAct = ({gridArea}) => {
 
 
   return (
-    <div style={{gridArea:gridArea}}>
-      <div>
+    <div style={{gridArea:gridArea}} >
+      <div className={styles.congrid}>
         <div className={styles.content}>
           <h1 className={styles.title}>마이페이지 &gt; 내 활동</h1>
           <MatchesSection matches={MatchingState} />

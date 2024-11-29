@@ -22,6 +22,7 @@ import MypageAct04 from "./pages/Mypage/MypageAct/MypageAct04/MypageAct04";
 import NoticeAccordion from "./components/NoticeAccordion/NoticeAccordion";
 import FAQAccordion from "./components/FAQAccordion/FAQAccordion";
 import NoticePost from "./components/NoticePost/NoticePost";
+import MypageAct05 from "./pages/Mypage/MypageAct/MypageAct05/MypageAct05";
 
 
 
@@ -53,8 +54,8 @@ const router = createBrowserRouter([
           { path: "matches", element: <MypageAct01 gridArea={"section"}/>} ,
           { path: "records", element: <MypageAct02 gridArea={"section"}/>},
           { path: "teamsection", element: <MypageAct03 gridArea={"section"}/>},
-          { path: "teamschedule", element: <MypageAct04 gridArea={"section"}/>}
-
+          { path: "teamschedule", element: <MypageAct04 gridArea={"section"}/>},
+          { path : "members" , element : <MypageAct05 gridArea={"section"}/>}
         ]
       },
       { path: "/reservation", element: <ReservationPage gridArea={"section"}/> },

@@ -1,11 +1,14 @@
 .content { 
-    padding: 50px;
+    padding: 20px;
 }
 
 .actbox {
-    border: 2px dashed black;
-    padding: 20px;
+    margin-top: 20px ;
+    padding: 30px;
+    background-color: #f6f6f6;
+    border-radius: 15px;
+
 }
 .title {
-    margin: 0 0 30px;
+    margin-bottom: 20px;
 }

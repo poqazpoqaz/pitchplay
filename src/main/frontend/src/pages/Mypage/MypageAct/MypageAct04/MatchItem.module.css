@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap; /* 아이템들이 여러 줄로 나뉘도록 설정 */
     gap: 20px; /* 아이템 사이의 간격 */
+    margin-top: 20px;
   }
   
   .matchItem {

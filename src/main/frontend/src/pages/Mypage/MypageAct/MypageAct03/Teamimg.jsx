@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   padding: 20px;    
+    background-color: #f9fafc;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 `;
 
-const Subtitle = styled.h1`
-  margin-bottom: 25px;
-`;
 
 const Top3Item = styled.div`
   display: flex;
@@ -36,16 +36,19 @@ const TeamImg = styled.img`
 
 const TeamName = styled.h1`
   margin: 0;
-  
+  font-size : 36px;
+  color : black;
 `;
 
 const Members = styled.p`
   margin: 0;
+  font-size : 18x;
+  color : #555;
 `;
 const Teamcode = styled.div`
   border: 1px solid #ccc;
   border-radius: 15px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   width : auto;
   height : 50px;
   margin-top : 5px;
@@ -58,7 +61,7 @@ const BtnEnd = styled.div`
   margin-top: 20px;
 `;
 
-const Button1 = styled.button`
+const Button1 = styled(Link)`
   display: inline-block;
   background-color: #07550C;
   color: white;
@@ -67,11 +70,13 @@ const Button1 = styled.button`
   text-align: center;
   border-radius: 5px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
     background-color: #063e09;
+    transform: scale(1.05); /* 버튼 확대 효과 */
   }
 `;
 
@@ -120,7 +125,7 @@ const Teamimg = ({ teamInfo }) => {
         <Container>
             <Gapgap>
                 <li>
-                    <LinkButton>팀 정보</LinkButton>
+                    <LinkButton to="/mypage/teamsection">팀 정보</LinkButton>
                 </li>
                 <li>
                     <LinkButton1 to="/mypage/teamschedule">팀 일정</LinkButton1>
