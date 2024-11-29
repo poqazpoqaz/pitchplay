@@ -21,6 +21,16 @@ function GuestRecruitmentCreation({ gridArea }) {
     // collectionStore에서 teamNumber에 해당하는 데이터 필터링
     const [collectionData, setCollectionData] = useState("");
 
+    // 알람 상태 관리
+    const [isErrorAlarm, setIsErrorAlarmOpen] = useState(false); // 모집 인원 오류 알람
+    const [isContentErrorAlarm, setContentErrorAlarmOpen] = useState(false); // 게시글 오류 알람
+    const [isFirstAlarmOpen, setFirstAlarmOpen] = useState(false); // 첫 번째 알람
+    const [isSecondAlarmOpen, setSecondAlarmOpen] = useState(false); // 두 번째 알람
+
+    // Quill state
+    const [editorContent, setEditorContent] = useState("");
+    const quillRef = useRef(null); // Quill 인스턴스를 useRef로 관리
+
     useEffect(() => {
         const data = collectionStore.find((team) => team.teamNumber === teamNumber);
         setCollectionData(data);
@@ -33,15 +43,22 @@ function GuestRecruitmentCreation({ gridArea }) {
         collectionActions.changeCurrentMember(teamNumber, newMemberCount);
     };
 
-    // Quill state
-    const [editorContent, setEditorContent] = useState("");
-    const quillRef = useRef(null); // Quill 인스턴스를 useRef로 관리
+    // 퀼 저장
+    const saveToFile = (editorContent) => {
+        console.log(editorContent);
 
-    // 알람 상태 관리
-    const [isErrorAlarm, setIsErrorAlarmOpen] = useState(false); // 모집 인원 오류 알람
-    const [isContentErrorAlarm, setContentErrorAlarmOpen] = useState(false); // 게시글 오류 알람
-    const [isFirstAlarmOpen, setFirstAlarmOpen] = useState(false); // 첫 번째 알람
-    const [isSecondAlarmOpen, setSecondAlarmOpen] = useState(false); // 두 번째 알람
+        //   // blob형식의 html파일로 editorContent 저장
+        //   const file = new Blob([editorContent], { type: 'text/html' });
+
+        //   // 파일업로드요청
+        //   const formData = new FormData();
+        //   formData.append('file', file);
+
+        //   fetch('http://localhost:8080/saveFile', { method: 'POST', body: formData })
+        //     .then(response => console.log(response)).
+        //     then(() => { alert('파일 업로드 완료!'); })
+        //     .catch(error => console.error('업로드 실패:', error));
+    }
 
     // 첫 번째 알람에서 확인 버튼 클릭 시
     const handleFirstAlarmConfirm = () => {
@@ -73,7 +90,7 @@ function GuestRecruitmentCreation({ gridArea }) {
         }
 
         if (quillRef.current) {
-            console.log(editorContent); // HTML 형식으로 저장된 데이터
+            saveToFile(editorContent);
             setFirstAlarmOpen(true); // 작성 완료 알람 표시
         }
     };

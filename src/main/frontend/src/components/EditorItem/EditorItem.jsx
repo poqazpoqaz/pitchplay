@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import Quill from 'quill';
-import 'quill/dist/quill.snow.css'; // Quill 스타일을 임포트
-import axios from 'axios'; // axios 임포트
-import './EditorItem.css'; // CSS를 임포트
+import 'quill/dist/quill.snow.css';
+import './EditorItem.css'; 
 
 const Editor = ({ setEditorContent, quillRef }) => {
   // const quillRef = useRef(null);   // 사용하는 부모 컴포넌트에서 사용해야하는 것
@@ -21,7 +20,7 @@ const Editor = ({ setEditorContent, quillRef }) => {
     [{ 'color': [] }, { 'background': [] }],
   ], []);
 
-  // 나중에 이미지 핸들러는 빌드 한다음에 연결 ( uuid로 저장해놓을 예정, 백에 저장 받아오기)
+  // 이미지 핸들러 : 나중에 연동할 때 사용 !!
   // const imageHandler = () => {
   //   const input = document.createElement('input');
   //   input.setAttribute('type', 'file');
@@ -31,36 +30,31 @@ const Editor = ({ setEditorContent, quillRef }) => {
   //   input.addEventListener("change", async () => {
   //     const file = input.files[0];
   //     const formData = new FormData();
-  //     formData.append('file', file);  // 서버에서 'file'로 받는다고 가정
+  //     formData.append('file', file);
 
   //     try {
-  //       // 이미지 업로드 서버로 POST 요청 보내기
-  //       const response = await axios.post('http://localhost:8080/uploadFile', formData, {
+  //       // 이미지 저장 요청 보내기
+  //       const response = await axios.post('http://localhost:8080/saveImg', formData, {
   //         headers: { 'Content-Type': 'multipart/form-data' }
   //       });
 
-  //       // 서버에서 반환한 이미지 URL
-  //       //  String imageUrl = "http://localhost:8080/images/" + savedFilename;  // 예시 경로
-  //       const IMG_URL = response.data.imageUrl;
+  //       // 서버에서 반환된 이미지 URL
+  //       const imageUrl = response.data;  // 서버가 imageUrl을 직접 반환한다고 가정
 
-  //       if (IMG_URL) {
-  //         // 커서 위치에 이미지를 삽입
+  //       if (imageUrl) {
   //         const range = quillRef.current.getSelection();
   //         if (range) {
-  //           quillRef.current.insertEmbed(range.index, 'image', IMG_URL);
-  //         } else {
-  //           console.error('커서 위치를 가져올 수 없습니다.');
+  //           // 이미지 삽입
+  //           quillRef.current.insertEmbed(range.index, 'image', imageUrl);
   //         }
-  //       } else {
-  //         console.error('서버에서 이미지 URL을 반환하지 않았습니다.');
   //       }
   //     } catch (error) {
-  //       console.log("이미지를 삽입하는데 실패했습니다.", error);
+  //       console.error('이미지 업로드 실패', error);
   //     }
   //   });
   // };
 
-  // 모듈 설정 ( 나중에 서버랑 연동할때 모듈 설정 )
+  // 모듈 설정(나중에 서버랑 연동할때 모듈 설정)
   // const modules = useMemo(() => ({
   //   toolbar: {
   //     container: toolbarOptions,
@@ -69,7 +63,7 @@ const Editor = ({ setEditorContent, quillRef }) => {
   //     },
   //   },
   // }), [toolbarOptions]);
-  
+
   // 스프링이랑 연결하면 위에 모듈 사용해야함
   const modules = useMemo(() => ({
     toolbar: {
@@ -89,7 +83,8 @@ const Editor = ({ setEditorContent, quillRef }) => {
 
       // 텍스트가 변경될 때마다 HTML 업데이트
       quillInstance.on('text-change', () => {
-        setEditorContent(quillInstance.root.innerHTML);
+        const html = quillInstance.root.innerHTML
+        setEditorContent(html);
       });
     }
 
