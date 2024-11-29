@@ -18,7 +18,7 @@ import {
 export const initialState = {
     name: "김피치",
     profileImg: "/public/imgs/team.jpg",
-    birthday: "2000-01-30",
+    birthday: "20000101",
     email: "pitch@kosmo.com",
     phone: "010-1234-5678",
     id: "pitch123",

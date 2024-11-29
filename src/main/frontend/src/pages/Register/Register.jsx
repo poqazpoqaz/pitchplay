@@ -5,13 +5,18 @@ import LabelInput from "../../components/LabelInput";
 import { emailPattern, phonePattern, pwPattern, namePattern, idPattern, nicknamePattern, birthPattern } from "../../utils/regExp"
 import Button from "../../components/Button";
 import styles from "./Register.module.css";
-import {useStore} from "../../stores/UserStore/useStore";
+import Alarm from "../../components/Alarm";
+import { useStore } from "../../stores/UserStore/useStore";
 
-function Register({gridArea}) {
-    const {state, actions} = useStore();
+function Register({ gridArea }) {
+    const { state, actions } = useStore();
 
     const [confirmPassword, setConfirmPassword] = useState('');
     const [authCode, setAuthCode] = useState('');
+
+    // 회원가입 알람창 관련 state
+    const [isDone, setIsDone] = useState(false);
+    const [isFirstAlarmOpen, setFirstAlarmOpen] = useState(false);
 
     const [isNameValid, setIsNameValid] = useState(false);
     const [isBirthdayValid, setIsBirthdayValid] = useState(false);
@@ -23,6 +28,14 @@ function Register({gridArea}) {
     const [isConfirmPasswordValid, setIsConfirmPasswordValid] = useState(false);
     const [isAuthCodeValid, setIsAuthCodeValid] = useState(false);
 
+    const handleOutAlarm = () => {
+        setFirstAlarmOpen(false);
+        setIsDone(false);
+    }
+    const handleFirstAlarm = () => {
+        setFirstAlarmOpen(false);
+        setIsDone(true);
+    }
 
     // 유효성 검사 함수
     const handleName = (e) => {
@@ -56,7 +69,7 @@ function Register({gridArea}) {
     };
 
     const handlePassword = (e) => {
-        actions.changePassword(e.taget.value);
+        actions.changePassword(e.target.value);
         setIsPasswordValid(pwPattern.test(e.target.value)); // pwPattern으로 유효성 검사
     };
 
@@ -73,16 +86,58 @@ function Register({gridArea}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (isNameValid && isBirthdayValid && isEmailValid && isPhoneValid && isIdValid && isNicknameValid && isPasswordValid && isConfirmPasswordValid && isAuthCodeValid) {
-            alert('회원가입 성공!');
-        } else {
-            alert('입력 값이 올바르지 않습니다.');
+
+        // 입력 값 유효성 검사
+        if (!namePattern.test(state.name)) {
+            alert('이름은 한글, 영문만 가능하며 1~20자 이내로 입력해주세요.');
+            return;
         }
+
+        if (!birthPattern.test(state.birthday)) {
+            alert('생년월일은 1900~2099년까지의 올바른 날짜 형식(YYYYMMDD)으로 입력해주세요.');
+            return;
+        }
+
+        if (!emailPattern.test(state.email)) {
+            alert('올바른 이메일 형식으로 입력해주세요.');
+            return;
+        }
+
+        if (!phonePattern.test(state.phone)) {
+            alert('전화번호는 "010-0000-0000" 형식으로 입력해주세요.');
+            return;
+        }
+
+        if (!idPattern.test(state.id)) {
+            alert('아이디는 영문, 숫자 조합으로 4~20자 이내로 입력해주세요.');
+            return;
+        }
+
+        if (!nicknamePattern.test(state.nickname)) {
+            alert('닉네임은 한글, 영문, 숫자 조합으로 2~8자 이내이며 첫 글자는 숫자와 공백을 제외해주세요.');
+            return;
+        }
+
+        if (!pwPattern.test(state.password)) {
+            alert('비밀번호는 영문, 숫자 조합으로 8~16자 이내로 입력해주세요.');
+            return;
+        }
+
+        if (state.password !== confirmPassword) {
+            alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+            return;
+        }
+
+        if (false) { // 인증 코드 검증 (이 경우 별도 상태 확인)  !authCodeValid
+            alert('인증 코드가 올바르지 않습니다.');
+            return;
+        }
+        setFirstAlarmOpen(true);
     };
 
     return (
-        <div className={styles.register} style={{gridArea: gridArea}}>
-            <h2 className={styles['register-title']} style={{ fontSize: "50px", textAlign: "center", marginTop:"20px" }}>회원가입</h2>
+        <div className={styles.register} style={{ gridArea: gridArea }}>
+            <h2 className={styles['register-title']} style={{ fontSize: "50px", textAlign: "center", marginTop: "20px" }}>회원가입</h2>
             <form onSubmit={handleSubmit} className={styles['register-grid']}>
                 <LabelInput
                     id="name"
@@ -223,6 +278,26 @@ function Register({gridArea}) {
                     gridArea="sumbtn"
                 >가입하기</Button>
             </form>
+
+            <Alarm
+                isOpen={isFirstAlarmOpen}
+                closeAlarm={handleOutAlarm}
+                btntext="확인"
+                onClick={handleFirstAlarm}
+            >
+                가입하시겠습니까?
+            </Alarm>
+
+            <Alarm
+                isOpen={isDone}
+                onClick={() => setIsDone(false)}
+                closeAlarm={() => setIsDone(false)}
+                btntext="확인"
+                to="/"
+            >
+                가입을 축하드립니다.
+            </Alarm>
+            
 
         </div >
     );
