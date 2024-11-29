@@ -3,32 +3,41 @@ import { useParams } from 'react-router-dom';
 import styles from './StadiumDetail.module.css';
 import KakaoMap from './KakaoMap';
 import ReservationModal from '../../components/StadiumReservation/ReservationModal/ReservationModal';
+import { useStore } from "../../stores/StadiumStore/useStore";
 
-function StadiumDetail() {
-    const { id } = useParams();
-    const [stadiumData, setStadiumData] = useState(null);
-    const [isAddressCopied, setIsAddressCopied] = useState(false);
+function StadiumDetail({ gridArea }) {
+    const { stadiumId } = useParams();
+    const { state, actions } = useStore();
     const [showMap, setShowMap] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [reservedTimeSlots, setReservedTimeSlots] = useState({});
+    const [isAddressCopied, setIsAddressCopied] = useState(false);
 
     useEffect(() => {
         fetch('/data/stadiumData.json')
             .then(response => response.json())
             .then(data => {
-                const selectedStadium = data.find(stadium => stadium.SVCID === id);
-                setStadiumData(selectedStadium);
+                const selectedStadium = data.find(stadium => stadium.SVCID === stadiumId);
+                actions.changeStadiumName(selectedStadium.SVCNM);
+                actions.changeStadiumImg(selectedStadium.IMGURL)
+                actions.changeStadiumAddress(selectedStadium.PLACENM);
+                actions.changeStadiumDescription(selectedStadium.DTLCONT);
+                actions.changeStadiumX(selectedStadium.X);
+                actions.changeStadiumY(selectedStadium.Y);
+                actions.changeStadiumCost(selectedStadium.PAYATNM);
+                actions.changeStadiumVmin(selectedStadium.V_MIN);
+                actions.changeStadiumVmax(selectedStadium.V_MAX);
             })
             .catch(error => console.error('Error loading stadium data:', error));
-    }, [id]);
+    }, [stadiumId]);
 
-    if (!stadiumData) {
+    if (!state) {
         return <div>Loading...</div>;
     }
 
     const handleCopyAddress = () => {
-        if (stadiumData && stadiumData.PLACENM) {
-            navigator.clipboard.writeText(stadiumData.PLACENM)
+        if (state.stadiumAddress) {
+            navigator.clipboard.writeText(state.stadiumAddress)
                 .then(() => setIsAddressCopied(true))
                 .catch(() => setIsAddressCopied(false));
         }
@@ -74,19 +83,19 @@ function StadiumDetail() {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} style={{ gridArea: gridArea }}>
             <div className={styles.imageSection}>
-                <img src={stadiumData.IMGURL} alt={`${stadiumData.SVCNM} 이미지`} className={styles.stadiumImage} />
+                <img src={state.stadiumImg} alt={`${state.stadiumName} 이미지`} className={styles.stadiumImage} />
             </div>
 
             <div className={styles.contentWrapper}>
                 <div className={styles.infoWrapper}>
-                    <h2>{stadiumData.SVCNM}</h2>
-                    <p><strong>구장 주소:</strong> {stadiumData.PLACENM}</p>
+                    <h2>{state.stadiumName}</h2>
+                    <p><strong>구장 주소:</strong> {state.stadiumAddress}</p>
                     <div className={styles.dtlContentWrapper}>
                         <h3>구장 소개</h3>
-                        {stadiumData.DTLCONT ? (
-                            parseDetailContent(stadiumData.DTLCONT).map((item, index) => (
+                        {state.stadiumDescription ? (
+                            parseDetailContent(state.stadiumDescription).map((item, index) => (
                                 <div key={index} className={styles.dtlContentSection}>
                                     <h4 className={styles.dtlTitle}>{item.title}</h4>
                                     <ul className={styles.dtlContentList}>
@@ -105,10 +114,10 @@ function StadiumDetail() {
                 <div className={styles.rightSidebar}>
                     <h3>구장 정보</h3>
                     <ul>
-                        <li><strong>구장이름:</strong> {stadiumData.SVCNM}</li>
-                        <li><strong>구장 주소:</strong> {stadiumData.PLACENM}</li>
-                        <li><strong>이용 요금:</strong> {stadiumData.PAYATNM}</li>
-                        <li><strong>운영 시간:</strong> {stadiumData.V_MIN} ~ {stadiumData.V_MAX}</li>
+                        <li><strong>구장이름:</strong> {state.stadiumName}</li>
+                        <li><strong>구장 주소:</strong> {state.stadiumAddress}</li>
+                        <li><strong>이용 요금:</strong> {state.stadiumCost}</li>
+                        <li><strong>운영 시간:</strong> {state.stadiumVmin} ~ {state.stadiumVmax}</li>
                     </ul>
                     <button className={styles.copyButton} onClick={handleCopyAddress}>
                         {isAddressCopied ? '주소가 복사되었습니다!' : '주소 복사'}
@@ -118,7 +127,7 @@ function StadiumDetail() {
                     </button>
                     {showMap && (
                         <div>
-                            <KakaoMap lat={stadiumData.Y} lng={stadiumData.X} />
+                            <KakaoMap lat={state.stadiumY} lng={state.stadiumX} />
                         </div>
                     )}
                     <button className={styles.reserveButton} onClick={handleShowModal}>

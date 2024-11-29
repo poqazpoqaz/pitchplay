@@ -5,13 +5,50 @@ import JoinRequestModal from "../../components/JoinRequestModal";
 import styles from "./TeamApplication.module.css"
 import Alarm from "../../components/Alarm";
 import { useStore } from "../../stores/TeamStore/useStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 
 function TeamApplication() {
     const { state, actions } = useStore();
+    const { teamCode } = useParams();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
+
+    // teancode 해당하는 데이터 불러오기 
+    useEffect(() => {
+        // 데이터를 가져오는 비동기 작업
+        axios.get("/data/teamData.json")
+            .then(response => {
+                const datas = response.data; // teamData.json의 데이터 가져오기
+                const teamData = datas.find(data => data.teamCode === teamCode); // 해당 팀 찾기
+
+                if (teamData) {
+                    // 팀 데이터를 상태에 설정
+                    actions.changeTeamName(teamData.teamName);
+                    actions.changeTeamCode(teamData.teamCode);
+                    actions.changeTeamImg(teamData.teamImg);
+                    actions.changeTeamDescription(teamData.teamDescription);
+                    actions.changeTeamLevel(teamData.teamLevel);
+                    actions.changeTeamDay(teamData.teamDay);
+                    actions.changeTeamTime(teamData.teamTime);
+                    actions.changeTeamCity(teamData.teamCity);
+                    actions.changeTeamLoc(teamData.teamLoc);
+                    actions.changeTeamAge(teamData.teamAge);
+                    actions.changeTeamGender(teamData.teamGender);
+                    actions.changeCurrentMember(teamData.currentMember);
+                    actions.changeTotalMember(teamData.totalMember);
+                    actions.changeCollectionTitle(teamData.collectionTitle);
+                } else {
+                    console.error("해당 팀을 찾을 수 없습니다.");
+                }
+            })
+            .catch(error => {
+                console.error("데이터 로딩 실패:", error);
+            });
+    }, [teamCode]);
+
 
     // 모달 열기/닫기 함수
     const openModal = () => setIsModalOpen(true);
@@ -30,7 +67,7 @@ function TeamApplication() {
             <TeamDescription content={state} gridArea="teamIntro" />
             <Button color="var(--main-color)" gridArea="btn" onClick={openModal}>가입신청</Button>
             {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm} />}
-            {isAlarmOpen && <Alarm btntext="확인" isOpen={isAlarmOpen} closeAlarm={closeAlarm} onClick={closeAlarm}>가입신청이 완료되었습니다.</Alarm>}
+            {isAlarmOpen && <Alarm btntext="확인" isOpen={isAlarmOpen} closeAlarm={closeAlarm} onClick={closeAlarm} to="/team/member">가입신청이 완료되었습니다.</Alarm>}
         </div>
     );
 }

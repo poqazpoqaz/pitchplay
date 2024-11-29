@@ -1,14 +1,13 @@
+export const CHANGE_COLLECTION_NUMBER = "CHANGE_COLLECTION_NUMBER";
+export const CHANGE_RESERVATION_NUMBER = "CHANGE_RESERVATION_NUMBER";
 export const CHANGE_RESERVATION_DATE = "CHANGE_RESERVATION_DATE";
-export const CHANGE_STADIUM = "CHANGE_STADIUM";
-export const CHANGE_STADIUM_ADDRESS = "CHANGE_STADIUM_ADDRESS";
-export const CHANGE_STADIUM_IMG  = "CHANGE_STADIUM_IMG";
-export const CHANGE_STADIUM_PRICE = "CHANGE_STADIUM_PRICE";
+export const CHANGE_STADIUM_ID = "CHANGE_STADIUM_ID";
+export const CHANGE_TEAM_CODE = "CHANGE_TEAM_CODE";
 export const RESET_STATE = "RESET_STATE";
 
-
+export const changeCollectionNumber = (collectionNumber) => ({ type: CHANGE_COLLECTION_NUMBER, payload: collectionNumber })
+export const changeReservationNumber = (reservationNumber) => ({ type: CHANGE_RESERVATION_NUMBER, payload: reservationNumber });
 export const changeReservationDate = (reservationDate) => ({ type: CHANGE_RESERVATION_DATE, payload: reservationDate });
-export const changeStadium = (stadium) => ({ type: CHANGE_STADIUM, payload: stadium });
-export const changeStadiumAddress = (stadiumAddress) => ({ type: CHANGE_STADIUM_ADDRESS, payload: stadiumAddress });
-export const changeStadiumImg = (stadiumImg) => ({type: CHANGE_STADIUM_IMG, payload: stadiumImg});
-export const changeStadiumPrice = (staridumPrice) => ({ type: CHANGE_STADIUM_PRICE, payload: staridumPrice });
+export const changeStadiumId = (stadiumId) => ({ type: CHANGE_STADIUM_ID, payload: stadiumId });
+export const changeTeamCode = (teamCode) => ({ type: CHANGE_TEAM_CODE, payload: teamCode });
 export const reserState = () => ({ type: RESET_STATE });

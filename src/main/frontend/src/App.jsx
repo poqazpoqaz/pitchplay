@@ -24,6 +24,8 @@ import FAQAccordion from "./components/FAQAccordion/FAQAccordion";
 import NoticePost from "./components/NoticePost/NoticePost";
 import MypageAct05 from "./pages/Mypage/MypageAct/MypageAct05/MypageAct05";
 import Community1 from "./pages/Mypage/Community/Community1/Community1";
+import TeamMatchingDetail from "./pages/TeamMatchingDetail/TeamMatchingDetail";
+import StadiumDetail from "./pages/StadiumDetail/StadiumDetail";
 
 
 
@@ -42,13 +44,13 @@ const router = createBrowserRouter([
           { path: "member", element: <TeamCollections /> },
           { path: "guestplayer", element: <GuestRecruitment /> },
           { path: "creation", element: <TeamCreation isOpen={true} /> },
-          { path: "application", element: <TeamApplication /> }
+          { path: ":teamCode", element: <TeamApplication /> }
         ]
       },
-      { path: "/guestapplication", element: <GuestRecruitmentDetail gridArea={"section"}/> },
-      { path: "/:teamNumber/guestnew", element: <GuestRecruitmentCreation gridArea={"section"}/> }, 
+      { path: "/:postNumber/guestrecruitment", element: <GuestRecruitmentDetail gridArea={"section"}/> },
+      { path: "/:teamCode/guestnew", element: <GuestRecruitmentCreation gridArea={"section"}/> }, 
       {
-        path: "/mypage", element: <MyPage gridArea={"section"} />,
+        path: "/mypage/:id", element: <MyPage gridArea={"section"} />,
         children: [
           { path: "", element: <Mypage1 /> },
           { path: "act", element: <MypageAct gridArea={"section"} />},
@@ -56,11 +58,11 @@ const router = createBrowserRouter([
           { path: "records", element: <MypageAct02 gridArea={"section"}/>},
           { path: "teamsection", element: <MypageAct03 gridArea={"section"}/>},
           { path: "teamschedule", element: <MypageAct04 gridArea={"section"}/>},
-          { path : "members" , element : <MypageAct05 gridArea={"section"}/>},
-          { path : "posts" , element : <Community1 gridArea={"section"}/>}
+          { path : "members" , element : <MypageAct05 gridArea={"section"}/>}
         ]
       },
       { path: "/reservation", element: <ReservationPage gridArea={"section"}/> },
+      { path: "/stadium/:stadiumId", element: <StadiumDetail gridArea={"section"}/>},
       {
          path : "/notices", element: <NoticePost gridArea={"section"}/>, 
          children: [

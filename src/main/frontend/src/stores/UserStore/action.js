@@ -1,3 +1,4 @@
+export const CHANGE_USER_NUMBER = "CHANGE_USER_NUMBER";
 export const CHANGE_NAME = "CHANGE_NAME";
 export const CHANGE_PROFILE_IMG = "CHANGE_PROFILE_IMG";
 export const CHANGE_BIRTHDAY = "CHANGE_BIRTHDAY";
@@ -13,6 +14,7 @@ export const CHANGE_MY_DESCRIPTION = "CHANGE_MY_DESCRIPTION";
 export const CHANGE_USER_CASH = "CHANGE_USER_CASH";
 export const RESET_STATE = "RESET_STATE";
 
+export const changeUserNumber = (userNumber) => ({type: CHANGE_USER_NUMBER, payload: userNumber});
 export const changeName = (name) => ({type: CHANGE_NAME, payload: name});
 export const changeProfileImg = (profileImg) => ({type: CHANGE_PROFILE_IMG, payload: profileImg});
 export const changeBirthday = (birthday) => ({type: CHANGE_BIRTHDAY, payload: birthday});

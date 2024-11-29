@@ -12,39 +12,28 @@ import {
     CHANGE_TEAM_GENDER,
     CHANGE_CURRENT_MEMBER,
     CHANGE_TOTAL_MEMBER,
+    CHANGE_TEAM_MEMBER,
     CHANGE_COLLECTION_TITLE,
     RESET_STATE
 } from "./action";
 
 // 초기값 설정
 export const initialState = {
-    teamName: "피치플레이",
-    teamCode: "pitchplay",
-    teamImg: "/public/imgs/1.jpg",
-    teamDescription: "피치플레이는 피치플레이 시작때부터 만들었던 팀입니다. ",
-    teamLevel: ["비기너"],
-    teamDay: ["월", "목"],
+    teamName: "",
+    teamCode: "",
+    teamImg: "",
+    teamDescription: "",
+    teamLevel: [],
+    teamDay: [],
     teamTime: [],
-    teamCity: "서울",
-    teamLoc: "동작구",
-    teamAge: ["10대", "40대"],
-    teamGender: "혼성",
-    teamMember: [
-        { name: "박상진", role: "Manager" },
-        { name: "권은지", role: "Manager" },
-        { name: "백승우", role: "Manager" },
-        { name: "금규환", role: "Member" },
-        { name: "오재헌", role: "Member" },
-        { name: "표건우", role: "Member" },
-        { name: "유수현", role: "Member" },
-        { name: "김진혁", role: "Member" },
-        { name: "최혜린", role: "Member" },
-        { name: "장은지", role: "Member" }
-      ],
-    currentMember: 10,
-    totalMember: 20,
-    collectionTitle: "피치플레이 팀에 함께하실 분 구합니다."
-
+    teamCity: "",
+    teamLoc: "",
+    teamAge: [],
+    teamGender: "",
+    teamMember: [],
+    currentMember: "",
+    totalMember: "",
+    collectionTitle: ""
 }
 
 
@@ -78,24 +67,29 @@ export const reducer = (state, action) => {
         case CHANGE_TOTAL_MEMBER:
             return { ...state, totalMember: action.payload };
         case CHANGE_COLLECTION_TITLE:
-            return { ...state, collectionTitle: action.payload};
-         case CHANGE_TEAM_MEMBER:
-                    const { name, role, actionType } = action.payload;
-                    const updatedMembers = [...state.teamMember];
-                    if(actionType === 'delete'){
-                        const memberIndex = updatedMembers.findIndex(member => member.name === name);
-                        if (memberIndex >= 0) {
-                            updatedMembers.splice(memberIndex, 1);
-                        }
-                    }else{
-                    const memberIndex = updatedMembers.findIndex(member => member.name === name);
-                    if (memberIndex >= 0) {
-                        updatedMembers[memberIndex] = { name, role };
-                    } else {
-                        updatedMembers.push({ name, role });
-                    }
-                }
-                    return { ...state, teamMember: updatedMembers };
+            return { ...state, collectionTitle: action.payload };
+        case CHANGE_TEAM_MEMBER:
+            const { name, role, actionType } = action.payload;
+            const updatedMembers = [...state.teamMember];
+
+            // 삭제 로직
+            if (actionType === "delete") {
+                return {
+                    ...state,
+                    teamMember: updatedMembers.filter(member => member.name !== name),
+                };
+            }
+
+            const memberIndex = updatedMembers.findIndex(member => member.name === name);
+            if (memberIndex >= 0) {
+                // 수정 로직: 같은 이름의 멤버가 이미 있을 때 업데이트
+                updatedMembers[memberIndex] = { name, role };
+            } else if (actionType === "add") {
+                // 추가 로직: 같은 이름의 멤버가 없고 actionType이 "add"일 때만 추가
+                updatedMembers.push({ name, role });
+            }
+            return { ...state, teamMember: updatedMembers };
+            
         case RESET_STATE:
             return initialState;
         default:

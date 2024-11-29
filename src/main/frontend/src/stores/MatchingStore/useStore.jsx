@@ -18,40 +18,31 @@ export const useStore = () => {
 
     const actions = {
         // 매칭 번호 변경 메서드
-        changeMatchingNumber: (matchingNum) =>
-            dispatch(changeMatchingNumber(matchingNum)),
+        changeMatchingNumber: (matchingNum) =>dispatch(changeMatchingNumber(matchingNum)),
         
         // 팀 이름 변경 메서드 (팀1, 팀2)
-        changeTeamName: (matchingNum, teamId, teamName) =>
-            dispatch(changeTeamName(matchingNum, teamId, teamName)),
+        changeTeamName: (teamId, teamName) => dispatch(changeTeamName(teamId, teamName)),
 
         // 팀 이미지 변경 메서드 (팀1, 팀2)
-        changeTeamImg: (matchingNum, teamId, teamImg) =>
-            dispatch(changeTeamImg(matchingNum, teamId, teamImg)),
+        changeTeamImg: (teamId, teamImg) => dispatch(changeTeamImg(teamId, teamImg)),
 
         // 매칭 날짜 변경 메서드
-        changeMatchingDate: (matchingNum, matchingDate) =>
-            dispatch(changeMatchingDate(matchingNum, matchingDate)),
+        changeMatchingDate: (matchingDate) =>dispatch(changeMatchingDate(matchingDate)),
 
         // 매칭 장소 변경 메서드
-        changeMatchingLoc: (matchingNum, matchingLoc) =>
-            dispatch(changeMatchingLoc(matchingNum, matchingLoc)),
+        changeMatchingLoc: (matchingLoc) => dispatch(changeMatchingLoc(matchingLoc)),
 
         // 팀 구성성별 변경 메서드
-        changeTeamGender: (matchingNum, teamGender) =>
-            dispatch(changeTeamGender(matchingNum, teamGender)),
+        changeTeamGender: (teamGender) => dispatch(changeTeamGender(teamGender)),
 
         // 팀 레벨 변경 메서드
-        changeTeamLevel: (matchingNum, teamLevel) =>
-            dispatch(changeTeamLevel(matchingNum, teamLevel)),
+        changeTeamLevel: (teamLevel) =>  dispatch(changeTeamLevel(teamLevel)),
 
         // 게시물 조회수 변경 메서드
-        changeViewCount: (matchingNum, viewCount) =>
-            dispatch(changeViewCount(matchingNum, viewCount)),
+        changeViewCount: (viewCount) =>dispatch(changeViewCount(viewCount)),
 
         // 게시물 작성날짜 변경 메서드
-        changeWrittenDate: (matchingNum, writtenDate) =>
-            dispatch(changeWrittenDate(matchingNum, writtenDate)),
+        changeWrittenDate: (writtenDate) =>dispatch(changeWrittenDate(writtenDate)),
 
         // 팀 매칭 state 초기화 메서드
         resetState: () => dispatch(resetState())

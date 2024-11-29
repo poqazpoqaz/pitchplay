@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { initialState, reducer } from "./reducer.js";
 import {
+    changeUserNumber,
     changeName,
     changeProfileImg,
     changeBirthday,
@@ -21,6 +22,8 @@ export const useStore = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const actions = {
+        // 유저번호
+        changeUserNumber: (userNumber) => dispatch(changeUserNumber(userNumber)),
         // 프로필 이름 
         changeName: (name) => dispatch(changeName(name)),
         //프로필 이미지

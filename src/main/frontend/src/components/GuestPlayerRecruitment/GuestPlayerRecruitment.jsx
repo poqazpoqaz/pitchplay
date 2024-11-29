@@ -46,7 +46,7 @@ function GuestPlayerRecruitment({ content }) {
             />
 
             {content.activeStatus == "false" ? (
-                <Button color="var(--main-color)" size="medium" gridArea="btn" to="/guestapplication">
+                <Button color="var(--main-color)" size="medium" gridArea="btn" to={`/${content.collectionNumber}/guestrecruitment`}>
                     지원하기
                 </Button>
             ) : (

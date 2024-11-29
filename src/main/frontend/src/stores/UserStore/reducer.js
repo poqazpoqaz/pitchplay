@@ -1,4 +1,5 @@
 import {
+    CHANGE_USER_NUMBER,
     CHANGE_NAME,
     CHANGE_PROFILE_IMG,
     CHANGE_BIRTHDAY,
@@ -16,24 +17,27 @@ import {
 } from "./action";
 
 export const initialState = {
-    name: "김피치",
-    profileImg: "/public/imgs/team.jpg",
-    birthday: "20000101",
-    email: "pitch@kosmo.com",
-    phone: "010-1234-5678",
-    id: "pitch123",
-    nickname: "피치플레이",
-    password: "pitchplay",
-    favoriteCity: "서울 도봉구",
-    favoriteTime: "오전 시간대",
-    myTeam: "피플",
-    myDescription: "안녕하세요. 열심히 참석할 자신이 있는 피치플레이라고 합니다.",
-    userCash: "20000"
+    userNumber: "",
+    name: "",
+    profileImg: "",
+    birthday: "",
+    email: "",
+    phone: "",
+    id: "",
+    nickname: "",
+    password: "",
+    favoriteCity: "",
+    favoriteTime: "",
+    myTeam: "",
+    myDescription: "",
+    userCash: ""
 }
 
 
 export const reducer = (state, action) => {
     switch (action.type) {
+        case CHANGE_USER_NUMBER:
+            return { ...state, userNumber: action.payload };
         case CHANGE_NAME:
             return { ...state, name: action.payload };
         case CHANGE_PROFILE_IMG:

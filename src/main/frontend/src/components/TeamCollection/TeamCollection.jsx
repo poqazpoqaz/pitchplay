@@ -34,7 +34,7 @@ function TeamCollection({ content, openModal}) {
                     정원마감
                 </DisabledButton>
             )}
-            <Button color="var(--main-color)" size="medium" gridArea="btn2" to="/team/application">
+            <Button color="var(--main-color)" size="medium" gridArea="btn2" to={`/team/${content.teamCode}`}>
                 자세히 보기
             </Button>
         </motion.div>

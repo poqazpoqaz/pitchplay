@@ -4,6 +4,7 @@ import Dropdown from "../../components/Dropdown";
 import styles from "./TeamMatchings.module.css";
 import { useState, useEffect } from "react";
 import { useStore } from "../../stores/MatchingStore/useStore";
+import axios from "axios";
 
 function TeamMatchings() {
     const { state, actions } = useStore();
@@ -35,12 +36,41 @@ function TeamMatchings() {
         setSelectedOption(option); // 선택된 옵션 업데이트
     };
 
-    // 초기 및 옵션 변경 시 정렬 실행
     useEffect(() => {
-        // selectedOption이나 state가 변경될 때마다 정렬
-        const sorted = sortContents(state, selectedOption);
-        setSortedContents(sorted); // option 변경될 때마다 업데이트
-    }, [state, selectedOption])
+        // 데이터를 가져오는 비동기 작업
+        axios.get("/data/matchingData.json")
+            .then(response => {
+                const datas = response.data;
+
+                // selectedOption이나 state가 변경될 때마다 정렬 실행
+                const sorted = sortContents(datas, selectedOption);
+                setSortedContents(sorted); // 업데이트된 정렬된 데이터를 상태로 설정
+                
+                // 각각의 데이터에 대해 상태를 업데이트
+                datas.forEach((data) => {
+                    actions.changeMatchingNumber(data.matchingNum);
+
+                    // team1 정보 업데이트
+                    actions.changeTeamName("team1", data.teams.team1.name);
+                    actions.changeTeamImg("team1", data.teams.team1.src);
+
+                    // team2 정보 업데이트
+                    actions.changeTeamName("team2", data.teams.team2.name || "N/A"); // 팀 이름이 null일 경우 기본값 설정
+                    actions.changeTeamImg("team2", data.teams.team2.src || "N/A");
+
+                    actions.changeMatchingDate(data.date);
+                    actions.changeMatchingLoc(data.location);
+                    actions.changeTeamGender(data.gender);
+                    actions.changeTeamLevel(data.level);
+                    actions.changeViewCount(data.views);
+                    actions.changeWrittenDate(data.writtenDate);
+                });
+            })
+            .catch(error => {
+                console.error("데이터 로딩 실패:", error);
+            });
+    }, [state, selectedOption]); // state와 selectedOption 변경 시마다 실행
+
 
     // 더 보기 버튼 클릭 처리
     const handleLoadMore = () => {

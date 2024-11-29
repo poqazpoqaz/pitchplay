@@ -5,6 +5,7 @@ import styles from "./GuestRecruitment.module.css"
 import Button from "../../components/Button";
 import { useState, useEffect } from "react";
 import { useStore } from "../../stores/CollectionStore/useStore";
+import axios from "axios";
 
 function GuestRecruitment() {
     const { state, actions } = useStore();
@@ -41,25 +42,49 @@ function GuestRecruitment() {
         setVisibleCount((prevCount) => Math.min(prevCount + 5, sortedContents.length));
     };
 
-    //useEffect
-    // 초기 및 옵션 변경 시 정렬 실행
     useEffect(() => {
-        // selectedOption이나 state가 변경될 때마다 정렬
-        const sorted = sortContents(state, selectedOption);
-        setSortedContents(sorted); // option 변경될 때마다 업데이트
-    }, [state, selectedOption])
+        axios.get("/data/collectionsData.json")
+            .then(response => {
+                const datas = response.data;
+        
+                // selectedOption이나 state가 변경될 때마다 정렬
+                const sorted = sortContents(datas, selectedOption);
+                setSortedContents(sorted); // option 변경될 때마다 업데이트
 
-    // activeStatus 변경 감지 및 처리
-    useEffect(() => {
-        if (state.currentMember / state.totalMember === 1) {
-            actions.changeActiveStatus("true");
-        }
-    }, [state.currentMember, state.totalMember, actions]);
+                datas.forEach((data) => {
+                    // 각 데이터 항목에 대해 액션을 dispatch
+                    actions.changeTeamCode(data.teamCode);
+                    actions.changeCollectionDescription(data.collectionDescription);
+                    actions.changeCollectionTime(data.collectionTime);
+                    actions.changeCurrentMember(data.currentMember);
+                    actions.changeTotalMember(data.totalMember);
+                    actions.changeTeamName(data.teamName);
+                    actions.changeTeamImg(data.teamImg);
+                    actions.changeTeamCity(data.teamCity);
+                    actions.changeTeamLoc(data.teamLoc);
+                    actions.changeTeamGender(data.teamGender);
+                    actions.changeViewCount(data.viewCount);
+                    actions.changeActiveStatus(data.activeStatus);
+                    actions.changeWrittenDate(data.writtenDate);
+                    actions.changeTeamSize(data.teamSize);
+                    actions.changeStadium(data.stadium);
+
+                    // currentMember와 totalMember 비교 후 activeStatus 업데이트
+                    if (data.currentMember / data.totalMember === 1) {
+                        actions.changeActiveStatus("true");
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("데이터 로딩 실패:", error);
+            });
+    }, [state, selectedOption]); // state나 selectedOption 변경 시마다 실행
+
 
     return (
         <div className={styles['guestrecruitment-grid']}>
             {/* 새글작성 버튼의 경우에는 팀 리더일 경우만 렌더링될 수 있게 추후에 고쳐야함 !!!!! */}
-            <Button gridArea="btn2" color="#606060" size="large" to="/124124/guestnew">새 글 작성</Button>
+            <Button gridArea="btn2" color="#606060" size="large" to={`/${state.teamCode}/guestnew`}>새 글 작성</Button>
             <Dropdown
                 options={dropdownoption}
                 selected={selectedOption}

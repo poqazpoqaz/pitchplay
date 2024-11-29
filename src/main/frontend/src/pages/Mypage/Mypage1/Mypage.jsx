@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import Sidebar from "../../../containers/mypageSidebar/Sidebar";
 import styles from "./Mypage.module.css";
 

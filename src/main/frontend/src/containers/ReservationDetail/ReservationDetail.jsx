@@ -3,9 +3,9 @@ import styles from "./ReservationDetail.module.css";
 
 
 
-function ReservationDetail({ content, gridArea}) {
+function ReservationDetail({ reservationContent, stadiumContent, gridArea}) {
     // 날짜 포맷 변환
-    const formattedDate = new Date(content.reservationDate).toLocaleDateString('ko-KR', {
+    const formattedDate = new Date(reservationContent.reservationDate).toLocaleDateString('ko-KR', {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'
@@ -17,9 +17,9 @@ function ReservationDetail({ content, gridArea}) {
                     <p className={styles['reservation-detail-subtitle']}>경기일자</p>
                     <p className={styles['reservation-detail-text']}>{formattedDate}</p>
                     <p className={styles['reservation-detail-subtitle']}>구장이름</p>
-                    <p className={styles['reservation-detail-text']}>{content.stadium}</p>
+                    <p className={styles['reservation-detail-text']}>{stadiumContent.stadiumName}</p>
                     <p className={styles['reservation-detail-subtitle']}>구장주소</p>
-                    <p className={styles['reservation-detail-text']}>{content.stadiumAddress}</p>
+                    <p className={styles['reservation-detail-text']}>{stadiumContent.stadiumAddress}</p>
                 </PostDetailCard>
             </div>
     );

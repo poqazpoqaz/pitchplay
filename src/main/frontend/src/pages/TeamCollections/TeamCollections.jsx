@@ -6,10 +6,11 @@ import JoinRequestModal from "../../components/JoinRequestModal";
 import Alarm from "../../components/Alarm";
 import { useState, useEffect } from "react";
 import { useStore } from "../../stores/CollectionStore/useStore";
+import axios from "axios";
 
 function TeamCollections() {
     const { state, actions } = useStore();
-    
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
 
@@ -58,21 +59,45 @@ function TeamCollections() {
     };
 
     //useEffect
-    // 초기 및 옵션 변경 시 정렬 실행
     useEffect(() => {
-        // selectedOption이나 state가 변경될 때마다 정렬
-        const sorted = sortContents(state, selectedOption);
-        setSortedContents(sorted); // option 변경될 때마다 업데이트
-    }, [state, selectedOption])
-
-    // activeStatus 변경 감지 및 처리
-    useEffect(() => {
-        if (state.currentMember / state.totalMember === 1) {
-            actions.changeActiveStatus("true");
-        }
-    }, [state.currentMember, state.totalMember, actions]);
+        axios.get("/data/collectionsData.json")
+            .then(response => {
+                const datas = response.data;
 
 
+                // selectedOption이나 state가 변경될 때마다 정렬
+                const sorted = sortContents(datas, selectedOption);
+                setSortedContents(sorted); // option 변경될 때마다 업데이트
+
+                datas.forEach((data) => {
+                    // 각 데이터 항목에 대해 액션을 dispatch
+                    actions.changeTeamCode(data.teamCode);
+                    actions.changeCollectionDescription(data.collectionDescription);
+                    actions.changeCollectionTime(data.collectionTime);
+                    actions.changeCurrentMember(data.currentMember);
+                    actions.changeTotalMember(data.totalMember);
+                    actions.changeTeamName(data.teamName);
+                    actions.changeTeamImg(data.teamImg);
+                    actions.changeTeamCity(data.teamCity);
+                    actions.changeTeamLoc(data.teamLoc);
+                    actions.changeTeamGender(data.teamGender);
+                    actions.changeViewCount(data.viewCount);
+                    actions.changeActiveStatus(data.activeStatus);
+                    actions.changeWrittenDate(data.writtenDate);
+                    actions.changeTeamSize(data.teamSize);
+                    actions.changeStadium(data.stadium);
+
+                    // currentMember와 totalMember 비교 후 activeStatus 업데이트
+                    if (data.currentMember / data.totalMember === 1) {
+                        actions.changeActiveStatus("true");
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("데이터 로딩 실패:", error);
+            });
+
+    }, [state, selectedOption]); // state나 selectedOption 변경 시마다 실행
 
     return (
         <div className={styles['teamcollections-grid']}>
@@ -102,7 +127,7 @@ function TeamCollections() {
 
             {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm} />}
             {isAlarmOpen && <Alarm btntext="확인" isOpen={isAlarmOpen} closeAlarm={closeAlarm} onClick={closeAlarm}>가입신청이 완료되었습니다.</Alarm>}
-                
+
         </div>
     );
 }

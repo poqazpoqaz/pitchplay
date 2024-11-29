@@ -1,0 +1,73 @@
+[
+    {
+        "teamCode": "pitchplay1",
+        "collectionNumber": "999991",
+        "reservationNumber": "123123",
+        "reservationDate": "2024-11-25T20:00:00",
+        "stadiumId": "S210401100008601453"
+        
+    },
+    {
+        "teamCode": "soccerlove2",
+        "collectionNumber": "999992",
+        "reservationNumber": "123245",
+        "reservationDate": "2024-11-26T18:00:00",
+        "stadiumId": "S231208105143407599"
+    },
+    {
+        "teamCode": "dreamers3",
+        "collectionNumber": "999993",
+        "reservationNumber": "123145",
+        "reservationDate": "2024-11-27T19:00:00",
+        "stadiumId": "S231208160336766600"
+    },
+    {
+        "teamCode": "ulsanlight4",
+        "collectionNumber": "999994",
+        "reservationNumber": "121151",
+        "reservationDate": "2024-11-28T21:00:00",
+        "stadiumId": "S231211171320885915"
+    },
+    {
+        "teamCode": "gwangjutiger5",
+        "collectionNumber": "999995",
+        "reservationNumber": "100001",
+        "reservationDate": "2024-11-29T20:00:00",
+        "stadiumId": "S231030140754182439"
+    },
+    {
+        "teamCode": "incheoneagle6",
+        "collectionNumber": "999996",
+        "reservationNumber": "102842",
+        "reservationDate": "2024-11-30T18:00:00",
+        "stadiumId": "S231030133625219222"
+    },
+    {
+        "teamCode": "suwonblues7",
+        "collectionNumber": "999997",
+        "reservationNumber": "190284",
+        "reservationDate": "2024-12-01T19:00:00",
+        "stadiumId": "S231030134311132377"
+    },
+    {
+        "teamCode": "daegurunners8",
+        "collectionNumber": "999998",
+        "reservationNumber": "139482",
+        "reservationDate": "2024-12-02T20:00:00",
+        "stadiumId": "S231030130758753552"
+    },
+    {
+        "teamCode": "seoulwind9",
+        "collectionNumber": "999999",
+        "reservationNumber": "105823",
+        "reservationDate": "2024-12-03T18:00:00",
+        "stadiumId": "S231030140040048038"
+    },
+    {
+        "teamCode": "jejurions10",
+        "collectionNumber": "888888",
+        "reservationNumber": "135274",
+        "reservationDate": "2024-12-04T21:00:00",
+        "stadiumId": "S231030132946032905"
+    }
+]
