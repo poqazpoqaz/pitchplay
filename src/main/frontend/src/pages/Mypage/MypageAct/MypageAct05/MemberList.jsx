@@ -103,16 +103,51 @@ export const SelectRole = styled.select`
   width: 100%;
 `;
 
+// 알림 스타일
+export const Notification = styled.div`
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  z-index: 1000;
+  display: ${(props) => (props.visible ? 'block' : 'none')};
+  animation: slideIn 0.5s ease-out;
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-50%) translateY(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  }
+`;
+
 const MemberList = ({ members, onChangeRole, onDelete }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null); // 드롭다운 열고 닫기 상태
   const [selectedRole, setSelectedRole] = useState(''); // 직위 선택 상태
+  const [notification, setNotification] = useState(''); // 알림 메시지 상태
 
   const handleDropdownToggle = (index) => {
     setDropdownOpen(dropdownOpen === index ? null : index); // 선택한 드롭다운 열기/닫기
   };
 
   const handleRoleChange = (name, newRole) => {
-    onChangeRole(name, newRole); // 역할 변경
+    // 역할 변경 (백엔드 연동 없이 클라이언트에서만 처리)
+    setNotification(`${name}님의 직위가 ${newRole}로 변경되었습니다.`);
+    setTimeout(() => {
+      setNotification(''); // 알림 3초 후 사라지도록 설정
+    }, 3000);
+
+    // 역할 변경 상태 업데이트
+    onChangeRole(name, newRole);
     setDropdownOpen(null); // 드롭다운 닫기
   };
 
@@ -130,39 +165,42 @@ const MemberList = ({ members, onChangeRole, onDelete }) => {
   };
 
   return (
-    <Container>
-      {members.map((member, index) => (
-        !member.deleted && ( // 'deleted'가 true인 멤버는 렌더링되지 않음
-          <MemberBox key={index}>
-            <OptionsButton onClick={() => handleDropdownToggle(index)}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </OptionsButton>
+    <>
+      <Notification visible={notification !== ''}>{notification}</Notification>
+      <Container>
+        {members.map((member, index) => (
+          !member.deleted && ( // 'deleted'가 true인 멤버는 렌더링되지 않음
+            <MemberBox key={index}>
+              <OptionsButton onClick={() => handleDropdownToggle(index)}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </OptionsButton>
 
-            {dropdownOpen === index && (
-              <Dropdown>
-                <DropdownItem onClick={() => handleDelete(member.name)}>멤버 추방</DropdownItem>
-                <DropdownItem>
-                  <SelectRole
-                    value={selectedRole || member.role}
-                    onChange={(e) => handleSelectChange(e, member)}
-                  >
-                    <option value="Member">Member</option>
-                    <option value="Manager">Manager</option>
-                  </SelectRole>
-                </DropdownItem>
-              </Dropdown>
-            )}
+              {dropdownOpen === index && (
+                <Dropdown>
+                  <DropdownItem onClick={() => handleDelete(member.name)}>멤버 추방</DropdownItem>
+                  <DropdownItem>
+                    <SelectRole
+                      value={selectedRole || member.role}
+                      onChange={(e) => handleSelectChange(e, member)}
+                    >
+                      <option value="Member">Member</option>
+                      <option value="Manager">Manager</option>
+                    </SelectRole>
+                  </DropdownItem>
+                </Dropdown>
+              )}
 
-            <MemberInfo>
-              <p>{member.name}</p>
-              <p>{member.role}</p>
-            </MemberInfo>
-          </MemberBox>
-        )
-      ))}
-    </Container>
+              <MemberInfo>
+                <p>{member.name}</p>
+                <p>{member.role}</p>
+              </MemberInfo>
+            </MemberBox>
+          )
+        ))}
+      </Container>
+    </>
   );
 };
 

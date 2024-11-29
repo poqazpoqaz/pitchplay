@@ -141,7 +141,7 @@ const Sidebar = ({ avatar, userName, userEmail, gridArea }) => {
           <ListItem>
             <img src={commnuity} alt="커뮤니티" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="">커뮤니티</Link>
+            <Link href="/mypage/posts">커뮤니티</Link>
           </ListItem>
           <ListItem>
             <img src={setting} alt="설정" />

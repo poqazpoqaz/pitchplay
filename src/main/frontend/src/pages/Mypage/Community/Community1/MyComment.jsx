@@ -1,20 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-const Container = styled.div`
+
+// 스타일링
+const Top1 = styled.div`
   padding: 30px;
   background-color: #f9fafc;
   border-radius: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-top : 30px;
 `;
 
 const Subtitle = styled.h1`
   margin-bottom: 25px;
-    font-size: 24px;
+  font-size: 24px;
   color: #333;
   font-weight: bold;
 `;
-
 
 const Box = styled.div`
   background-color: #ffffff;
@@ -39,18 +41,24 @@ const Box = styled.div`
     color: #555;
     margin: 0;
   }
-    p {
-    margin :0;
-    font-weight : bold;
-    color : #555;
-    margin : 0;
-    }
+`;
+
+const BoxCal = styled.div`
+  font-size: 14px;
+  color: #888;
+  margin-right: 15px;
+
+  p {
+    margin: 0;
+    font-weight: bold;
+  }
 `;
 
 const BtnEnd = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
+  margin-top: 20px;
 `;
 
 const LinkButton = styled(Link)`
@@ -72,20 +80,22 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const PostsSection = ({ posts = [], comment = [] }) => {
+const PostsSection = ({ posts = [] }) => {
   return (
-    <Container>
-      <Subtitle>내가 쓴 글</Subtitle>
-      <Box>
-        <p>게시물 수 : {posts.length > 0 ? posts.length : "게시물 내용 없음"}</p>
-      </Box>
-      <Box>
-        <p>댓글 수 : {comment.length > 0 ? comment.length : "댓글 내용 없음"}</p>
-      </Box>
+    <Top1>
+      <Subtitle>내가 쓴 댓글</Subtitle>
+      {posts.slice(0, 2).map((post, index) => (
+        <Box key={index}>
+          <h1>{post?.title || '제목 정보 없음'}</h1>
+          <BoxCal>
+            <p>{post?.date || '날짜 정보 없음'}</p>
+          </BoxCal>
+        </Box>
+      ))}
       <BtnEnd>
-        <LinkButton to="/mypage/posts">보러가기</LinkButton>
+        <LinkButton to="/mypage/posts">더 보기</LinkButton>
       </BtnEnd>
-    </Container>
+    </Top1>
   );
 };
 
