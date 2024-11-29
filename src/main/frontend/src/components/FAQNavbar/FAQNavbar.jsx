@@ -38,7 +38,7 @@ function FAQNavbar({ gridArea }) {
                 isActive={activeButton === 'btn3'}
                 onClick={() => handleButtonClick('btn3')}
                 src="/notices/feedback"
-            >사이트 건의/제보</DefaultButton>
+            >건의/제보</DefaultButton>
 
             <DefaultButton
                 color='var(--main-color)'

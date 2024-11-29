@@ -7,30 +7,29 @@ import Input from "../../components/Input"
 import Button from "../../components/Button"
 import { useState } from "react";
 import { Link } from "react-router-dom"
-import { style } from "framer-motion/client"
+import { useStore } from "../../stores/UserStore/useStore";
 
 function Login({ gridArea }) {
-    const [id, setId] = useState("");
-    const [password, setPassword] = useState("");
+    const {state, actions} = useStore();
     const [isChecked, setIsChecked] = useState(false);
 
     const handleIdChange = (e) => {
-        setId(e.target.value);
+        actions.changeId(e.target.value);
     };
 
     const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
+        actions.changePassword(e.target.value);
     };
 
     const handleLogin = async () => {
-        if (!id || !password) {
+        if (!state.id || !state.password) {
             alert("아이디와 비밀번호를 입력해주세요.");
             return;
         }
 
         await axios.post("보낼곳주소!!", {
-            id: id,
-            pw: pw
+            id: state.id,
+            pw: state.password
         }).then(response => {
             if (response.status == 200) {
                 //  actions랑 연동할 로직 !!!! 
@@ -52,7 +51,7 @@ function Login({ gridArea }) {
                 type="text"
                 placeholder="아이디"
                 onChange={handleIdChange}
-                value={id}
+                value={state.id}
                 gridArea="inp1"
                 size="small"
             />
@@ -61,7 +60,7 @@ function Login({ gridArea }) {
                 type="password"
                 placeholder="비밀번호"
                 onChange={handlePasswordChange}
-                value={password}
+                value={state.password}
                 gridArea="inp2"
                 size="small"
             />

@@ -13,9 +13,9 @@
     .post-grid {
         grid-template:
             '... ... ...' 20px
-            '... nav ...' 200px
+            '... nav ...' 1fr
             '... ... ...' 20px
-            '... posts ...' 1fr
+            '... posts ...' 10fr
             '... ... ...' 20px / 20px 1fr 20px;
     }
 

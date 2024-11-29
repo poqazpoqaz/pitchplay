@@ -5,11 +5,11 @@
     '... btn1 ... btn2 ... btn3 ... btn4 ...'80px
     '... ... ... ... ... ... ... ... ...' 1fr
     '... search search search search search search search ...' 1fr 
-    '... ... ... ... ... ... ... ... ...' 100px / 1fr 1fr 30px 1fr 30px 1fr 30px 1fr 1fr;
+    '... ... ... ... ... ... ... ... ...' 100px / 1fr 5fr 30px 5fr 30px 5fr 30px 5fr 1fr;
     ;
     border: 3px solid #F1F1F1;
-    padding: 10px;
     border-radius: 10px;
+    padding: 10px;
 }
 
 
@@ -26,12 +26,16 @@
 
     .navbar-grid{
         grid-template:
-        '... ... ... ... ... ... ... ... ...' 1fr
-        '... btn1 ... btn2 ... btn3 ... btn4 ...'80px
-        '... ... ... ... ... ... ... ... ...' 1fr
-        '... search search search search search search search ...' 1fr 
-        '... ... ... ... ... ... ... ... ...' 1fr / 1fr 1fr 30px 1fr 30px 1fr 30px 1fr 1fr;
-        
+        'btn1' 1fr
+        '...' 10px
+        'btn2' 1fr
+        '...' 10px
+        'btn3' 1fr
+        '...' 10px
+        'btn4' 1fr
+        '...' 10px
+        'search' 1fr / 1fr;       
+
     }
 
 }

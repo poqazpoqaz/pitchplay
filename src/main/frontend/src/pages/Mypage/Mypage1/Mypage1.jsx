@@ -3,22 +3,23 @@ import styles from "./Mypage1.module.css";
 import Top1 from './Top1';
 import Top2 from './Top2';
 import Bottom from './Bottom';
-import { useStore } from '../../../stores/MypageStore/useStore';
+import { useStore } from "../../../stores/UserStore/useStore"
 import axios from 'axios';
 
 const Mypage1 = ({ username, usercash }) => {
     const [isEditable, setIsEditable] = useState(false);
     const [fileInput, setFileInput] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
+
     const { state, actions } = useStore();
 
     const formFields = [
         { label: "이름", name: "name", value: state.name, disabled: true },
         { label: "닉네임", name: "nickname", value: state.nickname, disabled: false },
-        { label: "선호 지역", name: "region", value: state.region, disabled: false },
-        { label: "선호 시간", name: "time", value: state.time, disabled: false },
-        { label: "나의 팀", name: "team", value: state.team, disabled: true },
-        { label: "소개하기", name: "intro", value: state.intro, disabled: false },
+        { label: "선호 지역", name: "region", value: state.favoriteCity, disabled: false },
+        { label: "선호 시간", name: "time", value: state.favoriteTime, disabled: false },
+        { label: "나의 팀", name: "team", value: state.myTeam, disabled: true },
+        { label: "소개하기", name: "intro", value: state.myDescription, disabled: false },
     ];
 
     // 이미지 변경 처리
@@ -67,23 +68,25 @@ const Mypage1 = ({ username, usercash }) => {
         }
     };
 
-    const toggleEdit = async () => {
-        const newEditableState = !isEditable;
-        setIsEditable(newEditableState);
-        actions.toggleEditMode();
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
 
-        if (!newEditableState) {
+        // 'name'과 'team'은 변경 불가하므로 처리하지 않음
+        if (name === "nickname") actions.changeNickname(value);
+        else if (name === "region") actions.changeFavoriteCity(value);
+        else if (name === "time") actions.changeFavoriteTime(value);
+        else if (name === "intro") actions.changeMyDescription(value);
+
+    };
+
+    const toggleEdit = async () => {
+        setIsEditable(!isEditable);
+
+        if (!isEditable) {
             await saveProfileData(state);
         }
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        // 'name'과 'team'은 변경 불가하므로 처리하지 않음
-        if (name !== "name" && name !== "team") {
-            actions.updateFormData(name, value);
-        }
-    };
 
     return (
         <div>
@@ -95,7 +98,7 @@ const Mypage1 = ({ username, usercash }) => {
                         handleImageChange={handleImageChange}
                         handleFileUpload={handleFileUpload}
                     />
-                    <Top2 username={username} usercash={usercash} />
+                    <Top2 username={state.name} usercash={state.userCash} />
                     <Bottom
                         formFields={formFields}
                         isEditable={isEditable}
