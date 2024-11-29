@@ -5,15 +5,11 @@ import LabelInput from "../../components/LabelInput";
 import { emailPattern, phonePattern, pwPattern, namePattern, idPattern, nicknamePattern, birthPattern } from "../../utils/regExp"
 import Button from "../../components/Button";
 import styles from "./Register.module.css";
+import {useStore} from "../../stores/UserStore/useStore";
 
 function Register({gridArea}) {
-    const [name, setName] = useState('');
-    const [birthday, setBirthday] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [id, setId] = useState('');
-    const [nickname, setNickname] = useState('');
-    const [password, setPassword] = useState('');
+    const {state, actions} = useStore();
+
     const [confirmPassword, setConfirmPassword] = useState('');
     const [authCode, setAuthCode] = useState('');
 
@@ -30,38 +26,37 @@ function Register({gridArea}) {
 
     // 유효성 검사 함수
     const handleName = (e) => {
-        setName(e.target.value);
+        actions.changeName(e.target.value);
         setIsNameValid(namePattern.test(e.target.value)); // namePattern으로 유효성 검사
     };
 
     const handleBirthday = (e) => {
-        setBirthday(e.target.value);
+        actions.changeBirthday(e.target.value);
         setIsBirthdayValid(birthPattern.test(e.target.value)); // birthPattern으로 유효성 검사
     };
 
     const handlePhone = (e) => {
-
-        setPhone(e.target.value);
+        actions.changePhone(e.target.value);
         setIsPhoneValid(phonePattern.test(e.target.value)); // phonePattern으로 유효성 검사
     };
 
     const handleEmail = (e) => {
-        setEmail(e.target.value);
+        actions.changeEmail(e.target.value);
         setIsEmailValid(emailPattern.test(e.target.value)); // emailPattern으로 유효성 검사
     };
 
     const handleId = (e) => {
-        setId(e.target.value);
+        actions.changeId(e.target.value);
         setIsIdValid(idPattern.test(e.target.value)); // idPattern으로 유효성 검사
     };
 
     const handleNickname = (e) => {
-        setNickname(e.target.value);
+        actions.changeNickname(e.target.value);
         setIsNicknameValid(nicknamePattern.test(e.target.value)); // nicknamePattern으로 유효성 검사
     };
 
     const handlePassword = (e) => {
-        setPassword(e.target.value);
+        actions.changePassword(e.taget.value);
         setIsPasswordValid(pwPattern.test(e.target.value)); // pwPattern으로 유효성 검사
     };
 
@@ -95,7 +90,7 @@ function Register({gridArea}) {
                     type="text"
                     placeholder="예) 홍길동"
                     onChange={handleName}
-                    value={name}
+                    value={state.name}
                     isvalid={isNameValid}
                     gridArea="inp1"
                     size="small"
@@ -107,7 +102,7 @@ function Register({gridArea}) {
                     type="text"
                     placeholder="예) YYYYMMDD"
                     onChange={handleBirthday}
-                    value={birthday}
+                    value={state.birthday}
                     isvalid={isBirthdayValid}
                     gridArea="inp2"
                     size="small"
@@ -119,7 +114,7 @@ function Register({gridArea}) {
                     type="tel"
                     placeholder="예) 010-0000-0000"
                     onChange={handlePhone}
-                    value={phone}
+                    value={state.phone}
                     isvalid={isPhoneValid}
                     gridArea="inp3"
                     size="small"
@@ -131,7 +126,7 @@ function Register({gridArea}) {
                     type="email"
                     placeholder="예) kosmo@kosmo.com"
                     onChange={handleEmail}
-                    value={email}
+                    value={state.email}
                     isvalid={isEmailValid}
                     gridArea="inp4"
                     size="small"
@@ -169,7 +164,7 @@ function Register({gridArea}) {
                     type="text"
                     placeholder="예) kosmo"
                     onChange={handleId}
-                    value={id}
+                    value={state.id}
                     isvalid={isIdValid}
                     gridArea="inp6"
                     size="small"
@@ -187,7 +182,7 @@ function Register({gridArea}) {
                     type="text"
                     placeholder="예) 코스모스"
                     onChange={handleNickname}
-                    value={nickname}
+                    value={state.nickname}
                     isvalid={isNicknameValid}
                     gridArea="inp7"
                     size="small"
@@ -205,7 +200,7 @@ function Register({gridArea}) {
                     type="password"
                     placeholder="예) 영문 숫자 조합 8~16자"
                     onChange={handlePassword}
-                    value={password}
+                    value={state.password}
                     isvalid={isPasswordValid}
                     gridArea="inp8"
                     size="small"
