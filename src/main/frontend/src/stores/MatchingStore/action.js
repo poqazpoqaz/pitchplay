@@ -53,3 +53,7 @@ export const changeWrittenDate = (matchingNum, writtenDate) => ({
     type: CHANGE_WRITTEN_DATE,
     payload: { matchingNum, writtenDate }
 });
+
+export const resetState = () => ({
+    type: RESET_STATE
+});
