@@ -6,10 +6,10 @@ import styles from "./GuestRecruitmentCreationDetail.module.css";
 import LabelInput from "../../components/LabelInput";
 
 
-function GuestRecruitmentCreationDetail({ editorContent, setEditorContent, quillRef, recruitContent, teamContent, gridArea, handleMemberChange, isValid, collectionContent }) {
+function GuestRecruitmentCreationDetail({ editorContent, setEditorContent, quillRef, stadiumContent, teamContent, gridArea, handleMemberChange, isValid, collectionContent }) {
     return (
         <div style={{ gridArea: gridArea }}>
-            <PostDetailCard color="#267815" title={recruitContent.stadium}>
+            <PostDetailCard color="#267815" title={stadiumContent.stadiumName}>
                 <div className={styles['recruitment-creation-grid']}>
                     <h1 style={{ gridArea: "title" }}>용병모집 글 작성</h1>
                     <TeamProfile content={teamContent} gridArea="profile" />

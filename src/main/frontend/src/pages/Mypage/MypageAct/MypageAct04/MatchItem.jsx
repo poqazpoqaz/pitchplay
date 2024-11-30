@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './MatchItem.module.css';
 
-const MatchItem = ({ matches }) => {
+const MatchItem = ({ matches }) => {  
   return (
     <div className={styles.itembox}>
       {matches.map((match, index) => (

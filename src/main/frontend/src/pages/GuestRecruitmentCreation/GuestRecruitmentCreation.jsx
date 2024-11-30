@@ -213,7 +213,7 @@ function GuestRecruitmentCreation({ gridArea }) {
                 quillRef={quillRef}
                 editorContent={editorContent}
                 setEditorContent={setEditorContent}
-                recruitContent={reservationState}
+                stadiumContent={stadiumState}
                 teamContent={teamStore}
                 collectionContent={collectionStore}
                 handleMemberChange={handleMemberChange}

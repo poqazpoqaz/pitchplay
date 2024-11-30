@@ -10,24 +10,28 @@ const LinkButton = styled(Link)`
   border-radius: 5px;
   font-size: 22px;
   cursor: pointer;
+  padding: 10px;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #066DFF;
+    color: var(--main-color);
   }
 `;
 const LinkButton1 = styled(Link)`
   display: inline-block;
-  color: blue;
+  font-weight: bold;
+  color: var(--main-color);
   text-decoration: none;
   text-align: center;
   border-radius: 5px;
+  background: #e9ecef;
+  padding: 10px;
   font-size: 22px;
   cursor: pointer;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #066DFF;
+    color: var(--main-color);
   }
 `;
 
