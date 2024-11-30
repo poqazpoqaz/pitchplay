@@ -43,10 +43,10 @@ const Linkb = ()=>{
     return (
         <Gapgap>
         <li>
-            <LinkButton to="/mypage/teamsection">팀 정보</LinkButton>
+            <LinkButton to="/mypage/pitch123/teamsection">팀 정보</LinkButton>
         </li>
         <li>
-            <LinkButton1 to="/mypage/teamschedule">팀 일정</LinkButton1>
+            <LinkButton1 to="/mypage/pitch123/teamschedule">팀 일정</LinkButton1>
         </li>
     </Gapgap>
     )

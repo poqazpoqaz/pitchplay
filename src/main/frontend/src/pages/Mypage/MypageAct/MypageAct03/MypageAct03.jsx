@@ -1,44 +1,92 @@
-import React from 'react';
 import Teaminfo from './Teaminfo';
 import styles from './MypageAct03.module.css';
-import { useStore } from '../../../../stores/TeamStore/useStore';
 import Teamimg from './Teamimg';
-import { Link } from 'react-router-dom';
+
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useStore as UserStore } from "../../../../stores/UserStore/useStore";
+import { useStore as TeamStore } from "../../../../stores/TeamStore/useStore";
+import axios from 'axios';
 
 
-const MypageAct03 = ({gridArea}) => {
-    const { state } = useStore();
+const MypageAct03 = ({ gridArea }) => {
+  const { id } = useParams();
+  const { state: userState, actions: userActions } = UserStore();
+  const { state: teamState, actions: teamActions } = TeamStore();
 
-    const teamInfo = {
-        image: state.teamImg,
-        name: state.teamName,
-        location: `${state.teamCity} ${state.teamLoc}`,
-        teamMembers: state.totalMember,
-        teamCode: state.teamCode,
-    };
+  // userid(파라미터)에 해당하는 유저의 팀 설정
+  useEffect(() => {
+    axios.get("/data/userData.json")
+      .then(response => {
+        const datas = response.data;
+        const selectedUser = datas.find(data => data.id == id);
+        userActions.changeMyTeam(selectedUser.myTeam);
+      })
+  }, [id]);
 
-    const formFields = [
-        { label: "팀 이름", name: "teamName", value: state.teamName },
-        { label: "지역", name: "cityloc", value: `${state.teamCity} ${state.teamLoc}` },
-        { label: "주 활동 요일", name: "teamDay", value: state.teamDay },
-        { label: "성별", name: "gender", value: state.teamGender },
-        { label: "주요 나이대", name: "age", value: state.teamAge },
-        { label: "레벨", name: "level", value: state.teamLevel },
-        { label: "팀 소개", name: "intro", value: state.teamDescription },
+  // 팀 정보 저장 ** 나중에 백에서 불러올때는 내가 속한 팀만 
+  useEffect(() => {
+    if (userState.myTeam) {
+      axios.get("/data/teamData.json")
+        .then(response => {
+          const datas = response.data;
+          const selectedTeam = datas.find(data => data.teamName === userState.myTeam);
 
-    ];
+          if (selectedTeam) {
+            teamActions.changeTeamName(selectedTeam.teamName);
+            teamActions.changeTeamCode(selectedTeam.teamCode);
+            teamActions.changeTeamImg(selectedTeam.teamImg);
+            teamActions.changeTeamDescription(selectedTeam.teamDescription);
+            teamActions.changeTeamLevel(selectedTeam.teamLevel);
+            teamActions.changeTeamDay(selectedTeam.teamDay);
+            teamActions.changeTeamTime(selectedTeam.teamTime);
+            teamActions.changeTeamCity(selectedTeam.teamCity);
+            teamActions.changeTeamLoc(selectedTeam.teamLoc);
+            teamActions.changeTeamAge(selectedTeam.teamAge);
+            teamActions.changeTeamGender(selectedTeam.teamGender);
+            teamActions.changeCurrentMember(selectedTeam.currentMember);
+            teamActions.changeTotalMember(selectedTeam.totalMember);
+            teamActions.changeTeamMember(selectedTeam.teamMembers);
+          } else {
+            console.error("팀을 찾을 수 없습니다.");
+          }
+        })
+        .catch(err => {
+          console.error("팀 데이터를 불러오는 중 오류 발생:", err);
+        });
+    }
+  }, [userState.myTeam]);
+
+  const teamInfo = {
+    image: teamState.teamImg,
+    name: teamState.teamName,
+    location: `${teamState.teamCity} ${teamState.teamLoc}`,
+    teamMembers: teamState.totalMember,
+    teamCode: teamState.teamCode,
+  };
+
+  const formFields = [
+    { label: "팀 이름", name: "teamName", value: teamState.teamName },
+    { label: "지역", name: "cityloc", value: `${teamState.teamCity} ${teamState.teamLoc}` },
+    { label: "주 활동 요일", name: "teamDay", value: teamState.teamDay },
+    { label: "성별", name: "gender", value: teamState.teamGender },
+    { label: "주요 나이대", name: "age", value: teamState.teamAge },
+    { label: "레벨", name: "level", value: teamState.teamLevel },
+    { label: "팀 소개", name: "intro", value: teamState.teamDescription },
+
+  ];
 
 
   return (
     <div style={{ gridArea: gridArea }}>
-    <div className={styles.content}>
-      <h1>마이페이지 &gt; 내활동 &gt; 예약한 경기 목록</h1>
-      <div className={styles.actbox}>
-        <Teamimg teamInfo={teamInfo}/>
-      <Teaminfo formFields={formFields}/>
+      <div className={styles.content}>
+        <h1>마이페이지 &gt; 내활동 &gt; 예약한 경기 목록</h1>
+        <div className={styles.actbox}>
+          <Teamimg teamInfo={teamInfo} />
+          <Teaminfo formFields={formFields} />
+        </div>
       </div>
     </div>
-  </div>
 
   );
 };

@@ -54,8 +54,8 @@ const Value = styled.div`
   padding: 0.5rem;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
-  height: ${(props) => (props.textarea ? '40px' : '40px')};
-  resize: ${(props) => (props.textarea ? 'none' : 'auto')};
+  height: ${(props) => (props.textarea == "true" ? '40px' : '40px')};
+  resize: ${(props) => (props.textarea == "true"  ? 'none' : 'auto')};
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 카드형 그림자 */
   transition: transform 0.3s ease;
@@ -99,12 +99,12 @@ const Bottom = ({ formFields }) => {
         {formFields.map((field) => (
           <FormItem key={field.name} className={field.name === "teamIntro" ? "textarea" : ""}>
             <Label>{field.label}</Label>
-            <Value textarea={field.name === "teamIntro"}>{field.value}</Value>
+            <Value textarea={field.name === "teamIntro" ? "true" : "false"}>{field.value}</Value>
           </FormItem>
         ))}
       </FormList>
       <BtnEnd>
-        <LinkButton to="/mypage/members">
+        <LinkButton to="/mypage/pitch123/dreamers3/members">
         멤버 보기
         </LinkButton>
       </BtnEnd>

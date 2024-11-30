@@ -93,7 +93,7 @@ const TeamSection = ({ teamInfo }) => {
         </TeamDetails>
       </Top3Item>
       <BtnEnd>
-        <LinkButton to="/mypage/teamsection">나의 팀</LinkButton>
+        <LinkButton to="/mypage/pitch123/teamsection">나의 팀</LinkButton>
       </BtnEnd>
     </Container>
   );

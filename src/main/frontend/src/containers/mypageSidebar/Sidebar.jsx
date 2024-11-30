@@ -100,7 +100,7 @@ const Link = styled.a`
 
 
 // Sidebar Component
-const Sidebar = ({ avatar, userName, userEmail, gridArea }) => {
+const Sidebar = ({ userState, gridArea }) => {
 
   const handleLogout = async () => {
     try {
@@ -120,10 +120,10 @@ const Sidebar = ({ avatar, userName, userEmail, gridArea }) => {
   return (
     <SidebarContainer style={{gridArea: gridArea}}>
       <Sidetop>
-        <TopImg src={pachiImage} alt="User Avatar" />
+        <TopImg src={userState.profileImg} alt="User Avatar" />
         <UserInfo>
-          <p className="username">{userName}박상진</p>
-          <p className="useremail">{userEmail}kosmo147@kosmo.com</p>
+          <p className="username">{userState.name}</p>
+          <p className="useremail">{userState.email}</p>
         </UserInfo>
       </Sidetop>
       <Sidemid>
@@ -131,17 +131,17 @@ const Sidebar = ({ avatar, userName, userEmail, gridArea }) => {
           <ListItem>
             <img src={myinfo} alt="내 정보" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="/mypage">내 정보</Link>
+            <Link href="/mypage/pitch123">내 정보</Link>
           </ListItem>
           <ListItem>
             <img src={myactivity} alt="내 활동" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="/mypage/act">내 활동</Link>
+            <Link href="/mypage/pitch123/act">내 활동</Link>
           </ListItem>
           <ListItem>
             <img src={commnuity} alt="커뮤니티" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="/mypage/posts">커뮤니티</Link>
+            <Link href="/mypage/pitch123/posts">커뮤니티</Link>
           </ListItem>
           <ListItem>
             <img src={setting} alt="설정" />
@@ -151,7 +151,7 @@ const Sidebar = ({ avatar, userName, userEmail, gridArea }) => {
         </List>
       </Sidemid>
       <Sidebottom>
-        <BotImg src={pachiImage} alt="User Avatar" />
+        <BotImg src={userState} alt="User Avatar" />
         <Button onClick={handleLogout}>로그아웃</Button>
       </Sidebottom>
     </SidebarContainer>

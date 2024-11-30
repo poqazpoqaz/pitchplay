@@ -48,8 +48,8 @@ const Input = styled.input`
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  height: ${(props) => (props.textarea ? '100px' : 'auto')};
-  resize: ${(props) => (props.textarea ? 'none' : 'auto')};
+  height: ${(props) => (props.textarea == "true" ? '100px' : 'auto')};
+  resize: ${(props) => (props.textarea == "true" ? 'none' : 'auto')};
 `;
 
 const EditButton = styled.button`
@@ -78,7 +78,7 @@ const Bottom = ({ formFields, isEditable, handleInputChange, toggleEdit }) => {
               value={field.value}
               onChange={handleInputChange}
               disabled={!isEditable}
-              textarea={field.name === "intro"}
+              textarea={field.name == "intro" ? "true" : "false"}
             />
           </FormItem>
         ))}

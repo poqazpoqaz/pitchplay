@@ -41,7 +41,7 @@ const BoxCal = styled.span`
 
 `;
 
-const MatcheList = ({ matches = [] }) => {
+const MatcheList = ({ matches }) => {
   // 오늘 날짜 가져오기
   const today = new Date();
   today.setHours(0, 0, 0, 0); 

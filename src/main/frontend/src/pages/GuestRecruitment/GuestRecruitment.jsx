@@ -78,7 +78,7 @@ function GuestRecruitment() {
             .catch(error => {
                 console.error("데이터 로딩 실패:", error);
             });
-    }, [state, selectedOption]); // state나 selectedOption 변경 시마다 실행
+    }, [selectedOption]); //selectedOption 변경 시마다 실행
 
 
     return (

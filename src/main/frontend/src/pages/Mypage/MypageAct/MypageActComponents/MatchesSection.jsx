@@ -78,11 +78,11 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const MatchesSection = ({ matches = [] }) => {
+const MatchesSection = ({ matches }) => {
   return (
     <Top1>
       <Subtitle>예약한 경기 목록</Subtitle>
-      {matches.slice(0, 2).map((match, index) => (
+      {matches.map((match, index) => (
         <Box key={index}>
           <h1>{match?.location || '위치 정보 없음'}</h1>
           <BoxCal>
@@ -91,7 +91,7 @@ const MatchesSection = ({ matches = [] }) => {
         </Box>
       ))}
       <BtnEnd>
-        <LinkButton to="/mypage/matches">더 보기</LinkButton>
+        <LinkButton to="/mypage/pitch123/matches">더 보기</LinkButton>
       </BtnEnd>
     </Top1>
   );

@@ -8,7 +8,14 @@ export const Container = styled.div`
   gap: 20px;
   padding: 20px;
   width: 100%; // 전체 너비를 사용
-  box-sizing: border-box;
+
+  @media (max-width: 1024px) {
+  grid-template-columns: repeat(3, 1fr); // 화면 크기가 작아지면 3칸으로 변경
+  }
+
+  @media (max-width: 760px) {
+  grid-template-columns: repeat(2, 1fr); // 화면 크기가 작아지면 2칸으로 변경
+  }
 `;
 
 // 팀원 카드 스타일
@@ -71,23 +78,27 @@ export const OptionsButton = styled.button`
 
 // 드롭다운 메뉴
 export const Dropdown = styled.div`
-  position: absolute;
-  top: 30px;
-  right: 10px;
+  position: relative;
+  right: 10%;
+  bottom: 5%;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
-  width: 150px;
+  padding: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   z-index: 10;
 `;
 
 // 드롭다운 아이템
 export const DropdownItem = styled.div`
-  padding: 8px 12px;
   cursor: pointer;
   font-size: 14px;
   color: #333;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid #ddd; 
+  border-radius: 5px;
+  margin-bottom: 5px;
   
   &:hover {
     background-color: #f0f0f0;
@@ -96,11 +107,16 @@ export const DropdownItem = styled.div`
 
 // 셀렉트 박스 스타일
 export const SelectRole = styled.select`
-  padding: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  margin: 0 auto;
+  padding: 5px;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-top: 8px;
-  width: 100%;
+   
+  &:hover {
+  background-color: #f0f0f0;
+  }
 `;
 
 // 알림 스타일
@@ -130,7 +146,7 @@ export const Notification = styled.div`
   }
 `;
 
-const MemberList = ({ members, onChangeRole, onDelete }) => {
+const MemberList = ({ members, actions }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null); // 드롭다운 열고 닫기 상태
   const [selectedRole, setSelectedRole] = useState(''); // 직위 선택 상태
   const [notification, setNotification] = useState(''); // 알림 메시지 상태
@@ -139,65 +155,75 @@ const MemberList = ({ members, onChangeRole, onDelete }) => {
     setDropdownOpen(dropdownOpen === index ? null : index); // 선택한 드롭다운 열기/닫기
   };
 
-  const handleRoleChange = (name, newRole) => {
-    // 역할 변경 (백엔드 연동 없이 클라이언트에서만 처리)
-    setNotification(`${name}님의 직위가 ${newRole}로 변경되었습니다.`);
+  // Rolechange 나 추방은 manager만 할 수 있게 하는거 나중에 로직 추가해야함 
+
+  const handleRoleChange = (index, newRole) => {
+    // 현재 멤버를 복사
+    const updatedMembers = [...members];
+
+    // 해당 멤버의 role만 변경
+    updatedMembers[index] = { ...members[index], role: newRole };
+
+    // 역할 변경
+    actions.changeTeamMember(updatedMembers);
+
+    // 알람창
+    setNotification(`${members[index].name}님의 직위가 ${newRole}로 변경되었습니다.`);
     setTimeout(() => {
       setNotification(''); // 알림 3초 후 사라지도록 설정
     }, 3000);
 
-    // 역할 변경 상태 업데이트
-    onChangeRole(name, newRole);
-    setDropdownOpen(null); // 드롭다운 닫기
+    // 드롭다운 닫기
+    setDropdownOpen(null);
   };
 
-  const handleDelete = (name) => {
+  const handleDelete = (index) => {
+    // 현재 멤버를 복사
+    const updatedMembers = [...members];
+
     if (window.confirm('정말로 이 멤버를 추방하시겠습니까?')) {
-      onDelete(name); // 멤버 삭제
-      setDropdownOpen(null); // 드롭다운 닫기
-    }
-  };
+      // 해당 멤버를 제거 
+      const newMembers = updatedMembers.filter((_, i) => i !== index);
 
-  const handleSelectChange = (e, member) => {
-    const newRole = e.target.value;
-    setSelectedRole(newRole);
-    handleRoleChange(member.name, newRole);
-  };
+      // 상태 업데이트 (actions.changeMember를 사용해서 새 배열 전달)
+      actions.changeTeamMember(newMembers);
+
+      setDropdownOpen(null); // 드롭다운 닫기
+    };
+  }
 
   return (
     <>
       <Notification visible={notification !== ''}>{notification}</Notification>
       <Container>
         {members.map((member, index) => (
-          !member.deleted && ( // 'deleted'가 true인 멤버는 렌더링되지 않음
-            <MemberBox key={index}>
-              <OptionsButton onClick={() => handleDropdownToggle(index)}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </OptionsButton>
+          <MemberBox key={index}>
+            <OptionsButton onClick={() => handleDropdownToggle(index)}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </OptionsButton>
 
-              {dropdownOpen === index && (
-                <Dropdown>
-                  <DropdownItem onClick={() => handleDelete(member.name)}>멤버 추방</DropdownItem>
-                  <DropdownItem>
-                    <SelectRole
-                      value={selectedRole || member.role}
-                      onChange={(e) => handleSelectChange(e, member)}
-                    >
-                      <option value="Member">Member</option>
-                      <option value="Manager">Manager</option>
-                    </SelectRole>
-                  </DropdownItem>
-                </Dropdown>
-              )}
-
+            {dropdownOpen === index ? (
+              // 드롭다운이 열렸을 때
+              <Dropdown>
+                <DropdownItem onClick={() => handleDelete(index)}>멤버 추방</DropdownItem>
+                <SelectRole
+                  value={selectedRole || member.role}
+                  onChange={(e) => handleRoleChange(index, e.target.value)}
+                >
+                  <option value="Member">Member</option>
+                  <option value="Manager">Manager</option>
+                </SelectRole>
+              </Dropdown>
+            ) : (
+              // 드롭다운이 열리지 않았을 때
               <MemberInfo>
                 <p>{member.name}</p>
                 <p>{member.role}</p>
               </MemberInfo>
-            </MemberBox>
-          )
+            )}
+          </MemberBox>
         ))}
       </Container>
     </>

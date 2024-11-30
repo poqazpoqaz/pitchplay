@@ -33,7 +33,8 @@ export const initialState = {
     teamMember: [],
     currentMember: "",
     totalMember: "",
-    collectionTitle: ""
+    collectionTitle: "",
+    teamMember: []
 }
 
 
@@ -69,27 +70,7 @@ export const reducer = (state, action) => {
         case CHANGE_COLLECTION_TITLE:
             return { ...state, collectionTitle: action.payload };
         case CHANGE_TEAM_MEMBER:
-            const { name, role, actionType } = action.payload;
-            const updatedMembers = [...state.teamMember];
-
-            // 삭제 로직
-            if (actionType === "delete") {
-                return {
-                    ...state,
-                    teamMember: updatedMembers.filter(member => member.name !== name),
-                };
-            }
-
-            const memberIndex = updatedMembers.findIndex(member => member.name === name);
-            if (memberIndex >= 0) {
-                // 수정 로직: 같은 이름의 멤버가 이미 있을 때 업데이트
-                updatedMembers[memberIndex] = { name, role };
-            } else if (actionType === "add") {
-                // 추가 로직: 같은 이름의 멤버가 없고 actionType이 "add"일 때만 추가
-                updatedMembers.push({ name, role });
-            }
-            return { ...state, teamMember: updatedMembers };
-            
+            return { ...state, teamMember: action.payload };
         case RESET_STATE:
             return initialState;
         default:

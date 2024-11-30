@@ -58,7 +58,7 @@ const router = createBrowserRouter([
           { path: "records", element: <MypageAct02 gridArea={"section"}/>},
           { path: "teamsection", element: <MypageAct03 gridArea={"section"}/>},
           { path: "teamschedule", element: <MypageAct04 gridArea={"section"}/>},
-          { path : "members" , element : <MypageAct05 gridArea={"section"}/>}
+          { path : ":teamCode/members" , element : <MypageAct05 gridArea={"section"}/>}
         ]
       },
       { path: "/reservation", element: <ReservationPage gridArea={"section"}/> },

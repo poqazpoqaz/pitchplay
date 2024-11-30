@@ -15,6 +15,7 @@ import {
     changeCurrentMember,
     changeTotalMember,
     changeCollectionTitle,
+    changeTeamMember,
     resetState
 } from "./action.js";
 

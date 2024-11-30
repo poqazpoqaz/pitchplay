@@ -1,17 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Mypage1.module.css";
 import Top1 from './Top1';
 import Top2 from './Top2';
 import Bottom from './Bottom';
 import { useStore } from "../../../stores/UserStore/useStore"
 import axios from 'axios';
+import { useParams } from "react-router-dom";
 
-const Mypage1 = ({ username, usercash }) => {
+const Mypage1 = () => {
+    const { id } = useParams();
     const [isEditable, setIsEditable] = useState(false);
     const [fileInput, setFileInput] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
 
     const { state, actions } = useStore();
+
+    // 해당하는 userid에 속하는 user 정보 설정 
+    useEffect(() => {
+        axios.get("/data/userData.json")
+            .then(response => {
+                const datas = response.data;
+                const userData = datas.find(data => data.id === id);
+
+                if (userData) {
+                    actions.changeUserNumber(userData.userNumber);
+                    actions.changeName(userData.name);
+                    actions.changeNickname(userData.nickname);
+                    actions.changeProfileImg(userData.profileImg);
+                    actions.changeBirthday(userData.birthday);
+                    actions.changeEmail(userData.email);
+                    actions.changePhone(userData.phone);
+                    actions.changeId(userData.id);
+                    actions.changePassword(userData.password);
+                    actions.changeFavoriteCity(userData.favoriteCity);
+                    actions.changeUserCash(userData.userCash);
+                    actions.changeFavoriteTime(userData.favoriteTime);
+                    actions.changeMyTeam(userData.myTeam);
+                    actions.changeMyDescription(userData.myDescription);
+                }
+            })
+    }, [id])
 
     const formFields = [
         { label: "이름", name: "name", value: state.name, disabled: true },
@@ -44,7 +72,7 @@ const Mypage1 = ({ username, usercash }) => {
             formData.append("profileImage", fileInput);
 
             try {
-                const response = await axios.put(`/api/users/${username}/profile/image`, formData, {
+                const response = await axios.put(`/api/users/${id}/profile/image`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 });
                 console.log(response.data.message);
@@ -60,7 +88,7 @@ const Mypage1 = ({ username, usercash }) => {
     // 프로필 데이터 저장
     const saveProfileData = async (formData) => {
         try {
-            const response = await axios.put(`/api/users/${username}/profile`, formData);
+            const response = await axios.put(`/api/users/${id}/profile`, formData);
             console.log(response.data.message);
             setErrorMessage("프로필 저장 성공!");
         } catch (error) {

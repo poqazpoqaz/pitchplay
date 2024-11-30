@@ -69,7 +69,7 @@ function TeamMatchings() {
             .catch(error => {
                 console.error("데이터 로딩 실패:", error);
             });
-    }, [state, selectedOption]); // state와 selectedOption 변경 시마다 실행
+    }, [selectedOption]); // selectedOption 변경 시마다 실행
 
 
     // 더 보기 버튼 클릭 처리

@@ -2,7 +2,7 @@
     {
         "userNumber": "123123",
         "name": "김피치",
-        "profileImg": "/public/imgs/team1.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "20000101",
         "email": "pitch@kosmo.com",
         "phone": "010-1234-5678",
@@ -11,14 +11,14 @@
         "password": "pitchplay",
         "favoriteCity": "서울 도봉구",
         "favoriteTime": "오전 시간대",
-        "myTeam": "피플",
+        "myTeam": "드리머스",
         "myDescription": "안녕하세요. 열심히 참석할 자신이 있는 피치플레이라고 합니다.",
         "userCash": "20000"
     },
     {
         "userNumber": "456456",
         "name": "박가람",
-        "profileImg": "/public/imgs/team2.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "19950512",
         "email": "garam@kosmo.com",
         "phone": "010-5678-1234",
@@ -34,7 +34,7 @@
     {
         "userNumber": "789789",
         "name": "이현수",
-        "profileImg": "/public/imgs/team3.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "19881205",
         "email": "hslee@kosmo.com",
         "phone": "010-8888-9999",
@@ -50,7 +50,7 @@
     {
         "userNumber": "112233",
         "name": "정다은",
-        "profileImg": "/public/imgs/team4.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "19920315",
         "email": "daeun@kosmo.com",
         "phone": "010-5555-3333",
@@ -66,7 +66,7 @@
     {
         "userNumber": "223344",
         "name": "최민수",
-        "profileImg": "/public/imgs/team5.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "19870122",
         "email": "mschoi@kosmo.com",
         "phone": "010-2222-4444",
@@ -82,7 +82,7 @@
     {
         "userNumber": "334455",
         "name": "한지민",
-        "profileImg": "/public/imgs/team6.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "19910520",
         "email": "jiminhan@kosmo.com",
         "phone": "010-7777-2222",
@@ -98,7 +98,7 @@
     {
         "userNumber": "445566",
         "name": "홍길동",
-        "profileImg": "/public/imgs/team7.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "19970830",
         "email": "gildong@kosmo.com",
         "phone": "010-6666-1111",
@@ -114,7 +114,7 @@
     {
         "userNumber": "556677",
         "name": "오세훈",
-        "profileImg": "/public/imgs/team8.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "20030515",
         "email": "sehunoh@kosmo.com",
         "phone": "010-1234-7777",
@@ -130,7 +130,7 @@
     {
         "userNumber": "667788",
         "name": "김하늘",
-        "profileImg": "/public/imgs/team9.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "19960525",
         "email": "haneulkim@kosmo.com",
         "phone": "010-3333-8888",
@@ -146,7 +146,7 @@
     {
         "userNumber": "778899",
         "name": "윤재혁",
-        "profileImg": "/public/imgs/team10.jpg",
+        "profileImg": "/imgs/1.jpg",
         "birthday": "19930511",
         "email": "jaehyun@kosmo.com",
         "phone": "010-4444-9999",
