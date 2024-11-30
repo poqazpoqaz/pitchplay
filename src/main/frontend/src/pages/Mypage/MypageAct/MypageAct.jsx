@@ -5,6 +5,7 @@ import TeamSection from "./MypageActComponents/TeamSection";
 import PostsSection from "./MypageActComponents/PostsSection";
 import { useStore as MatchingStore } from '../../../stores/MatchingStore/useStore';
 import { useStore as TeamStore } from "../../../stores/TeamStore/useStore";
+import { useStore as StadiumStore} from "../../../stores/StadiumStore/useStore";
 import { useEffect } from 'react';
 import axios from 'axios';
 import styles from "./MypageAct.module.css";
@@ -14,6 +15,7 @@ import styles from "./MypageAct.module.css";
 const MypageAct = ({ gridArea }) => {
   const { state: matchingState, actions: matchingActions } = MatchingStore();
   const { state: teamState, actions: teamActions } = TeamStore();
+  const { state: StadiumState, actions: StadiumActions} = StadiumStore();
   const [matchingList, setMatchingList] = useState([]);
 
   // 매칭 정보 저장 ** 나중에 백에서 불러올때는 내가 속한 팀의 매칭데이터만 불러와서 뿌려야함 !! 

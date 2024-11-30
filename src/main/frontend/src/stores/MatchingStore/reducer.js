@@ -8,6 +8,8 @@ import {
     CHANGE_TEAM_LEVEL,
     CHANGE_VIEW_COUNT,
     CHANGE_WRITTEN_DATE,
+    CHANGE_STADIUM_ID,
+    CHANGE_TEAMSIZE,
     RESET_STATE
 } from './action';
 
@@ -17,12 +19,14 @@ export const initialState = {
         team1: { name: "", src: "" },
         team2: { name: "", src: "" },
     },
-    date: "",
+    matchingDate: "",
     location: "",
     gender: "",
     level: "",
     views: "",
-    writtenDate: ""
+    writtenDate: "",
+    stadiumId: "",
+    teamSize: ""
 };
 
 export const reducer = (state, action) => {
@@ -53,7 +57,7 @@ export const reducer = (state, action) => {
         }
 
         case CHANGE_MATCHING_DATE:
-            return { ...state, date: action.payload };
+            return { ...state, matchingDate: action.payload };
 
         case CHANGE_MATCHING_LOC:
             return { ...state, location: action.payload };
@@ -69,6 +73,10 @@ export const reducer = (state, action) => {
 
         case CHANGE_WRITTEN_DATE:
             return { ...state, writtenDate: action.payload };
+        case CHANGE_STADIUM_ID:
+            return { ...state, stadiumId: action.payload };
+        case CHANGE_TEAMSIZE:
+            return { ...state, teamSize: action.payload };
 
         case RESET_STATE:
             return initialState;

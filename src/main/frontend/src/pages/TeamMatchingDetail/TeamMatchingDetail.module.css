@@ -1,0 +1,40 @@
+.matchingdetail-grid {
+    display: grid;
+    grid-template:
+        'img' 400px
+        '...' 30px
+        'matchinginfo' 120px
+        '...' 30px
+        'teamMatching' 300px
+        '...' 30px
+        'map' 1fr
+        '...' 30px
+        'application' 350px / 1fr;
+}
+
+.matchingdetail-grid>img {
+    grid-area: img;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 760px) {
+    .matchingdetail-grid {
+        grid-template:
+            '...' 30px
+            'matchinginfo' 120px
+            '...' 30px
+            'teamMatching' 300px
+            '...' 30px
+            'map' 1fr
+            '...' 30px
+            'application' 350px / 1fr;
+    }
+
+    .matchingdetail-grid>img {
+        display: none;
+    }
+
+}

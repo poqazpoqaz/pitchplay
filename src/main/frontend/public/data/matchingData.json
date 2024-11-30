@@ -5,51 +5,59 @@
             "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
             "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
         },
-        "date": "2024-11-25",
-        "location": "수원 HK 풋살파크",
+        "matchingDate": "2024-11-25 15:00",
+        "location": "잠원한강공원",
+        "stadiumId": "S231030130758753552",
         "gender": "Mixed",
         "level": "Intermediate",
         "views": "120",
-        "writtenDate": "2024-11-01"
+        "writtenDate": "2024-11-01",
+        "teamSize": "5vs5"
     },
     {
         "matchingNum": 100002,
         "teams": {
             "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
-            "team2": { "name": "null", "src": "null" }
+            "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
         },
-        "date": "2024-12-01",
-        "location": "보라매 구장",
+        "matchingDate": "2024-12-01 13:00",
+        "location": "뚝섬한강공원",
+        "stadiumId": "S231030133625219222",
         "gender": "Male",
         "level": "Advanced",
         "views": "200",
-        "writtenDate": "2024-12-15"
+        "writtenDate": "2024-12-15",
+        "teamSize": "5vs5"
     },
     {
         "matchingNum": 100003,
         "teams": {
             "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
-            "team2": { "name": "null", "src": "null" }
+            "team2": { "name": "", "src": "" }
         },
-        "date": "2024-11-25",
-        "location": "수원 HK 풋살파크",
+        "matchingDate": "2024-11-25 10:30",
+        "location": "광나루한강공원",
+        "stadiumId": "S231030110352370636",
         "gender": "Mixed",
         "level": "Intermediate",
         "views": "120",
-        "writtenDate": "2024-11-15"
+        "writtenDate": "2024-11-15",
+        "teamSize": "5vs5"
     },
     {
         "matchingNum": 100004,
         "teams": {
             "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
-            "team2": { "name": "null", "src": "null" }
+            "team2": { "name": "", "src": "" }
         },
-        "date": "2024-11-01",
-        "location": "Busan, South Korea",
+        "matchingDate": "2024-11-01 18:00",
+        "location": "보라매공원",
+        "stadiumId": "S231030110352370636",
         "gender": "Male",
         "level": "Advanced",
         "views": "200",
-        "writtenDate": "2024-12-20"
+        "writtenDate": "2024-12-20",
+        "teamSize": "11vs11"
     },
     {
         "matchingNum": 100005,
@@ -57,25 +65,29 @@
             "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
             "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
         },
-        "date": "2024-11-25",
-        "location": "수원 HK 풋살파크",
+        "matchingDate": "2024-11-25 16:00",
+        "location": "반포종합운동장",
+        "stadiumId": "S231208105143407599",
         "gender": "Mixed",
         "level": "Intermediate",
         "views": "120",
-        "writtenDate": "2024-12-23"
+        "writtenDate": "2024-12-23",
+        "teamSize": "11vs11"
     },
     {
         "matchingNum": 100006,
         "teams": {
             "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
-            "team2": { "name": "null", "src": "null" }
+            "team2": { "name": "", "src": "" }
         },
-        "date": "2024-11-10",
-        "location": "Busan, South Korea",
+        "matchingDate": "2024-11-10 11:00",
+        "location": "노량진 축구장",
+        "stadiumId": "S231208105143407599",
         "gender": "Male",
         "level": "Advanced",
         "views": "200",
-        "writtenDate": "2024-12-25"
+        "writtenDate": "2024-12-25",
+        "teamSize": "11vs11"
     },
     {
         "matchingNum": 100007,
@@ -83,12 +95,14 @@
             "team1": { "name": "Green Warriors", "src": "/imgs/team.jpg" },
             "team2": { "name": "Black Hawks", "src": "/imgs/team.jpg" }
         },
-        "date": "2024-12-10",
-        "location": "Seoul, South Korea",
+        "matchingDate": "2024-12-10 14:30",
+        "location": "송파구여성축구장",
+        "stadiumId": "S231208105143407599",
         "gender": "Mixed",
         "level": "Beginner",
         "views": "150",
-        "writtenDate": "2024-12-01"
+        "writtenDate": "2024-12-01",
+        "teamSize": "7vs7"
     },
     {
         "matchingNum": 100008,
@@ -96,12 +110,14 @@
             "team1": { "name": "The Avengers", "src": "/imgs/team.jpg" },
             "team2": { "name": "Red Dragons", "src": "/imgs/team.jpg" }
         },
-        "date": "2024-11-30",
-        "location": "Incheon, South Korea",
+        "matchingDate": "2024-11-30 15:30",
+        "location": "보라매공원 축구장",
+        "stadiumId": "S231208105143407599",
         "gender": "Male",
         "level": "Intermediate",
         "views": "300",
-        "writtenDate": "2024-11-22"
+        "writtenDate": "2024-11-22",
+        "teamSize": "7vs7"
     },
     {
         "matchingNum": 100009,
@@ -109,24 +125,28 @@
             "team1": { "name": "The Titans", "src": "/imgs/team.jpg" },
             "team2": { "name": "Wild Cats", "src": "/imgs/team.jpg" }
         },
-        "date": "2024-11-29",
-        "location": "Busan, South Korea",
+        "matchingDate": "2024-11-29 19:00",
+        "location": "보라매공원 축구장",
+        "stadiumId": "S231208105143407599",
         "gender": "Female",
         "level": "Advanced",
         "views": "180",
-        "writtenDate": "2024-11-17"
+        "writtenDate": "2024-11-17",
+        "teamSize": "7vs7"
     },
     {
         "matchingNum": 100010,
         "teams": {
             "team1": { "name": "Team Aces", "src": "/imgs/team.jpg" },
-            "team2": { "name": "null", "src": "null" }
+            "team2": { "name": "", "src": "" }
         },
-        "date": "2024-12-05",
-        "location": "Gyeonggi, South Korea",
+        "matchingDate": "2024-12-05 10:00",
+        "location": "한국외대 인조잔디 축구장",
+        "stadiumId": "S231030110352370636",
         "gender": "Mixed",
         "level": "Beginner",
         "views": "140",
-        "writtenDate": "2024-11-18"
+        "writtenDate": "2024-11-18",
+        "teamSize": "7vs7"
     }
 ]

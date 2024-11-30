@@ -117,21 +117,23 @@ function GuestRecruitmentDetail({ gridArea }) {
 
     // 구장데이터불러오기 
     useEffect(() => {
-        axios.get("/data/stadiumData.json")
-            .then(response => {
-                const datas = response.data;
-                const selectedStadium = datas.find(stadium => stadium.SVCID === reservationState.stadiumId);
-                stadiumActions.changeStadiumName(selectedStadium.SVCNM);
-                stadiumActions.changeStadiumImg(selectedStadium.IMGURL)
-                stadiumActions.changeStadiumAddress(selectedStadium.PLACENM);
-                stadiumActions.changeStadiumDescription(selectedStadium.DTLCONT);
-                stadiumActions.changeStadiumX(selectedStadium.X);
-                stadiumActions.changeStadiumY(selectedStadium.Y);
-                stadiumActions.changeStadiumCost(selectedStadium.PAYATNM);
-                stadiumActions.changeStadiumVmin(selectedStadium.V_MIN);
-                stadiumActions.changeStadiumVmax(selectedStadium.V_MAX);
-            })
-            .catch(error => console.error('Error loading stadium data:', error));
+        if (reservationState.stadiumId) {
+            axios.get("/data/stadiumData.json")
+                .then(response => {
+                    const datas = response.data;
+                    const selectedStadium = datas.find(stadium => stadium.SVCID === reservationState.stadiumId);
+                    stadiumActions.changeStadiumName(selectedStadium.SVCNM);
+                    stadiumActions.changeStadiumImg(selectedStadium.IMGURL)
+                    stadiumActions.changeStadiumAddress(selectedStadium.PLACENM);
+                    stadiumActions.changeStadiumDescription(selectedStadium.DTLCONT);
+                    stadiumActions.changeStadiumX(selectedStadium.X);
+                    stadiumActions.changeStadiumY(selectedStadium.Y);
+                    stadiumActions.changeStadiumCost(selectedStadium.PAYATNM);
+                    stadiumActions.changeStadiumVmin(selectedStadium.V_MIN);
+                    stadiumActions.changeStadiumVmax(selectedStadium.V_MAX);
+                })
+                .catch(error => console.error('Error loading stadium data:', error));
+        }
     }, [reservationState.stadiumId]);
 
 

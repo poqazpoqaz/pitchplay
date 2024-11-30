@@ -23,7 +23,6 @@ import NoticeAccordion from "./components/NoticeAccordion/NoticeAccordion";
 import FAQAccordion from "./components/FAQAccordion/FAQAccordion";
 import NoticePost from "./components/NoticePost/NoticePost";
 import MypageAct05 from "./pages/Mypage/MypageAct/MypageAct05/MypageAct05";
-import Community1 from "./pages/Mypage/Community/Community1/Community1";
 import TeamMatchingDetail from "./pages/TeamMatchingDetail/TeamMatchingDetail";
 import StadiumDetail from "./pages/StadiumDetail/StadiumDetail";
 
@@ -43,35 +42,36 @@ const router = createBrowserRouter([
           { path: "", element: <TeamMatchings /> },
           { path: "member", element: <TeamCollections /> },
           { path: "guestplayer", element: <GuestRecruitment /> },
+          { path: "member/:teamCode", element: <TeamApplication /> },
           { path: "creation", element: <TeamCreation isOpen={true} /> },
-          { path: ":teamCode", element: <TeamApplication /> }
         ]
       },
-      { path: "/:postNumber/guestrecruitment", element: <GuestRecruitmentDetail gridArea={"section"}/> },
-      { path: "/:teamCode/guestnew", element: <GuestRecruitmentCreation gridArea={"section"}/> }, 
+      { path: "/matching/:matchingNum", element: <TeamMatchingDetail gridArea={"section"}/> },
+      { path: "/:postNumber/guestrecruitment", element: <GuestRecruitmentDetail gridArea={"section"} /> },
+      { path: "/:teamCode/guestnew", element: <GuestRecruitmentCreation gridArea={"section"} /> },
       {
         path: "/mypage/:id", element: <MyPage gridArea={"section"} />,
         children: [
           { path: "", element: <Mypage1 /> },
-          { path: "act", element: <MypageAct gridArea={"section"} />},
-          { path: "matches", element: <MypageAct01 gridArea={"section"}/>} ,
-          { path: "records", element: <MypageAct02 gridArea={"section"}/>},
-          { path: "teamsection", element: <MypageAct03 gridArea={"section"}/>},
-          { path: "teamschedule", element: <MypageAct04 gridArea={"section"}/>},
-          { path : ":teamCode/members" , element : <MypageAct05 gridArea={"section"}/>}
+          { path: "act", element: <MypageAct gridArea={"section"} /> },
+          { path: "matches", element: <MypageAct01 gridArea={"section"} /> },
+          { path: "records", element: <MypageAct02 gridArea={"section"} /> },
+          { path: "teamsection", element: <MypageAct03 gridArea={"section"} /> },
+          { path: "teamschedule", element: <MypageAct04 gridArea={"section"} /> },
+          { path: ":teamCode/members", element: <MypageAct05 gridArea={"section"} /> }
         ]
       },
-      { path: "/reservation", element: <ReservationPage gridArea={"section"}/> },
-      { path: "/stadium/:stadiumId", element: <StadiumDetail gridArea={"section"}/>},
+      { path: "/reservation", element: <ReservationPage gridArea={"section"} /> },
+      { path: "/stadium/:stadiumId", element: <StadiumDetail gridArea={"section"} /> },
       {
-         path : "/notices", element: <NoticePost gridArea={"section"}/>, 
-         children: [
-          {path : "", element : <NoticeAccordion />},
-          {path : "faq", element : <FAQAccordion />},
-          {path : "feedback", element : <NoticeAccordion />},
-          {path : "conduct", element : <NoticeAccordion />}
-         ]
-        },
+        path: "/notices", element: <NoticePost gridArea={"section"} />,
+        children: [
+          { path: "", element: <NoticeAccordion /> },
+          { path: "faq", element: <FAQAccordion /> },
+          { path: "feedback", element: <NoticeAccordion /> },
+          { path: "conduct", element: <NoticeAccordion /> }
+        ]
+      },
     ]
   },
 ]);
