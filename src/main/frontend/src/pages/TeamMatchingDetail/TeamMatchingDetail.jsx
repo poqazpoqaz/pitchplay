@@ -94,7 +94,7 @@ function TeamMatchingDetail({ gridArea }) {
             <MatchingTeamDetails teams={matchingState.teams} gridArea="teamMatching" />
             <MatchingStadiumDetails stadiumState={stadiumState} gridArea="map" />
             <MatchingApplicationDetails matchingState={matchingState} stadiumState={stadiumState} gridArea="application" onClick={() => setIsModalOpen(true)} />
-            && <MatchingPayment isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} userCash={userState.userCash} stadiumCost={stadiumState.stadiumCost} />
+            <MatchingPayment isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} userCash={userState.userCash} stadiumCost={stadiumState.stadiumCost}/>
         </div>
     )
 }
