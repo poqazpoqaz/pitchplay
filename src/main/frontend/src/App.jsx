@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       },
       { path: "/matching/:matchingNum", element: <TeamMatchingDetail gridArea={"section"}/> },
       { path: "/:postNumber/guestrecruitment", element: <GuestRecruitmentDetail gridArea={"section"} /> },
-      { path: "/:teamCode/guestnew", element: <GuestRecruitmentCreation gridArea={"section"} /> },
+      { path: "/:reservationNum/newguest", element: <GuestRecruitmentCreation gridArea={"section"} /> },
       {
         path: "/mypage/:id", element: <MyPage gridArea={"section"} />,
         children: [

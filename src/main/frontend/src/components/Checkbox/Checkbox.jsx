@@ -1,4 +1,3 @@
-import React, { Children, useState } from 'react';
 // 체크박스 SVG를 사용합니다.
 import CheckedSVG from './checked.svg';
 import UncheckedSVG from './unchecked.svg';
@@ -7,8 +6,7 @@ import styled from "styled-components";
 const StyledLabel = styled.label`
   display: flex;
   align-items: center; 
-  justify-content: center;
-  gap: 5px;
+  gap: 5px; 
 `;
 
 const Checkbox = ({ children, isChecked, onClick }) => {

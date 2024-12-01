@@ -1,18 +1,22 @@
 import axios from "axios";
 import styles from "./TeamMatchingDetail.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useStore as StadiumStore } from "../../stores/StadiumStore/useStore";
 import { useStore as MatchingStore } from "../../stores/MatchingStore/useStore";
+import { useStore as UserStore } from "../../stores/UserStore/useStore";
 import { useParams } from "react-router-dom";
 import MatchingDetails from "../../components/MatchingDetails/MatchingDetails";
 import MatchingTeamDetails from "../../components/MatchingDetails/MatchingTeamDetails";
 import MatchingStadiumDetails from "../../components/MatchingDetails/MatchingStadiumDetails";
 import MatchingApplicationDetails from "../../components/MatchingDetails/MatchingApplicationDetails";
+import MatchingPayment from "../../components/MatchingPayment";
 
-function TeamMatchingDetail({gridArea}) {
+function TeamMatchingDetail({ gridArea }) {
     const { matchingNum } = useParams();
     const { state: matchingState, actions: matchingActions } = MatchingStore();
     const { state: stadiumState, actions: stadiumActions } = StadiumStore();
+    const { state: userState, actions: userActions } = UserStore();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     //매칭데이터불러오기
     useEffect(() => {
@@ -71,15 +75,26 @@ function TeamMatchingDetail({gridArea}) {
         }
     }, [matchingState.stadiumId]);
 
+    // 유저 데이터 불러오기 (임의로 값 설정해놓음 나중에는 해당하는 유저 불러오게 해야함 )
+    useEffect(() => {
+        axios.get("/data/userData.json")
+            .then(response => { 
+                const datas = response.data;
+                const selectedUser = datas.find(data => data.userNumber = "123123");
+                userActions.changeUserNumber(selectedUser.userNumber);
+                userActions.changeUserCash(selectedUser.userCash);
+            })
+    })
 
 
     return (
-        <div className={styles['matchingdetail-grid']} style={{gridArea:gridArea}}>
-            <img src={stadiumState.stadiumImg}/>
+        <div className={styles['matchingdetail-grid']} style={{ gridArea: gridArea }}>
+            <img src={stadiumState.stadiumImg} />
             <MatchingDetails matchingState={matchingState} gridArea="matchinginfo" />
-            <MatchingTeamDetails teams={matchingState.teams} gridArea="teamMatching"/>
+            <MatchingTeamDetails teams={matchingState.teams} gridArea="teamMatching" />
             <MatchingStadiumDetails stadiumState={stadiumState} gridArea="map" />
-            <MatchingApplicationDetails matchingState={matchingState} stadiumState={stadiumState} gridArea="application" />
+            <MatchingApplicationDetails matchingState={matchingState} stadiumState={stadiumState} gridArea="application" onClick={() => setIsModalOpen(true)} />
+            <MatchingPayment isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} userCash={userState.userCash} stadiumCost={stadiumState.stadiumCost}/>
         </div>
     )
 }

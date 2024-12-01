@@ -56,7 +56,7 @@ const CostBox = styled.div`
 `;
 
 
-function MatchingApplicationDetails({ matchingState, stadiumState, gridArea }) {
+function MatchingApplicationDetails({ matchingState, stadiumState, gridArea, onClick}) {
     // 비용 포맷팅
     const formattedCost = new Intl.NumberFormat('ko-KR').format(+stadiumState.stadiumCost / 2);
     return (
@@ -80,7 +80,7 @@ function MatchingApplicationDetails({ matchingState, stadiumState, gridArea }) {
                 <h1>{formattedCost} 원</h1>
                 <p>경기시간 1일전까지 최소인원 미달 시에 환불됩니다.</p>
             </CostBox>
-            <Button color="var(--main-color)" size="xlarge">신청하기</Button>
+            <Button color="var(--main-color)" size="xlarge" onClick={onClick}>신청하기</Button>
         </Wrapper>
     );
 }
