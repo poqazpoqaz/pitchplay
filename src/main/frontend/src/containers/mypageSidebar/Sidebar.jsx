@@ -151,7 +151,7 @@ const Sidebar = ({ userState, gridArea }) => {
         </List>
       </Sidemid>
       <Sidebottom>
-        <BotImg src={userState} alt="User Avatar" />
+        <BotImg src={userState.profileImg} alt="User Avatar" />
         <Button onClick={handleLogout}>로그아웃</Button>
       </Sidebottom>
     </SidebarContainer>
