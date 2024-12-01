@@ -1,15 +1,16 @@
 .matchingdetail-grid {
     display: grid;
     grid-template:
-        'img' 400px
-        '...' 30px
-        'matchinginfo' 120px
-        '...' 30px
-        'teamMatching' 300px
-        '...' 30px
-        'map' 1fr
-        '...' 30px
-        'application' 350px / 1fr;
+        'img img img' 400px
+        '... ... ...' 30px
+        '... matchinginfo ...' 120px
+        '... ... ...' 30px
+        '... teamMatching ...' 300px
+        '... ... ...' 30px
+        '... map ...' 1fr
+        '... ... ...' 30px
+        '... application ...' 350px
+        '... ... ...' 30px / 1fr 5fr 1fr;
 }
 
 .matchingdetail-grid>img {

@@ -84,7 +84,7 @@ function TeamMatchingDetail({ gridArea }) {
                 userActions.changeUserNumber(selectedUser.userNumber);
                 userActions.changeUserCash(selectedUser.userCash);
             })
-    })
+    }, [])
 
 
     return (
