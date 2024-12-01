@@ -1,0 +1,50 @@
+/* 컨테이너 스타일 */
+.feedback-container {
+    margin: 20px;
+    font-family: "Noto Sans", sans-serif;
+  }
+  
+  /* 제목 스타일 */
+  .feedback-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  /* 추가 버튼 스타일 */
+  .add-report-btn {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-report-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* 테이블 스타일 */
+  .feedback-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .feedback-table th,
+  .feedback-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .feedback-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  /* 테이블 행 hover 효과 */
+  .feedback-row:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  

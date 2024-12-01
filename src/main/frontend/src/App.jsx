@@ -72,6 +72,7 @@ const router = createBrowserRouter([
           { path: "conduct", element: <NoticeAccordion /> }
         ]
       },
+      { path: "/write-report", element: <WriteReport /> },
     ]
   },
 ]);
