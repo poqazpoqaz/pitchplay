@@ -25,7 +25,8 @@ import NoticePost from "./components/NoticePost/NoticePost";
 import MypageAct05 from "./pages/Mypage/MypageAct/MypageAct05/MypageAct05";
 import TeamMatchingDetail from "./pages/TeamMatchingDetail/TeamMatchingDetail";
 import StadiumDetail from "./pages/StadiumDetail/StadiumDetail";
-
+import FeedbackAccordion from "./components/FeedbackAccordion/FeedbackAccordion";
+import ConductAccordion from "./components/ConductAccordion/ConductAccordion";
 
 
 
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       { path: "/matching/:matchingNum", element: <TeamMatchingDetail gridArea={"section"}/> },
       { path: "/:postNumber/guestrecruitment", element: <GuestRecruitmentDetail gridArea={"section"} /> },
-      { path: "/:reservationNum/newguest", element: <GuestRecruitmentCreation gridArea={"section"} /> },
+      { path: "/:teamCode/guestnew", element: <GuestRecruitmentCreation gridArea={"section"} /> },
       {
         path: "/mypage/:id", element: <MyPage gridArea={"section"} />,
         children: [
@@ -68,11 +69,10 @@ const router = createBrowserRouter([
         children: [
           { path: "", element: <NoticeAccordion /> },
           { path: "faq", element: <FAQAccordion /> },
-          { path: "feedback", element: <NoticeAccordion /> },
-          { path: "conduct", element: <NoticeAccordion /> }
+          { path: "feedback", element: <FeedbackAccordion /> },
+          { path: "conduct", element: <ConductAccordion /> }
         ]
       },
-      { path: "/write-report", element: <WriteReport /> },
     ]
   },
 ]);
