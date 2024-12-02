@@ -17,18 +17,17 @@ const StyledDiv = styled.div`
     }
 `;
 
-function JoinRequestModal({ isOpen, closeModal, openAlarm}) {
+function JoinRequestModal({ isOpen, closeModal, openAlarm, titletext, children, buttontext}) {
     return (
         <Wrapper>
             <Modal isOpen={isOpen} closeModal={closeModal}>
                 <div style={{ borderBottom: "2px solid var(--main-color)", paddingBottom: "10px" }}>
-                    <TitleText size="large">가입신청</TitleText>
+                    <TitleText size="large">{titletext}</TitleText>
                 </div>
                 <StyledDiv>
-                    <p>가입 신청 시에 팀에게 프로필과 연락처가 공개됩니다.</p>
-                    <p><span style={{ fontWeight: "bold" }}>개인정보 공개에 동의</span>하실 경우 버튼을 눌러 신청해주세요.</p>
+                   {children}
                 </StyledDiv>
-                <Button color="var(--main-color)" size="large" onClick={openAlarm}>가입신청하기</Button>
+                <Button color="var(--main-color)" size="large" onClick={openAlarm}>{buttontext}</Button>
             </Modal>
         </Wrapper>
     )

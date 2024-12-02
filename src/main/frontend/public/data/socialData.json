@@ -1,0 +1,195 @@
+[
+    {
+        "socialNumber": "123912",
+        "userId": "pitch123",
+        "stadiumId": "S210401100008601453",
+        "socialGender": "남성",
+        "socialSize": "4vs4",
+        "socialLevel": "비기너",
+        "socialTime": "2024-11-25T20:00:00",
+        "writtenDate": "2024-11-01",
+        "viewCount": "100",
+        "activeStatus": "false",
+        "currentMember": [
+            
+            {"nickname": "꼬스모", "src": "/imgs/1.jpg"},
+            {"nickname": "홍길동", "src": "/imgs/1.jpg"},
+            {"nickname": "김철수", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "8"
+    },
+    {
+        "socialNumber": "234234",
+        "userId": "pitch123",
+        "stadiumId": "S231208105143407599",
+        "socialGender": "여성",
+        "socialSize": "3vs3",
+        "socialLevel": "아마추어",
+        "socialTime": "2024-12-01T18:00:00",
+        "writtenDate": "2024-11-15",
+        "viewCount": "150",
+        "activeStatus": "false",
+        "currentMember": [
+            {"nickname": "이영희", "src": "/imgs/1.jpg"},
+            {"nickname": "박미선", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "6"
+    },
+    {
+        "socialNumber": "345345",
+        "userId": "pitch123",
+        "stadiumId": "S231208160336766600",
+        "socialGender": "혼성",
+        "socialSize": "5vs5",
+        "socialLevel": "세미프로",
+        "socialTime": "2024-12-05T20:00:00",
+        "writtenDate": "2024-11-20",
+        "viewCount": "200",
+        "activeStatus": "false",
+        "currentMember": [
+            {"nickname": "이준석", "src": "/imgs/1.jpg"},
+            {"nickname": "김태희", "src": "/imgs/1.jpg"},
+            {"nickname": "최영민", "src": "/imgs/1.jpg"},
+            {"nickname": "박수현", "src": "/imgs/1.jpg"},
+            {"nickname": "장미라", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "10"
+    },
+    {
+        "socialNumber": "456456",
+        "userId": "garam456",
+        "stadiumId": "S231208160336766600",
+        "socialGender": "여성",
+        "socialSize": "6vs6",
+        "socialLevel": "프로",
+        "socialTime": "2024-12-03T15:00:00",
+        "writtenDate": "2024-11-18",
+        "viewCount": "50",
+        "activeStatus": "true",
+        "currentMember": [
+            {"nickname": "배수지", "src": "/imgs/1.jpg"},
+            {"nickname": "강민경", "src": "/imgs/1.jpg"},
+            {"nickname": "전지현", "src": "/imgs/1.jpg"},
+            {"nickname": "배수지", "src": "/imgs/1.jpg"},
+            {"nickname": "강민경", "src": "/imgs/1.jpg"},
+            {"nickname": "전지현", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "6"
+    },
+    {
+        "socialNumber": "567567",
+        "userId": "garam456",
+        "stadiumId": "S231211171320885915",
+        "socialGender": "남성",
+        "socialSize": "7vs7",
+        "socialLevel": "아마추어",
+        "socialTime": "2024-11-28T20:00:00",
+        "writtenDate": "2024-11-10",
+        "viewCount": "120",
+        "activeStatus": "false",
+        "currentMember": [
+            {"nickname": "오준석", "src": "/imgs/1.jpg"},
+            {"nickname": "박상훈", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "8"
+    },
+    {
+        "socialNumber": "678678",
+        "userId": "garam456",
+        "stadiumId": "S231212111105238745",
+        "socialGender": "남성",
+        "socialSize": "5vs5",
+        "socialLevel": "전체",
+        "socialTime": "2024-12-06T19:00:00",
+        "writtenDate": "2024-11-22",
+        "viewCount": "180",
+        "activeStatus": "false",
+        "currentMember": [
+            {"nickname": "김하늘", "src": "/imgs/1.jpg"},
+            {"nickname": "최병호", "src": "/imgs/1.jpg"},
+            {"nickname": "박정수", "src": "/imgs/1.jpg"},
+            {"nickname": "윤재민", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "8"
+    },
+    {
+        "socialNumber": "789789",
+        "userId": "garam456",
+        "stadiumId": "S231212111105238745",
+        "socialGender": "혼성",
+        "socialSize": "6vs6",
+        "socialLevel": "비기너",
+        "socialTime": "2024-12-07T17:00:00",
+        "writtenDate": "2024-11-23",
+        "viewCount": "90",
+        "activeStatus": "false",
+        "currentMember": [
+            {"nickname": "정수현", "src": "/imgs/1.jpg"},
+            {"nickname": "허정민", "src": "/imgs/1.jpg"},
+            {"nickname": "박경훈", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "10"
+    },
+    {
+        "socialNumber": "890890",
+        "userId": "hyunsu789",
+        "stadiumId": "S231212111105238745",
+        "socialGender": "여성",
+        "socialSize": "11vs11",
+        "socialLevel": "세미프로",
+        "socialTime": "2024-12-10T21:00:00",
+        "writtenDate": "2024-11-25",
+        "viewCount": "250",
+        "activeStatus": "false",
+        "currentMember": [
+            {"nickname": "송하영", "src": "/imgs/1.jpg"},
+            {"nickname": "이소라", "src": "/imgs/1.jpg"},
+            {"nickname": "장예지", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "6"
+    },
+    {
+        "socialNumber": "901901",
+        "userId": "hyunsu789",
+        "stadiumId": "S231212111105238745",
+        "socialGender": "혼성",
+        "socialSize": "7vs7",
+        "socialLevel": "프로",
+        "socialTime": "2024-12-12T20:00:00",
+        "writtenDate": "2024-11-30",
+        "viewCount": "300",
+        "activeStatus": "true",
+        "currentMember": [
+            {"nickname": "이정수", "src": "/imgs/1.jpg"},
+            {"nickname": "홍윤지", "src": "/imgs/1.jpg"},
+            {"nickname": "김하나", "src": "/imgs/1.jpg"},
+            {"nickname": "박진영", "src": "/imgs/1.jpg"},
+            {"nickname": "신수정", "src": "/imgs/1.jpg"},
+            {"nickname": "유재희", "src": "/imgs/1.jpg"},
+            {"nickname": "김하나", "src": "/imgs/1.jpg"},
+            {"nickname": "박진영", "src": "/imgs/1.jpg"},
+            {"nickname": "신수정", "src": "/imgs/1.jpg"},
+            {"nickname": "유재희", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "10"
+    },
+    {
+        "socialNumber": "101010",
+        "userId": "hyunsu789",
+        "stadiumId": "S231212111105238745",
+        "socialGender": "남성",
+        "socialSize": "4vs4",
+        "socialLevel": "아마추어",
+        "socialTime": "2024-12-14T19:00:00",
+        "writtenDate": "2024-12-01",
+        "viewCount": "320",
+        "activeStatus": "false",
+        "currentMember": [
+            {"nickname": "이승철", "src": "/imgs/1.jpg"},
+            {"nickname": "박찬호", "src": "/imgs/1.jpg"},
+            {"nickname": "정경훈", "src": "/imgs/1.jpg"},
+            {"nickname": "김정원", "src": "/imgs/1.jpg"}
+        ],
+        "totalMember": "8"
+    }
+]

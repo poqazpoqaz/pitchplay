@@ -3,8 +3,6 @@ import styles from "./Navbar.module.css";
 import SearchInput from "../SearchInput";
 import { useState } from "react";
 
-//// src 팀만들기 만들어지면 고치기!!!!!!!!!!!! 
-
 
 function Navbar({ gridArea }) {
     const [activeButton, setActiveButton] = useState("btn1");

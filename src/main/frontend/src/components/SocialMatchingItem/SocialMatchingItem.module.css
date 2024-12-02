@@ -1,0 +1,83 @@
+.social-item-flex {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    background: #F2F2F2;
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.social-item-flex > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px; 
+    width: 100%; 
+}
+
+.social-item-flex > div:last-child {
+    margin-bottom: 0; /* 마지막 요소 여백 제거 */
+}
+
+.social-item-flex > div p,
+.social-item-flex > div h3 {
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+    text-overflow: ellipsis; /* 말줄임표 처리 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    font-size: 1rem; /* 기본 글꼴 크기 */
+    color: #333; /* 텍스트 색상 */
+    margin-right: 10px;
+}
+
+.social-item-flex > div h3:nth-of-type(2){
+    min-width: 100px;
+}
+
+/* 반응형 스타일링 */
+@media (max-width: 1024px) {
+    .social-item-flex {
+        padding: 15px; /* 패딩 축소 */
+        max-width: 400px; /* 최대 너비 축소 */
+    }
+
+    .social-item-flex > div p,
+    .social-item-flex > div h3 {
+        font-size: 0.9rem; /* 글씨 크기 축소 */
+        max-width: 240px; /* 텍스트 너비 축소 */
+    }
+}
+
+@media (max-width: 760px) {
+    .social-item-flex {
+        padding: 10px; /* 패딩 축소 */
+        max-width: 320px; /* 최대 너비 더 축소 */
+    }
+
+    .social-item-flex > div {
+        margin-bottom: 8px; /* 요소 간 간격 축소 */
+    }
+
+    .social-item-flex > div p,
+    .social-item-flex > div h3 {
+        font-size: 0.8rem; /* 글씨 크기 더 축소 */
+        max-width: 200px; /* 텍스트 너비 더 축소 */
+    }
+}
+
+@media (max-width: 480px) {
+    .social-item-flex {
+        padding: 8px; /* 최소 패딩 */
+        max-width: 280px; /* 작은 화면에서 최대 너비 */
+    }
+
+    .social-item-flex > div p,
+    .social-item-flex > div h3 {
+        font-size: 0.7rem; /* 작은 화면에서 글씨 크기 축소 */
+        max-width: 180px; /* 텍스트 너비 최소화 */
+    }
+}

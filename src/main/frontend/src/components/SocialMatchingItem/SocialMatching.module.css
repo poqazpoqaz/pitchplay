@@ -1,0 +1,33 @@
+.socialmatching-grid {
+    display: grid;
+    grid-template:
+        'img ... text ... ...' 20px
+        'img ... text ... btn1' 40px
+        'img ... text ... btn2' 40px
+        'img ... text ... ...' 20px /120px 1fr 500px 1fr 120px;
+    padding: 20px;
+    border: 2px solid #07550C;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+}
+
+@media (max-width: 1024px) {
+    .socialmatching-grid {
+        grid-template:
+        ' ... text ... ...' 20px
+        ' ... text ... btn1' 40px
+        ' ... text ... btn2' 40px
+        ' ... text ... ...' 20px /1fr 400px 1fr 120px;
+    }
+}
+
+
+@media (max-width: 760px) {
+    .socialmatching-grid {
+        grid-template:
+        ' ... text ... ...' 20px
+        ' ... text ... btn1' 40px
+        ' ... text ... btn2' 40px
+        ' ... text ... ...' 20px /1fr 200px 1fr 120px;
+    }
+}
