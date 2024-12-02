@@ -242,3 +242,26 @@ textarea {
 .feedback-list .feedback-row:hover {
   background-color: #fafafa;
 }
+
+/* 댓글 수정 버튼 */
+.edit-comment-btn {
+  padding: 5px 10px;
+  background-color: #45a049;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* 댓글 저장 버튼 */
+.save-edit-btn {
+  padding: 5px 10px;
+  background-color: #45a049;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+

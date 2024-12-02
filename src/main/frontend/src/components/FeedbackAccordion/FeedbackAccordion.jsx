@@ -1,155 +1,75 @@
 import React, { useState } from "react";
 import "./FeedbackAccordion.css";
+import { useStore } from "../../stores/FAQStore/useStore"; // useStore 훅을 가져옵니다.
 
 function FeedbackAccordion() {
-  const [reports, setReports] = useState([
-    {
-      id: 1,
-      title: "서비스 개선 요청",
-      reporter: "백승우",
-      content: "앱의 UI/UX가 불편해서 사용하기 힘들어요.",
-      date: "2024-11-29",
-      status: "처리 중",
-      views: 123,
-      comments: [],  
-    },
-    {
-      id: 2,
-      title: "매칭 시스템 버그",
-      reporter: "박상진",
-      content: "매칭된 팀과의 연결이 제대로 이루어지지 않습니다. 시스템 점검이 필요합니다.",
-      date: "2024-11-28",
-      status: "처리 완료",
-      views: 3500,
-      comments: [],
-    },
-    {
-      id: 3,
-      title: "서버 오류 발생",
-      reporter: "백승우",
-      content: "경기 중 서버가 자주 끊겨서 게임을 진행할 수 없습니다. 개선이 필요합니다.",
-      date: "2024-11-27",
-      status: "처리 중",
-      views: 290,
-      comments: [],
-    },
-    {
-      id: 4,
-      title: "결제 시스템 오류",
-      reporter: "백승우",
-      content: "결제 과정에서 오류가 발생하여 상품을 구매할 수 없습니다. 빠르게 수정해주세요.",
-      date: "2024-11-26",
-      status: "처리 완료",
-      views: 500,
-      comments: [],
-    },
-    {
-      id: 5,
-      title: "회원가입 문제",
-      reporter: "백승우",
-      content: "회원가입 시 이메일 인증이 되지 않습니다. 문제를 해결해주세요.",
-      date: "2024-11-25",
-      status: "처리 중",
-      views: 110,
-      comments: [],
-    },
-    {
-      id: 6,
-      title: "비매너 사용자 신고",
-      reporter: "백승우",
-      content: "게임 중 비매너적인 행동을 한 사용자에 대해 신고합니다. 제재 부탁드립니다.",
-      date: "2024-11-24",
-      status: "처리 완료",
-      views: 1120,
-      comments: [],
-    },
-    {
-      id: 7,
-      title: "앱 반응속도 개선 요청",
-      reporter: "박상진",
-      content: "앱의 반응 속도가 너무 느려서 불편합니다. 속도 개선이 필요합니다.",
-      date: "2024-11-23",
-      status: "처리 중",
-      views: 204,
-      comments: [],
-    },
-    {
-      id: 8,
-      title: "정책 변경에 대한 건의",
-      reporter: "박상진",
-      content: "최근 정책 변경에 대해 불만이 많습니다. 개선할 점을 제안합니다.",
-      date: "2024-11-22",
-      status: "처리 완료",
-      views: 540,
-      comments: [],
-    },
-    {
-      id: 9,
-      title: "결제 오류 해결 요청",
-      reporter: "백승우",
-      content: "상품 결제 시 결제 오류가 발생하고 있습니다. 확인 부탁드립니다.",
-      date: "2024-11-21",
-      status: "처리 중",
-      views: 310,
-      comments: [],
-    },
-    {
-      id: 10,
-      title: "이벤트 참여 문제",
-      reporter: "박상진",
-      content: "이벤트에 참여했으나 보상 지급이 되지 않았습니다. 확인 후 처리 바랍니다.",
-      date: "2024-11-20",
-      status: "처리 완료",
-      views: 450,
-      comments: [],
-    }
-  ]);
-
+  const { state, actions } = useStore(); // 상태와 액션을 받아옵니다.
   const [selectedReportId, setSelectedReportId] = useState(null);
   const [newComment, setNewComment] = useState("");
+  const [editCommentId, setEditCommentId] = useState(null); // 수정할 댓글 ID
+  const [editedCommentText, setEditedCommentText] = useState(""); // 수정된 댓글 텍스트
 
+  // state.reports가 정의되어 있는지 확인
+  const reports = state.reports || []; // reports가 없을 경우 빈 배열을 사용
+
+  // 새 신고 추가
+  const handleAddReport = () => {
+    const newReport = {
+      id: reports.length > 0 ? reports[reports.length - 1].id + 1 : 1,
+      title: "새로운 신고 제목",
+      reporter: "새 사용자",
+      content: "새로운 신고 내용",
+      date: new Date().toISOString().split("T")[0],
+      status: "처리 중",
+      views: 0,
+      comments: [],
+    };
+    actions.addReport(newReport); // 리듀서의 addReport 액션 호출
+  };
+
+  // 리포트 보기
   const handleViewReport = (id) => {
     setSelectedReportId(id);
   };
 
+  // 뒤로가기
   const handleGoBack = () => {
     setSelectedReportId(null);
   };
 
+  // 댓글 추가
   const handleAddComment = () => {
     if (newComment.trim() !== "") {
-      const updatedReports = reports.map((report) =>
-        report.id === selectedReportId
-          ? {
-              ...report,
-              comments: [
-                ...report.comments,
-                {
-                  id: report.comments.length + 1,
-                  text: newComment,
-                  author: "백승우", // 댓글 작성자의 닉네임 추가
-                },
-              ],
-            }
-          : report
-      );
-      setReports(updatedReports);
-      setNewComment(""); // 댓글 작성 후 입력창 비우기
+      const comment = {
+        id: Math.random(), // 임의의 고유 ID (실제 코드에서는 고유한 ID 생성 방식 사용)
+        text: newComment,
+        author: "백승우",
+        replies: [], // 대댓글 목록 초기화
+      };
+      actions.addComment(selectedReportId, comment); // 리포트에 댓글 추가
+      setNewComment(""); // 댓글 입력 후 입력창 비우기
     }
   };
 
-  const handleDeleteComment = (reportId, commentId) => {
-    const updatedReports = reports.map((report) =>
-      report.id === reportId
-        ? {
-            ...report,
-            comments: report.comments.filter((comment) => comment.id !== commentId),
-          }
-        : report
-    );
-    setReports(updatedReports);
+  // 댓글 수정
+  const handleEditComment = (commentId, newText) => {
+    actions.updateComment(selectedReportId, commentId, { text: newText });
+    setEditCommentId(null); // 수정 모드 종료
+    setEditedCommentText(""); // 수정된 텍스트 초기화
   };
 
+  // 댓글 수정 시작
+  const handleStartEditComment = (commentId, currentText) => {
+    setEditCommentId(commentId);
+    setEditedCommentText(currentText); // 수정할 댓글의 기존 텍스트 설정
+  };
+
+  // 댓글 삭제
+  const handleDeleteComment = (reportId, commentId) => {
+    actions.deleteComment(reportId, commentId); // 댓글 삭제
+  };
+
+  // 선택된 리포트 찾기
   const selectedReport = reports.find((report) => report.id === selectedReportId);
 
   return (
@@ -176,13 +96,33 @@ function FeedbackAccordion() {
                 <ul>
                   {selectedReport.comments.map((comment) => (
                     <li key={comment.id} className="comment">
-                      <p><strong>{comment.author}</strong>: {comment.text}</p> {/* 작성자 추가 */}
+                      <p><strong>{comment.author}</strong>: {comment.text}</p>
                       <button
                         className="delete-comment-btn"
                         onClick={() => handleDeleteComment(selectedReport.id, comment.id)}
                       >
                         삭제
                       </button>
+                      <button
+                        className="edit-comment-btn"
+                        onClick={() => handleStartEditComment(comment.id, comment.text)}
+                      >
+                        수정
+                      </button>
+                      {editCommentId === comment.id ? (
+                        <div>
+                          <textarea
+                            value={editedCommentText}
+                            onChange={(e) => setEditedCommentText(e.target.value)}
+                          />
+                          <button
+                            className="save-edit-btn"
+                            onClick={() => handleEditComment(comment.id, editedCommentText)}
+                          >
+                            저장
+                          </button>
+                        </div>
+                      ) : null}
                     </li>
                   ))}
                 </ul>
@@ -206,6 +146,12 @@ function FeedbackAccordion() {
       ) : (
         <>
           <h2>건의/제보 게시판 리스트</h2>
+          {/* 상세 페이지가 아닐 때만 "새 신고 추가" 버튼 보이게 하기 */}
+      {selectedReportId === null && (
+        <button className="add-report-btn" onClick={handleAddReport}>
+          새 신고 추가
+        </button>
+      )}
           <table className="feedback-table">
             <thead>
               <tr>
