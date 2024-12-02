@@ -6,20 +6,19 @@ import TeamSection from "./MypageActComponents/TeamSection";
 import PostsSection from "./MypageActComponents/PostsSection";
 import { useStore as MatchingStore } from '../../../stores/MatchingStore/useStore';
 import { useStore as TeamStore } from "../../../stores/TeamStore/useStore";
-import { useStore as StadiumStore } from "../../../stores/StadiumStore/useStore";
-import { useStore as FAQStore } from "../../../stores/FAQStore/useStore";
 import axios from 'axios';
 import styles from "./MypageAct.module.css";
 
 const MypageAct = ({ gridArea }) => {
-  const { id } = useParams(); // URL에서 userId 가져오기
+  const { id } = useParams(); // URL에서 userId만 받아옴
   const { state: matchingState, actions: matchingActions } = MatchingStore();
   const { state: teamState, actions: teamActions } = TeamStore();
-  const [contents, setContents] = useState([]);
-  const [comments, setComments] = useState([]);
+  const [contents, setContents] = useState([]); // 내가 쓴 게시물
+  const [comments, setComments] = useState([]); // 내가 쓴 댓글
   const [matchingList, setMatchingList] = useState([]);
   const [userNumber, setUserNumber] = useState(null); // userNumber 상태 추가
-  console.log(id);
+  const [commentCount, setCommentCount] = useState(0); // 댓글 개수를 저장할 상태 추가
+
   // userId 기반으로 userData 가져오기
   useEffect(() => {
     axios.get("/data/userData.json")
@@ -39,22 +38,30 @@ const MypageAct = ({ gridArea }) => {
     if (userNumber) {
       axios.get("/data/faqData.json")
         .then(response => {
-          const filteredData = response.data.filter(data => data.userId === userNumber); // userNumber와 일치하는 데이터만 필터링
-  
+          const filteredData = response.data.filter(data => data.userId === userNumber); // 내가 작성한 게시물 필터링
           setContents(filteredData.map(data => ({
             faqNumber: data.faqNumber,
             title: data.title,
             content: data.content,
-            date: data.date
+            date: data.date,
+            comment: data.comments,
+            name: data.writenNickname // 게시물의 댓글 정보도 포함
           })));
-  
-          setComments(filteredData.flatMap(data => data.comments)); // 댓글 정보 저장
+
+          // 내가 작성한 댓글만 필터링
+          const myComments = response.data.flatMap(data => 
+            data.comments.filter(comment => comment.userNickname === id) // 댓글 작성자 nickname이 URL의 id와 일치하는 경우
+          );
+          setComments(myComments); // 내가 작성한 댓글만 저장
+
+          // 댓글의 개수 계산
+          setCommentCount(myComments.length); // 댓글 개수를 상태에 저장
         })
         .catch(err => {
           console.error("Error fetching FAQ data:", err);
         });
     }
-  }, [userNumber]);
+  }, [userNumber, id]); // `id`로 변경, nickname을 직접 사용하지 않음
 
   // 매칭 정보 로드
   useEffect(() => {
