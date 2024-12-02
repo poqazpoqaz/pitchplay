@@ -73,6 +73,23 @@ function FeedbackAccordion() {
     setSelectedReport({ ...selectedReport, comments: updatedComments });
   };
 
+  // 신고 추가 처리
+  const handleAddReport = () => {
+    const newReport = {
+      faqNumber: reports.length > 0 ? reports[reports.length - 1].faqNumber + 1 : 1,
+      title: "새로운 신고 제목",
+      writeNickname: "새 사용자",
+      userId: "newUser123",
+      content: "새로운 신고 내용",
+      date: new Date().toISOString().split("T")[0],
+      status: "처리 중",
+      views: 0,
+      comments: [],
+    };
+
+    setReports((prevReports) => [...prevReports, newReport]);
+  };
+
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>에러 발생: {error}</p>;
 
@@ -89,6 +106,9 @@ function FeedbackAccordion() {
       ) : (
         <>
           <h2>건의 / 제보 게시판 리스트</h2>
+          <button className="add-report-btn" onClick={handleAddReport}>
+            건의/제보 글쓰기
+          </button>
           <table className="feedback-table">
             <thead>
               <tr>
