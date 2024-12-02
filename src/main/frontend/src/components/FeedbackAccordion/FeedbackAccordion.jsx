@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useStore } from "../../stores/FAQStore/useStore";  // useStore 훅 임포트
+// import { useStore } from "../../stores/FAQStore/useStore";  // useStore 훅 임포트
 import "./FeedbackAccordion.css";  // 스타일 import
 
 function FeedbackAccordion() {
