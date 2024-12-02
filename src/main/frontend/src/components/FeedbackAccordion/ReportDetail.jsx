@@ -1,10 +1,10 @@
-// ReportDetail.js
 import React, { useState } from "react";
 import "./ReportDetail.css"; // ReportDetail CSS import
 
-function ReportDetail({ report, onGoBack, onSaveEditedComment, onEditComment, onDeleteComment }) {
+function ReportDetail({ report, onGoBack, onSaveEditedComment, onAddComment, onDeleteComment }) {
   const [editingComment, setEditingComment] = useState(null);
   const [editedCommentText, setEditedCommentText] = useState("");
+  const [newComment, setNewComment] = useState(""); // 새 댓글 상태
 
   const handleEditComment = (index) => {
     setEditingComment(index);
@@ -15,6 +15,14 @@ function ReportDetail({ report, onGoBack, onSaveEditedComment, onEditComment, on
     onSaveEditedComment(index, editedCommentText);
     setEditingComment(null);
     setEditedCommentText("");
+  };
+
+  // 댓글 추가 함수
+  const handleAddComment = () => {
+    if (newComment.trim()) {
+      onAddComment(newComment); // 댓글 추가 처리
+      setNewComment(""); // 입력창 초기화
+    }
   };
 
   return (
@@ -63,7 +71,15 @@ function ReportDetail({ report, onGoBack, onSaveEditedComment, onEditComment, on
             ))}
           </ul>
         )}
-        <button className="back-btn" onClick={onGoBack}>뒤로 가기</button>
+        <textarea
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+          placeholder="댓글을 작성하세요..."
+        />
+        <div className="comment-actions">
+          <button className="add-comment-btn" onClick={handleAddComment}>댓글 달기</button>
+          <button className="back-btn" onClick={onGoBack}>뒤로 가기</button>
+        </div>
       </div>
     </div>
   );

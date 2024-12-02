@@ -1,14 +1,12 @@
-// FeedbackAccordion.js
 import React, { useState, useEffect } from "react";
-import ReportDetail from "./ReportDetail"; // 새로 만든 ReportDetail 컴포넌트 import
 import "./FeedbackAccordion.css"; // CSS 파일 import
+import ReportDetail from "./ReportDetail"; // 분리된 상세보기 컴포넌트 import
 
 function FeedbackAccordion() {
   const [reports, setReports] = useState([]); // 신고 데이터를 관리하는 상태
   const [loading, setLoading] = useState(true); // 데이터 로딩 상태
   const [error, setError] = useState(null); // 에러 상태
   const [selectedReport, setSelectedReport] = useState(null); // 선택된 신고 상세 보기
-  const [newComment, setNewComment] = useState(""); // 새 댓글 입력 상태
 
   // 데이터 불러오기
   useEffect(() => {
@@ -43,41 +41,36 @@ function FeedbackAccordion() {
     }
   };
 
-  // 댓글 작성
-  const handleAddComment = () => {
-    if (newComment.trim()) {
-      setSelectedReport((prevReport) => ({
-        ...prevReport,
-        comments: [
-          ...prevReport.comments,
-          { userNickname: "User", comment: newComment },
-        ],
-      }));
-      setNewComment("");
-    }
+  // 뒤로가기
+  const handleGoBack = () => {
+    setSelectedReport(null);
   };
 
-  // 댓글 수정 저장
-  const handleSaveEditedComment = (index, editedText) => {
+  // 댓글 추가 처리
+  const handleAddComment = (newComment) => {
+    setSelectedReport((prevReport) => ({
+      ...prevReport,
+      comments: [
+        ...prevReport.comments,
+        { userNickname: "User", comment: newComment },
+      ],
+    }));
+  };
+
+  // 댓글 수정 처리
+  const handleSaveEditedComment = (index, editedCommentText) => {
     const updatedComments = selectedReport.comments.map((comment, idx) =>
-      idx === index
-        ? { ...comment, comment: editedText }
-        : comment
+      idx === index ? { ...comment, comment: editedCommentText } : comment
     );
     setSelectedReport({ ...selectedReport, comments: updatedComments });
   };
 
-  // 댓글 삭제
+  // 댓글 삭제 처리
   const handleDeleteComment = (index) => {
     const updatedComments = selectedReport.comments.filter(
       (_, idx) => idx !== index
     );
     setSelectedReport({ ...selectedReport, comments: updatedComments });
-  };
-
-  // 뒤로가기
-  const handleGoBack = () => {
-    setSelectedReport(null);
   };
 
   if (loading) return <p>로딩 중...</p>;
@@ -90,7 +83,7 @@ function FeedbackAccordion() {
           report={selectedReport}
           onGoBack={handleGoBack}
           onSaveEditedComment={handleSaveEditedComment}
-          onEditComment={() => {}}
+          onAddComment={handleAddComment}
           onDeleteComment={handleDeleteComment}
         />
       ) : (
