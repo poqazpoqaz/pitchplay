@@ -1,0 +1,72 @@
+.social-detail-grid {
+    display: grid;
+    grid-template:
+        'img img img' 400px
+        '... ... ...' 30px
+        '... matchinginfo ...' 120px
+        '... ... ...' 30px
+        '... teamMatching ...' auto
+        '... ... ...' 30px
+        '... map ...' 1fr
+        '... ... ...' 30px
+        '... application ...' 350px
+        '... ... ...' 30px / 1fr 5fr 1fr;
+
+}
+
+.social-detail-grid>img {
+    width: 100%;
+    height: 100%;
+    grid-area: img;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+@media (max-width: 1024px) {
+    .social-detail-grid {
+        grid-template:
+            'img' 300px
+            '...' 20px
+            'matchinginfo' auto
+            '...' 20px
+            'teamMatching' auto
+            '...' 20px
+            'map' auto
+            '...' 20px
+            'application' auto / 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .social-detail-grid {
+        grid-template:
+            'img' 300px
+            '...' 20px
+            'matchinginfo' auto
+            '...' 20px
+            'teamMatching' auto
+            '...' 20px
+            'map' auto
+            '...' 20px
+            'application' auto / 1fr;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .social-detail-grid {
+        grid-template:
+            'img' 300px
+            '...' 20px
+            'matchinginfo' auto
+            '...' 20px
+            'teamMatching' auto
+            '...' 20px
+            'map' auto
+            '...' 20px
+            'application' auto / 1fr;
+
+    }
+
+}

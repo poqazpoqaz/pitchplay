@@ -5,7 +5,7 @@ import styles from "./ReservationDetail.module.css";
 
 function ReservationDetail({ reservationContent, stadiumContent, gridArea, options, onchange}) {
     // 날짜 포맷 변환
-    const formattedDate = new Date(reservationContent.reservationDate).toLocaleDateString('ko-KR', {
+    const formattedDate = new Date(reservationContent).toLocaleDateString('ko-KR', {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'

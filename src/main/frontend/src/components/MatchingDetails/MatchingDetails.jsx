@@ -34,7 +34,7 @@ const Items = styled(motion.div)`
     }
 `;
 
-function MatchingDetails({ matchingState, gridArea }) {
+function MatchingDetails({ teamGender, teamSize, matchingLoc, matchingDate, gridArea }) {
     return (
         <Wrapper style={{ gridArea: gridArea }}>
             <h3>매치정보</h3>
@@ -45,7 +45,7 @@ function MatchingDetails({ matchingState, gridArea }) {
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <img src={gender} />
-                    <p>{matchingState.gender}</p>
+                    <p>{teamGender}</p>
                 </Items>
                 <Items
                     initial={{ opacity: 0, y: -20 }}
@@ -53,7 +53,7 @@ function MatchingDetails({ matchingState, gridArea }) {
                     transition={{ duration: 0.5, delay: 0.4 }}
                 >
                     <img src={stadium} />
-                    <p>{matchingState.teamSize}</p>
+                    <p>{teamSize}</p>
                 </Items>
                 <Items
                     initial={{ opacity: 0, y: -20 }}
@@ -61,7 +61,7 @@ function MatchingDetails({ matchingState, gridArea }) {
                     transition={{ duration: 0.5, delay: 0.6 }}
                 >
                     <img src={ping} />
-                    <p>{matchingState.location}</p>
+                    <p>{matchingLoc}</p>
                 </Items>
                 <Items
                     initial={{ opacity: 0, y: -20 }}
@@ -69,7 +69,7 @@ function MatchingDetails({ matchingState, gridArea }) {
                     transition={{ duration: 0.5, delay: 0.8 }}
                 >
                     <img src={clock} />
-                    <p>{matchingState.matchingDate}</p>
+                    <p>{matchingDate}</p>
                 </Items>
             </SubWrapper>
         </Wrapper>

@@ -43,14 +43,14 @@ const FlexDiv = styled.div`
 `
 
 
-function MatchingPayment({ isOpen, closeModal, userCash, stadiumCost }) {
+function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost}) {
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
-
     // 숫자를 포맷하는 함수
     const formatNumber = (number) =>
         Number(number).toLocaleString("en-US"); // en-US로 설정하여 천 단위 콤마 추가
 
     const remainingCash = +userCash - +stadiumCost;
+
 
     return (
         <Modal isOpen={isOpen} closeModal={closeModal}>
@@ -59,7 +59,7 @@ function MatchingPayment({ isOpen, closeModal, userCash, stadiumCost }) {
                 isOpen={isAlarmOpen}
                 onClick={()=>setIsAlarmOpen(false)}
                 closeAlarm={()=>setIsAlarmOpen(false)}
-                to={'/team'}
+                to={to}
                 btntext={"확인"}
                 >
                     결제되었습니다.
@@ -74,6 +74,7 @@ function MatchingPayment({ isOpen, closeModal, userCash, stadiumCost }) {
                         <FlexDiv>
                             <p>부족한 캐시</p>
                             <p><span>{formatNumber(Math.abs(remainingCash))}</span> 원</p>
+                            
                         </FlexDiv>
                         <FlexDiv>
                             <p>현재 보유 캐시</p>

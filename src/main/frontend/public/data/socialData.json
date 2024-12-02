@@ -2,7 +2,7 @@
     {
         "socialNumber": "123912",
         "userId": "pitch123",
-        "stadiumId": "S210401100008601453",
+        "stadiumId": "S231208105143407599",
         "socialGender": "남성",
         "socialSize": "4vs4",
         "socialLevel": "비기너",
@@ -13,15 +13,15 @@
         "currentMember": [
             
             {"nickname": "꼬스모", "src": "/imgs/1.jpg"},
-            {"nickname": "홍길동", "src": "/imgs/1.jpg"},
-            {"nickname": "김철수", "src": "/imgs/1.jpg"}
+            {"nickname": "축구왕", "src": "/imgs/1.jpg"},
+            {"nickname": "슛돌이", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "8"
     },
     {
         "socialNumber": "234234",
         "userId": "pitch123",
-        "stadiumId": "S231208105143407599",
+        "stadiumId": "S241020142339657690",
         "socialGender": "여성",
         "socialSize": "3vs3",
         "socialLevel": "아마추어",
@@ -30,15 +30,15 @@
         "viewCount": "150",
         "activeStatus": "false",
         "currentMember": [
-            {"nickname": "이영희", "src": "/imgs/1.jpg"},
-            {"nickname": "박미선", "src": "/imgs/1.jpg"}
+            {"nickname": "축구발", "src": "/imgs/1.jpg"},
+            {"nickname": "내가바로금발", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "6"
     },
     {
         "socialNumber": "345345",
         "userId": "pitch123",
-        "stadiumId": "S231208160336766600",
+        "stadiumId": "S231212133601633481",
         "socialGender": "혼성",
         "socialSize": "5vs5",
         "socialLevel": "세미프로",
@@ -47,18 +47,18 @@
         "viewCount": "200",
         "activeStatus": "false",
         "currentMember": [
-            {"nickname": "이준석", "src": "/imgs/1.jpg"},
-            {"nickname": "김태희", "src": "/imgs/1.jpg"},
-            {"nickname": "최영민", "src": "/imgs/1.jpg"},
-            {"nickname": "박수현", "src": "/imgs/1.jpg"},
-            {"nickname": "장미라", "src": "/imgs/1.jpg"}
+            {"nickname": "꼬쓰모", "src": "/imgs/1.jpg"},
+            {"nickname": "나는축구가좋아여", "src": "/imgs/1.jpg"},
+            {"nickname": "재밌다축구", "src": "/imgs/1.jpg"},
+            {"nickname": "박수박수박수", "src": "/imgs/1.jpg"},
+            {"nickname": "피어난장미", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "10"
     },
     {
         "socialNumber": "456456",
         "userId": "garam456",
-        "stadiumId": "S231208160336766600",
+        "stadiumId": "S231208105143407599",
         "socialGender": "여성",
         "socialSize": "6vs6",
         "socialLevel": "프로",
@@ -67,19 +67,19 @@
         "viewCount": "50",
         "activeStatus": "true",
         "currentMember": [
-            {"nickname": "배수지", "src": "/imgs/1.jpg"},
-            {"nickname": "강민경", "src": "/imgs/1.jpg"},
-            {"nickname": "전지현", "src": "/imgs/1.jpg"},
-            {"nickname": "배수지", "src": "/imgs/1.jpg"},
-            {"nickname": "강민경", "src": "/imgs/1.jpg"},
-            {"nickname": "전지현", "src": "/imgs/1.jpg"}
+            {"nickname": "재밌다축구", "src": "/imgs/1.jpg"},
+            {"nickname": "박수박수박수", "src": "/imgs/1.jpg"},
+            {"nickname": "꼬쓰모", "src": "/imgs/1.jpg"},
+            {"nickname": "김쑤", "src": "/imgs/1.jpg"},
+            {"nickname": "밍경", "src": "/imgs/1.jpg"},
+            {"nickname": "현현", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "6"
     },
     {
         "socialNumber": "567567",
         "userId": "garam456",
-        "stadiumId": "S231211171320885915",
+        "stadiumId": "S231208105143407599",
         "socialGender": "남성",
         "socialSize": "7vs7",
         "socialLevel": "아마추어",
@@ -88,15 +88,15 @@
         "viewCount": "120",
         "activeStatus": "false",
         "currentMember": [
-            {"nickname": "오준석", "src": "/imgs/1.jpg"},
-            {"nickname": "박상훈", "src": "/imgs/1.jpg"}
+            {"nickname": "닉네임할거없다", "src": "/imgs/1.jpg"},
+            {"nickname": "뭐라고하지", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "8"
     },
     {
         "socialNumber": "678678",
         "userId": "garam456",
-        "stadiumId": "S231212111105238745",
+        "stadiumId": "S231212133601633481",
         "socialGender": "남성",
         "socialSize": "5vs5",
         "socialLevel": "전체",
@@ -105,17 +105,17 @@
         "viewCount": "180",
         "activeStatus": "false",
         "currentMember": [
-            {"nickname": "김하늘", "src": "/imgs/1.jpg"},
-            {"nickname": "최병호", "src": "/imgs/1.jpg"},
-            {"nickname": "박정수", "src": "/imgs/1.jpg"},
-            {"nickname": "윤재민", "src": "/imgs/1.jpg"}
+            {"nickname": "여길봐봐", "src": "/imgs/1.jpg"},
+            {"nickname": "여길봐줘", "src": "/imgs/1.jpg"},
+            {"nickname": "안녕하세요축구왕", "src": "/imgs/1.jpg"},
+            {"nickname": "피치플렉이", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "8"
     },
     {
         "socialNumber": "789789",
         "userId": "garam456",
-        "stadiumId": "S231212111105238745",
+        "stadiumId": "S120423174310156240",
         "socialGender": "혼성",
         "socialSize": "6vs6",
         "socialLevel": "비기너",
@@ -124,16 +124,16 @@
         "viewCount": "90",
         "activeStatus": "false",
         "currentMember": [
-            {"nickname": "정수현", "src": "/imgs/1.jpg"},
-            {"nickname": "허정민", "src": "/imgs/1.jpg"},
-            {"nickname": "박경훈", "src": "/imgs/1.jpg"}
+            {"nickname": "재밌다축구", "src": "/imgs/1.jpg"},
+            {"nickname": "박수박수박수", "src": "/imgs/1.jpg"},
+            {"nickname": "꼬쓰모", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "10"
     },
     {
         "socialNumber": "890890",
         "userId": "hyunsu789",
-        "stadiumId": "S231212111105238745",
+        "stadiumId": "S231208105143407599",
         "socialGender": "여성",
         "socialSize": "11vs11",
         "socialLevel": "세미프로",
@@ -142,16 +142,16 @@
         "viewCount": "250",
         "activeStatus": "false",
         "currentMember": [
-            {"nickname": "송하영", "src": "/imgs/1.jpg"},
-            {"nickname": "이소라", "src": "/imgs/1.jpg"},
-            {"nickname": "장예지", "src": "/imgs/1.jpg"}
+            {"nickname": "김쑤", "src": "/imgs/1.jpg"},
+            {"nickname": "밍경", "src": "/imgs/1.jpg"},
+            {"nickname": "현현", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "6"
     },
     {
         "socialNumber": "901901",
         "userId": "hyunsu789",
-        "stadiumId": "S231212111105238745",
+        "stadiumId": "S120423174310156240",
         "socialGender": "혼성",
         "socialSize": "7vs7",
         "socialLevel": "프로",
@@ -160,23 +160,23 @@
         "viewCount": "300",
         "activeStatus": "true",
         "currentMember": [
-            {"nickname": "이정수", "src": "/imgs/1.jpg"},
-            {"nickname": "홍윤지", "src": "/imgs/1.jpg"},
-            {"nickname": "김하나", "src": "/imgs/1.jpg"},
-            {"nickname": "박진영", "src": "/imgs/1.jpg"},
-            {"nickname": "신수정", "src": "/imgs/1.jpg"},
-            {"nickname": "유재희", "src": "/imgs/1.jpg"},
-            {"nickname": "김하나", "src": "/imgs/1.jpg"},
-            {"nickname": "박진영", "src": "/imgs/1.jpg"},
-            {"nickname": "신수정", "src": "/imgs/1.jpg"},
-            {"nickname": "유재희", "src": "/imgs/1.jpg"}
+            {"nickname": "밍밍", "src": "/imgs/1.jpg"},
+            {"nickname": "날아라슛돌이", "src": "/imgs/1.jpg"},
+            {"nickname": "슈퍼보드아닌가요", "src": "/imgs/1.jpg"},
+            {"nickname": "닉네임1", "src": "/imgs/1.jpg"},
+            {"nickname": "닉네임2", "src": "/imgs/1.jpg"},
+            {"nickname": "코스모닉네임1", "src": "/imgs/1.jpg"},
+            {"nickname": "꼬꼬꼬", "src": "/imgs/1.jpg"},
+            {"nickname": "제가바로날쌘돌이", "src": "/imgs/1.jpg"},
+            {"nickname": "어이쿠", "src": "/imgs/1.jpg"},
+            {"nickname": "대박", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "10"
     },
     {
         "socialNumber": "101010",
         "userId": "hyunsu789",
-        "stadiumId": "S231212111105238745",
+        "stadiumId": "S241020142339657690",
         "socialGender": "남성",
         "socialSize": "4vs4",
         "socialLevel": "아마추어",
@@ -185,10 +185,10 @@
         "viewCount": "320",
         "activeStatus": "false",
         "currentMember": [
-            {"nickname": "이승철", "src": "/imgs/1.jpg"},
-            {"nickname": "박찬호", "src": "/imgs/1.jpg"},
-            {"nickname": "정경훈", "src": "/imgs/1.jpg"},
-            {"nickname": "김정원", "src": "/imgs/1.jpg"}
+            {"nickname": "꼬꼬꼬", "src": "/imgs/1.jpg"},
+            {"nickname": "제가바로날쌘돌이", "src": "/imgs/1.jpg"},
+            {"nickname": "어이쿠", "src": "/imgs/1.jpg"},
+            {"nickname": "대박", "src": "/imgs/1.jpg"}
         ],
         "totalMember": "8"
     }

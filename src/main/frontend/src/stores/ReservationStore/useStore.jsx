@@ -19,9 +19,9 @@ export const useStore = () => {
         changeReservationNumber: (reservationNumber) => dispatch(changeReservationNumber(reservationNumber)),
         // 예약 날짜 변경 메서드
         changeReservationDate: (reservationDate) => dispatch(changeReservationDate(reservationDate)),
-        // 예약 구장 이름 변경 메서드
+        // 예약 구장 이름 변경 메서드 
         changeStadiumId: (stadiumId) => dispatch(changeStadiumId(stadiumId)),
-        //팀 코드 변경 메서드(예약한 팀 코드)
+        //팀 코드 변경 메서드(예약한 팀 코드) 
         changeTeamCode: (teamCode) => dispatch(changeTeamCode(teamCode)),
         //상태 초기화 메서드
         reserState: () => dispatch(reserState())

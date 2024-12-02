@@ -9,6 +9,8 @@ function TeamProfile({ content, gridArea }) {
             <div className={styles['teamprofile-title']}>
                 <h3>{content.teamName}</h3>
                 <h3>（{content.currentMember} / {content.totalMember}명）</h3>
+
+
             </div>
             <div className={styles['teamprofile-content']}>
                 <TeamProfileText content="활동 위치">{content.teamCity} {content.teamLoc}</TeamProfileText>

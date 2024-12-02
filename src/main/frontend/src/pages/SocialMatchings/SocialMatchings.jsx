@@ -153,7 +153,7 @@ function SocialMatchings({ gridArea }) {
                 {/* 더 보기 버튼 */}
                 <CircularButton onClick={handleLoadMore} gridArea="btn" />
 
-                {isModalOpen && <JoinRequestModal titletext="소셜매칭신청" buttontext="소셜매칭신청하기" isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm}>
+                {isModalOpen && <JoinRequestModal titletext="소셜매칭신청" buttontext="신청하기" isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm}>
                     <p>소셜 신청 시에 프로필과 연락처가 공개됩니다.</p>
                     <p><span style={{ fontWeight: "bold" }}>개인정보 공개에 동의</span>하실 경우 버튼을 눌러 신청해주세요.</p>
                 </JoinRequestModal>}

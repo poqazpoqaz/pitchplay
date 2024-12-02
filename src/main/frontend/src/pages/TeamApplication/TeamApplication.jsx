@@ -23,6 +23,7 @@ function TeamApplication() {
             .then(response => {
                 const datas = response.data; // teamData.json의 데이터 가져오기
                 const teamData = datas.find(data => data.teamCode === teamCode); // 해당 팀 찾기
+                console.log(teamData)
                 if (teamData) {
                     // 팀 데이터를 상태에 설정
                     actions.changeTeamName(teamData.teamName);
@@ -63,7 +64,7 @@ function TeamApplication() {
 
     return (
         <div className={styles['teamapplication-grid']}>
-            <TeamProfile content={state} gridArea="teamprofile" />
+           <TeamProfile content={state} gridArea="teamprofile" />
             <TeamDescription content={state} gridArea="teamIntro" />
             <Button color="var(--main-color)" gridArea="btn" onClick={openModal}>가입신청</Button>
             {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm} />}

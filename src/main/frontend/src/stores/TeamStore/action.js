@@ -29,7 +29,7 @@ export const changeTeamLoc = (teamLoc) => ({ type: CHANGE_TEAM_LOC, payload: tea
 export const changeTeamAge = (teamAge) => ({ type: CHANGE_TEAM_AGE, payload: teamAge });
 export const changeTeamGender = (teamGender) => ({ type: CHANGE_TEAM_GENDER, payload: teamGender });
 export const changeCurrentMember = (currentMember) => ({ type: CHANGE_CURRENT_MEMBER, payload: currentMember });
-export const changeTotalMember = (totalMember) => ({ type: CHANGE_TOTAL_MEMBER, paylaod: totalMember });
+export const changeTotalMember = (totalMember) => ({ type: CHANGE_TOTAL_MEMBER, payload: totalMember });
 export const changeCollectionTitle = (collectionTitle) => ({ type: CHANGE_COLLECTION_TITLE, payload: collectionTitle });
 export const changeTeamMember = (teamMember) => ({ type: CHANGE_TEAM_MEMBER, payload: teamMember});
 export const resetState = () => ({ type: RESET_STATE });

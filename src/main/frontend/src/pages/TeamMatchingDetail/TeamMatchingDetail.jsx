@@ -78,7 +78,7 @@ function TeamMatchingDetail({ gridArea }) {
     // 유저 데이터 불러오기 (임의로 값 설정해놓음 나중에는 해당하는 유저 불러오게 해야함 )
     useEffect(() => {
         axios.get("/data/userData.json")
-            .then(response => { 
+            .then(response => {
                 const datas = response.data;
                 const selectedUser = datas.find(data => data.userNumber = "123123");
                 userActions.changeUserNumber(selectedUser.userNumber);
@@ -86,15 +86,46 @@ function TeamMatchingDetail({ gridArea }) {
             })
     }, [])
 
+    // stadiumCost를 2로 나누어 전달
+    const adjustedStadiumCost =  Math.round(+stadiumState.stadiumCost / 2  / 100) * 100;
+
+   
+
+    // 매칭 날짜 포맷 (yyyy-MM-dd 형식으로)
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1을 해줌
+        const day = String(date.getDate()).padStart(2, '0'); // 일 부분도 두 자릿수로 맞춤
+        return `${year}-${month}-${day}`; // 년-월-일 형식으로 반환
+    };
+
+    const formattedMatchingDate = formatDate(matchingState.matchingDate);
 
     return (
         <div className={styles['matchingdetail-grid']} style={{ gridArea: gridArea }}>
             <img src={stadiumState.stadiumImg} />
-            <MatchingDetails matchingState={matchingState} gridArea="matchinginfo" />
+            <MatchingDetails
+                teamGender={matchingState.gender}
+                teamSize={matchingState.teamSize}
+                matchingLoc={matchingState.location}
+                matchingDate={formattedMatchingDate}
+                gridArea="matchinginfo" />
             <MatchingTeamDetails teams={matchingState.teams} gridArea="teamMatching" />
             <MatchingStadiumDetails stadiumState={stadiumState} gridArea="map" />
-            <MatchingApplicationDetails matchingState={matchingState} stadiumState={stadiumState} gridArea="application" onClick={() => setIsModalOpen(true)} />
-            <MatchingPayment isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} userCash={userState.userCash} stadiumCost={stadiumState.stadiumCost}/>
+            <MatchingApplicationDetails
+                matchingLoc={matchingState.location}
+                teamSize={matchingState.teamSize}
+                matchingDate={formattedMatchingDate}
+                matchingCost={adjustedStadiumCost}
+                gridArea="application"
+                onClick={() => setIsModalOpen(true)} />
+            <MatchingPayment 
+            isOpen={isModalOpen} 
+            closeModal={() => setIsModalOpen(false)} 
+            userCash={userState.userCash} 
+            stadiumCost={adjustedStadiumCost}
+            to={"/team"}/>
         </div>
     )
 }

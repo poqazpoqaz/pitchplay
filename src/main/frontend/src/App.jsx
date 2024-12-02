@@ -31,6 +31,7 @@ import SocialMatchings from "./pages/SocialMatchings/SocialMatchings";
 import SocialMatchingItem from "./components/SocialMatchingItem/SocialMatchingItem";
 import Setting from "./pages/Mypage/Setting/Setting";
 import Community1 from "./pages/Mypage/Community/Community1/Community1";
+import SocialMatchingDetail from "./pages/SocialMatchingDetail/SocialMatchingDetail";
 
 
 
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
       { path: "/", element: <MainSection gridArea={"section"} /> },
       { path: "/login", element: <Login gridArea={"section"} /> },
       { path: "/register", element: <Register gridArea={"section"} /> },
-      { path: "/social", element:<SocialMatchings gridArea={"section"}/>},
+      { path: "/social", element: <SocialMatchings gridArea={"section"} />},
+      { path: "/social/:socialNumber", element: <SocialMatchingDetail gridArea={"section"}/>},
       {
         path: "/team", element: <Post gridArea={"section"} />,
         children: [
@@ -52,7 +54,7 @@ const router = createBrowserRouter([
           { path: "creation", element: <TeamCreation isOpen={true} /> },
         ]
       },
-      { path: "/matching/:matchingNum", element: <TeamMatchingDetail gridArea={"section"}/> },
+      { path: "/matching/:matchingNum", element: <TeamMatchingDetail gridArea={"section"} /> },
       { path: "/:postNumber/guestrecruitment", element: <GuestRecruitmentDetail gridArea={"section"} /> },
       { path: "/:reservationNum/newguest", element: <GuestRecruitmentCreation gridArea={"section"} /> },
       {
@@ -65,8 +67,8 @@ const router = createBrowserRouter([
           { path: "teamsection", element: <MypageAct03 gridArea={"section"} /> },
           { path: "teamschedule", element: <MypageAct04 gridArea={"section"} /> },
           { path: ":teamCode/members", element: <MypageAct05 gridArea={"section"} /> },
-          { path: "setting" ,element : <Setting gridArea={"section"}/>},
-          { path: "posts", element : <Community1 gridArea={"section"}/>}
+          { path: "setting", element: <Setting gridArea={"section"} /> },
+          { path: "posts", element: <Community1 gridArea={"section"} /> }
         ]
       },
       { path: "/reservation", element: <ReservationPage gridArea={"section"} /> },

@@ -13,6 +13,7 @@ function TeamCollections() {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
+    const [dataList, setDataList] = useState([]);
 
     // 모달 열기/닫기 함수
     const openModal = () => setIsModalOpen(true);
@@ -29,6 +30,7 @@ function TeamCollections() {
     // 드롭다운 옵션
     const dropdownoption = ["최신순", "오래된순"];
     const [selectedOption, setSelectedOption] = useState("최신순");
+
 
     //정렬된 데이터
     const [sortedContents, setSortedContents] = useState([]);
@@ -64,11 +66,6 @@ function TeamCollections() {
             .then(response => {
                 const datas = response.data;
 
-
-                // selectedOption이나 state가 변경될 때마다 정렬
-                const sorted = sortContents(datas, selectedOption);
-                setSortedContents(sorted); // option 변경될 때마다 업데이트
-
                 datas.forEach((data) => {
                     // 각 데이터 항목에 대해 액션을 dispatch
                     actions.changeTeamCode(data.teamCode);
@@ -91,7 +88,13 @@ function TeamCollections() {
                     if (data.currentMember / data.totalMember === 1) {
                         actions.changeActiveStatus("true");
                     }
+
+                    setDataList((prev) => [...prev, state]);
                 });
+
+                // selectedOption이나 state가 변경될 때마다 정렬
+                const sorted = sortContents(datas, selectedOption);
+                setSortedContents(sorted); // option 변경될 때마다 업데이트
             })
             .catch(error => {
                 console.error("데이터 로딩 실패:", error);

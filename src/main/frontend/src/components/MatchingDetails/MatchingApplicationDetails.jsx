@@ -56,28 +56,30 @@ const CostBox = styled.div`
 `;
 
 
-function MatchingApplicationDetails({ matchingState, stadiumState, gridArea, onClick}) {
-    // 비용 포맷팅
-    const formattedCost = new Intl.NumberFormat('ko-KR').format(+stadiumState.stadiumCost / 2);
+function MatchingApplicationDetails({ matchingLoc, teamSize, matchingDate, matchingCost, gridArea, onClick }) {
+    // 숫자를 포맷하는 함수
+    const formatNumber = (number) =>
+        Number(number).toLocaleString("en-US"); // en-US로 설정하여 천 단위 콤마 추가
+
     return (
         <Wrapper style={{ gridArea: gridArea }}>
             <h3>매칭 신청</h3>
             <DetailsBox>
                 <div className="detail-item">
-                    <p>팀 매칭 장소</p>
-                    <p>{matchingState.location}</p>
+                    <p>매칭 장소</p>
+                    <p>{matchingLoc}</p>
                 </div>
                 <div className="detail-item">
-                    <p>팀 매칭 인원</p>
-                    <p>{matchingState.teamSize}</p>
+                    <p>매칭 인원</p>
+                    <p>{teamSize}</p>
                 </div>
                 <div className="detail-item">
-                    <p>팀 매칭 시간</p>
-                    <p>{matchingState.matchingDate}</p>
+                    <p>매칭 날짜</p>
+                    <p>{matchingDate}</p>
                 </div>
             </DetailsBox>
             <CostBox>
-                <h1>{formattedCost} 원</h1>
+                <h1>{formatNumber(matchingCost)} 원</h1>
                 <p>경기시간 1일전까지 최소인원 미달 시에 환불됩니다.</p>
             </CostBox>
             <Button color="var(--main-color)" size="xlarge" onClick={onClick}>신청하기</Button>
