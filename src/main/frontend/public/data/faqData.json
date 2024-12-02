@@ -1,0 +1,142 @@
+[
+    {
+        "faqNumber": "293819",
+        "userId": "123123",
+        "writeNickname": "김꼬모",
+        "title": "서비스 개선 요청",
+        "content": "앱의 UI/UX가 불편해서 사용하기 힘들어요.",
+        "date": "2024-11-29",
+        "status": "처리 중",
+        "views": 123,
+        "comments": [
+            {"userNickname": "김꼬모", "content": "앱의 UI/UX가 불편해서 사용하기 힘들어요."},
+            {"userNickname": "김일사", "content": "넵...어려운거맞아요"}
+        ]
+    },
+    {
+        "faqNumber": "293820",
+        "userId": "456456",
+        "writeNickname": "박진수",
+        "title": "로그인 오류",
+        "content": "로그인 시 '잘못된 사용자 정보' 오류가 발생합니다.",
+        "date": "2024-11-30",
+        "status": "처리 중",
+        "views": 256,
+        "comments": [
+            {"userNickname": "박진수", "content": "로그인 시 '잘못된 사용자 정보' 오류가 발생합니다."},
+            {"userNickname": "최지훈", "content": "저도 똑같은 문제 겪고 있습니다."}
+        ]
+    },
+    {
+        "faqNumber": "293821",
+        "userId": "789789",
+        "writeNickname": "이민호",
+        "title": "결제 오류",
+        "content": "결제가 완료되지 않아서 구매가 진행되지 않았습니다.",
+        "date": "2024-11-30",
+        "status": "완료",
+        "views": 98,
+        "comments": [
+            {"userNickname": "이민호", "content": "결제가 완료되지 않아서 구매가 진행되지 않았습니다."},
+            {"userNickname": "김민정", "content": "결제 오류 해결되었습니다. 감사합니다!"}
+        ]
+    },
+    {
+        "faqNumber": "293822",
+        "userId": "112233",
+        "writeNickname": "정호석",
+        "title": "앱 속도 개선 요청",
+        "content": "앱 실행 속도가 너무 느려서 사용이 어렵습니다.",
+        "date": "2024-12-01",
+        "status": "처리 중",
+        "views": 312,
+        "comments": [
+            {"userNickname": "정호석", "content": "앱 실행 속도가 너무 느려서 사용이 어렵습니다."},
+            {"userNickname": "김서영", "content": "저도 속도 문제 겪고 있습니다."}
+        ]
+    },
+    {
+        "faqNumber": "293823",
+        "userId": "654654",
+        "writeNickname": "최지훈",
+        "title": "비밀번호 변경 오류",
+        "content": "비밀번호 변경이 되지 않아서 계정 보호가 불안합니다.",
+        "date": "2024-12-01",
+        "status": "완료",
+        "views": 134,
+        "comments": [
+            {"userNickname": "최지훈", "content": "비밀번호 변경이 되지 않아서 계정 보호가 불안합니다."},
+            {"userNickname": "박진수", "content": "문제가 해결되었습니다. 감사합니다!"}
+        ]
+    },
+    {
+        "faqNumber": "293824",
+        "userId": "987987",
+        "writeNickname": "이수빈",
+        "title": "앱 알림 미작동",
+        "content": "앱 알림이 오지 않아서 중요한 알림을 놓쳤습니다.",
+        "date": "2024-12-02",
+        "status": "처리 중",
+        "views": 67,
+        "comments": [
+            {"userNickname": "이수빈", "content": "앱 알림이 오지 않아서 중요한 알림을 놓쳤습니다."},
+            {"userNickname": "정호석", "content": "저도 동일한 문제가 발생하고 있습니다."}
+        ]
+    },
+    {
+        "faqNumber": "293825",
+        "userId": "246246",
+        "writeNickname": "김동현",
+        "title": "앱 화면 깨짐 현상",
+        "content": "앱 화면이 깨져서 제대로 보이지 않습니다.",
+        "date": "2024-12-02",
+        "status": "완료",
+        "views": 205,
+        "comments": [
+            {"userNickname": "김동현", "content": "앱 화면이 깨져서 제대로 보이지 않습니다."},
+            {"userNickname": "박진수", "content": "화면 깨짐 현상이 해결되었습니다!"}
+        ]
+    },
+    {
+        "faqNumber": "293826",
+        "userId": "135135",
+        "writeNickname": "오민석",
+        "title": "앱 버전 업데이트 오류",
+        "content": "앱 버전 업데이트가 되지 않습니다.",
+        "date": "2024-12-03",
+        "status": "처리 중",
+        "views": 189,
+        "comments": [
+            {"userNickname": "오민석", "content": "앱 버전 업데이트가 되지 않습니다."},
+            {"userNickname": "최지훈", "content": "저도 동일한 문제를 겪고 있습니다."}
+        ]
+    },
+    {
+        "faqNumber": "293827",
+        "userId": "963963",
+        "writeNickname": "김서영",
+        "title": "앱 로그인 상태 유지 문제",
+        "content": "앱에서 로그인이 자주 풀려서 불편합니다.",
+        "date": "2024-12-03",
+        "status": "완료",
+        "views": 221,
+        "comments": [
+            {"userNickname": "김서영", "content": "앱에서 로그인이 자주 풀려서 불편합니다."},
+            {"userNickname": "이수빈", "content": "문제 해결되었습니다. 감사합니다!"}
+        ]
+    },
+    {
+        "faqNumber": "293828",
+        "userId": "111111",
+        "writeNickname": "조은별",
+        "title": "앱에서 사진 업로드 오류",
+        "content": "앱에서 사진을 업로드할 수 없습니다.",
+        "date": "2024-12-04",
+        "status": "처리 중",
+        "views": 177,
+        "comments": [
+            {"userNickname": "조은별", "content": "앱에서 사진을 업로드할 수 없습니다."},
+            {"userNickname": "박진수", "content": "사진 업로드 문제 해결되었습니다!"}
+        ]
+    }
+]
