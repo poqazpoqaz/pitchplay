@@ -7,7 +7,7 @@ import MenuDropItem from "./MenuDropItem";
 
 function MenuDropdown({ isVisible, onClick }) {
   const menus = [
-    {"name" : "소셜매칭", "src" : "#"}, 
+    {"name" : "소셜매칭", "src" : "/social"}, 
     {"name" : "팀매칭", "src" : "/team"}, 
     {"name" : "구장예약", "src" : "/reservation"}, 
     {"name" : "공지사항", "src" : "/notices"}

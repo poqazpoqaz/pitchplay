@@ -125,7 +125,11 @@ function TeamCollections() {
             {/* 더 보기 버튼 */}
             <CircularButton onClick={handleLoadMore} gridArea="btn" />
 
-            {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm} />}
+            {isModalOpen &&
+                <JoinRequestModal titletext="가입신청" buttontext="가입신청하기" isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm}>
+                    <p>가입 신청 시에 팀에게 프로필과 연락처가 공개됩니다.</p>
+                    <p><span style={{ fontWeight: "bold" }}>개인정보 공개에 동의</span>하실 경우 버튼을 눌러 신청해주세요.</p>
+                </JoinRequestModal>}
             {isAlarmOpen && <Alarm btntext="확인" isOpen={isAlarmOpen} closeAlarm={closeAlarm} onClick={closeAlarm}>가입신청이 완료되었습니다.</Alarm>}
 
         </div>
