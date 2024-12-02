@@ -1,4 +1,4 @@
-/* 컨테이너 스타일 */
+/* 피드백 컨테이너 */
 .feedback-container {
   margin: 20px;
   font-family: "Noto Sans", sans-serif;
@@ -7,261 +7,71 @@
 /* 제목 스타일 */
 .feedback-container h2 {
   margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
 }
 
-/* 추가 버튼 스타일 */
-.add-report-btn {
-  margin-bottom: 10px;  
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.add-report-btn:hover {
-  background-color: #45a049;
-}
-
-/* 테이블 스타일 */
+/* 게시판 리스트 테이블 */
 .feedback-table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  margin-top: 20px;
 }
 
 .feedback-table th,
 .feedback-table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 10px;
+  text-align: center;
 }
 
 .feedback-table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
+  background-color: #f1f1f1;
 }
 
-/* 테이블 행에 마우스를 올렸을 때 포인터로 바꾸기 */
 .feedback-row:hover {
-  background-color: #f9f9f9;
+  background-color: #f5f5f5;
   cursor: pointer;
 }
 
-/* 폼 그룹 스타일 (WriteReport 페이지용) */
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
+/* 댓글 입력창 */
+.comments-section textarea {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  margin-top: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  resize: vertical;
 }
 
-/* 폼 버튼 스타일 (WriteReport 페이지용) */
-.write-report-btn {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.write-report-btn:hover {
-  background-color: #45a049;
-}
-
-/* 상세 페이지 스타일 추가 */
-.report-detail {
-  background-color: #fff;
-  padding: 30px;
-  margin-top: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.report-detail h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #4caf50; /* 제목과 구분을 위한 밑줄 */
-}
-
-/* 제목과 내용 구분 */
-.report-detail-content {
-  margin-top: 20px;
-}
-
-/* 작성자, 날짜, 상태, 조회수 가로로 배치 */
-.detail-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.detail-info p {
-  margin: 0;
-  font-size: 16px;
-  color: #555;
-}
-
-.detail-info p strong {
-  color: #333;
-}
-
-/* 내용 부분 컨테이너 스타일 */
-.detail-content {
-  margin-top: 20px;
-  padding: 20px; /* 내용에 여백 추가 */
-  background-color: #fafafa; /* 배경색으로 구분 */
-  border: 1px solid #ddd; /* 테두리 추가 */
-  border-radius: 8px; /* 테두리 둥글게 */
-}
-
-.detail-content h3 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #4caf50;
-}
-
-.detail-content p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #444;
-  white-space: pre-wrap; /* 내용이 길어도 줄바꿈 가능하도록 설정 */
-}
-
-/* 댓글 달기 버튼과 뒤로 가기 버튼을 같은 라인에 배치 */
+/* 댓글 달기 버튼과 뒤로가기 버튼을 일렬로 배치 */
 .comment-actions {
   display: flex;
   justify-content: flex-end;
-  align-items: baseline;
-  gap: 10px; /* 두 버튼 사이에 간격 */
-  margin-top: 10px; /* 댓글 입력란과 버튼 사이 여백 */
+  gap: 5px; /* 버튼들 간의 간격을 5px로 설정 */
 }
 
-/* 댓글 달기 버튼 */
-.add-comment-btn,
-.back-btn {
+.add-comment-btn, .back-btn {
   padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  min-width: 120px; /* 최소 너비 설정 */
-  height: 40px; /* 버튼 높이를 동일하게 설정 */
 }
 
-.add-comment-btn:hover,
-.back-btn:hover {
+.add-comment-btn {
+  background-color: #4caf50; /* 댓글 달기 버튼 색 */
+  color: white;
+}
+
+.add-comment-btn:hover {
   background-color: #45a049;
 }
 
-/* 댓글 삭제 버튼 */
-.delete-comment-btn {
-  padding: 5px 10px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 5px;
-}
-
-.delete-comment-btn:hover {
-  background-color: #e53935;
-}
-
-/* 댓글 목록 스타일 */
-.comment {
-  margin-bottom: 15px;
-}
-
-/* 댓글 입력란 스타일 */
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px; /* 댓글과 입력란 사이에 여백 추가 */
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 14px;
-  resize: none;
-}
-
-/* 뒤로 가기 버튼 스타일 (댓글 입력란 아래) */
 .back-btn {
-  padding: 10px 20px;
-  background-color: #2196f3;
+  background-color: #2196f3; /* 뒤로가기 버튼 색 */
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 20px; /* 댓글 영역과 간격을 주기 위해 여백 추가 */
 }
 
 .back-btn:hover {
   background-color: #1976d2;
 }
-
-/* 리스트 화면 스타일 추가 */
-.feedback-list {
-  margin-top: 20px;
-}
-
-.feedback-list .feedback-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-}
-
-.feedback-list .feedback-table th,
-.feedback-list .feedback-table td {
-  padding: 12px;
-}
-
-.feedback-list .feedback-table th {
-  background-color: #f1f1f1;
-}
-
-.feedback-list .feedback-row:hover {
-  background-color: #fafafa;
-}
-
-/* 댓글 수정 버튼 */
-.edit-comment-btn {
-  padding: 5px 10px;
-  background-color: #45a049;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 5px;
-}
-
-/* 댓글 저장 버튼 */
-.save-edit-btn {
-  padding: 5px 10px;
-  background-color: #45a049;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 5px;
-}
-
