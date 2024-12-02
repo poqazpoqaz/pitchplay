@@ -14,7 +14,6 @@ const MypageAct04 = ({ gridArea }) => {
   const [filteredMatches, setFilteredMatches] = useState([]);
 
   // 매칭 정보 저장 ** 나중에 백에서 불러올때는 내가 예약한 매칭데이터만 불러와서 뿌려야함 !! 
-  // 매칭 정보 저장
   useEffect(() => {
     axios.get("/data/matchingData.json")
       .then(response => {
@@ -31,9 +30,13 @@ const MypageAct04 = ({ gridArea }) => {
           matchingActions.changeTeamLevel(data.teamLevel);
           matchingActions.changeViewCount(data.viewCount);
           matchingActions.changeWrittenDate(data.writtenDate);
-        });
 
-        setMatchingList(datas);
+          setMatchingList((prevList) => [
+            ...prevList,
+            { ...matchingState, ...data },
+          ]);
+
+        });
       })
       .catch(err => {
         console.error("Error fetching matching data:", err);
@@ -56,6 +59,7 @@ const MypageAct04 = ({ gridArea }) => {
       setFilteredMatches(filtered);
     }
   }, [selectedRange, matchingList]);  // 날짜 범위가 변경될 때마다 매칭 데이터 필터링
+
 
   return (
     <div style={{ gridArea }}>

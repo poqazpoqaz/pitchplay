@@ -86,7 +86,7 @@ const MatchesSection = ({ matches }) => {
         <Box key={index}>
           <h1>{match?.location || '위치 정보 없음'}</h1>
           <BoxCal>
-            <p>{match?.date || '날짜 정보 없음'}</p>
+            <p>{match?.matchingDate || '날짜 정보 없음'}</p>
           </BoxCal>
         </Box>
       ))}

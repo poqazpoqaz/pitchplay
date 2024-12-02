@@ -57,11 +57,10 @@ const RecordList = ({ records = [] }) => {
 
   // 과거 기록만 필터링
   const pastRecords = records.filter((record) => {
-    const recordDate = new Date(record.date);
-    
+    const recordDate = new Date(record.matchingDate);
     // record.date가 유효한지 확인
     if (isNaN(recordDate)) {
-      console.warn(`Invalid date: ${record.date}`);  // 잘못된 날짜 로그 확인
+      console.warn(`Invalid date: ${record.matchingDate}`);  // 잘못된 날짜 로그 확인
       return false;  // 유효하지 않은 날짜는 필터링
     }
     
@@ -79,7 +78,7 @@ const RecordList = ({ records = [] }) => {
           <Box key={index}>
             <h1>{record.location || '위치 정보 없음'}</h1>
             <BoxCal>
-              <p>{record.date || '날짜 정보 없음'}</p>
+              <p>{record.matchingDate || '날짜 정보 없음'}</p>
             </BoxCal>
           </Box>
         ))

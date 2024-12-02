@@ -28,6 +28,11 @@ const MypageAct01 = ({ gridArea }) => {
           matchingActions.changeTeamLevel(data.teamLevel);
           matchingActions.changeViewCount(data.viewCount);
           matchingActions.changeWrittenDate(data.writtenDate);
+
+          setMatchingList((prevList) => [
+            ...prevList,
+            { ...matchingState, ...data },
+          ]);
         });
 
         setMatchingList(datas);

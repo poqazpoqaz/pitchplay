@@ -29,9 +29,12 @@ const MypageAct02 = ({ gridArea }) => {
           matchingActions.changeTeamLevel(data.teamLevel);
           matchingActions.changeViewCount(data.viewCount);
           matchingActions.changeWrittenDate(data.writtenDate);
-        });
 
-        setMatchingList(datas);
+          setMatchingList((prevList) => [
+            ...prevList,
+            { ...matchingState, ...data },
+          ]);
+        });
       })
       .catch(err => {
         console.error("Error fetching matching data:", err);

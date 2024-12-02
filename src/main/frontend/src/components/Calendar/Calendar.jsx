@@ -22,15 +22,16 @@ const Calendar = ({ onSelect, allData }) => {
   // 날짜 선택 시 선택된 날짜 범위에 맞는 데이터를 필터링하여 부모 컴포넌트로 전달
   useEffect(() => {
     if (selectedRange.start && selectedRange.end) {
+
       const filtered = allData.filter((item) => {
-        const itemDate = new Date(item.date);
+        const itemDate = new Date(item.matchingDate);
         return isWithinInterval(itemDate, { start: selectedRange.start, end: selectedRange.end });
       });
       onSelect(filtered); // 부모 컴포넌트로 필터된 데이터 전달
     } else {
       onSelect([]); // 날짜가 선택되지 않았을 경우 빈 배열을 전달
     }
-  }, [selectedRange, onSelect, allData]);
+  }, [selectedRange]);
 
   const handlePrevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
