@@ -15,6 +15,8 @@ import {
     changeFavoriteTime,
     changeMyTeam,
     changeMyDescription,
+    changeAccountName,
+    changeAccountNum,
     resetState
 } from "./action.js";
 
@@ -50,6 +52,10 @@ export const useStore = () => {
         changeMyDescription: (myDescription) => dispatch(changeMyDescription(myDescription)),
         //유저 캐시
         changeUserCash: (userCash) => dispatch(changeUserCash(userCash)),
+        // 유저 계좌 이름
+        changeAccountName : (account) => dispatch(changeAccountName(account)),
+        // 유저 계좌 번호
+        changeAccountNum : (accountNum) => dispatch(changeAccountNum(accountNum)),
         //초기화
         resetState: () => dispatch(resetState())
     };

@@ -13,7 +13,10 @@ import {
     CHANGE_FAVORITE_TIME,
     CHANGE_MY_TEAM,
     CHANGE_MY_DESCRIPTION,
+    CHANGE_ACCOUNT_NAME,
+    CHANGE_ACCOUNT_NUM,
     RESET_STATE
+    
 } from "./action";
 
 export const initialState = {
@@ -30,7 +33,9 @@ export const initialState = {
     favoriteTime: "",
     myTeam: "",
     myDescription: "",
-    userCash: ""
+    userCash: "",
+    account : "",
+    accountNum : ""
 }
 
 
@@ -64,6 +69,10 @@ export const reducer = (state, action) => {
             return { ...state, myDescription: action.payload };
         case CHANGE_USER_CASH:
             return { ...state, userCash: action.payload };
+        case CHANGE_ACCOUNT_NAME:
+            return {...state, account : action.payload };
+        case CHANGE_ACCOUNT_NUM:
+            return {...state, accountNum : action.payload};
         case RESET_STATE:
             return initialState;
         default:

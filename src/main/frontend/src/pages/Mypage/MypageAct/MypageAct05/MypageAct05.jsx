@@ -1,6 +1,5 @@
 import styles from './MypageAct05.module.css';
 import MemberList from './MemberList';
-
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useStore as TeamStore } from "../../../../stores/TeamStore/useStore";
