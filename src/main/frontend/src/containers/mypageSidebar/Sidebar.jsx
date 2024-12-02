@@ -146,7 +146,7 @@ const Sidebar = ({ userState, gridArea }) => {
           <ListItem>
             <img src={setting} alt="설정" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="">설정</Link>
+            <Link href="/mypage/pitch123/setting">설정</Link>
           </ListItem>
         </List>
       </Sidemid>
