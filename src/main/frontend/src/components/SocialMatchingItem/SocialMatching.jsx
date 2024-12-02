@@ -51,7 +51,7 @@ function SocialMatching({ content, openModal }) {
                     정원마감
                 </DisabledButton>
             )}
-            <Button color="var(--main-color)" size="medium" gridArea="btn2" to={`/team/member/${content.teamCode}`}>
+            <Button color="var(--main-color)" size="medium" gridArea="btn2" to={`/social/${content.social.socialNumber}`}>
                 자세히 보기
             </Button>
         </motion.div>

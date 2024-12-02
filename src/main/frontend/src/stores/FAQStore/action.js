@@ -10,13 +10,13 @@ export const CHANGE_VIEWS = 'CHANGE_VIEWS';
 export const CHANGE_COMMENT = 'CHANGE_COMMENT';
 export const CHANGE_USER_NICKNAME = 'CHANGE_USER_NICKNAME'
 
-export const changefaqnumber = (faqNumber) => ({type : CHANGE_FAQ_NUMBER, payload : faqNumber});
-export const changeuserid = (userId) => ({type : CHANGE_USER_ID, payload : userId});
-export const changewritenickname = (writeNickname) => ({type : CHANGE_WRITE_NICKNAME, payload : writeNickname});
-export const changetitle = (title) => ({type : CHANGE_TITLE, payload : title});
-export const changedate = (date) => ({type : CHANGE_DATE, payload : date});
-export const changecontent = (content) => ({ type: CHANGE_CONTENT, payload: content});
-export const changecomment = (comment) => ({ type: CHANGE_COMMENT, payload: {comment}});
+export const changeFaqNumber = (faqNumber) => ({type : CHANGE_FAQ_NUMBER, payload : faqNumber});
+export const changeUserId = (userId) => ({type : CHANGE_USER_ID, payload : userId});
+export const changeWriteNickname = (writeNickname) => ({type : CHANGE_WRITE_NICKNAME, payload : writeNickname});
+export const changeTitle = (title) => ({type : CHANGE_TITLE, payload : title});
+export const changeDate = (date) => ({type : CHANGE_DATE, payload : date});
+export const changeContent = (content) => ({ type: CHANGE_CONTENT, payload: content});
+export const changeComment = (comment) => ({ type: CHANGE_COMMENT, payload: {comment}});
 export const changeViews = (views) => ({type : CHANGE_VIEWS , payload : views});
 export const changeStatus = (status) => ({type : CHANGE_STATUS , payload : status});
 export const changeUserNickname = (userNickname) => ({type : CHANGE_USER_NICKNAME , payload : userNickname});
