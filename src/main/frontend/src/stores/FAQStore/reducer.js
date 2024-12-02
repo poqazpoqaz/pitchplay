@@ -22,7 +22,7 @@ export const initialState =
   writeNickname: "",
   title: "",
   content: "",
-  Category: "",
+  category: "",
   date: "",
   status: "",
   views: 123,
@@ -67,7 +67,6 @@ export const reducer = (state, action) => {
       return { ...state, userNickname: action.payload };
     case CHANGE_CATEGORY:
       return {...state, Category : action.payload};
-
     default:
       return state;
   }

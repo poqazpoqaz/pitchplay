@@ -9,8 +9,8 @@
         "status": "처리 중",
         "views": 123,
         "comments": [
-            {"userNickname": "김꼬모", "comment": "앱의 UI/UX가 불편해서 사용하기 힘들어요."},
-            {"userNickname": "김일사", "comment": "넵...어려운거맞아요"}
+            {"userNickname": "가람이", "comment": "앱의 UI/UX가 불편해서 사용하기 힘들어요."},
+            {"userNickname": "현수짱", "comment": "넵...어려운거맞아요"}
         ]
     },
     {
@@ -23,8 +23,8 @@
         "status": "처리 중",
         "views": 256,
         "comments": [
-            {"userNickname": "박진수", "comment": "로그인 시 '잘못된 사용자 정보' 오류가 발생합니다."},
-            {"userNickname": "최지훈", "comment": "저도 똑같은 문제 겪고 있습니다."}
+            {"userNickname": "다은이", "comment": "로그인 시 '잘못된 사용자 정보' 오류가 발생합니다."},
+            {"userNickname": "민수킹", "comment": "저도 똑같은 문제 겪고 있습니다."}
         ]
     },
     {
@@ -38,7 +38,7 @@
         "views": 98,
         "comments": [
             {"userNickname": "현수짱", "comment": "결제가 완료되지 않아서 구매가 진행되지 않았습니다."},
-            {"userNickname": "김민정", "comment": "결제 오류 해결되었습니다. 감사합니다!"}
+            {"userNickname": "지민짱", "comment": "결제 오류 해결되었습니다. 감사합니다!"}
         ]
     },
     {
@@ -51,8 +51,8 @@
         "status": "처리 중",
         "views": 312,
         "comments": [
-            {"userNickname": "다은이", "comment": "앱 실행 속도가 너무 느려서 사용이 어렵습니다."},
-            {"userNickname": "김서영", "comment": "저도 속도 문제 겪고 있습니다."}
+            {"userNickname": "피치플레이", "comment": "앱 실행 속도가 너무 느려서 사용이 어렵습니다."},
+            {"userNickname": "재혁왕", "comment": "저도 속도 문제 겪고 있습니다."}
         ]
     },
     {
@@ -66,7 +66,7 @@
         "views": 134,
         "comments": [
             {"userNickname": "민수킹", "comment": "비밀번호 변경이 되지 않아서 계정 보호가 불안합니다."},
-            {"userNickname": "박진수", "comment": "문제가 해결되었습니다. 감사합니다!"}
+            {"userNickname": "길동홍", "comment": "문제가 해결되었습니다. 감사합니다!"}
         ]
     },
     {
@@ -79,8 +79,8 @@
         "status": "처리 중",
         "views": 67,
         "comments": [
-            {"userNickname": "이수빈", "comment": "앱 알림이 오지 않아서 중요한 알림을 놓쳤습니다."},
-            {"userNickname": "정호석", "comment": "저도 동일한 문제가 발생하고 있습니다."}
+            {"userNickname": "하늘하늘", "comment": "앱 알림이 오지 않아서 중요한 알림을 놓쳤습니다."},
+            {"userNickname": "피치플레이", "comment": "저도 동일한 문제가 발생하고 있습니다."}
         ]
     },
     {
@@ -93,8 +93,8 @@
         "status": "완료",
         "views": 205,
         "comments": [
-            {"userNickname": "김동현", "comment": "앱 화면이 깨져서 제대로 보이지 않습니다."},
-            {"userNickname": "박진수", "comment": "화면 깨짐 현상이 해결되었습니다!"}
+            {"userNickname": "재혁왕", "comment": "앱 화면이 깨져서 제대로 보이지 않습니다."},
+            {"userNickname": "세훈이", "comment": "화면 깨짐 현상이 해결되었습니다!"}
         ]
     },
     {
@@ -107,8 +107,8 @@
         "status": "처리 중",
         "views": 189,
         "comments": [
-            {"userNickname": "오민석", "comment": "앱 버전 업데이트가 되지 않습니다."},
-            {"userNickname": "최지훈", "comment": "저도 동일한 문제를 겪고 있습니다."}
+            {"userNickname": "피치플레이", "comment": "앱 버전 업데이트가 되지 않습니다."},
+            {"userNickname": "지민짱", "comment": "저도 동일한 문제를 겪고 있습니다."}
         ]
     },
     {
@@ -121,8 +121,8 @@
         "status": "완료",
         "views": 221,
         "comments": [
-            {"userNickname": "김서영", "comment": "앱에서 로그인이 자주 풀려서 불편합니다."},
-            {"userNickname": "이수빈", "comment": "문제 해결되었습니다. 감사합니다!"}
+            {"userNickname": "가람이", "comment": "앱에서 로그인이 자주 풀려서 불편합니다."},
+            {"userNickname": "민수킹", "comment": "문제 해결되었습니다. 감사합니다!"}
         ]
     },
     {
@@ -135,8 +135,8 @@
         "status": "처리 중",
         "views": 177,
         "comments": [
-            {"userNickname": "조은별", "comment": "앱에서 사진을 업로드할 수 없습니다."},
-            {"userNickname": "박진수", "comment": "사진 업로드 문제 해결되었습니다!"}
+            {"userNickname": "다은이", "comment": "앱에서 사진을 업로드할 수 없습니다."},
+            {"userNickname": "길동홍", "comment": "사진 업로드 문제 해결되었습니다!"}
         ]
     }
 ]

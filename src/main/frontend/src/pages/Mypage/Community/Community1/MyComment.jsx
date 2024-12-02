@@ -8,7 +8,7 @@ const Top1 = styled.div`
   background-color: #f9fafc;
   border-radius: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  margin-top : 30px;
+  margin-top: 30px;
 `;
 
 const Subtitle = styled.h1`
@@ -39,6 +39,12 @@ const Box = styled.div`
   h1 {
     font-size: 18px;
     color: #555;
+    margin: 0;
+  }
+
+  p {
+    font-size: 14px;
+    color: #888;
     margin: 0;
   }
 `;
@@ -80,16 +86,16 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const PostsSection = ({ posts = [] }) => {
+const PostsSection = ({ comments = [] }) => {
   return (
     <Top1>
       <Subtitle>내가 쓴 댓글</Subtitle>
-      {posts.slice(0, 2).map((post, index) => (
+      {comments.slice(0, 2).map((comment, index) => (
         <Box key={index}>
-          <h1>{post?.title || '제목 정보 없음'}</h1>
-          <BoxCal>
-            <p>{post?.date || '날짜 정보 없음'}</p>
-          </BoxCal>
+          <div>
+            <h1>{comment?.userNickname || '닉네임 정보 없음'}</h1>
+            <p>{comment?.comment || '댓글 내용 없음'}</p>
+          </div>
         </Box>
       ))}
       <BtnEnd>

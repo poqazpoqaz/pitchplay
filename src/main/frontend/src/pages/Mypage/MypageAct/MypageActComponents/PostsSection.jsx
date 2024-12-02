@@ -83,7 +83,7 @@ const PostsSection = ({ contents = [], comments = [] }) => {
         <p>댓글 수 : {comments.length > 0 ? comments.length : "댓글 내용 없음"}</p>
       </Box>
       <BtnEnd>
-        <LinkButton to="/mypage/posts">보러가기</LinkButton>
+        <LinkButton to="/mypage/pitch123/posts">보러가기</LinkButton>
       </BtnEnd>
     </Container>
   );

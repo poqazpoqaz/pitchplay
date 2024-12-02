@@ -40,6 +40,12 @@ const Box = styled.div`
     color: #555;
     margin: 0;
   }
+
+  p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+  }
 `;
 
 const BoxCal = styled.div`
@@ -79,15 +85,19 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const PostsSection = ({ posts = [] }) => {
+const PostsSection = ({ contents = [] }) => {
   return (
     <Top1>
       <Subtitle>내가 쓴 글</Subtitle>
-      {posts.slice(0, 2).map((post, index) => (
+      {contents.slice(0, 2).map((content, index) => (
         <Box key={index}>
-          <h1>{post?.title || '제목 정보 없음'}</h1>
+          <div>
+            <h1>{content?.title || '제목 정보 없음'}</h1>
+            <p>{content?.content || '내용 정보 없음'}</p>
+          </div>
           <BoxCal>
-            <p>{post?.date || '날짜 정보 없음'}</p>
+            <p>{content?.date || '날짜 정보 없음'}</p>
+            <p>{`조회수: ${content?.viewCount || 0}`}</p>
           </BoxCal>
         </Box>
       ))}
