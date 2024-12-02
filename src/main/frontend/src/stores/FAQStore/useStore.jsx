@@ -47,6 +47,7 @@ export const useStore = () => {
 
         // 사용자 닉네임 변경 메서드
         changeUserNickname: (userNickname) => dispatch(changeUserNickname(userNickname)),
+        
         // 카테고리 변경 메서드
         changeCategory: (category) => dispatch(changeCategory(category))
     };

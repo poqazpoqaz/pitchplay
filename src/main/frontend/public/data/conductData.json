@@ -1,0 +1,142 @@
+[
+    {
+        "faqNumber": "293819",
+        "userId": "123123",
+        "writeNickname": "피치플레이",
+        "title": "비매너 플레이 신고",
+        "content": "게임 중 상대방이 고의로 게임을 방해했습니다.",
+        "date": "2024-11-29",
+        "status": "처리 중",
+        "views": 123,
+        "comments": [
+            {"userNickname": "가람이", "comment": "상대방이 게임을 고의로 방해했습니다."},
+            {"userNickname": "현수짱", "comment": "그런 경우가 많네요. 처리 부탁드려요."}
+        ]
+    },
+    {
+        "faqNumber": "293820",
+        "userId": "456456",
+        "writeNickname": "가람이",
+        "title": "욕설 사용 신고",
+        "content": "게임 중 상대방이 지속적으로 욕설을 사용했습니다.",
+        "date": "2024-11-30",
+        "status": "처리 중",
+        "views": 256,
+        "comments": [
+            {"userNickname": "다은이", "comment": "저도 게임 중 욕설을 들었습니다."},
+            {"userNickname": "민수킹", "comment": "정말 불쾌한 상황이네요. 빨리 처리되었으면 좋겠어요."}
+        ]
+    },
+    {
+        "faqNumber": "293821",
+        "userId": "789789",
+        "writeNickname": "현수짱",
+        "title": "불법 프로그램 사용 신고",
+        "content": "상대방이 게임에서 불법 프로그램을 사용한 것으로 의심됩니다.",
+        "date": "2024-11-30",
+        "status": "완료",
+        "views": 98,
+        "comments": [
+            {"userNickname": "현수짱", "comment": "상대방이 명백히 불법 프로그램을 사용한 것 같습니다."},
+            {"userNickname": "지민짱", "comment": "처리가 완료되어서 다행입니다. 감사합니다!"}
+        ]
+    },
+    {
+        "faqNumber": "293822",
+        "userId": "112233",
+        "writeNickname": "다은이",
+        "title": "불공정한 팀킬 신고",
+        "content": "팀원이 일부러 저를 죽였습니다.",
+        "date": "2024-12-01",
+        "status": "처리 중",
+        "views": 312,
+        "comments": [
+            {"userNickname": "피치플레이", "comment": "그런 플레이를 보면 정말 화가 나요."},
+            {"userNickname": "재혁왕", "comment": "불공정한 팀킬은 정말 고쳐야 할 문제입니다."}
+        ]
+    },
+    {
+        "faqNumber": "293823",
+        "userId": "223344",
+        "writeNickname": "민수킹",
+        "title": "불법 광고 신고",
+        "content": "게임 중에 불법 광고를 반복적으로 송출하는 사용자입니다.",
+        "date": "2024-12-01",
+        "status": "완료",
+        "views": 134,
+        "comments": [
+            {"userNickname": "민수킹", "comment": "이런 불법 광고 문제는 더 이상 발생하지 않기를 바랍니다."},
+            {"userNickname": "길동홍", "comment": "이미 해결된 문제라니 다행입니다."}
+        ]
+    },
+    {
+        "faqNumber": "293824",
+        "userId": "334455",
+        "writeNickname": "지민짱",
+        "title": "매칭 시스템 불만",
+        "content": "매칭 시스템이 불공정하게 되어 있어 승패에 영향을 미칩니다.",
+        "date": "2024-12-02",
+        "status": "처리 중",
+        "views": 67,
+        "comments": [
+            {"userNickname": "하늘하늘", "comment": "매칭 시스템 개선이 필요합니다."},
+            {"userNickname": "피치플레이", "comment": "매칭에서 공정한 조건이 필요해요."}
+        ]
+    },
+    {
+        "faqNumber": "293825",
+        "userId": "445566",
+        "writeNickname": "길동홍",
+        "title": "불공정한 신고 처리",
+        "content": "불공정한 신고 처리로 인해 피해를 봤습니다.",
+        "date": "2024-12-02",
+        "status": "완료",
+        "views": 205,
+        "comments": [
+            {"userNickname": "재혁왕", "comment": "불공정한 신고 처리는 문제가 많아요."},
+            {"userNickname": "세훈이", "comment": "이 문제 해결되었으면 좋겠습니다."}
+        ]
+    },
+    {
+        "faqNumber": "293826",
+        "userId": "556677",
+        "writeNickname": "세훈이",
+        "title": "지속적인 도배 신고",
+        "content": "게임 채팅에서 지속적으로 도배가 이루어졌습니다.",
+        "date": "2024-12-03",
+        "status": "처리 중",
+        "views": 189,
+        "comments": [
+            {"userNickname": "피치플레이", "comment": "도배 문제를 해결해주세요."},
+            {"userNickname": "지민짱", "comment": "채팅 도배는 정말 불쾌합니다."}
+        ]
+    },
+    {
+        "faqNumber": "293827",
+        "userId": "667788",
+        "writeNickname": "하늘하늘",
+        "title": "비매너 플레이 신고",
+        "content": "상대방이 고의적으로 게임을 방해했습니다.",
+        "date": "2024-12-03",
+        "status": "완료",
+        "views": 221,
+        "comments": [
+            {"userNickname": "가람이", "comment": "그런 플레이는 정말 불쾌해요."},
+            {"userNickname": "민수킹", "comment": "이 문제 해결되었다니 다행입니다."}
+        ]
+    },
+    {
+        "faqNumber": "293828",
+        "userId": "778899",
+        "writeNickname": "재혁왕",
+        "title": "게임 내 부정행위 신고",
+        "content": "상대방이 게임 내에서 부정행위를 했습니다.",
+        "date": "2024-12-04",
+        "status": "처리 중",
+        "views": 177,
+        "comments": [
+            {"userNickname": "다은이", "comment": "게임 내 부정행위는 근절되어야 합니다."},
+            {"userNickname": "길동홍", "comment": "빠르게 처리되었으면 좋겠어요."}
+        ]
+    }
+]

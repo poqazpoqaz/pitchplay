@@ -1,0 +1,155 @@
+/* ReportDetail.css */
+
+/* 상세 보기 페이지 */
+.report-detail {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.report-detail h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4caf50; /* 제목 밑에 구분선 */
+}
+
+/* 신고 상세 정보 */
+.report-info {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5개의 열로 나누어 표시 */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.report-info span {
+    font-size: 14px;
+    color: #555;
+}
+
+.report-info span strong {
+    color: #333;
+}
+
+/* 신고 내용 */
+.report-content {
+    margin-top: 20px;
+    padding: 15px; /* 내용 주변 여백 */
+    border: 1px solid #ddd; /* 보더 추가 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #f9f9f9; /* 배경 색 설정 */
+}
+
+.report-content h3 {
+    font-size: 20px;
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+
+.report-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    white-space: pre-wrap; /* 내용이 길어져도 줄바꿈 가능 */
+}
+
+/* 댓글 섹션 */
+.comments-section {
+    margin-top: 20px;
+}
+
+.comments-section h3 {
+    font-size: 20px;
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+
+.comments-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.comments-section li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex; /* 댓글 내용과 버튼을 한 줄로 배치 */
+    justify-content: space-between; /* 댓글 내용과 버튼을 양옆으로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    border: 1px solid #ddd; /* 댓글 항목에 보더 추가 */
+}
+
+/* 댓글 내용 (p) 부분 */
+.comments-section li p {
+    flex-grow: 1; /* 댓글 내용이 남은 공간을 채우도록 설정 */
+    margin: 0; /* 기본 여백 제거 */
+    padding-right: 20px; /* 버튼과 간격을 주기 위해 여백 추가 */
+    line-height: 1.6; /* 행간을 조금 넓게 설정 */
+}
+
+/* 댓글 수정, 삭제 버튼 */
+.comments-section li .comment-actions {
+    display: flex;
+    gap: 10px; /* 버튼 사이의 간격 */
+    align-items: center; /* 버튼들이 세로로 정렬되지 않도록 설정 */
+}
+
+.comments-section li button {
+    padding: 6px 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comments-section li button:hover {
+    background-color: #45a049;
+}
+
+/* 댓글 입력창 */
+.comments-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+/* 댓글 달기 버튼과 뒤로가기 버튼을 일렬로 배치 */
+.comment-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px; /* 버튼들 간의 간격을 5px로 설정 */
+}
+
+.add-comment-btn, .back-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-comment-btn {
+    background-color: #4caf50; /* 댓글 달기 버튼 색 */
+    color: white;
+}
+
+.add-comment-btn:hover {
+    background-color: #45a049;
+}
+
+.back-btn {
+    background-color: #2196f3; /* 뒤로가기 버튼 색 */
+    color: white;
+}
+
+.back-btn:hover {
+    background-color: #1976d2;
+}
