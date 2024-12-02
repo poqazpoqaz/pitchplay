@@ -72,15 +72,15 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const PostsSection = ({ posts = [], comment = [] }) => {
+const PostsSection = ({ contents = [], comments = [] }) => {
   return (
     <Container>
       <Subtitle>내가 쓴 글</Subtitle>
       <Box>
-        <p>게시물 수 : {posts.length > 0 ? posts.length : "게시물 내용 없음"}</p>
+        <p>게시물 수 : {contents.length > 0 ? contents.length : "게시물 내용 없음"}</p>
       </Box>
       <Box>
-        <p>댓글 수 : {comment.length > 0 ? comment.length : "댓글 내용 없음"}</p>
+        <p>댓글 수 : {comments.length > 0 ? comments.length : "댓글 내용 없음"}</p>
       </Box>
       <BtnEnd>
         <LinkButton to="/mypage/posts">보러가기</LinkButton>

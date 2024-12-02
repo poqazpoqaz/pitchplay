@@ -36,12 +36,15 @@ const Sidemid = styled.div`
 
 const Sidebottom = styled.div`
   grid-area: sidebottom;
+
 `;
 
 const UserInfo = styled.div`
   .username {
     font-size: 1rem;
     font-weight: bold;
+    margin-top : 25px;
+
   }
   .useremail {
     font-size: 0.75rem;
@@ -70,9 +73,15 @@ const ListItem = styled.li`
 `;
 
 const Button = styled.span`
-  padding: 1rem;
   color: red;
   cursor: pointer;
+  text-align : center;
+  display: inline-block;
+  position: relative;
+  bottom: 13px;
+  left : 15px;
+  font-size : 1.1rem;
+
 `;
 
 const TopImg = styled.img`

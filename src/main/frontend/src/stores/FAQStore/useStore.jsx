@@ -10,7 +10,8 @@ import {
     changeStatus,
     changeViews,
     changeComment,
-    changeUserNickname
+    changeUserNickname,
+    changeCategory
 } from "./action";
 
 export const useStore = () => {
@@ -45,7 +46,9 @@ export const useStore = () => {
         changeComment: (comment) => dispatch(changeComment(comment)),
 
         // 사용자 닉네임 변경 메서드
-        changeUserNickname: (userNickname) => dispatch(changeUserNickname(userNickname))
+        changeUserNickname: (userNickname) => dispatch(changeUserNickname(userNickname)),
+        // 카테고리 변경 메서드
+        changeCategory: (category) => dispatch(changeCategory(category))
     };
 
     return { state, actions };
