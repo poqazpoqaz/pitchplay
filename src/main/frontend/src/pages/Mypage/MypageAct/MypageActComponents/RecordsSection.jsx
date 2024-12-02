@@ -86,13 +86,13 @@ const RecordsSection = ({ records }) => {
       <Box>
         <h1>{records[0]?.location}</h1>
         <BoxCal>
-          <p>{records[0]?.date}</p>
+          <p>{records[0]?.matchingDate}</p>
         </BoxCal>
       </Box>
       <Box>
         <h1>{records[1]?.location}</h1>
         <BoxCal>
-          <p>{records[1]?.date}</p>
+          <p>{records[1]?.matchingDate}</p>
         </BoxCal>
       </Box>
 
