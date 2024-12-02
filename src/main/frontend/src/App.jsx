@@ -28,6 +28,7 @@ import StadiumDetail from "./pages/StadiumDetail/StadiumDetail";
 import FeedbackAccordion from "./components/FeedbackAccordion/FeedbackAccordion";
 import ConductAccordion from "./components/ConductAccordion/ConductAccordion";
 import Setting from "./pages/Mypage/Setting/Setting";
+import Community1 from "./pages/Mypage/Community/Community1/Community1";
 
 
 
@@ -61,7 +62,8 @@ const router = createBrowserRouter([
           { path: "teamsection", element: <MypageAct03 gridArea={"section"} /> },
           { path: "teamschedule", element: <MypageAct04 gridArea={"section"} /> },
           { path: ":teamCode/members", element: <MypageAct05 gridArea={"section"} /> },
-          { path: "setting" ,element : <Setting gridArea={"section"}/>}
+          { path: "setting" ,element : <Setting gridArea={"section"}/>},
+          { path: "posts", element : <Community1 gridArea={"section"}/>}
         ]
       },
       { path: "/reservation", element: <ReservationPage gridArea={"section"} /> },
