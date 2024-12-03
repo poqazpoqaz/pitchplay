@@ -36,7 +36,7 @@ function WriteReport({ onCancel, onSubmit, gridArea }) {
       // 기본 동작으로 콘솔에 데이터를 출력
       console.log("제출된 보고서 (기본 처리): ", newReport);
 
-      alert("글을 등록하였습니다. (기본 동작 실행)");
+      alert("글을 등록하였습니다.");
 
       // 기본적으로 /notices/feedback으로 리다이렉트
       navigate("/notices/feedback");
