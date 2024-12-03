@@ -14,6 +14,7 @@ export const CHANGE_MY_DESCRIPTION = "CHANGE_MY_DESCRIPTION";
 export const CHANGE_USER_CASH = "CHANGE_USER_CASH";
 export const CHANGE_ACCOUNT_NAME = "CHANGE_ACCOUNT_NAME";
 export const CHANGE_ACCOUNT_NUM = "CHANGE_ACCOUNT_NUM";
+export const CHANGE_JOIN_DATE = "CHANGE_JOIN_DATE";
 export const RESET_STATE = "RESET_STATE";
 
 export const changeUserNumber = (userNumber) => ({type: CHANGE_USER_NUMBER, payload: userNumber});
@@ -32,4 +33,5 @@ export const changeMyTeam = (myTeam) => ({type: CHANGE_MY_TEAM, payload: myTeam}
 export const changeMyDescription = (myDescription) => ({type: CHANGE_MY_DESCRIPTION, payload: myDescription});
 export const changeAccountName = (account) => ({type : CHANGE_ACCOUNT_NAME, payload : account});
 export const changeAccountNum = (accountNum) => ({type : CHANGE_ACCOUNT_NUM , payload : accountNum});
+export const changeJoinDate = (joindate) => ({type: CHANGE_JOIN_DATE, payload: joindate});
 export const resetState = () => ({ type: RESET_STATE });

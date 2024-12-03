@@ -17,6 +17,7 @@ import {
     changeMyDescription,
     changeAccountName,
     changeAccountNum,
+    changeJoinDate,
     resetState
 } from "./action.js";
 
@@ -56,6 +57,8 @@ export const useStore = () => {
         changeAccountName : (account) => dispatch(changeAccountName(account)),
         // 유저 계좌 번호
         changeAccountNum : (accountNum) => dispatch(changeAccountNum(accountNum)),
+        // 유저 가입
+        changeJoinDate : (joindate) => dispatch(changeJoinDate(joindate)),
         //초기화
         resetState: () => dispatch(resetState())
     };

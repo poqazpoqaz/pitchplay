@@ -31,9 +31,9 @@ import SocialMatchings from "./pages/SocialMatchings/SocialMatchings";
 import Setting from "./pages/Mypage/Setting/Setting";
 import Community1 from "./pages/Mypage/Community/Community1/Community1";
 import SocialMatchingDetail from "./pages/SocialMatchingDetail/SocialMatchingDetail";
-import FindIdPage from "./containers/FindIdPage/FindIdPage";
+import FindIdPage from "./pages/FindIdPage/FindIdPage";
 import FindIdPw from "./pages/FindIdPw/FindIdPw";
-import FindPwPage from "./containers/FindPwPage/FindPwPage";
+import FindPwPage from "./pages/FindPwPage/FindPwPage";
 import WriteReport from "./components/FeedbackAccordion/WriteReport";
 
 

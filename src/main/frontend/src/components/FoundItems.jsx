@@ -35,7 +35,7 @@ const SubWrapper = styled.div`
     }
 `;
 
-function FoundItems({ inputFields, gridArea }) {
+function FoundItems({ onClick, inputFields, gridArea }) {
     return (
         <Wrapper gridArea={gridArea}>
             {inputFields.map((field) => (
@@ -46,12 +46,15 @@ function FoundItems({ inputFields, gridArea }) {
                         type={field.type}
                         placeholder={field.placeholder}
                         isvalid={field.isvalid}
+                        onChange={field.onChange}
+                        value={field.value}
                         gridArea="input"
                     />
                     {field.hasButton && (
                         <Button
                             color="var(--main-color)"
                             gridArea="btn"
+                            onClick={onClick}
                         >
                             인증번호발송</Button>
                     )}

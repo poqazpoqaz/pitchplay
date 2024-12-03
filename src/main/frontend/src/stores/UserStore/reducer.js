@@ -15,8 +15,9 @@ import {
     CHANGE_MY_DESCRIPTION,
     CHANGE_ACCOUNT_NAME,
     CHANGE_ACCOUNT_NUM,
+    CHANGE_JOIN_DATE,
     RESET_STATE
-    
+
 } from "./action";
 
 export const initialState = {
@@ -34,8 +35,9 @@ export const initialState = {
     myTeam: "",
     myDescription: "",
     userCash: "",
-    account : "",
-    accountNum : ""
+    account: "",
+    accountNum: "",
+    joinDate: ""
 }
 
 
@@ -70,9 +72,11 @@ export const reducer = (state, action) => {
         case CHANGE_USER_CASH:
             return { ...state, userCash: action.payload };
         case CHANGE_ACCOUNT_NAME:
-            return {...state, account : action.payload };
+            return { ...state, account: action.payload };
         case CHANGE_ACCOUNT_NUM:
-            return {...state, accountNum : action.payload};
+            return { ...state, accountNum: action.payload };
+        case CHANGE_JOIN_DATE:
+            return { ...state, joinDate: action.payload };
         case RESET_STATE:
             return initialState;
         default:

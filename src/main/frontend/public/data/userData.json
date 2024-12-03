@@ -14,11 +14,12 @@
         "myTeam": "피치플레이",
         "myDescription": "안녕하세요. 열심히 참석할 자신이 있는 피치플레이라고 합니다.",
         "userCash": "300000",
-        "account" : "카카오뱅크",
-        "accountNum" : "3333061234567",
+        "account": "카카오뱅크",
+        "accountNum": "3333061234567",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2024-01-01T10:00:00"
     },
     {
         "userNumber": "456456",
@@ -35,11 +36,12 @@
         "myTeam": "강남팀",
         "myDescription": "축구를 좋아하는 가람입니다.",
         "userCash": "30000",
-        "account" : "국민은행",
-        "accountNum" : "142301234567",
+        "account": "국민은행",
+        "accountNum": "142301234567",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-12-01T20:30:00"
     },
     {
         "userNumber": "789789",
@@ -56,11 +58,12 @@
         "myTeam": "부산바다팀",
         "myDescription": "새벽에 활동하는 현수입니다.",
         "userCash": "15000",
-        "account" : "신한은행",
-        "accountNum" : "50246878945",
+        "account": "신한은행",
+        "accountNum": "50246878945",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-11-25T18:15:00"
     },
     {
         "userNumber": "112233",
@@ -77,11 +80,12 @@
         "myTeam": "대구팀",
         "myDescription": "긍정적인 다은입니다.",
         "userCash": "50000",
-        "account" : "카카오뱅크",
-        "accountNum" : "3333067894561",
+        "account": "카카오뱅크",
+        "accountNum": "3333067894561",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-11-20T15:45:00"
     },
     {
         "userNumber": "223344",
@@ -98,11 +102,12 @@
         "myTeam": "광주호랑이팀",
         "myDescription": "아침마다 달리는 민수입니다.",
         "userCash": "10000",
-        "account" : "카카오뱅크",
-        "accountNum" : "3333067894561",
+        "account": "카카오뱅크",
+        "accountNum": "3333067894561",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-11-20T15:45:00"
     },
     {
         "userNumber": "334455",
@@ -119,11 +124,12 @@
         "myTeam": "인천이글스",
         "myDescription": "인천에서 축구를 사랑하는 지민입니다.",
         "userCash": "40000",
-        "account" : "카카오뱅크",
-        "accountNum" : "3333067894561",
+        "account": "카카오뱅크",
+        "accountNum": "3333067894561",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-11-20T15:45:00"
     },
     {
         "userNumber": "445566",
@@ -140,11 +146,12 @@
         "myTeam": "강북팀",
         "myDescription": "열정 가득한 길동입니다.",
         "userCash": "25000",
-        "account" : "카카오뱅크",
-        "accountNum" : "3333067894561",
+        "account": "카카오뱅크",
+        "accountNum": "3333067894561",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-11-20T15:45:00"
     },
     {
         "userNumber": "556677",
@@ -161,11 +168,12 @@
         "myTeam": "울산팀",
         "myDescription": "밤에 활약하는 세훈입니다.",
         "userCash": "18000",
-        "account" : "카카오뱅크",
-        "accountNum" : "3333067894561",
+        "account": "카카오뱅크",
+        "accountNum": "3333067894561",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-11-20T15:45:00"
     },
     {
         "userNumber": "667788",
@@ -182,11 +190,12 @@
         "myTeam": "송파러너",
         "myDescription": "맑은 하늘처럼 활동적인 하늘입니다.",
         "userCash": "60000",
-        "account" : "카카오뱅크",
-        "accountNum" : "3333067894561",
+        "account": "카카오뱅크",
+        "accountNum": "3333067894561",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-11-20T15:45:00"
     },
     {
         "userNumber": "778899",
@@ -203,10 +212,11 @@
         "myTeam": "수원팀",
         "myDescription": "수원에서 열심히 활동하는 재혁입니다.",
         "userCash": "35000",
-        "account" : "카카오뱅크",
-        "accountNum" : "3333067894561",
+        "account": "카카오뱅크",
+        "accountNum": "3333067894561",
         "profilePublic": true,
         "emailNotification": false,
-        "snsNotification": true
+        "snsNotification": true,
+        "joindate": "2023-11-20T15:45:00"
     }
 ]

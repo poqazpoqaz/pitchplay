@@ -27,6 +27,7 @@
 .idpage-grid>div:nth-of-type(3) {
     grid-area: text;
     display: flex;
+    gap: 10px;
 }
 
 a {

@@ -70,7 +70,7 @@ function Login({ gridArea }) {
             </Button>
             <div className={styles['login-link']}>
                 <Link to={'/find'}><p>아이디 찾기</p></Link>
-                <a href="#"><p>비밀번호 찾기</p></a>
+                <Link to={'/find/pw'}><p>비밀번호 찾기</p></Link>
                 <Link to={'/register'}><p>회원가입</p></Link>
             </div>
         </div>
