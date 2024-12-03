@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
 `;
 
 
@@ -29,7 +28,7 @@ const StyledInput = styled.input`
     border-radius: 10px;
     border: 1px solid ${props => props.$isvalid ? 'var(--line-color)' : 'var(--main-color)'};
     padding: 10px;
-    margin-top: 5px;
+    margin-top: 5px ;
       font-size: ${(props) => {
     switch (props.size) {
       case 'small':

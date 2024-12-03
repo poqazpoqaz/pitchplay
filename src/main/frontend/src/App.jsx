@@ -31,7 +31,9 @@ import SocialMatchings from "./pages/SocialMatchings/SocialMatchings";
 import Setting from "./pages/Mypage/Setting/Setting";
 import Community1 from "./pages/Mypage/Community/Community1/Community1";
 import SocialMatchingDetail from "./pages/SocialMatchingDetail/SocialMatchingDetail";
-import FoundIdPage from "./pages/FindIdPage/FindIdPage";
+import FindIdPage from "./containers/FindIdPage/FindIdPage";
+import FindIdPw from "./pages/FindIdPw/FindIdPw";
+import FindPwPage from "./containers/FindPwPage/FindPwPage";
 
 
 
@@ -41,10 +43,16 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <MainSection gridArea={"section"} /> },
       { path: "/login", element: <Login gridArea={"section"} /> },
-      { path: "/findid", element: <FoundIdPage gridArea={"section"} /> },
+      {
+        path: "/find", element: <FindIdPw gridArea={"section"} />,
+        children: [
+          { path: "", element: <FindIdPage /> },
+          { path: "pw", element: <FindPwPage/>}
+        ]
+      },
       { path: "/register", element: <Register gridArea={"section"} /> },
-      { path: "/social", element: <SocialMatchings gridArea={"section"} />},
-      { path: "/social/:socialNumber", element: <SocialMatchingDetail gridArea={"section"}/>},
+      { path: "/social", element: <SocialMatchings gridArea={"section"} /> },
+      { path: "/social/:socialNumber", element: <SocialMatchingDetail gridArea={"section"} /> },
       {
         path: "/team", element: <Post gridArea={"section"} />,
         children: [
