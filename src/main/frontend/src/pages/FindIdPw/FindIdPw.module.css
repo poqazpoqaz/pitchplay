@@ -38,3 +38,23 @@ a {
 .findidpw-grid>a:hover {
     background-color: #a2c68e;
 }
+
+@media (max-width: 768px) {
+    .findidpw-grid {
+        grid-template:
+            '... ...' 20px
+            'id pw' 40px
+            'form form' 1fr
+            '... ...' 20px/ 1fr 1fr;
+    }
+
+    .findidpw-grid>a:nth-of-type(1),
+    .findidpw-grid>a:nth-of-type(2) {
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .findidpw-grid>div:nth-of-type(1) {
+        padding: 10px;
+    }
+}

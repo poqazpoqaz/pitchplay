@@ -34,12 +34,12 @@ function FindIdPage() {
             axios.get("/data/userData.json")
                 .then(response => {
                     const user = response.data.find(user => user.name === userState.name && user.email === userState.email);
-                   
-                    userActions.changeId(user.id);
-                    userActions.changeJoinDate(user.joindate);
-
+                    
                     if (user) {
                         setMessage('이메일을 발송했습니다. 인증번호를 확인해주세요!');
+                        userActions.changeId(user.id);
+                        userActions.changeJoinDate(user.joindate);
+
                     } else {
                         setMessage('해당하는 유저가 없습니다. 다시 시도해주세요.');
                     }
@@ -97,7 +97,7 @@ function FindIdPage() {
             }
 
             {isValid &&
-                <IdModal isOpen={isValid} closeModal={()=>setIsValid(false)} userState={userState}/>
+                <IdModal isOpen={isValid} closeModal={() => setIsValid(false)} userState={userState} />
             }
         </div>
     )
