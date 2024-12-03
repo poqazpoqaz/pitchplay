@@ -38,6 +38,9 @@
 
 .header-middle {
     grid-area: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header-right {
