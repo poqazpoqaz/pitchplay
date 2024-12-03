@@ -63,7 +63,27 @@
         ],
         "currentMember": 10,
         "totalMember": 20,
-        "collectionTitle": "피치플레이 팀에 함께하실 분 구합니다."
+        "collectionTitle": "피치플레이 팀에 함께하실 분 구합니다.",
+        "pendingMembers": [
+            {
+                "pendingnickname": "태환짱",
+                "applicationDate": "2024-12-01",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "수현짱",
+                "applicationDate": "2024-12-02",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "정우짱",
+                "applicationDate": "2024-12-03",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            }
+        ]
     },
     {
         "teamName": "축구사랑",
@@ -167,7 +187,28 @@
         ],
         "currentMember": 20,
         "totalMember": 30,
-        "collectionTitle": "드리머스 팀원 추가 모집!"
+        
+        "collectionTitle": "드리머스 팀원 추가 모집!",
+        "pendingMembers": [
+            {
+                "pendingnickname": "태영왕",
+                "applicationDate": "2024-12-01",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "지혜짱",
+                "applicationDate": "2024-12-02",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "주희짱",
+                "applicationDate": "2024-12-03",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            }
+        ]
     },
     {
         "teamName": "울산번개",
@@ -203,7 +244,28 @@
         ],
         "currentMember": 18,
         "totalMember": 28,
-        "collectionTitle": "울산번개와 함께 뛰실 분 모집!"
+        "collectionTitle": "울산번개와 함께 뛰실 분 모집!",
+        "pendingMembers": [
+            {
+                "pendingnickname": "상훈이",
+                "applicationDate": "2024-12-01",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "윤지짱",
+                "applicationDate": "2024-12-02",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "지영이",
+                "applicationDate": "2024-12-03",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            }
+        ]
+
     },
     {
         "teamName": "광주타이거즈",
@@ -239,7 +301,27 @@
         ],
         "currentMember": 12,
         "totalMember": 22,
-        "collectionTitle": "광주타이거즈 신입 모집!"
+        "collectionTitle": "광주타이거즈 신입 모집!",
+        "pendingMembers": [
+            {
+                "pendingnickname": "선영이",
+                "applicationDate": "2024-12-01",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "",
+                "applicationDate": "2024-12-02",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "정우짱",
+                "applicationDate": "2024-12-03",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            }
+        ]
     },
     {
         "teamName": "인천이글스",
@@ -275,7 +357,27 @@
         ],
         "currentMember": 25,
         "totalMember": 35,
-        "collectionTitle": "인천이글스 새 멤버 모집!"
+        "collectionTitle": "인천이글스 새 멤버 모집!",
+        "pendingMembers": [
+            {
+                "pendingnickname": "태환짱",
+                "applicationDate": "2024-12-01",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "수현짱",
+                "applicationDate": "2024-12-02",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "정우짱",
+                "applicationDate": "2024-12-03",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            }
+        ]
     },
     {
         "teamName": "수원블루스",
@@ -347,7 +449,27 @@
         ],
         "currentMember": 14,
         "totalMember": 24,
-        "collectionTitle": "대구런너스 팀원 모집!"
+        "collectionTitle": "대구런너스 팀원 모집!",
+        "pendingMembers": [
+            {
+                "pendingnickname": "태환짱",
+                "applicationDate": "2024-12-01",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "수현짱",
+                "applicationDate": "2024-12-02",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "정우짱",
+                "applicationDate": "2024-12-03",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            }
+        ]
     },
     {
         "teamName": "서울윈드",
@@ -383,7 +505,27 @@
         ],
         "currentMember": 22,
         "totalMember": 32,
-        "collectionTitle": "서울윈드와 함께할 팀원 찾습니다."
+        "collectionTitle": "서울윈드와 함께할 팀원 찾습니다.",
+        "pendingMembers": [
+            {
+                "pendingnickname": "태환짱",
+                "applicationDate": "2024-12-01",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "수현짱",
+                "applicationDate": "2024-12-02",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "정우짱",
+                "applicationDate": "2024-12-03",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            }
+        ]
     },
     {
         "teamName": "제주라이온스",
@@ -419,6 +561,26 @@
         ],
         "currentMember": 18,
         "totalMember": 28,
-        "collectionTitle": "제주라이온스 멤버를 찾습니다!"
+        "collectionTitle": "제주라이온스 멤버를 찾습니다!",
+        "pendingMembers": [
+            {
+                "pendingnickname": "태환짱",
+                "applicationDate": "2024-12-01",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "수현짱",
+                "applicationDate": "2024-12-02",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            },
+            {
+                "pendingnickname": "정우짱",
+                "applicationDate": "2024-12-03",
+                "profileImg" : "/imgs/1.jpg",
+                "applicationstatus": "pending"          
+            }
+        ]
     }
 ]

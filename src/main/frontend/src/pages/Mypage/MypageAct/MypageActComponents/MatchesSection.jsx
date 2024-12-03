@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Top1 = styled.div`
+const Container = styled.div`
   padding: 30px;
   background-color: #f9fafc;
-  border-radius: 25px;
+  border-radius : 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 `;
 
@@ -79,21 +79,28 @@ const LinkButton = styled(Link)`
 `;
 
 const MatchesSection = ({ matches }) => {
+  
   return (
-    <Top1>
+    <Container>
       <Subtitle>예약한 경기 목록</Subtitle>
-      {matches.map((match, index) => (
-        <Box key={index}>
-          <h1>{match?.location || '위치 정보 없음'}</h1>
-          <BoxCal>
-            <p>{match?.matchingDate || '날짜 정보 없음'}</p>
-          </BoxCal>
-        </Box>
-      ))}
+      {/* 항상 두 개의 Box는 화면에 표시되도록 설정 */}
+      <Box>
+        <h1>{matches[0]?.location}</h1>
+        <BoxCal>
+          <p>{matches[0]?.matchingDate}</p>
+        </BoxCal>
+      </Box>
+      <Box>
+        <h1>{matches[1]?.location}</h1>
+        <BoxCal>
+          <p>{matches[1]?.matchingDate}</p>
+        </BoxCal>
+      </Box>
+
       <BtnEnd>
         <LinkButton to="/mypage/pitch123/matches">더 보기</LinkButton>
       </BtnEnd>
-    </Top1>
+    </Container>
   );
 };
 

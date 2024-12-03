@@ -34,6 +34,13 @@ export const initialState = {
     currentMember: "",
     totalMember: "",
     collectionTitle: "",
+    pendingMembers : [
+    {   pendingnickname: "",
+        applicationDate: "",
+        profileImg : "",
+        applicationstatus: ""          
+    }
+    ],
     teamMember: []
 }
 

@@ -85,7 +85,7 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const PostsSection = ({ contents = [] }) => {
+const MyPost = ({ contents = [] }) => {
   return (
     <Top1>
       <Subtitle>내가 쓴 글</Subtitle>
@@ -108,4 +108,4 @@ const PostsSection = ({ contents = [] }) => {
   );
 };
 
-export default PostsSection;
+export default MyPost;
