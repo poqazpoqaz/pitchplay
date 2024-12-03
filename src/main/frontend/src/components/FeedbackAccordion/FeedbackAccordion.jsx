@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // navigate 훅 import
 import "./FeedbackAccordion.css"; // CSS 파일 import
 import ReportDetail from "./ReportDetail"; // 분리된 상세보기 컴포넌트 import
 
@@ -7,6 +8,7 @@ function FeedbackAccordion() {
   const [loading, setLoading] = useState(true); // 데이터 로딩 상태
   const [error, setError] = useState(null); // 에러 상태
   const [selectedReport, setSelectedReport] = useState(null); // 선택된 신고 상세 보기
+  const navigate = useNavigate(); // 페이지 이동을 위한 navigate 함수
 
   // 데이터 불러오기
   useEffect(() => {
@@ -73,21 +75,9 @@ function FeedbackAccordion() {
     setSelectedReport({ ...selectedReport, comments: updatedComments });
   };
 
-  // 신고 추가 처리
+  // 글쓰기 페이지로 이동하는 함수
   const handleAddReport = () => {
-    const newReport = {
-      faqNumber: reports.length > 0 ? reports[reports.length - 1].faqNumber + 1 : 1,
-      title: "새로운 신고 제목",
-      writeNickname: "새 사용자",
-      userId: "newUser123",
-      content: "새로운 신고 내용",
-      date: new Date().toISOString().split("T")[0],
-      status: "처리 중",
-      views: 0,
-      comments: [],
-    };
-
-    setReports((prevReports) => [...prevReports, newReport]);
+    navigate("/write"); // 글쓰기 페이지로 이동
   };
 
   if (loading) return <p>로딩 중...</p>;

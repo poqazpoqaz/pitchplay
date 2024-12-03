@@ -34,6 +34,7 @@ import SocialMatchingDetail from "./pages/SocialMatchingDetail/SocialMatchingDet
 import FindIdPage from "./containers/FindIdPage/FindIdPage";
 import FindIdPw from "./pages/FindIdPw/FindIdPw";
 import FindPwPage from "./containers/FindPwPage/FindPwPage";
+import WriteReport from "./components/FeedbackAccordion/WriteReport";
 
 
 
@@ -91,6 +92,7 @@ const router = createBrowserRouter([
           { path: "conduct", element: <ConductAccordion /> }
         ]
       },
+      { path: "/write", element: <WriteReport gridArea={"section"}/> },
     ]
   },
 ]);
