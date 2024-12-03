@@ -5,7 +5,7 @@ import styles from "./TeamMatching.module.css";
 import { motion } from "framer-motion";
 
 function TeamMatching({ content }) {
-    const { teams, date, location, gender, level, views } = content;
+    const { teams, matchingDate, location, gender, level, views } = content;
     const team1 = teams.team1; // 팀 1 정보
     const team2 = teams.team2; // 팀 2 정보
 
@@ -15,7 +15,6 @@ function TeamMatching({ content }) {
             <div className={styles["matching-top"]}>
                 {team2.name && team2.name !== "null" ? "매칭완료" : "신청가능"}
             </div>
-
             <motion.div
                 className={styles["matching-grid"]}
                 whileHover={{
@@ -31,7 +30,7 @@ function TeamMatching({ content }) {
                 <TeamMatchingItem
                     team1={team1.name}
                     team2={team2?.name !== "null" ? team2.name : null}
-                    date={date}
+                    date={matchingDate}
                     location={location}
                     gender={gender}
                     level={level}

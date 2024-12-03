@@ -39,7 +39,6 @@ const DetailsBox = styled.div`
 // 비용 스타일
 const CostBox = styled.div`
     text-align: center;
-    margin-bottom: 30px;
 
     h1 {
         font-size: 2.2rem;
@@ -79,7 +78,7 @@ function MatchingApplicationDetails({ matchingLoc, teamSize, matchingDate, match
                 </div>
             </DetailsBox>
             <CostBox>
-                <h1>{formatNumber(matchingCost)} 원</h1>
+                <h1>{formatNumber(matchingCost)} 캐시</h1>
                 <p>경기시간 1일전까지 최소인원 미달 시에 환불됩니다.</p>
             </CostBox>
             <Button color="var(--main-color)" size="xlarge" onClick={onClick}>신청하기</Button>

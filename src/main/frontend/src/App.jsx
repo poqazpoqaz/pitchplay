@@ -28,10 +28,10 @@ import StadiumDetail from "./pages/StadiumDetail/StadiumDetail";
 import FeedbackAccordion from "./components/FeedbackAccordion/FeedbackAccordion";
 import ConductAccordion from "./components/ConductAccordion/ConductAccordion";
 import SocialMatchings from "./pages/SocialMatchings/SocialMatchings";
-import SocialMatchingItem from "./components/SocialMatchingItem/SocialMatchingItem";
 import Setting from "./pages/Mypage/Setting/Setting";
 import Community1 from "./pages/Mypage/Community/Community1/Community1";
 import SocialMatchingDetail from "./pages/SocialMatchingDetail/SocialMatchingDetail";
+import FoundIdPage from "./pages/FindIdPage/FindIdPage";
 
 
 
@@ -41,6 +41,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <MainSection gridArea={"section"} /> },
       { path: "/login", element: <Login gridArea={"section"} /> },
+      { path: "/findid", element: <FoundIdPage gridArea={"section"} /> },
       { path: "/register", element: <Register gridArea={"section"} /> },
       { path: "/social", element: <SocialMatchings gridArea={"section"} />},
       { path: "/social/:socialNumber", element: <SocialMatchingDetail gridArea={"section"}/>},

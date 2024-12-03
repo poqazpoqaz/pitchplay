@@ -42,7 +42,7 @@ const Top2 = ({ username, usercash }) => {
   return (
     <Top22>
       <h2>{username} 님</h2>
-      <p>잔액 : {usercash} 원</p>
+      <p>잔액 : {usercash} 캐시</p>
       <ul>
         <li><LinkButton href="/charge">충전하기</LinkButton></li>
         <li><LinkButton href="/refund">환불하기</LinkButton></li>
