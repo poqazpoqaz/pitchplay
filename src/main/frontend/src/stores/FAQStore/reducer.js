@@ -1,5 +1,4 @@
 // reducer.js
-import Category from '../../components/Category/Category';
 import {
   CHANGE_FAQ_NUMBER,
   CHANGE_USER_ID,
@@ -11,12 +10,14 @@ import {
   CHANGE_VIEWS,
   CHANGE_USER_NICKNAME,
   CHANGE_COMMENT,
-  CHANGE_CATEGORY
+  CHANGE_CATEGORY,
+  SET_REPORTS
 } from './action';
 
 // 초기 상태 정의
 export const initialState =
 {
+  reports: [],
   faqNumber: "",
   userId: "",
   writeNickname: "",
@@ -65,8 +66,13 @@ export const reducer = (state, action) => {
     
     case CHANGE_USER_NICKNAME:
       return { ...state, userNickname: action.payload };
+      
     case CHANGE_CATEGORY:
       return {...state, Category : action.payload};
+
+    case SET_REPORTS:
+        return { ...state, reports: action.payload };
+
     default:
       return state;
   }

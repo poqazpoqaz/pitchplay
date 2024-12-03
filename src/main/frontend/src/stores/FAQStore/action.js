@@ -10,6 +10,7 @@ export const CHANGE_VIEWS = 'CHANGE_VIEWS';
 export const CHANGE_COMMENT = 'CHANGE_COMMENT';
 export const CHANGE_USER_NICKNAME = 'CHANGE_USER_NICKNAME';
 export const CHANGE_CATEGORY = 'CHANGE_CATEGORY';
+export const SET_REPORTS = 'SET_REPORTS';
 
 export const changeFaqNumber = (faqNumber) => ({type : CHANGE_FAQ_NUMBER, payload : faqNumber});
 export const changeUserId = (userId) => ({type : CHANGE_USER_ID, payload : userId});
@@ -22,3 +23,4 @@ export const changeViews = (views) => ({type : CHANGE_VIEWS , payload : views});
 export const changeStatus = (status) => ({type : CHANGE_STATUS , payload : status});
 export const changeUserNickname = (userNickname) => ({type : CHANGE_USER_NICKNAME , payload : userNickname});
 export const changeCategory = (category) => ({type : CHANGE_CATEGORY , payload : category});
+export const setReports = (reports) => ({ type: SET_REPORTS, payload: reports });

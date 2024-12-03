@@ -11,7 +11,8 @@ import {
     changeViews,
     changeComment,
     changeUserNickname,
-    changeCategory
+    changeCategory,
+    setReports
 } from "./action";
 
 export const useStore = () => {
@@ -49,7 +50,10 @@ export const useStore = () => {
         changeUserNickname: (userNickname) => dispatch(changeUserNickname(userNickname)),
         
         // 카테고리 변경 메서드
-        changeCategory: (category) => dispatch(changeCategory(category))
+        changeCategory: (category) => dispatch(changeCategory(category)),
+
+        // FAQ 리스트 설정
+        setReports: (reports) => dispatch(setReports(reports))
     };
 
     return { state, actions };
