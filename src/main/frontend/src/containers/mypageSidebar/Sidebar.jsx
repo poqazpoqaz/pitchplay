@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import pachiImage from './pachi.jpg';
-import axios from 'axios';
 import myinfo from '/imgs/myinfo.svg';
 import myactivity from '/imgs/myactivity.svg';
 import commnuity from '/imgs/commnuity.svg';
@@ -109,27 +107,17 @@ const Link = styled.a`
 
 
 // Sidebar Component
-const Sidebar = ({ userState, gridArea }) => {
+const Sidebar = ({ userState, gridArea, profileImg}) => {
 
-  const handleLogout = async () => {
-    try {
-      // 로그아웃 요청을 서버에 보냄
-      const response = await axios.post('/api/logout');  // 로그아웃 API 엔드포인트
-
-      if (response.status === 200) {
-        // actions 랑 연동될 유지
-        // 로그인 페이지로 이동
-      }
-    } catch (error) {
-      console.error('로그아웃 실패:', error);
-      alert('로그아웃 중 오류가 발생했습니다. 다시 시도해주세요.');
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // localStorage에서 사용자 정보 제거
+    window.location.href = "/"; // 홈 페이지로 리디렉션 
   };
 
   return (
     <SidebarContainer style={{gridArea: gridArea}}>
       <Sidetop>
-        <TopImg src={userState.profileImg} alt="User Avatar" />
+        <TopImg src={profileImg} alt="User Avatar" />
         <UserInfo>
           <p className="username">{userState.name}</p>
           <p className="useremail">{userState.email}</p>

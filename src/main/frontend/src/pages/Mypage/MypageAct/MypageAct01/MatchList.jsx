@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formattedDate } from "../../../../utils/formattedDate"
 
 const Container = styled.div`
   padding: 30px;
@@ -44,18 +45,18 @@ const BoxCal = styled.span`
 const MatcheList = ({ matches }) => {
   // 오늘 날짜 가져오기
   const today = new Date();
-  today.setHours(0, 0, 0, 0); 
+  today.setHours(0, 0, 0, 0);
 
-
+  // 예약된 경기들 필터링 (오늘 이후 경기만)
   const upcomingMatches = matches.filter((match) => {
     const matchDate = new Date(match.matchingDate);
     return matchDate >= today;
   });
 
-
-  const filledMatches = upcomingMatches.length > 0 
-    ? upcomingMatches.slice(0, 10) 
-    : Array.from({ length: 3 }, () => ({ location: '', date: '' }));
+  // 10개 항목만 가져오고, 없으면 빈 데이터로 채움
+  const filledMatches = upcomingMatches.length > 0
+    ? upcomingMatches.slice(0, 10)
+    : Array.from({ length: 3 }, () => ({ location: '', matchingDate: '' }));
 
   return (
     <Container>
@@ -64,7 +65,7 @@ const MatcheList = ({ matches }) => {
         <Box key={index}>
           <h1>{match.location || '위치 정보 없음'}</h1>
           <BoxCal>
-            <p>{match.matchingDate || '날짜 정보 없음'}</p>
+            <p>{formattedDate(match.matchingDate) || '날짜 정보 없음'}</p>
           </BoxCal>
         </Box>
       ))}

@@ -12,10 +12,12 @@ import {
     CHANGE_USER_CASH,
     CHANGE_FAVORITE_TIME,
     CHANGE_MY_TEAM,
+    CHANGE_IS_TEAM_OWNER,
     CHANGE_MY_DESCRIPTION,
     CHANGE_ACCOUNT_NAME,
     CHANGE_ACCOUNT_NUM,
     CHANGE_JOIN_DATE,
+    UPDATE_ALL_FIELDS,
     RESET_STATE
 
 } from "./action";
@@ -33,6 +35,7 @@ export const initialState = {
     favoriteCity: "",
     favoriteTime: "",
     myTeam: "",
+    isTeamOwner: "",
     myDescription: "",
     userCash: "",
     account: "",
@@ -67,6 +70,8 @@ export const reducer = (state, action) => {
             return { ...state, favoriteTime: action.payload };
         case CHANGE_MY_TEAM:
             return { ...state, myTeam: action.payload };
+        case CHANGE_IS_TEAM_OWNER:
+            return { ...state, isTeamOwner: action.payload };
         case CHANGE_MY_DESCRIPTION:
             return { ...state, myDescription: action.payload };
         case CHANGE_USER_CASH:
@@ -77,6 +82,8 @@ export const reducer = (state, action) => {
             return { ...state, accountNum: action.payload };
         case CHANGE_JOIN_DATE:
             return { ...state, joinDate: action.payload };
+        case UPDATE_ALL_FIELDS:
+            return { ...state, ...action.payload };
         case RESET_STATE:
             return initialState;
         default:

@@ -9,6 +9,7 @@ export const CHANGE_VIEW_COUNT = "CHANGE_VIEW_COUNT";
 export const CHANGE_WRITTEN_DATE = "CHANGE_WRITTEN_DATE";
 export const CHANGE_STADIUM_ID = "CHANGE_STADIUM_ID";
 export const CHANGE_TEAMSIZE = "CHANGE_TEAMSIZE";
+export const UPDATE_ALL_FIELDS = "UPDATE_ALL_FIELDS";
 export const RESET_STATE = "RESET_STATE";
 
 export const changeMatchingNumber = (matchingNum) => ({ type: CHANGE_MATCHING_NUMBER, payload: matchingNum })
@@ -23,4 +24,5 @@ export const changeViewCount = (viewCount) => ({type: CHANGE_VIEW_COUNT, payload
 export const changeWrittenDate = (writtenDate) => ({type: CHANGE_WRITTEN_DATE,payload: writtenDate });
 export const changeStadiumId = (stadiumId) => ({type: CHANGE_STADIUM_ID, payload: stadiumId});
 export const changeTeamSize = (teamSize) => ({type: CHANGE_TEAMSIZE, payload: teamSize});
+export const updateAllFields = (fields) => ({type: UPDATE_ALL_FIELDS, payload: fields});
 export const resetState = () => ({type: RESET_STATE});

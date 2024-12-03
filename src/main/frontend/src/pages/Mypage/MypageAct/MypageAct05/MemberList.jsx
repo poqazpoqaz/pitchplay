@@ -146,51 +146,8 @@ export const Notification = styled.div`
   }
 `;
 
-const MemberList = ({ members, actions }) => {
-  const [dropdownOpen, setDropdownOpen] = useState(null); // 드롭다운 열고 닫기 상태
-  const [selectedRole, setSelectedRole] = useState(''); // 직위 선택 상태
-  const [notification, setNotification] = useState(''); // 알림 메시지 상태
+const MemberList = ({ dropdownOpen, members, handleRoleChange, handleDelete, notification, selectedRole, handleDropdownToggle }) => {
 
-  const handleDropdownToggle = (index) => {
-    setDropdownOpen(dropdownOpen === index ? null : index); // 선택한 드롭다운 열기/닫기
-  };
-
-  // Rolechange 나 추방은 manager만 할 수 있게 하는거 나중에 로직 추가해야함 
-
-  const handleRoleChange = (index, newRole) => {
-    // 현재 멤버를 복사
-    const updatedMembers = [...members];
-
-    // 해당 멤버의 role만 변경
-    updatedMembers[index] = { ...members[index], role: newRole };
-
-    // 역할 변경
-    actions.changeTeamMember(updatedMembers);
-
-    // 알람창
-    setNotification(`${members[index].name}님의 직위가 ${newRole}로 변경되었습니다.`);
-    setTimeout(() => {
-      setNotification(''); // 알림 3초 후 사라지도록 설정
-    }, 3000);
-
-    // 드롭다운 닫기
-    setDropdownOpen(null);
-  };
-
-  const handleDelete = (index) => {
-    // 현재 멤버를 복사
-    const updatedMembers = [...members];
-
-    if (window.confirm('정말로 이 멤버를 추방하시겠습니까?')) {
-      // 해당 멤버를 제거 
-      const newMembers = updatedMembers.filter((_, i) => i !== index);
-
-      // 상태 업데이트 (actions.changeMember를 사용해서 새 배열 전달)
-      actions.changeTeamMember(newMembers);
-
-      setDropdownOpen(null); // 드롭다운 닫기
-    };
-  }
 
   return (
     <>
@@ -203,6 +160,7 @@ const MemberList = ({ members, actions }) => {
               <span></span>
               <span></span>
             </OptionsButton>
+
 
             {dropdownOpen === index ? (
               // 드롭다운이 열렸을 때

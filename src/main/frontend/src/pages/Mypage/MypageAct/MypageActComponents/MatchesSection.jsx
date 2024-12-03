@@ -79,21 +79,21 @@ const LinkButton = styled(Link)`
 `;
 
 const MatchesSection = ({ matches }) => {
-  
+
   return (
     <Container>
       <Subtitle>예약한 경기 목록</Subtitle>
       {/* 항상 두 개의 Box는 화면에 표시되도록 설정 */}
       <Box>
-        <h1>{matches[0]?.location}</h1>
+        <h1>{matches[0]?.location || "해당 경기가 없습니다"}</h1>
         <BoxCal>
-          <p>{matches[0]?.matchingDate}</p>
+          <p>{matches[0]?.matchingDate || ""}</p>
         </BoxCal>
       </Box>
       <Box>
-        <h1>{matches[1]?.location}</h1>
+        <h1>{matches[1]?.location || "해당 경기가 없습니다"}</h1>
         <BoxCal>
-          <p>{matches[1]?.matchingDate}</p>
+          <p>{matches[1]?.matchingDate || ""}</p>
         </BoxCal>
       </Box>
 

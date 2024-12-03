@@ -9,27 +9,34 @@ import { useEffect } from "react";
 import axios from "axios";
 import PwModal from "../../components/PwModal";
 import { pwPattern } from "../../utils/regExp";
+import { generateAuthCode } from "../../utils/authCode";
 
 function FindPwPage() {
     const { state: userState, actions: userActions } = UserStore();
     const [authCode, setAuthCode] = useState('');
-    const [message, setMessage] = useState('이름, 아이디, 이메일을 작성해주세요.');
-    const [isAlarmOpen, setIsAlarmOpen] = useState(false);
-    const [isValid, setIsValid] = useState(false);
+    const [message, setMessage] = useState('이름, 아이디, 이메일을 작성해주세요.'); // 알람메세지 
+    const [isAlarmOpen, setIsAlarmOpen] = useState(false); // 알람창 오픈여부
+    const [isValid, setIsValid] = useState(false); //비밀번호 유효성검사
     const [confirmedPassword, setConfirmedPassword] = useState(""); // 비밀번호 확인 상태
-
-    // 6자리 랜덤 인증번호 생성 함수
-    const generateAuthCode = () => {
-        const code = Math.floor(100000 + Math.random() * 900000).toString(); // 6자리 숫자
-        return code;
-    };
 
     // input 데이터 배열
     const inputFields = [
-        { text: '이름', id: 'name', type: 'text', placeholder: '이름 입력', isvalid: true, value: userState.name, onChange: (e) => userActions.changeName(e.target.value) },
-        { text: '아이디', id: 'id', type: 'text', placeholder: '아이디 입력', isvalid: true, value: userState.id, onChange: (e) => userActions.changeId(e.target.value) },
-        { text: '이메일', id: 'email', type: 'email', placeholder: '이메일 입력', isvalid: true, hasButton: true, value: userState.email, onChange: (e) => userActions.changeEmail(e.target.value) },
-        { text: '인증번호', id: 'verification', type: 'text', placeholder: '인증번호 입력', isvalid: true, value: authCode, onChange: (e) => setAuthCode(e.target.value) },
+        {
+            text: '이름', id: 'name', type: 'text', placeholder: '이름 입력',
+            isvalid: true, value: userState.name, onChange: (e) => userActions.changeName(e.target.value)
+        },
+        {
+            text: '아이디', id: 'id', type: 'text', placeholder: '아이디 입력',
+            isvalid: true, value: userState.id, onChange: (e) => userActions.changeId(e.target.value)
+        },
+        {
+            text: '이메일', id: 'email', type: 'email', placeholder: '이메일 입력',
+            isvalid: true, hasButton: true, value: userState.email, onChange: (e) => userActions.changeEmail(e.target.value)
+        },
+        {
+            text: '인증번호', id: 'verification', type: 'text', placeholder: '인증번호 입력',
+            isvalid: true, value: authCode, onChange: (e) => setAuthCode(e.target.value)
+        },
     ];
 
     // 이름, 이메일, 아이디가 모두 일치하는지 확인
@@ -87,7 +94,7 @@ function FindPwPage() {
             setMessage("비밀번호는 영문과 숫자를 포함한 8~16자여야 합니다.");
             return;
         }
-        
+
         setMessage("비밀번호가 성공적으로 변경되었습니다.");
         closeModal(); // 모달 닫기
     };

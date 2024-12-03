@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formattedDate } from "../../../../utils/formattedDate"
 
 const Container = styled.div`
   padding: 30px;
@@ -78,7 +79,7 @@ const RecordList = ({ records = [] }) => {
           <Box key={index}>
             <h1>{record.location || '위치 정보 없음'}</h1>
             <BoxCal>
-              <p>{record.matchingDate || '날짜 정보 없음'}</p>
+              <p>{formattedDate(record.matchingDate) || '날짜 정보 없음'}</p>
             </BoxCal>
           </Box>
         ))

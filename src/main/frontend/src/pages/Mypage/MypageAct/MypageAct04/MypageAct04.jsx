@@ -3,52 +3,34 @@ import Calendar from "../../../../components/Calendar/Calendar";
 import MatchItem from "./Matchitem";
 import styles from './MypageAct04.module.css';
 import Linkb from "./Linkb";
-import { useStore as MatchingStore } from "../../../../stores/MatchingStore/useStore"; // 상태 관리 사용
 import axios from "axios";
 
 const MypageAct04 = ({ gridArea }) => {
-  const { state: matchingState, actions: matchingActions } = MatchingStore();
+  const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 'user' 가져오기
+
   const [matchingList, setMatchingList] = useState([]);
 
   const [selectedRange, setSelectedRange] = useState({ start: null, end: null });
   const [filteredMatches, setFilteredMatches] = useState([]);
 
-  // 매칭 정보 저장 ** 나중에 백에서 불러올때는 내가 예약한 매칭데이터만 불러와서 뿌려야함 !! 
+  // 매칭 정보 저장
   useEffect(() => {
     axios.get("/data/matchingData.json")
       .then(response => {
         const datas = response.data;
-
-        // 로컬 상태나 일괄 저장 방식으로 변경
-        datas.forEach(data => {
-          matchingActions.changeMatchingNumber(data.matchingNumber);
-          matchingActions.changeTeamName(data.teamName);
-          matchingActions.changeTeamImg(data.teamImg);
-          matchingActions.changeMatchingDate(data.changeMatchingDate);
-          matchingActions.changeMatchingLoc(data.matchingLoc);
-          matchingActions.changeTeamGender(data.teamGender);
-          matchingActions.changeTeamLevel(data.teamLevel);
-          matchingActions.changeViewCount(data.viewCount);
-          matchingActions.changeWrittenDate(data.writtenDate);
-
-          setMatchingList((prevList) => [
-            ...prevList,
-            { ...matchingState, ...data },
-          ]);
-
-        });
+        const selectedMatches = datas.filter(data =>
+          data.teams.team1.name === user.myTeam || data.teams.team2.name === user.myTeam);
+        setMatchingList(selectedMatches);
       })
       .catch(err => {
         console.error("Error fetching matching data:", err);
       });
   }, []);
 
-
   // 날짜 범위가 선택될 때 호출되는 함수
   const handleDateSelect = (filteredData) => {
     setFilteredMatches(filteredData);  // 필터된 매칭 데이터를 상태에 저장
   };
-
 
   useEffect(() => {
     if (selectedRange.start && selectedRange.end) {

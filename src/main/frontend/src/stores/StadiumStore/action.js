@@ -8,6 +8,7 @@ export const CHANGE_STADIUM_X = "CHANGE_STADIUM_X";
 export const CHANGE_STADIUM_COST = "CHANGE_STADIUM_COST";
 export const CHANGE_STADIUM_V_MIN = "CHANGE_STADIUM_V_MIN";
 export const CHANGE_STADIUM_V_MAX = "CHANGE_STADIUM_V_MAX";
+export const UPDATE_ALL_FIELDS = "UPDATE_ALL_FIELDS";
 export const RESET_STATE = "RESET_STATE";
 
 export const changeStadiumId = (stadiumId) => ({type: CHANGE_STADIUM_ID, payload: stadiumId});
@@ -20,4 +21,5 @@ export const changeStadiumY = (stadiumY) => ({type: CHANGE_STADIUM_Y, payload: s
 export const changeStadiumCost = (stadiumCost) => ({type: CHANGE_STADIUM_COST, payload: stadiumCost});
 export const changeStadiumVmin = (stadiumVmin) => ({type: CHANGE_STADIUM_V_MIN, payload: stadiumVmin});
 export const changeStadiumVmax = (stadiumVmax) => ({type: CHANGE_STADIUM_V_MAX, payload: stadiumVmax});
+export const updateAllFields = (fields) => ({type: UPDATE_ALL_FIELDS, payload: fields});
 export const resetState = () => ({ type: RESET_STATE });

@@ -14,10 +14,12 @@ import {
     changeUserCash,
     changeFavoriteTime,
     changeMyTeam,
+    changeIsTeamOwner,
     changeMyDescription,
     changeAccountName,
     changeAccountNum,
     changeJoinDate,
+    updateAllFields,
     resetState
 } from "./action.js";
 
@@ -49,6 +51,8 @@ export const useStore = () => {
         changeFavoriteTime: (favoriteTime) => dispatch(changeFavoriteTime(favoriteTime)),
         //팀 변경
         changeMyTeam: (myTeam) => dispatch(changeMyTeam(myTeam)),
+        //팀 owner인가
+        changeIsTeamOwner : (isTeamOwner) => dispatch(changeIsTeamOwner(isTeamOwner)),
         //나의 소개
         changeMyDescription: (myDescription) => dispatch(changeMyDescription(myDescription)),
         //유저 캐시
@@ -59,6 +63,8 @@ export const useStore = () => {
         changeAccountNum : (accountNum) => dispatch(changeAccountNum(accountNum)),
         // 유저 가입
         changeJoinDate : (joindate) => dispatch(changeJoinDate(joindate)),
+        //전체 변경
+        updateAllFields : (fields) => dispatch(updateAllFields(fields)),
         //초기화
         resetState: () => dispatch(resetState())
     };

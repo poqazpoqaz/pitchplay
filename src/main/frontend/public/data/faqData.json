@@ -43,8 +43,8 @@
     },
     {
         "faqNumber": "293822",
-        "userId": "112233",
-        "writeNickname": "다은이",
+        "userId": "123123",
+        "writeNickname": "피치플레이",
         "title": "앱 속도 개선 요청",
         "content": "앱 실행 속도가 너무 느려서 사용이 어렵습니다.",
         "date": "2024-12-01",
@@ -66,7 +66,7 @@
         "views": 134,
         "comments": [
             {"userNickname": "민수킹", "comment": "비밀번호 변경이 되지 않아서 계정 보호가 불안합니다."},
-            {"userNickname": "길동홍", "comment": "문제가 해결되었습니다. 감사합니다!"}
+            {"userNickname": "피치플레이", "comment": "문제가 해결되었습니다. 감사합니다!"}
         ]
     },
     {

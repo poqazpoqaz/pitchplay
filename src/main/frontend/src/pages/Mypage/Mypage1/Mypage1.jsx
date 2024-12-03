@@ -3,15 +3,17 @@ import styles from "./Mypage1.module.css";
 import Top1 from './Top1';
 import Top2 from './Top2';
 import Bottom from './Bottom';
-import { useStore } from "../../../stores/UserStore/useStore"
-import axios from 'axios';
-import { useParams } from "react-router-dom";
+import { useStore } from "../../../stores/UserStore/useStore";
+import pachi from "./pachi.jpg"
+import axios from "axios";
 
 const Mypage1 = () => {
-    const { id } = useParams();
+    const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 'userId' 가져오기
     const [isEditable, setIsEditable] = useState(false);
     const [fileInput, setFileInput] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
+    const [previewImage, setPreviewImage] = useState(null);
+    const [profileImg, setProfileImg] = useState(null);
 
     const { state, actions } = useStore();
 
@@ -20,7 +22,7 @@ const Mypage1 = () => {
         axios.get("/data/userData.json")
             .then(response => {
                 const datas = response.data;
-                const userData = datas.find(data => data.id === id);
+                const userData = datas.find(data => data.id === user.id);
 
                 if (userData) {
                     actions.changeUserNumber(userData.userNumber);
@@ -39,7 +41,15 @@ const Mypage1 = () => {
                     actions.changeMyDescription(userData.myDescription);
                 }
             })
-    }, [id])
+
+        // 로컬스토리지에서 profileImg가 있으면 불러오기
+        const savedUser = JSON.parse(localStorage.getItem("user"));
+        if (savedUser && savedUser.profileImg) {
+            actions.changeProfileImg(savedUser.profileImg); // store 업데이트
+            setProfileImg(savedUser.profileImg); // base64 파일 가져오기
+            setPreviewImage(savedUser.profileImg); // 미리보기 업데이트
+        }
+    }, [user.id]);
 
     const formFields = [
         { label: "이름", name: "name", value: state.name, disabled: true },
@@ -50,13 +60,20 @@ const Mypage1 = () => {
         { label: "소개하기", name: "intro", value: state.myDescription, disabled: false },
     ];
 
-    // 이미지 변경 처리
+    // 이미지 변경 처리 (Base64로 변환)
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
             if (file.type.startsWith("image/")) {
-                setFileInput(file);
-                setErrorMessage(""); // 에러 메시지 초기화
+                // 이미지 파일을 Base64로 변환
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const base64Image = reader.result;
+                    setFileInput(base64Image); // Base64 이미지 상태에 저장
+                    setPreviewImage(base64Image); // 미리보기 이미지 상태에 저장
+                    setErrorMessage("");
+                };
+                reader.readAsDataURL(file);
             } else {
                 setErrorMessage("이미지 파일만 업로드 가능합니다.");
                 setFileInput(null);
@@ -68,31 +85,22 @@ const Mypage1 = () => {
     // 이미지 업로드 처리
     const handleFileUpload = async () => {
         if (fileInput) {
-            const formData = new FormData();
-            formData.append("profileImage", fileInput);
+            // localStorage에서 user 정보 가져오기
+            const user = JSON.parse(localStorage.getItem("user"));
 
-            try {
-                const response = await axios.put(`/api/users/${id}/profile/image`, formData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
-                console.log(response.data.message);
-                setErrorMessage("이미지 업로드 성공!");
-            } catch (error) {
-                setErrorMessage(error.response?.data?.message || "이미지 업로드 실패");
-            }
+            // Base64 이미지를 localStorage에 저장
+            user.profileImg = fileInput; // Base64 이미지 저장
 
+            // 업데이트된 user 정보를 다시 localStorage에 저장
+            localStorage.setItem("user", JSON.stringify(user));
+
+            // 상태 업데이트 (미리보기와 이미지 상태 바로 반영)
+            setProfileImg(fileInput); // profileImg 상태 업데이트
+            setPreviewImage(fileInput); // previewImage 상태 업데이트
+            actions.changeProfileImg(fileInput); // store에도 업데이트
+
+            setErrorMessage("이미지 업로드 성공!");
             setFileInput(null);
-        }
-    };
-
-    // 프로필 데이터 저장
-    const saveProfileData = async (formData) => {
-        try {
-            const response = await axios.put(`/api/users/${id}/profile`, formData);
-            console.log(response.data.message);
-            setErrorMessage("프로필 저장 성공!");
-        } catch (error) {
-            setErrorMessage(error.response?.data?.message || "프로필 저장 실패");
         }
     };
 
@@ -104,27 +112,29 @@ const Mypage1 = () => {
         else if (name === "region") actions.changeFavoriteCity(value);
         else if (name === "time") actions.changeFavoriteTime(value);
         else if (name === "intro") actions.changeMyDescription(value);
-
     };
 
     const toggleEdit = async () => {
         setIsEditable(!isEditable);
 
+        // 편집 상태가 끝나면 userState를 로컬스토리지에 저장
         if (!isEditable) {
-            await saveProfileData(state);
-        }
-    };
-
+            // 전체 상태 저장
+            localStorage.setItem("user", JSON.stringify(state));
+        };
+    }
 
     return (
         <div>
             <div className={styles.container}>
                 <div className={styles.top}>
                     <Top1
+                        profileImg={profileImg || pachi}
                         fileInput={fileInput}
                         errorMessage={errorMessage}
                         handleImageChange={handleImageChange}
                         handleFileUpload={handleFileUpload}
+                        previewImage={previewImage} //미리보기 전달
                     />
                     <Top2 username={state.name} usercash={state.userCash} />
                     <Bottom

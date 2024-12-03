@@ -17,6 +17,7 @@
     justify-content: center; 
     margin-bottom: 10px; 
     width: 100%; 
+    gap: 10px;
 }
 
 .matchingItem-flex > div:last-child {

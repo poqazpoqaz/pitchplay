@@ -3,7 +3,6 @@ import { useStore as CollectionStore } from "../../stores/CollectionStore/useSto
 import { useStore as TeamStore } from "../../stores/TeamStore/useStore";
 import { useStore as StadiumStore } from "../../stores/StadiumStore/useStore";
 import axios from "axios";
-
 import { useState, useRef, useEffect } from "react";
 import { postDescriptionPattern } from "../../utils/regExp";
 import { useParams } from "react-router-dom";
@@ -28,32 +27,82 @@ function GuestRecruitmentCreation({ gridArea }) {
     const [isFirstAlarmOpen, setFirstAlarmOpen] = useState(false); // 첫 번째 알람
     const [isSecondAlarmOpen, setSecondAlarmOpen] = useState(false); // 두 번째 알람
 
+    // 첫 번째 알람에서 확인 버튼 클릭 시
+    const handleFirstAlarmConfirm = () => {
+        setFirstAlarmOpen(false);
+        setSecondAlarmOpen(true); // 두 번째 알람 표시
+    };
+
+    // 두 번째 알람에서 확인 버튼 클릭 시
+    const handleSecondAlarmConfirm = () => {
+        setSecondAlarmOpen(false);
+    };
+
+    // 게시글 유효성 검사
+    const validateContent = (content) => {
+        return postDescriptionPattern.test(content); // 정규표현식 검사
+    };
+
+
     // Quill state
     const [editorContent, setEditorContent] = useState("");
     const quillRef = useRef(null); // Quill 인스턴스를 useRef로 관리
 
-    // 예약 데이터, 팀, 모집, 구장 정보를 하나씩 불러옵니다.
     useEffect(() => {
-        // 예약 데이터 불러오기
-        axios.get("/data/reservationData.json")
-            .then(response => {
-                const reservationData = response.data.find(data => data.reservationNumber === reservationNum); // 예약번호로 데이터 찾기
+        const fetchData = async () => {
+            try {
+                // 예약 데이터 가져오기
+                const reservationResponse = await axios.get("/data/reservationData.json");
+                const reservationData = reservationResponse.data.find((data) => data.reservationNumber === reservationNum);
 
-                if (reservationData) {
-                    // 예약 정보를 상태에 저장
-                    reservationActions.changeCollectionNumber(reservationData.collectionNumber);
-                    reservationActions.changeReservationDate(reservationData.reservationDate);
-                    reservationActions.changeReservationNumber(reservationData.reservationNumber);
-                    reservationActions.changeStadiumId(reservationData.stadiumId);
-                    reservationActions.changeTeamCode(reservationData.teamCode);
-                } else {
-                    console.log("해당 예약을 찾을 수 없습니다.");
+                if (!reservationData) {
+                    console.error("해당 예약 정보를 찾을 수 없습니다.");
+                    return;
                 }
-            })
-            .catch(error => {
-                console.error("예약 데이터 로딩 실패:", error);
-            });
+
+                // 예약 데이터 상태 업데이트
+                reservationActions.updateAllFields(reservationData);
+
+                // 병렬로 모집, 구장, 팀 데이터를 가져오기
+                const [stadiumResponse, teamResponse] = await Promise.all([
+                    axios.get("/data/stadiumData.json"),
+                    axios.get("/data/teamData.json"),
+                ]);
+
+                // 구장 데이터 가져오기
+                const stadiumData = stadiumResponse.data.find((stadium) => stadium.SVCID === reservationData.stadiumId);
+
+                if (stadiumData) {
+                    stadiumActions.updateAllFields({
+                        stadiumName: stadiumData.SVCNM,
+                        stadiumImg: stadiumData.IMGURL,
+                        stadiumAddress: stadiumData.PLACENM,
+                        stadiumDescription: stadiumData.DTLCONT,
+                        stadiumX: stadiumData.X,
+                        stadiumY: stadiumData.Y,
+                        stadiumCost: stadiumData.PAYATNM,
+                        stadiumVmin: stadiumData.V_MIN,
+                        stadiumVmax: stadiumData.V_MAX,
+                    });
+                } else {
+                    console.error("해당 구장 정보를 찾을 수 없습니다.");
+                }
+
+                // 팀 데이터 가져오기
+                const teamData = teamResponse.data.find((data) => data.teamCode === reservationData.teamCode);
+
+                if (teamData) {
+                    teamActions.updateAllFields(teamData);
+                } else {
+                    console.error("해당 팀 정보를 찾을 수 없습니다.");
+                }
+            } catch (error) {
+                console.error("데이터 로딩 실패:", error);
+            }
+        };
+        fetchData();
     }, [reservationNum]);
+
 
     // 예약 데이터에서 추출한 collectionNumber로 모집 정보를 가져옵니다.
     useEffect(() => {
@@ -64,7 +113,7 @@ function GuestRecruitmentCreation({ gridArea }) {
                     if (collectionData) {
                         // 모집 정보 상태 업데이트
                         collectionActions.changeTeamCode(collectionData.teamCode);
-                        collectionActions.changeCollectionDescription(collectionData.collectionDescription);
+                        collectionActions.changeCollectionDescription("");
                         collectionActions.changeCollectionTime(collectionData.collectionTime);
                         collectionActions.changeCurrentMember(0);
                         collectionActions.changeTotalMember(collectionData.totalMember);
@@ -87,67 +136,6 @@ function GuestRecruitmentCreation({ gridArea }) {
                 });
         }
     }, [reservationState.collectionNumber]);
-
-    // 예약 데이터에서 stadiumId로 구장 정보를 가져옵니다.
-    useEffect(() => {
-        if (reservationState.stadiumId) {
-            axios.get("/data/stadiumData.json")
-                .then(response => {
-                    const stadiumData = response.data.find(stadium => stadium.SVCID === reservationState.stadiumId);
-                    if (stadiumData) {
-                        // 구장 정보 상태 업데이트
-                        stadiumActions.changeStadiumName(stadiumData.SVCNM);
-                        stadiumActions.changeStadiumImg(stadiumData.IMGURL);
-                        stadiumActions.changeStadiumAddress(stadiumData.PLACENM);
-                        stadiumActions.changeStadiumDescription(stadiumData.DTLCONT);
-                        stadiumActions.changeStadiumX(stadiumData.X);
-                        stadiumActions.changeStadiumY(stadiumData.Y);
-                        stadiumActions.changeStadiumCost(stadiumData.PAYATNM);
-                        stadiumActions.changeStadiumVmin(stadiumData.V_MIN);
-                        stadiumActions.changeStadiumVmax(stadiumData.V_MAX);
-                    } else {
-                        console.error("해당 구장 정보를 찾을 수 없습니다.");
-                    }
-                })
-                .catch(error => {
-                    console.error("구장 데이터 로딩 실패:", error);
-                });
-        }
-    }, [reservationState.stadiumId]);
-
-    // 예약 데이터에서 teamCode로 팀 정보를 가져옵니다.
-    useEffect(() => {
-        if (reservationState.teamCode) {
-            axios.get("/data/teamData.json")
-                .then(response => {
-                    const teamData = response.data.find(data => data.teamCode === reservationState.teamCode);
-                    if (teamData) {
-                        // 팀 정보 상태 업데이트
-                        teamActions.changeTeamName(teamData.teamName);
-                        teamActions.changeTeamCode(teamData.teamCode);
-                        teamActions.changeTeamImg(teamData.teamImg);
-                        teamActions.changeTeamDescription(teamData.teamDescription);
-                        teamActions.changeTeamLevel(teamData.teamLevel);
-                        teamActions.changeTeamDay(teamData.teamDay);
-                        teamActions.changeTeamTime(teamData.teamTime);
-                        teamActions.changeTeamCity(teamData.teamCity);
-                        teamActions.changeTeamLoc(teamData.teamLoc);
-                        teamActions.changeTeamAge(teamData.teamAge);
-                        teamActions.changeTeamGender(teamData.teamGender);
-                        teamActions.changeCurrentMember(teamData.currentMember);
-                        teamActions.changeTotalMember(teamData.totalMember);
-                    } else {
-                        console.error("해당 팀 정보를 찾을 수 없습니다.");
-                    }
-                })
-                .catch(error => {
-                    console.error("팀 데이터 로딩 실패:", error);
-                });
-        }
-    }, [reservationState.teamCode]);
-
-
-
 
     // 모집 멤버 수 변경
     const handleMemberChange = (e) => {
@@ -172,23 +160,7 @@ function GuestRecruitmentCreation({ gridArea }) {
         //     .catch(error => console.error('업로드 실패:', error));
     }
 
-    // 첫 번째 알람에서 확인 버튼 클릭 시
-    const handleFirstAlarmConfirm = () => {
-        setFirstAlarmOpen(false);
-        setSecondAlarmOpen(true); // 두 번째 알람 표시
-    };
-
-    // 두 번째 알람에서 확인 버튼 클릭 시
-    const handleSecondAlarmConfirm = () => {
-        setSecondAlarmOpen(false);
-    };
-
-
-    // 게시글 유효성 검사
-    const validateContent = (content) => {
-        return postDescriptionPattern.test(content); // 정규표현식 검사
-    };
-
+    // 저장 누를 시에
     const handleSave = () => {
         const isContentValid = validateContent(editorContent);
         if (!isContentValid) {
@@ -207,11 +179,8 @@ function GuestRecruitmentCreation({ gridArea }) {
         }
     };
 
-
-
     return (
         <div className={styles["recruitment-creation-grid"]} style={{ gridArea: gridArea }}>
-            {console.log(collectionState)}
             <img src={stadiumState.stadiumImg} />
             <GuestRecruitmentCreationDetail
                 quillRef={quillRef}

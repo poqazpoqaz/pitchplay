@@ -7,25 +7,29 @@ import { useEffect, useState } from "react";
 import Alarm from "../../components/Alarm";
 import axios from "axios";
 import IdModal from "../../components/IdModal";
+import { generateAuthCode } from "../../utils/authCode";
 
 function FindIdPage() {
     const { state: userState, actions: userActions } = UserStore();
-    const [authCode, setAuthCode] = useState("");
-    const [message, setMessage] = useState('이름과 이메일을 작성해주세요.');
-    const [isAlarmOpen, setIsAlarmOpen] = useState(false);
-    const [isValid, setIsValid] = useState(false);
-
-    // 6자리 랜덤 인증번호 생성 함수
-    const generateAuthCode = () => {
-        const code = Math.floor(100000 + Math.random() * 900000).toString(); // 6자리 숫자
-        return code;
-    };
+    const [authCode, setAuthCode] = useState(""); // 인증코드 작성 상태
+    const [message, setMessage] = useState('이름과 이메일을 작성해주세요.'); //알람창 메세지
+    const [isAlarmOpen, setIsAlarmOpen] = useState(false); // 알람창
+    const [isValid, setIsValid] = useState(false); // 유효성검사
 
     // input 데이터 배열
     const inputFields = [
-        { text: '이름', id: 'name', type: 'text', placeholder: '이름 입력', isvalid: true, value: userState.name, onChange: (e) => userActions.changeName(e.target.value) },
-        { text: '이메일', id: 'email', type: 'email', placeholder: '이메일 입력', isvalid: true, hasButton: true, value: userState.email, onChange: (e) => userActions.changeEmail(e.target.value) },
-        { text: '인증번호', id: 'verification', type: 'text', placeholder: '인증번호 입력', isvalid: true, value: authCode, onChange: (e) => setAuthCode(e.target.value) },
+        {
+            text: '이름', id: 'name', type: 'text', placeholder: '이름 입력',
+            isvalid: true, value: userState.name, onChange: (e) => userActions.changeName(e.target.value)
+        },
+        {
+            text: '이메일', id: 'email', type: 'email', placeholder: '이메일 입력',
+            isvalid: true, hasButton: true, value: userState.email, onChange: (e) => userActions.changeEmail(e.target.value)
+        },
+        {
+            text: '인증번호', id: 'verification', type: 'text', placeholder: '인증번호 입력',
+            isvalid: true, value: authCode, onChange: (e) => setAuthCode(e.target.value)
+        },
     ];
 
     // 이름 & 이메일 있는지 확인 
@@ -34,7 +38,7 @@ function FindIdPage() {
             axios.get("/data/userData.json")
                 .then(response => {
                     const user = response.data.find(user => user.name === userState.name && user.email === userState.email);
-                    
+
                     if (user) {
                         setMessage('이메일을 발송했습니다. 인증번호를 확인해주세요!');
                         userActions.changeId(user.id);
@@ -46,7 +50,7 @@ function FindIdPage() {
                 })
                 .catch(error => {
                     setMessage('서버에서 오류가 발생했습니다. 다시 시도해주세요.');
-                    setIsAlarmOpen(true); // 알람을 띄우기
+                    setIsAlarmOpen(true);
                 });
         }
     }, [userState.name, userState.email]);

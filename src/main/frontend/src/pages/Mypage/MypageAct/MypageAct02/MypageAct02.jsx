@@ -1,47 +1,28 @@
 import React from 'react';
 import styles from './MypageAct02.module.css';
 import RecordList from './RecordList';
-
-import { useStore as MatchingStore } from '../../../../stores/MatchingStore/useStore';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
 const MypageAct02 = ({ gridArea }) => {
-  const { state: matchingState, actions: matchingActions } = MatchingStore();
+  const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 'user' 가져오기
   const [matchingList, setMatchingList] = useState([]);
 
-  // 매칭 정보 저장 ** 나중에 백에서 불러올때는 내가 예약한 매칭데이터만 불러와서 뿌려야함 !! 
-  // 매칭 정보 저장
+  // 매칭 정보 저장 (user가 포함한 팀의 매칭데이터 가져옴)
   useEffect(() => {
     axios.get("/data/matchingData.json")
       .then(response => {
         const datas = response.data;
-
-        // 로컬 상태나 일괄 저장 방식으로 변경
-        datas.forEach(data => {
-          matchingActions.changeMatchingNumber(data.matchingNumber);
-          matchingActions.changeTeamName(data.teamName);
-          matchingActions.changeTeamImg(data.teamImg);
-          matchingActions.changeMatchingDate(data.changeMatchingDate);
-          matchingActions.changeMatchingLoc(data.matchingLoc);
-          matchingActions.changeTeamGender(data.teamGender);
-          matchingActions.changeTeamLevel(data.teamLevel);
-          matchingActions.changeViewCount(data.viewCount);
-          matchingActions.changeWrittenDate(data.writtenDate);
-
-          setMatchingList((prevList) => [
-            ...prevList,
-            { ...matchingState, ...data },
-          ]);
-        });
+        // user가 포함된 팀 이름이 team1이나 team2에 포함된 매칭 데이터 필터링
+        const selectedMatches = datas.filter(data =>
+          data.teams.team1.name === user.myTeam || data.teams.team2.name === user.myTeam);
+        setMatchingList(selectedMatches);
       })
       .catch(err => {
         console.error("Error fetching matching data:", err);
       });
   }, []);
-
-
 
   return (
     <div style={{ gridArea: gridArea }}>

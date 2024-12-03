@@ -1,9 +1,7 @@
 import { useStore as StadiumStore } from "../../stores/StadiumStore/useStore";
 import { useStore as SocialReservationStore } from "../../stores/SocialStore/useStore";
 import { useStore as UserStore } from "../../stores/UserStore/useStore";
-
 import { useEffect, useState } from "react";
-
 import styles from "./SocialMatchingDetail.module.css";
 import MatchingDetails from "../../components/MatchingDetails/MatchingDetails";
 import MatchingStadiumDetails from "../../components/MatchingDetails/MatchingStadiumDetails";
@@ -12,6 +10,8 @@ import axios from "axios";
 import MatchingPayment from "../../components/MatchingPayment";
 import MatchingApplicationDetails from "../../components/MatchingDetails/MatchingApplicationDetails";
 import SocialMember from "../../components/SocialMember";
+import { formattedDate } from "../../utils/formattedDate";
+import { formatCurrency } from "../../utils/formattedDate";
 
 
 function SocialMatchingDetail({ gridArea }) {
@@ -113,18 +113,9 @@ function SocialMatchingDetail({ gridArea }) {
     }
 
     // stadiumCost를 divisor로 나누기
-    const adjustedStadiumCost = Math.round(+stadiumState.stadiumCost / divisor  / 100) * 100;
+    const adjustedStadiumCost = Math.round(+stadiumState.stadiumCost / divisor / 100) * 100;
 
-    // 매칭 날짜 포맷 (yyyy-MM-dd 형식으로)
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1을 해줌
-        const day = String(date.getDate()).padStart(2, '0'); // 일 부분도 두 자릿수로 맞춤
-        return `${year}-${month}-${day}`; // 년-월-일 형식으로 반환
-    };
-
-    const formattedMatchingDate = formatDate(socialState.socialTime);
+    const formattedMatchingDate = formattedDate(socialState.socialTime);
 
     return (
         <div className={styles['social-detail-grid']} style={{ gridArea: gridArea }}>
@@ -154,7 +145,7 @@ function SocialMatchingDetail({ gridArea }) {
                 matchingLoc={stadiumState.stadiumName}
                 teamSize={socialState.socialSize}
                 matchingDate={formattedMatchingDate}
-                matchingCost={adjustedStadiumCost}
+                matchingCost={formatCurrency(adjustedStadiumCost)}
                 onClick={() => setIsModalOpen(true)}
                 gridArea="application"
             />

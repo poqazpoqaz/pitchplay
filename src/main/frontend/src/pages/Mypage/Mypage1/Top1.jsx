@@ -52,10 +52,10 @@ const ErrorMessage = styled.p`
   margin-top: 1rem;
 `;
 
-const Top1 = ({ fileInput, errorMessage, handleImageChange, handleFileUpload }) => {
+const Top1 = ({ profileImg, fileInput, errorMessage, handleImageChange, handleFileUpload, previewImage }) => {
     return (
         <Top1Container>
-            <ProfileImg src={pachiImage} alt="Profile" />
+            <ProfileImg src={previewImage ? previewImage : profileImg} alt="Profile" />
             <ChangeButton onClick={() => document.getElementById('profileImageInput').click()}>
                 변경하기
             </ChangeButton>

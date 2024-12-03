@@ -6,6 +6,7 @@ import {
     changeReservationDate,
     changeStadiumId,
     changeTeamCode,
+    updateAllFields,
     reserState
 } from "./action";
 
@@ -23,6 +24,8 @@ export const useStore = () => {
         changeStadiumId: (stadiumId) => dispatch(changeStadiumId(stadiumId)),
         //팀 코드 변경 메서드(예약한 팀 코드) 
         changeTeamCode: (teamCode) => dispatch(changeTeamCode(teamCode)),
+        //전체 변경
+        updateAllFields: (fields) => dispatch(updateAllFields(fields)),
         //상태 초기화 메서드
         reserState: () => dispatch(reserState())
     }

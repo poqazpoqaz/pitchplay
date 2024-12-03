@@ -11,6 +11,7 @@ import {
     changeStadiumCost,
     changeStadiumVmin,
     changeStadiumVmax,
+    updateAllFields,
     resetState
 } from "./action";
 
@@ -39,6 +40,8 @@ export const useStore = () => {
         changeStadiumVmin: (stadiumVmin) => dispatch(changeStadiumVmin(stadiumVmin)),
         //경기장 클로즈시간
         changeStadiumVmax: (stadiumVmax) => dispatch(changeStadiumVmax(stadiumVmax)),
+        //전체 변경
+        updateAllFields: (fields) => dispatch(updateAllFields(fields)),
         // state초기화
         resetState: () => dispatch(resetState())
     };

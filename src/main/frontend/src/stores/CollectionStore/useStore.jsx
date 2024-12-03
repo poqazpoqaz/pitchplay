@@ -17,6 +17,7 @@ import {
     changeWrittenDate,
     changeTeamSize,
     changeStadium,
+    updateAllFields,
     resetState
 } from "./action";
 
@@ -51,11 +52,13 @@ export const useStore = () => {
         // 팀 모집 완료 상태 변경 메서드
         changeActiveStatus: (activeStatus) => dispatch(changeActiveStatus(activeStatus)),
         // 게시물 작성 날짜 변경 메서드
-        changeWrittenDate: (writtenDate) => dispatch(changeWrittenDate( writtenDate)),
+        changeWrittenDate: (writtenDate) => dispatch(changeWrittenDate(writtenDate)),
         // 팀 사이즈 변경 메서드
         changeTeamSize: (teamSize) => dispatch(changeTeamSize(teamSize)),
         // 경기장 변경 메서드
         changeStadium: (stadiumId) => dispatch(changeStadium(stadiumId)),
+        //전체 변경
+        updateAllFields: (fields) => dispatch(updateAllFields(fields)),
         // 상태 초기화 메서드
         resetState: () => dispatch(resetState())
     };

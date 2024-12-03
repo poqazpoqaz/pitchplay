@@ -56,10 +56,6 @@ const CostBox = styled.div`
 
 
 function MatchingApplicationDetails({ matchingLoc, teamSize, matchingDate, matchingCost, gridArea, onClick }) {
-    // 숫자를 포맷하는 함수
-    const formatNumber = (number) =>
-        Number(number).toLocaleString("en-US"); // en-US로 설정하여 천 단위 콤마 추가
-
     return (
         <Wrapper style={{ gridArea: gridArea }}>
             <h3>매칭 신청</h3>
@@ -78,7 +74,7 @@ function MatchingApplicationDetails({ matchingLoc, teamSize, matchingDate, match
                 </div>
             </DetailsBox>
             <CostBox>
-                <h1>{formatNumber(matchingCost)} 캐시</h1>
+                <h1>{matchingCost} 캐시</h1>
                 <p>경기시간 1일전까지 최소인원 미달 시에 환불됩니다.</p>
             </CostBox>
             <Button color="var(--main-color)" size="xlarge" onClick={onClick}>신청하기</Button>

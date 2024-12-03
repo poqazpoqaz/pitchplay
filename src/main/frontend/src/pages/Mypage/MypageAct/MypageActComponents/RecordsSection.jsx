@@ -84,15 +84,15 @@ const RecordsSection = ({ records }) => {
       <Subtitle>참가한 경기 기록</Subtitle>
       {/* 항상 두 개의 Box는 화면에 표시되도록 설정 */}
       <Box>
-        <h1>{records[0]?.location}</h1>
+        <h1>{records[0]?.location || "해당 경기가 없습니다"}</h1>
         <BoxCal>
-          <p>{records[0]?.matchingDate}</p>
+          <p>{records[0]?.matchingDate || ""}</p>
         </BoxCal>
       </Box>
       <Box>
-        <h1>{records[1]?.location}</h1>
+        <h1>{records[1]?.location || "해당 경기가 없습니다"}</h1>
         <BoxCal>
-          <p>{records[1]?.matchingDate}</p>
+          <p>{records[1]?.matchingDate || "" }</p>
         </BoxCal>
       </Box>
 

@@ -14,6 +14,7 @@ import {
     CHANGE_TOTAL_MEMBER,
     CHANGE_TEAM_MEMBER,
     CHANGE_COLLECTION_TITLE,
+    UPDATE_ALL_FIELDS,
     RESET_STATE
 } from "./action";
 
@@ -34,12 +35,13 @@ export const initialState = {
     currentMember: "",
     totalMember: "",
     collectionTitle: "",
-    pendingMembers : [
-    {   pendingnickname: "",
-        applicationDate: "",
-        profileImg : "",
-        applicationstatus: ""          
-    }
+    pendingMembers: [
+        {
+            pendingnickname: "",
+            applicationDate: "",
+            profileImg: "",
+            applicationstatus: ""
+        }
     ],
     teamMember: []
 }
@@ -78,6 +80,8 @@ export const reducer = (state, action) => {
             return { ...state, collectionTitle: action.payload };
         case CHANGE_TEAM_MEMBER:
             return { ...state, teamMember: action.payload };
+        case UPDATE_ALL_FIELDS:
+            return { ...state, ...action.payload };
         case RESET_STATE:
             return initialState;
         default:

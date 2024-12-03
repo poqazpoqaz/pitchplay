@@ -4,6 +4,7 @@ import {
     CHANGE_RESERVATION_DATE,
     CHANGE_STADIUM_ID,
     CHANGE_TEAM_CODE,
+    UPDATE_ALL_FIELDS,
     RESET_STATE
 } from "./action";
 
@@ -27,6 +28,8 @@ export const reducer = (state, action) => {
             return { ...state, reservationDate: action.payload };
         case CHANGE_STADIUM_ID:
             return { ...state, stadiumId: action.payload };
+        case UPDATE_ALL_FIELDS:
+            return { ...state, ...action.payload };
         case RESET_STATE:
             return initialState;
         default:

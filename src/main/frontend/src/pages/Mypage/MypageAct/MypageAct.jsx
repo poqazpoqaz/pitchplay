@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import MatchesSection from "./MypageActComponents/MatchesSection";
 import RecordsSection from "./MypageActComponents/RecordsSection";
 import TeamSection from "./MypageActComponents/TeamSection";
 import PostsSection from "./MypageActComponents/PostsSection";
-import { useStore as MatchingStore } from '../../../stores/MatchingStore/useStore';
 import { useStore as TeamStore } from "../../../stores/TeamStore/useStore";
-import { useStore as UserStore } from "../../../stores/UserStore/useStore";
-import { useStore as FAQStore } from "../../../stores/FAQStore/useStore";
 import axios from 'axios';
 import styles from "./MypageAct.module.css";
 
 const MypageAct = ({ gridArea }) => {
-  const { id } = useParams(); // URL에서 userId 가져오기
-  const { state: matchingState, actions: matchingActions } = MatchingStore();
+  const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 'user' 가져오기
+
   const { state: teamState, actions: teamActions } = TeamStore();
-  const { state: userState, actions: userActions } = UserStore();
-  const { state: faqState, actions: faqActions } = FAQStore();
 
   const [contents, setContents] = useState([]); // 내가 쓴 게시물
   const [comments, setComments] = useState([]); // 내가 쓴 댓글
@@ -25,83 +19,74 @@ const MypageAct = ({ gridArea }) => {
   const [upcomingMatches, setUpcomingMatches] = useState([]); // 예약기록
   const [pastMatches, setPastMatches] = useState([]); // 경기기록
 
-  // userId 기반으로 userData 가져오기
-  useEffect(() => {
-    axios.get("/data/userData.json")
-      .then(response => {
-        const user = response.data.find(user => user.id === id); // userId와 일치하는 유저 찾기
-        if (user) {
-          userActions.changeUserNumber(user.userNumber);
-          userActions.changeNickname(user.nickname);
-        }
-      })
-      .catch(err => {
-        console.error("Error fetching user data:", err);
-      });
-  }, [id]);
-
   // FAQ 데이터 로드 및 필터링
   useEffect(() => {
-    if (userState.userNumber) {
+    if (user && user.userNumber) {
       axios.get("/data/faqData.json")
         .then(response => {
           const faqs = response.data;
           // 내가 작성한 게시물 필터링
-          const filteredData = faqs.filter(data => data.userId === userState.userNumber);
-          filteredData.forEach((faq) => {
-            faqActions.changeContent(faq.content);
-            faqActions.changeFaqNumber(faq.faqNumber);
-            faqActions.changeTitle(faq.title);
-            faqActions.changeDate(faq.date);
-            faqActions.changeViews(faq.views || 0);
-            setContents((prev) => [...prev, faq]);
-          });
+          const filteredData = faqs.filter(data => data.userId === user.userNumber);
+          setContents(filteredData);
+
           faqs.forEach(data => {
             data.comments.forEach(item => {
-              if (item.userNickname === userState.nickname) {
-                faqActions.changeComment(item);
+              if (item.userNickname === user.nickname) {
                 setComments((prev) => [...prev, item]);
               }
             });
+
           });
         })
         .catch(err => {
           console.error("Error fetching FAQ data:", err);
         });
     }
-  }, [userState.userNumber, userState.nickname]);
+  }, [user.userNumber, user.nickname]);
 
-  // 매칭 정보 로드 및 필터링
+  // 매칭 정보 저장 (user가 포함한 팀의 매칭 데이터 가져옴)
   useEffect(() => {
     axios.get("/data/matchingData.json")
       .then(response => {
-        const matches = response.data;
+        const datas = response.data;
+        // user가 포함된 팀 이름이 team1이나 team2에 포함된 매칭 데이터 필터링
+        const selectedMatches = datas.filter(data =>
+          data.teams.team1.name === user.myTeam || data.teams.team2.name === user.myTeam);
 
-        // 현재 시간 기준으로 필터링
+        // 예약과 과거 경기 필터링
+        const upcoming = [];
+        const past = [];
         const currentDate = new Date();
 
-        const upcoming = []; // 예약기록
-        const past = []; // 경기기록
-
-        matches.forEach(match => {
-          const matchingDate = new Date(match.matchingDate.replace(" ", "T")); // Date 객체로 변환
+        selectedMatches.forEach(match => {
+          const matchingDate = new Date(match.matchingDate.replace(" ", "T"));
           if (matchingDate > currentDate) {
-            upcoming.push(match); // 예약기록에 추가
+            upcoming.push(match); // 예약기록
           } else {
-            past.push(match); // 경기기록에 추가
+            past.push(match); // 경기기록
           }
         });
 
-        // 매칭 상태 업데이트 (스토어에 저장)
-        matchingActions.changeMatchingNumber(upcoming.length); // 예약된 매칭 갯수 업데이트
-        matchingActions.changeViewCount(upcoming.reduce((acc, match) => acc + (match.viewCount || 0), 0)); // 총 조회수 업데이트
-
-        // 예약기록과 경기기록을 state에 설정
-        setUpcomingMatches(upcoming);
-        setPastMatches(past);
+        setUpcomingMatches(upcoming); // 예약된 경기 목록 설정
+        setPastMatches(past); // 과거 경기 목록 설정
       })
-      .catch(err => console.error("Error fetching matching data:", err));
-  }, [matchingActions]); // 매칭 데이터 로드 및 필터링
+      .catch(err => {
+        console.error("Error fetching matching data:", err);
+      });
+  }, [user.myTeam]);
+
+  // 팀 정보 저장
+  useEffect(() => {
+    axios.get("/data/teamData.json")
+      .then(response => {
+        const datas = response.data;
+        const selectedTeam = datas.find(data => data.teamName === user.myTeam);
+        teamActions.updateAllFields(selectedTeam);
+      })
+      .catch(err => {
+        console.error("Error fetching team data:", err);
+      });
+  }, [user.myTeam]);
 
   return (
     <div style={{ gridArea: gridArea }}>

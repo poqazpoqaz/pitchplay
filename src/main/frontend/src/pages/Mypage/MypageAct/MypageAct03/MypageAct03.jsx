@@ -1,36 +1,24 @@
 import Teaminfo from './Teaminfo';
 import styles from './MypageAct03.module.css';
 import Teamimg from './Teamimg';
-
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { useStore as UserStore } from "../../../../stores/UserStore/useStore";
 import { useStore as TeamStore } from "../../../../stores/TeamStore/useStore";
 import axios from 'axios';
 
 
 const MypageAct03 = ({ gridArea }) => {
-  const { id } = useParams();
+  const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 'user' 가져오기
   const { state: userState, actions: userActions } = UserStore();
   const { state: teamState, actions: teamActions } = TeamStore();
 
-  // userid(파라미터)에 해당하는 유저의 팀 설정
+  // 팀 정보 저장 
   useEffect(() => {
-    axios.get("/data/userData.json")
-      .then(response => {
-        const datas = response.data;
-        const selectedUser = datas.find(data => data.id == id);
-        userActions.changeMyTeam(selectedUser.myTeam);
-      })
-  }, [id]);
-
-  // 팀 정보 저장 ** 나중에 백에서 불러올때는 내가 속한 팀만 
-  useEffect(() => {
-    if (userState.myTeam) {
+    if (user.myTeam) {
       axios.get("/data/teamData.json")
         .then(response => {
           const datas = response.data;
-          const selectedTeam = datas.find(data => data.teamName === userState.myTeam);
+          const selectedTeam = datas.find(data => data.teamName === user.myTeam);
 
           if (selectedTeam) {
             teamActions.changeTeamName(selectedTeam.teamName);
@@ -55,7 +43,7 @@ const MypageAct03 = ({ gridArea }) => {
           console.error("팀 데이터를 불러오는 중 오류 발생:", err);
         });
     }
-  }, [userState.myTeam]);
+  }, [user.myTeam]);
 
   const teamInfo = {
     image: teamState.teamImg,

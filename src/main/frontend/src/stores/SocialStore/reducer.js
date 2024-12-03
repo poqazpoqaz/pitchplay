@@ -11,6 +11,7 @@ import {
     CHANGE_ACTIVE_STATUS,
     CHANGE_CURRENT_MEMBER,
     CHANGE_TOTAL_MEMBER,
+    UPDATE_ALL_FIELDS,
     RESET_STATE
 } from "./action";
 
@@ -57,6 +58,8 @@ export const reducer = (state, action) => {
             return { ...state, currentMember: action.payload };
         case CHANGE_TOTAL_MEMBER:
             return { ...state, totalMember: action.payload };
+        case UPDATE_ALL_FIELDS:
+            return { ...state, ...action.payload };
         case RESET_STATE:
             return initialState;
         default:

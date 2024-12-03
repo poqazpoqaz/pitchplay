@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {formatCurrency} from "../../../utils/formattedDate";
 
 
 const Top22 = styled.div`
@@ -42,7 +43,7 @@ const Top2 = ({ username, usercash }) => {
   return (
     <Top22>
       <h2>{username} 님</h2>
-      <p>잔액 : {usercash} 캐시</p>
+      <p>잔액 : {formatCurrency(usercash)} 캐시</p>
       <ul>
         <li><LinkButton href="/charge">충전하기</LinkButton></li>
         <li><LinkButton href="/refund">환불하기</LinkButton></li>

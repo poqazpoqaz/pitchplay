@@ -10,9 +10,12 @@ import MatchingTeamDetails from "../../components/MatchingDetails/MatchingTeamDe
 import MatchingStadiumDetails from "../../components/MatchingDetails/MatchingStadiumDetails";
 import MatchingApplicationDetails from "../../components/MatchingDetails/MatchingApplicationDetails";
 import MatchingPayment from "../../components/MatchingPayment";
+import { formattedDate } from "../../utils/formattedDate";
 
 function TeamMatchingDetail({ gridArea }) {
     const { matchingNum } = useParams();
+    const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 user가져옴
+
     const { state: matchingState, actions: matchingActions } = MatchingStore();
     const { state: stadiumState, actions: stadiumActions } = StadiumStore();
     const { state: userState, actions: userActions } = UserStore();
@@ -24,30 +27,9 @@ function TeamMatchingDetail({ gridArea }) {
             .then(response => {
                 const datas = response.data;
                 const selectedMatchingData = datas.find(data => data.matchingNum == matchingNum)
-
                 if (selectedMatchingData) {
-                    matchingActions.changeMatchingNumber(selectedMatchingData.matchingNum);
-                    // 첫번째 팀 저장
-                    matchingActions.changeTeamName('team1', selectedMatchingData.teams.team1.name);
-                    matchingActions.changeTeamImg('team1', selectedMatchingData.teams.team1.src);
-
-                    //두번째 팀 저장
-                    matchingActions.changeTeamName('team2', selectedMatchingData.teams.team2.name);
-                    matchingActions.changeTeamImg('team2', selectedMatchingData.teams.team2.src);
-
-                    //팀 구성
-                    matchingActions.changeTeamGender(selectedMatchingData.gender);
-                    matchingActions.changeMatchingDate(selectedMatchingData.matchingDate);
-                    matchingActions.changeTeamSize(selectedMatchingData.teamSize);
-
-                    //매칭하는 경기장이름 & ID
-                    matchingActions.changeMatchingLoc(selectedMatchingData.location);
-                    matchingActions.changeStadiumId(selectedMatchingData.stadiumId);
-                    matchingActions.changeTeamLevel(selectedMatchingData.level);
-                    matchingActions.changeViewCount(selectedMatchingData.views);
-                    matchingActions.changeWrittenDate(selectedMatchingData.writtenDate);
+                    matchingActions.updateAllFields(selectedMatchingData);
                 }
-
             })
     }, [matchingNum])
 
@@ -80,27 +62,17 @@ function TeamMatchingDetail({ gridArea }) {
         axios.get("/data/userData.json")
             .then(response => {
                 const datas = response.data;
-                const selectedUser = datas.find(data => data.userNumber = "123123");
+                const selectedUser = datas.find(data => data.userNumber = user.userNumber);
                 userActions.changeUserNumber(selectedUser.userNumber);
                 userActions.changeUserCash(selectedUser.userCash);
             })
     }, [])
 
     // stadiumCost를 2로 나누어 전달
-    const adjustedStadiumCost =  Math.round(+stadiumState.stadiumCost / 2  / 100) * 100;
+    const adjustedStadiumCost = Math.round(+stadiumState.stadiumCost / 2 / 100) * 100;
 
-   
-
-    // 매칭 날짜 포맷 (yyyy-MM-dd 형식으로)
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1을 해줌
-        const day = String(date.getDate()).padStart(2, '0'); // 일 부분도 두 자릿수로 맞춤
-        return `${year}-${month}-${day}`; // 년-월-일 형식으로 반환
-    };
-
-    const formattedMatchingDate = formatDate(matchingState.matchingDate);
+    // 날짜 변환
+    const formattedMatchingDate = formattedDate(matchingState.matchingDate);
 
     return (
         <div className={styles['matchingdetail-grid']} style={{ gridArea: gridArea }}>
@@ -120,12 +92,12 @@ function TeamMatchingDetail({ gridArea }) {
                 matchingCost={adjustedStadiumCost}
                 gridArea="application"
                 onClick={() => setIsModalOpen(true)} />
-            <MatchingPayment 
-            isOpen={isModalOpen} 
-            closeModal={() => setIsModalOpen(false)} 
-            userCash={userState.userCash} 
-            stadiumCost={adjustedStadiumCost}
-            to={"/team"}/>
+            <MatchingPayment
+                isOpen={isModalOpen}
+                closeModal={() => setIsModalOpen(false)}
+                userCash={userState.userCash}
+                stadiumCost={adjustedStadiumCost}
+                to={"/team"} />
         </div>
     )
 }

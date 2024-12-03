@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import Alarm from "../components/Alarm";
 import { useState } from "react";
+import {formatCurrency} from "../utils/formattedDate";
 
 
 // 추후에 결제하는 쪽 주소 보내야함
@@ -45,10 +46,6 @@ const FlexDiv = styled.div`
 
 function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost}) {
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
-    // 숫자를 포맷하는 함수
-    const formatNumber = (number) =>
-        Number(number).toLocaleString("en-US"); // en-US로 설정하여 천 단위 콤마 추가
-
     const remainingCash = +userCash - +stadiumCost;
 
 
@@ -73,18 +70,18 @@ function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost}) {
                     <BoxWrapper>
                         <FlexDiv>
                             <p>부족한 캐시</p>
-                            <p><span>{formatNumber(Math.abs(remainingCash))}</span> 캐시</p>
+                            <p><span>{formatCurrency(Math.abs(remainingCash))}</span> 캐시</p>
                             
                         </FlexDiv>
                         <FlexDiv>
                             <p>현재 보유 캐시</p>
-                            <p><span>{formatNumber(userCash)}</span> 캐시</p>
+                            <p><span>{formatCurrency(userCash)}</span> 캐시</p>
                         </FlexDiv>
                     </BoxWrapper>
                     <BoxWrapper>
                         <FlexDiv>
                             <p>결제 금액</p>
-                            <p><span>{formatNumber(stadiumCost)}</span> 캐시</p>
+                            <p><span>{formatCurrency(stadiumCost)}</span> 캐시</p>
                         </FlexDiv>
                     </BoxWrapper>
                     <Button color="var(--main-color)" size="large"> 충전하기</Button>
@@ -98,17 +95,17 @@ function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost}) {
                     <BoxWrapper>
                         <FlexDiv>
                             <p>결제 후 남는 캐시</p>
-                            <p><span>{formatNumber(Math.abs(remainingCash))}</span> 캐시</p>
+                            <p><span>{formatCurrency(Math.abs(remainingCash))}</span> 캐시</p>
                         </FlexDiv>
                         <FlexDiv>
                             <p>현재 보유 캐시</p>
-                            <p><span>{formatNumber(userCash)}</span> 캐시</p>
+                            <p><span>{formatCurrency(userCash)}</span> 캐시</p>
                         </FlexDiv>
                     </BoxWrapper>
                     <BoxWrapper>
                         <FlexDiv>
                             <p>결제 금액</p>
-                            <p><span>{formatNumber(stadiumCost)}</span> 캐시</p>
+                            <p><span>{formatCurrency(stadiumCost)}</span> 캐시</p>
                         </FlexDiv>
                     </BoxWrapper>
                     <Button color="var(--main-color)" size="large" onClick={() => setIsAlarmOpen(true)}> 신청하기 </Button>

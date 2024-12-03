@@ -7,8 +7,10 @@ import SocialMatchingNavbar from "../../components/SocialMatchingItem/SocialMatc
 import SocialMatching from "../../components/SocialMatchingItem/SocialMatching";
 import JoinRequestModal from "../../components/JoinRequestModal";
 import Alarm from "../../components/Alarm";
+import {sortObjectContnents} from "../../utils/sortContents"
 
 function SocialMatchings({ gridArea }) {
+
     // 드롭다운 옵션
     const dropdownoption = ["최신순", "오래된순"];
     const [selectedOption, setSelectedOption] = useState("최신순");
@@ -35,19 +37,6 @@ function SocialMatchings({ gridArea }) {
         setIsModalOpen(false);
     };
     const closeAlarm = () => setIsAlarmOpen(false);
-
-
-    // 정렬하는 함수
-    const sortContents = (data, option) => {
-        return [...data].sort((a, b) => {
-            if (option === "최신순") {
-                return new Date(b.social.writtenDate) - new Date(a.social.writtenDate); // 날짜 내림차순
-            } else if (option === "오래된순") {
-                return new Date(a.social.writtenDate) - new Date(b.social.writtenDate); // 날짜 오름차순
-            }
-            return 0;
-        });
-    };
 
     // 드롭다운 선택 변경 처리
     const handleSelectChange = (option) => {
@@ -115,10 +104,13 @@ function SocialMatchings({ gridArea }) {
             });
     }, []);
 
+
+
     // 정렬된 데이터 상태 업데이트
     useEffect(() => {
         if (dataList.length > 0) {
-            setSortedContents(sortContents(dataList, selectedOption));
+            const sortedData = sortObjectContnents([...dataList], selectedOption); // 정렬된 데이터
+            setSortedContents(sortedData); // 정렬 결과 저장
         }
     }, [dataList, selectedOption]);
 

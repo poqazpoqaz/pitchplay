@@ -16,11 +16,12 @@ import {
     changeTotalMember,
     changeCollectionTitle,
     changeTeamMember,
+    updateAllFields,
     resetState
 } from "./action.js";
 
 export const useStore = () => {
-    
+
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const actions = {
@@ -54,8 +55,10 @@ export const useStore = () => {
         changeCollectionTitle: (collectionTitle) => dispatch(changeCollectionTitle(collectionTitle)),
         // 팀원 정보 변경
         changeTeamMember: (teamMember) => dispatch(changeTeamMember(teamMember)),
+        //전체 변경
+        updateAllFields: (fields) => dispatch(updateAllFields(fields)),
         // 팀 state 초기화 메서드
-        resetState : () => dispatch(resetState())
+        resetState: () => dispatch(resetState())
     };
 
     return { state, actions };

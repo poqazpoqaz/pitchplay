@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './MainSection.css';
 
-const MainSection = ({gridArea}) => {
+const MainSection = ({ gridArea }) => {
   const [activeImage, setActiveImage] = useState(null);
   const [hoveredImage, setHoveredImage] = useState(null);
   const images = [
     {
       src: 'team.jpg',
       alt: 'Image 1',
-      link: 'https://example.com/1',
+      link: '/social',
       text: '소셜',
       linkText: '소셜로 이동하기',
     },
     {
       src: '1.jpg',
       alt: 'Team',
-      link: 'https://example.com/team',
+      link: '/team',
       text: '팀',
       linkText: '팀으로 이동하기',
     },
     {
       src: 'team.jpg',
       alt: 'Gujang',
-      link: 'https://example.com/gujang',
+      link: '/reservation',
       text: '구장',
       linkText: '구장으로 이동하기',
     },
@@ -46,7 +47,7 @@ const MainSection = ({gridArea}) => {
   };
 
   return (
-    <div className="main-section" style={{gridArea: gridArea}} >
+    <div className="main-section" style={{ gridArea: gridArea }} >
       {images.map((image, index) => (
         <div
           key={image.src}
@@ -66,11 +67,11 @@ const MainSection = ({gridArea}) => {
           <div
             className={`link-overlay ${activeImage === index ? 'show' : ''}`}
           >
-            <a href={image.link} target="_blank" rel="noopener noreferrer">
+            <Link to={image.link} rel="noopener noreferrer">
               {image.linkText}
-            </a>
+            </Link>
           </div>
-        </div>  
+        </div>
       ))}
     </div>
   );

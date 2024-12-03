@@ -9,6 +9,7 @@ import {
     CHANGE_STADIUM_COST,
     CHANGE_STADIUM_V_MIN,
     CHANGE_STADIUM_V_MAX,
+    UPDATE_ALL_FIELDS,
     RESET_STATE
 } from "./action";
 
@@ -46,7 +47,9 @@ export const reducer = (state, action) => {
         case CHANGE_STADIUM_V_MIN:
             return { ...state, stadiumVmin: action.payload };
         case CHANGE_STADIUM_V_MAX:
-            return { ...state, stadiumVmax: action.payload};
+            return { ...state, stadiumVmax: action.payload };
+        case UPDATE_ALL_FIELDS:
+            return { ...state, ...action.payload };
         case RESET_STATE:
             return initialState;
         default:

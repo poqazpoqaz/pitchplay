@@ -6,3 +6,11 @@ export const formattedDate = (dateString) => {
     const day = String(date.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
 };
+
+
+// 캐시 형식을 00,000 로 변환
+export const formatCurrency = (number) => {
+  return new Intl.NumberFormat('ko-KR', {
+    maximumFractionDigits: 0, // 소수점 제거
+  }).format(number);
+};
