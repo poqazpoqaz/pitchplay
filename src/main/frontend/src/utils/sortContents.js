@@ -11,7 +11,7 @@ export const sortContents = (data, option) => {
 };
 
 // 객체 형식
-export const sortObjectContnents = (contents, option) => {
+export const sortObjectContents = (contents, option) => {
     return contents.sort((a, b) => {
         const dateA = new Date(a.social.writtenDate);
         const dateB = new Date(b.social.writtenDate);

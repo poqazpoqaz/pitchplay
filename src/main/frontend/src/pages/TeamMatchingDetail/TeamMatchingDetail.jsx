@@ -11,6 +11,7 @@ import MatchingStadiumDetails from "../../components/MatchingDetails/MatchingSta
 import MatchingApplicationDetails from "../../components/MatchingDetails/MatchingApplicationDetails";
 import MatchingPayment from "../../components/MatchingPayment";
 import { formattedDate } from "../../utils/formattedDate";
+import { formatCurrency } from "../../utils/formattedDate";
 
 function TeamMatchingDetail({ gridArea }) {
     const { matchingNum } = useParams();
@@ -89,7 +90,7 @@ function TeamMatchingDetail({ gridArea }) {
                 matchingLoc={matchingState.location}
                 teamSize={matchingState.teamSize}
                 matchingDate={formattedMatchingDate}
-                matchingCost={adjustedStadiumCost}
+                matchingCost={formatCurrency(adjustedStadiumCost)}
                 gridArea="application"
                 onClick={() => setIsModalOpen(true)} />
             <MatchingPayment

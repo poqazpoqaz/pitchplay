@@ -1,11 +1,26 @@
 import DefaultButton from "../DefaultButton";
 import styles from "./Navbar.module.css";
 import SearchInput from "../SearchInput";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 
 function Navbar({ gridArea }) {
     const [activeButton, setActiveButton] = useState("btn1");
+    const location = useLocation();  // 현재 URL 위치 정보 가져오기
+
+    useEffect(() => {
+        // 정확히 일치하는 경로에 맞는 버튼을 활성화
+        if (location.pathname === "/team") {
+            setActiveButton("btn1");
+        } else if (location.pathname === "/team/member") {
+            setActiveButton("btn2");
+        } else if (location.pathname === "/team/guestplayer") {
+            setActiveButton("btn3");
+        } else if (location.pathname === "/team/creation") {
+            setActiveButton("btn4");
+        }
+    }, [location]); // location이 바뀔 때마다 실행
 
     const handleButtonClick = (buttonId) => {
         setActiveButton(buttonId); // 버튼 클릭 시 활성화된 버튼 ID를 설정

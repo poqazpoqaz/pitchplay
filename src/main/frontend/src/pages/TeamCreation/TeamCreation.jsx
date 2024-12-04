@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { TeamCodePattern, TNamePattern, TeamDescriptionPattern } from '../../utils/regExp';
 
 function TeamCreation() {
+  const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 user가져옴
   const { state, actions } = useStore();
   const navigate = useNavigate();
 
@@ -140,107 +141,119 @@ function TeamCreation() {
 
 
   return (
-    <Modal isOpen={isOpen} closeModal={closeTeamModal}>
-      {/* 각 단계별 UI */}
-      {currentStep === 1 && (
-        <TeamNameCodeInput
-          teamName={state.teamName}
-          teamCode={state.teamCode}
-          setTeamName={actions.changeTeamName}
-          setTeamCode={actions.changeTeamCode}
-          teamNameError={errors.teamName}
-          teamCodeError={errors.teamCode}
-        />
-      )}
-
-      {currentStep === 2 && (
-        <TeamImageInput
-          teamImg={state.teamImg}
-          setTeamImg={actions.changeTeamImg}
-        />
-      )}
-
-      {currentStep === 3 && (
-        <TeamDescriptionInput
-          teamDescription={state.teamDescription}
-          setTeamDescription={actions.changeTeamDescription}
-          teamDescriptionError={errors.teamDescription}
-        />
-      )}
-
-      {currentStep === 4 && (
-        <TeamLevel
-          levels={levels}
-          teamLevel={state.teamLevel}
-          handleCategoryClick={handleCategoryClick}
-        />
-      )
-      }
-
-      {currentStep === 5 && (
-        <TeamTime
-          dayoptions={dayoptions}
-          timeoptions={timeoptions}
-          teamDay={state.teamDay}
-          teamTime={state.teamTime}
-          handleCategoryClick={handleCategoryClick}
-        />
-      )
-      }
-
-      {currentStep === 6 && (
-        <TeamLocation
-          cityoptions={cityoptions}
-          locoptions={locoptions}
-          teamCity={state.teamCity}
-          teamLoc={state.teamLoc}
-          setTeamCity={actions.changeTeamCity}
-          setTeamLoc={actions.changeTeamLoc}
-        />
-      )}
-
-      {
-        currentStep == 7 && (
-          <TeamMemberGender
-            ageoptions={ageoptions}
-            genderoptions={genderoptions}
-            teamAge={state.teamAge}
-            teamGender={state.teamGender}
-            setTeamGender={actions.changeTeamGender}
-            handleCategoryClick={handleCategoryClick}
-          />
-        )
-      }
-      {
-        currentStep == 8 && (
-          <TeamCreationEnd />
-        )
-      }
-
-      <div
-        style={{
-          marginTop: "20px",
-          display: (currentStep > 1 && currentStep < 8) ? "flex" : "block",
-          justifyContent: "space-between",
-          width: "100%", // 전체 너비를 차지하게
-        }}
-      >
-        {(currentStep > 1 && currentStep < 8) && (
-          <Button color="var(--main-color)" size="large" onClick={handlePrev}>
-            이전
+    <>
+      {user.myTeam ?
+        <Modal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
+          <h2>{user.myTeam}팀에 가입되어 있습니다.</h2>
+          <p style={{marginBottom: "1rem"}}>팀 생성을 위해 팀을 탈퇴해주세요.</p>
+          <Button color="var(--main-color)" size="large" to="/team">
+            확인
           </Button>
-        )}
-        {currentStep < 8 ? (
-          <Button color="var(--main-color)" size="large" onClick={handleNext}>
-            다음
-          </Button>
-        ) : (
-          <Button color="var(--main-color)" size="large" to="/">
-            돌아가기
-          </Button>
-        )}
-      </div>
-    </Modal>
+        </Modal>
+        :
+        <Modal isOpen={isOpen} closeModal={closeTeamModal}>
+          {/* 각 단계별 UI */}
+          {currentStep === 1 && (
+            <TeamNameCodeInput
+              teamName={state.teamName}
+              teamCode={state.teamCode}
+              setTeamName={actions.changeTeamName}
+              setTeamCode={actions.changeTeamCode}
+              teamNameError={errors.teamName}
+              teamCodeError={errors.teamCode}
+            />
+          )}
+
+          {currentStep === 2 && (
+            <TeamImageInput
+              teamImg={state.teamImg}
+              setTeamImg={actions.changeTeamImg}
+            />
+          )}
+
+          {currentStep === 3 && (
+            <TeamDescriptionInput
+              teamDescription={state.teamDescription}
+              setTeamDescription={actions.changeTeamDescription}
+              teamDescriptionError={errors.teamDescription}
+            />
+          )}
+
+          {currentStep === 4 && (
+            <TeamLevel
+              levels={levels}
+              teamLevel={state.teamLevel}
+              handleCategoryClick={handleCategoryClick}
+            />
+          )
+          }
+
+          {currentStep === 5 && (
+            <TeamTime
+              dayoptions={dayoptions}
+              timeoptions={timeoptions}
+              teamDay={state.teamDay}
+              teamTime={state.teamTime}
+              handleCategoryClick={handleCategoryClick}
+            />
+          )
+          }
+
+          {currentStep === 6 && (
+            <TeamLocation
+              cityoptions={cityoptions}
+              locoptions={locoptions}
+              teamCity={state.teamCity}
+              teamLoc={state.teamLoc}
+              setTeamCity={actions.changeTeamCity}
+              setTeamLoc={actions.changeTeamLoc}
+            />
+          )}
+
+          {
+            currentStep == 7 && (
+              <TeamMemberGender
+                ageoptions={ageoptions}
+                genderoptions={genderoptions}
+                teamAge={state.teamAge}
+                teamGender={state.teamGender}
+                setTeamGender={actions.changeTeamGender}
+                handleCategoryClick={handleCategoryClick}
+              />
+            )
+          }
+          {
+            currentStep == 8 && (
+              <TeamCreationEnd />
+            )
+          }
+
+          <div
+            style={{
+              marginTop: "20px",
+              display: (currentStep > 1 && currentStep < 8) ? "flex" : "block",
+              justifyContent: "space-between",
+              width: "100%", // 전체 너비를 차지하게
+            }}
+          >
+            {(currentStep > 1 && currentStep < 8) && (
+              <Button color="var(--main-color)" size="large" onClick={handlePrev}>
+                이전
+              </Button>
+            )}
+            {currentStep < 8 ? (
+              <Button color="var(--main-color)" size="large" onClick={handleNext}>
+                다음
+              </Button>
+            ) : (
+              <Button color="var(--main-color)" size="large" to="/">
+                돌아가기
+              </Button>
+            )}
+          </div>
+        </Modal>
+      }
+    </>
   );
 }
 

@@ -26,7 +26,7 @@ const StyledLabel = styled.label`
 
 const StyledInput = styled.input`
     border-radius: 10px;
-    border: 1px solid ${props => props.$isvalid ? 'var(--line-color)' : 'var(--main-color)'};
+    border: 1px solid ${props => props.$isvalid =="true" ? 'var(--line-color)' : 'var(--main-color)'};
     padding: 10px;
     margin-top: 5px ;
       font-size: ${(props) => {

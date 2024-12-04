@@ -19,7 +19,7 @@ export const changeWriteNickname = (writeNickname) => ({type : CHANGE_WRITE_NICK
 export const changeTitle = (title) => ({type : CHANGE_TITLE, payload : title});
 export const changeDate = (date) => ({type : CHANGE_DATE, payload : date});
 export const changeContent = (content) => ({ type: CHANGE_CONTENT, payload: content});
-export const changeComment = (comment) => ({ type: CHANGE_COMMENT, payload: {comment}});
+export const changeComment = (comments) => ({ type: CHANGE_COMMENT, payload: comments});
 export const changeViews = (views) => ({type : CHANGE_VIEWS , payload : views});
 export const changeStatus = (status) => ({type : CHANGE_STATUS , payload : status});
 export const changeUserNickname = (userNickname) => ({type : CHANGE_USER_NICKNAME , payload : userNickname});

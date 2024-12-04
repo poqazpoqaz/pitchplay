@@ -55,7 +55,7 @@ export const reducer = (state, action) => {
     case CHANGE_VIEWS:
       return { ...state, views: action.payload };
     case CHANGE_COMMENT:
-      return { ...state, comments: [...state.comments, action.payload.comment] };
+      return { ...state, comments: action.payload }
     case CHANGE_USER_NICKNAME:
       return { ...state, userNickname: action.payload };
     case CHANGE_CATEGORY:

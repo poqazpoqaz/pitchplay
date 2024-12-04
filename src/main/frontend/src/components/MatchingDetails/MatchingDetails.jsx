@@ -3,7 +3,7 @@ import clock from "/public/imgs/clock.svg";
 import gender from "/public/imgs/gender.svg";
 import stadium from "/public/imgs/stadium.svg";
 import ping from "/public/imgs/ping.svg";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 const Wrapper = styled(motion.div)`
     padding: 20px;
@@ -11,8 +11,13 @@ const Wrapper = styled(motion.div)`
     border-radius: 15px;
     font-size: 1.3rem;
 
-    @media(max-width: 1024px){
-    font-size: 1rem;
+    @media (max-width: 1024px) {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 0.9rem;
+        padding: 15px;
     }
 `;
 
@@ -20,17 +25,40 @@ const SubWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 8px;
+    }
 `;
 
 const Items = styled(motion.div)`
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap:20px;
+    overflow: hidden;
     transition: transform 0.3s ease-in-out;
 
     &:hover {
-        transform: scale(1.1);  // hover 시 크기 10% 증가
+        transform: scale(1.1); /* hover 시 크기 10% 증가 */
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+
+        @media (max-width: 768px) {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    p {
+        margin: 0;
+        white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+        overflow: hidden; /* 넘치는 내용 숨기기 */
+        text-overflow: ellipsis; /* 말줄임 표시 */
+        flex: 1; /* 텍스트 영역이 가능한 공간 채우기 */
     }
 `;
 

@@ -48,7 +48,6 @@ function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost}) {
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
     const remainingCash = +userCash - +stadiumCost;
 
-
     return (
         <Modal isOpen={isOpen} closeModal={closeModal}>
             {isAlarmOpen &&

@@ -33,7 +33,6 @@ const TeamNameCodeInput = ({ teamName, teamCode, setTeamName, setTeamCode, teamN
         placeholder="팀 이름을 입력하세요."
         onChange={(e) => setTeamName(e.target.value)}
         value={teamName}
-        isValid={!teamNameError}
       />
       {teamNameError && <p style={{ color: "red" }}>{teamNameError}</p>}
     </LabelDiv>
@@ -45,7 +44,6 @@ const TeamNameCodeInput = ({ teamName, teamCode, setTeamName, setTeamCode, teamN
         placeholder="팀 코드를 입력하세요."
         onChange={(e) => setTeamCode(e.target.value)}
         value={teamCode}
-        isValid={!teamCodeError}
       />
       {teamCodeError && <p style={{ color: "red" }}>{teamCodeError}</p>}
     </LabelDiv>

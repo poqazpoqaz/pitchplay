@@ -16,6 +16,7 @@ import { formatCurrency } from "../../utils/formattedDate";
 
 function SocialMatchingDetail({ gridArea }) {
     const { socialNumber } = useParams();
+    const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 user가져옴
 
     const { state: stadiumState, actions: stadiumActions } = StadiumStore();
     const { state: socialState, actions: socialActions } = SocialReservationStore();
@@ -24,16 +25,20 @@ function SocialMatchingDetail({ gridArea }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-    // 유저 데이터 불러오기 (임의로 값 설정해놓음 나중에는 해당하는 유저 불러오게 해야함 )
+    // 유저 데이터 불러오기 (소셜매칭신청할때 캐시)
     useEffect(() => {
         axios.get("/data/userData.json")
             .then(response => {
                 const datas = response.data;
-                const selectedUser = datas.find(data => data.userNumber = "123123");
-                userActions.changeUserNumber(selectedUser.userNumber);
-                userActions.changeUserCash(selectedUser.userCash);
+                const selectedUser = datas.find(data => data.userNumber = user.userNumber);
+
+                if (selectedUser) {
+                    userActions.updateAllFields(selectedUser);
+                }else{
+                    console.log("로그인이 되어있지않습니다.");
+                }
             })
-    }, [])
+    }, [user.userNumber])
 
     // 예약 데이터 불러오기
     useEffect(() => {
@@ -43,19 +48,7 @@ function SocialMatchingDetail({ gridArea }) {
                 const socialData = datas.find(data => data.socialNumber === socialNumber);
 
                 if (socialData) {
-                    socialActions.changeSocialNumber(socialData.socialNumber);
-                    socialActions.changeUserId(socialData.id);
-                    socialActions.changeStadiumId(socialData.stadiumId);
-                    socialActions.changeSocialGender(socialData.socialGender);
-                    socialActions.changeActiveStatus(socialData.activeStatus);
-                    socialActions.changeSocialSize(socialData.socialSize);
-                    socialActions.changeSocialLevel(socialData.socialLevel);
-                    socialActions.changeSocialTime(socialData.socialTime);
-                    socialActions.changeWrittenDate(socialData.writtenData);
-                    socialActions.changeViewCount(socialData.viewCount);
-                    socialActions.changeActiveStatus(socialData.activeStatus);
-                    socialActions.changeCurrentMember(socialData.currentMember);
-                    socialActions.changeTotalMember(socialData.totalMember);
+                    socialActions.updateAllFields(socialData)
                 } else {
                     console.log("해당 예약을 찾을 수 없습니다.");
                 }

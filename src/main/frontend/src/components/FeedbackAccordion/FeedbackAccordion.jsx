@@ -5,9 +5,10 @@ import "./FeedbackAccordion.css";
 import ReportDetail from "./ReportDetail";
 
 function FeedbackAccordion() {
-    // 상태 관리: faqState와 faqActions를 useStore로 가져옴.
+    // 선택된 보고서를 state로 저장하여 제공
     const { state: faqState, actions: faqActions } = useStore();
-    
+
+    const [dataList, setDataList] = useState([]);
     const [loading, setLoading] = useState(true); // 로딩 상태 관리
     const [error, setError] = useState(null); // 에러 상태 관리
     const [selectedReport, setSelectedReport] = useState(null); // 선택된 보고서 저장
@@ -22,7 +23,7 @@ function FeedbackAccordion() {
                     throw new Error("데이터를 불러오는 데 실패했습니다.");
                 }
                 const data = await response.json(); // JSON 데이터 파싱
-                faqActions.setReports(data); // 상태에 데이터를 설정
+                setDataList(data); // 상태에 데이터를 설정
             } catch (err) {
                 setError(err.message); // 에러 발생 시 상태에 에러 메시지 저장
             } finally {
@@ -31,13 +32,14 @@ function FeedbackAccordion() {
         };
 
         fetchData(); // 데이터 불러오기 함수 실행
-    }, [faqActions]); // faqActions가 변경될 때마다 다시 실행
+    }, []); // faqActions가 변경될 때마다 다시 실행
 
     // 클릭된 보고서 상세보기
     const handleViewReport = (faqNumber) => {
-        const report = faqState.reports.find((r) => r.faqNumber === faqNumber);
+        const report = dataList.find(data => data.faqNumber === faqNumber);
         if (report) {
-            setSelectedReport(report); // 선택된 보고서를 state에 저장
+            setSelectedReport(report);
+            faqActions.updateAllFields(report);
         }
     };
 
@@ -62,12 +64,14 @@ function FeedbackAccordion() {
                 <ReportDetail
                     report={selectedReport}
                     onGoBack={handleGoBack}
+                    faqState={faqState}
+                    faqActions={faqActions}
                 />
             ) : (
                 <>
-                    <h2>건의 / 제보 게시판 리스트</h2>
+                    <h2>건의/제보 게시판 리스트</h2>
                     <button className="add-report-btn" onClick={handleAddReport}>
-                        건의/제보 글쓰기
+                        건의/제보  글쓰기
                     </button>
                     <table className="feedback-table">
                         <thead>
@@ -81,7 +85,7 @@ function FeedbackAccordion() {
                             </tr>
                         </thead>
                         <tbody>
-                            {faqState.reports.map((report) => (
+                            {dataList.map((report) => (
                                 <tr
                                     key={report.faqNumber}
                                     className="feedback-row"

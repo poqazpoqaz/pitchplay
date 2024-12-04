@@ -37,7 +37,7 @@ export const useStore = () => {
         // 조회수 변경 메서드
         changeViews: (views) => dispatch(changeViews(views)),
         // 댓글 변경 메서드
-        changeComment: (comment) => dispatch(changeComment(comment)),
+        changeComment: (comments) => dispatch(changeComment(comments)),
         // 사용자 닉네임 변경 메서드
         changeUserNickname: (userNickname) => dispatch(changeUserNickname(userNickname)),
         // 카테고리 변경 메서드

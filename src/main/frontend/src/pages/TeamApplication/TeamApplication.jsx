@@ -64,10 +64,14 @@ function TeamApplication() {
 
     return (
         <div className={styles['teamapplication-grid']}>
-           <TeamProfile content={state} gridArea="teamprofile" />
+            <TeamProfile content={state} gridArea="teamprofile" />
             <TeamDescription content={state} gridArea="teamIntro" />
             <Button color="var(--main-color)" gridArea="btn" onClick={openModal}>가입신청</Button>
-            {isModalOpen && <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm} />}
+            {isModalOpen &&
+                <JoinRequestModal isOpen={isModalOpen} closeModal={closeModal} openAlarm={openAlarm} titletext="가입신청" buttontext="신청하기">
+                    <p>가입 신청 시에 팀에게 프로필과 연락처가 공개됩니다.</p>
+                    <p><span style={{ fontWeight: "bold" }}>개인정보 공개에 동의</span>하실 경우 버튼을 눌러 신청해주세요.</p>
+                </JoinRequestModal>}
             {isAlarmOpen && <Alarm btntext="확인" isOpen={isAlarmOpen} closeAlarm={closeAlarm} onClick={closeAlarm} to="/team/member">가입신청이 완료되었습니다.</Alarm>}
         </div>
     );
