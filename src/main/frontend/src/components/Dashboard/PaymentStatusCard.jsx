@@ -6,17 +6,18 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: grid;
   grid-template: 
-    'title ... drop' 50px
-    '... ... ...' 20px
-    'graph graph graph' 1fr / 3fr 1fr 1fr ;
+    "title drop" 50px
+    "content content" 1fr / 3fr 1fr;
   border: 1px solid #A0A0A0;
   border-radius: 15px;
   padding: 20px;
+  gap: 20px;
 `;
 
 const Title = styled.h1`
   grid-area: title;
-  
+  margin: 0;
+
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
@@ -26,20 +27,21 @@ const Title = styled.h1`
   }
 `;
 
+
 const FlexBox = styled.div`
-  grid-area: graph;
+  grid-area: content;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
 
 const Text = styled.div`
   font-size: 1.2rem;
   padding: 10px;
-  background: #F1F1F1;
-  border-radius: 15px;
-  margin: 5px;
-
-`
+  background: #F9F9F9;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+`;
 
 const PaymentStatusCard = () => {
   const currentMonth = new Date().getMonth() + 1; // 현재 월

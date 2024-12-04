@@ -82,7 +82,7 @@ const router = createBrowserRouter([
       {
         path: "/admin", element: <AdminPage gridArea={"section"} />,
         children: [
-          { path: "dashboard", element: <Dashboard />, },
+          { path: "", element: <Dashboard />, },
           // {path: "member-management/:id?", element: <AdminMemeberManagement />},
           // {path: "matching-management/:id?",element: <AdminMatchingManagement />},
           // {path: "team-management/:id?",element: <AdminTeamManagement />},
