@@ -45,7 +45,7 @@ const VisitantCard = () => {
           setVisitorData(data);
         }
       })
-      .catch(error => console.error("데이터를 불러오는 데 실패했습니다:", error));
+      .catch(error => console.error("데이터를 불러오는 데 실패했습니다.", error));
   }, []); // 컴포넌트가 처음 렌더링 될 때 한 번만 실행
 
 
@@ -85,7 +85,7 @@ const VisitantCard = () => {
         options={["년", "월", "일"]}
         selected={viewType}
         onChange={setViewType}
-        text="단위 선택"
+        text="단위 선택 "
         gridArea="drop" />
       <Graph>
         <ResponsiveContainer width="100%" height={300}>

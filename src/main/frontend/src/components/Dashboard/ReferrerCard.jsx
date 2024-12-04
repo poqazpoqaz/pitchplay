@@ -70,7 +70,7 @@ const ReferrerCard = () => {
           setVisitorData(aggregatedData);
         }
       })
-      .catch(error => console.error("데이터를 불러오는 데 실패했습니다:", error));
+      .catch(error => console.error("데이터를 불러오는 데 실패했습니다.", error));
   }, []);
 
   // 드롭다운에서 월을 선택했을 때 처리

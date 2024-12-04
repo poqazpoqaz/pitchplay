@@ -98,10 +98,10 @@ const RefundStatusCard = () => {
         gridArea="drop"
       />
       <FlexBox>
-        <Text>캐쉬 환불 완료: {cashRefund} 건</Text>
-        <Text>구장 환불 완료: {stadiumRefund} 건</Text>
-        <Text>캐쉬 환불 취소: {cashCancel} 건</Text>
-        <Text>구장 환불 취소: {stadiumCancel} 건</Text>
+        <Text>캐쉬 환불 완료: {cashRefund} 건 </Text>
+        <Text>구장 환불 완료: {stadiumRefund} 건 </Text>
+        <Text>캐쉬 환불 취소: {cashCancel} 건 </Text>
+        <Text>구장 환불 취소: {stadiumCancel} 건 </Text>
       </FlexBox>
     </Wrapper>
   );

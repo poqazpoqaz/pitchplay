@@ -61,7 +61,7 @@ const DateSummaryCard = () => {
           setFilteredData(filtered);  // 오늘 날짜 데이터만 필터링하여 설정
         }
       })
-      .catch(error => console.error("데이터를 불러오는 데 실패했습니다:", error));
+      .catch(error => console.error("데이터를 불러오는 데 실패했습니다.", error));
   }, []);
 
   // 날짜 범위 선택 시 필터링 함수

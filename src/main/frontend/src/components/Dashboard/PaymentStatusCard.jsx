@@ -57,7 +57,7 @@ const PaymentStatusCard = () => {
           setPaymentData(filteredData);
         }
       })
-      .catch(error => console.error("데이터를 불러오는 데 실패했습니다:", error));
+      .catch(error => console.error("데이터를 불러오는 데 실패했습니다.", error));
   }, [selectedMonth]); // selectedMonth가 변경될 때마다 데이터 재조회
 
   // 월에 해당하는 결제 데이터 필터링
