@@ -1,0 +1,218 @@
+[
+  {
+    "refundId": "REF001",
+    "orderId": "ORD001",
+    "refundDate": "2024-11-02",
+    "refundAmount": 120000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "pitch123"
+  },
+  {
+    "refundId": "REF002",
+    "orderId": "ORD002",
+    "refundDate": "2024-11-03",
+    "refundAmount": 75000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "pitch123"
+  },
+  {
+    "refundId": "REF003",
+    "orderId": "ORD003",
+    "refundDate": "2024-11-04",
+    "refundAmount": 250000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "garam456"
+  },
+  {
+    "refundId": "REF004",
+    "orderId": "ORD004",
+    "refundDate": "2024-11-05",
+    "refundAmount": 300000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "garam456"
+  },
+  {
+    "refundId": "REF005",
+    "orderId": "ORD005",
+    "refundDate": "2024-11-06",
+    "refundAmount": 100000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "hyunsu789"
+  },
+  {
+    "refundId": "REF006",
+    "orderId": "ORD006",
+    "refundDate": "2024-11-07",
+    "refundAmount": 50000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "hyunsu789"
+  },
+  {
+    "refundId": "REF007",
+    "orderId": "ORD007",
+    "refundDate": "2024-11-08",
+    "refundAmount": 150000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "daeun1122"
+  },
+  {
+    "refundId": "REF008",
+    "orderId": "ORD008",
+    "refundDate": "2024-11-09",
+    "refundAmount": 200000,
+    "refundtype": "캐쉬",
+    "refundStatus": "취소",
+    "userId": "daeun1122"
+  },
+  {
+    "refundId": "REF009",
+    "orderId": "ORD009",
+    "refundDate": "2024-11-10",
+    "refundAmount": 175000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "daeun1122"
+  },
+  {
+    "refundId": "REF010",
+    "orderId": "ORD010",
+    "refundDate": "2024-11-11",
+    "refundAmount": 120000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "jimin3344"
+  },
+  {
+    "refundId": "REF011",
+    "orderId": "ORD011",
+    "refundDate": "2024-11-12",
+    "refundAmount": 220000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "jimin3344"
+  },
+  {
+    "refundId": "REF012",
+    "orderId": "ORD012",
+    "refundDate": "2024-11-13",
+    "refundAmount": 180000,
+    "refundtype": "캐쉬",
+    "refundStatus": "취소",
+    "userId": "minsu2233"
+  },
+  {
+    "refundId": "REF013",
+    "orderId": "ORD013",
+    "refundDate": "2024-12-01",
+    "refundAmount": 130000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "skyblue"
+  },
+  {
+    "refundId": "REF014",
+    "orderId": "ORD014",
+    "refundDate": "2024-12-02",
+    "refundAmount": 80000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "hong4455"
+  },
+  {
+    "refundId": "REF015",
+    "orderId": "ORD015",
+    "refundDate": "2024-12-03",
+    "refundAmount": 300000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "jaehyun7788"
+  },
+  {
+    "refundId": "REF016",
+    "orderId": "ORD016",
+    "refundDate": "2024-12-04",
+    "refundAmount": 450000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "minsu9900"
+  },
+  {
+    "refundId": "REF017",
+    "orderId": "ORD017",
+    "refundDate": "2024-12-05",
+    "refundAmount": 60000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "haneul2233"
+  },
+  {
+    "refundId": "REF018",
+    "orderId": "ORD018",
+    "refundDate": "2024-12-06",
+    "refundAmount": 95000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "jungwoo7788"
+  },
+  {
+    "refundId": "REF019",
+    "orderId": "ORD019",
+    "refundDate": "2024-12-07",
+    "refundAmount": 180000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "soohyun5566"
+  },
+  {
+    "refundId": "REF020",
+    "orderId": "ORD020",
+    "refundDate": "2024-12-08",
+    "refundAmount": 250000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "taehwan9988"
+  },
+  {
+    "refundId": "REF021",
+    "orderId": "ORD021",
+    "refundDate": "2024-12-09",
+    "refundAmount": 160000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "USER020"
+  },
+  {
+    "refundId": "REF022",
+    "orderId": "ORD022",
+    "refundDate": "2024-12-10",
+    "refundAmount": 120000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "lee1010"
+  },
+  {
+    "refundId": "REF023",
+    "orderId": "ORD023",
+    "refundDate": "2024-12-11",
+    "refundAmount": 240000,
+    "refundtype": "구장",
+    "refundStatus": "완료",
+    "userId": "lee1010"
+  },
+  {
+    "refundId": "REF024",
+    "orderId": "ORD024",
+    "refundDate": "2024-12-12",
+    "refundAmount": 130000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "pitch123"
+  }
+]

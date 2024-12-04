@@ -1,0 +1,194 @@
+[
+  {
+    "orderId": "ORD001",
+    "paymentDate": "2024-11-01",
+    "amount": 120000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "성공",
+    "userId": "pitch123"
+  },
+  {
+    "orderId": "ORD002",
+    "paymentDate": "2024-11-02",
+    "amount": 75000,
+    "paymentMethod": "구장",
+    "paymentStatus": "성공",
+    "userId": "pitch123"
+  },
+  {
+    "orderId": "ORD003",
+    "paymentDate": "2024-11-03",
+    "amount": 250000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "취소",
+    "userId": "garam456"
+  },
+  {
+    "orderId": "ORD004",
+    "paymentDate": "2024-11-04",
+    "amount": 300000,
+    "paymentMethod": "구장",
+    "paymentStatus": "취소",
+    "userId": "garam456"
+  },
+  {
+    "orderId": "ORD005",
+    "paymentDate": "2024-11-05",
+    "amount": 100000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "성공",
+    "userId": "hyunsu789"
+  },
+  {
+    "orderId": "ORD006",
+    "paymentDate": "2024-11-06",
+    "amount": 50000,
+    "paymentMethod": "구장",
+    "paymentStatus": "취소",
+    "userId": "hyunsu789"
+  },
+  {
+    "orderId": "ORD007",
+    "paymentDate": "2024-11-07",
+    "amount": 150000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "성공",
+    "userId": "daeun1122"
+  },
+  {
+    "orderId": "ORD008",
+    "paymentDate": "2024-11-08",
+    "amount": 200000,
+    "paymentMethod": "구장",
+    "paymentStatus": "취소",
+    "userId": "daeun1122"
+  },
+  {
+    "orderId": "ORD009",
+    "paymentDate": "2024-11-09",
+    "amount": 175000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "취소",
+    "userId": "jimin3344"
+  },
+  {
+    "orderId": "ORD010",
+    "paymentDate": "2024-11-10",
+    "amount": 120000,
+    "paymentMethod": "구장",
+    "paymentStatus": "성공",
+    "userId": "minsu2233"
+    },
+  {
+    "orderId": "ORD011",
+    "paymentDate": "2024-11-11",
+    "amount": 220000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "성공",
+    "userId": "sehunoh03"
+  },
+  {
+    "orderId": "ORD012",
+    "paymentDate": "2024-11-12",
+    "amount": 180000,
+    "paymentMethod": "구장",
+    "paymentStatus": "취소",
+    "userId": "skyblue"
+  },
+  {
+    "orderId": "ORD013",
+    "paymentDate": "2024-12-01",
+    "amount": 130000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "성공",
+    "userId": "hong4455"
+  },
+  {
+    "orderId": "ORD014",
+    "paymentDate": "2024-12-02",
+    "amount": 80000,
+    "paymentMethod": "구장",
+    "paymentStatus": "성공",
+    "userId": "jaehyun7788"
+  },
+  {
+    "orderId": "ORD015",
+    "paymentDate": "2024-12-03",
+    "amount": 300000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "성공",
+    "userId": "minsu9900"
+  },
+  {
+    "orderId": "ORD016",
+    "paymentDate": "2024-12-04",
+    "amount": 450000,
+    "paymentMethod": "구장",
+    "paymentStatus": "성공",
+    "userId": "haneul2233"
+  },
+  {
+    "orderId": "ORD017",
+    "paymentDate": "2024-12-05",
+    "amount": 60000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "성공",
+    "userId": "jungwoo7788"
+  },
+  {
+    "orderId": "ORD018",
+    "paymentDate": "2024-12-06",
+    "amount": 95000,
+    "paymentMethod": "구장",
+    "paymentStatus": "성공",
+    "userId": "soohyun5566"
+  },
+  {
+    "orderId": "ORD019",
+    "paymentDate": "2024-12-07",
+    "amount": 180000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "취소",
+    "userId": "taehwan9988"
+  },
+  {
+    "orderId": "ORD020",
+    "paymentDate": "2024-12-08",
+    "amount": 250000,
+    "paymentMethod": "구장",
+    "paymentStatus": "성공",
+    "userId": "USER020"
+  },
+  {
+    "orderId": "ORD021",
+    "paymentDate": "2024-12-09",
+    "amount": 160000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "성공",
+    "userId": "lee1010"
+  },
+  {
+    "orderId": "ORD022",
+    "paymentDate": "2024-12-10",
+    "amount": 120000,
+    "paymentMethod": "구장",
+    "paymentStatus": "성공",
+    "userId": "lee1010"
+  },
+  {
+    "orderId": "ORD023",
+    "paymentDate": "2024-12-11",
+    "amount": 240000,
+    "paymentMethod": "캐쉬",
+    "paymentStatus": "취소",
+    "userId": "lee1010"
+  },
+  {
+    "orderId": "ORD024",
+    "paymentDate": "2024-12-12",
+    "amount": 190000,
+    "paymentMethod": "구장",
+    "paymentStatus": "성공",
+    "userId": "taeyoung3030"
+  }
+]

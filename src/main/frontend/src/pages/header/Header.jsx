@@ -61,7 +61,7 @@ function Header() {
             <ul className={styles['header-right']}>
                 <Link to={user ? `/mypage/${user.id}` : `/login`}><img src={mypage} /></Link>
                 <Link to="#"><img src={search} /></Link>
-                <Link to="#"><img src={setting} /></Link>
+                <Link to="/admin"><img src={setting} /></Link>
             </ul>
         </div>
     )

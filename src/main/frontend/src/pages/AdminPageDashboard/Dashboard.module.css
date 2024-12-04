@@ -1,0 +1,31 @@
+.container {
+  display: grid;
+  grid-template: 
+  'visitor visitor visitor' auto
+  '... ... ...' 20px
+  'daily daily daily' auto
+  '... ... ...' 20px
+  'path path path' auto
+  '... ... ...' 20px
+  'cash ... refund' auto /1fr 50px 1fr
+}
+
+.container>div:nth-of-type(1){
+  grid-area: visitor;
+}
+
+.container>div:nth-of-type(2){
+  grid-area: daily;
+}
+
+.container>div:nth-of-type(3){
+  grid-area: path;
+}
+
+.container>div:nth-of-type(4){
+  grid-area: cash;
+}
+
+.container>div:nth-of-type(5){
+  grid-area: refund;
+}
