@@ -4,6 +4,9 @@ import { formattedDate } from "../../../../utils/formattedDate"
 
 const Container = styled.div`
   padding: 30px;
+  background-color: #f9fafc;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 `;
 
 const Title = styled.h1`

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate  } from 'react-router-dom';
 import styles from './StadiumDetail.module.css';
 import KakaoMap from './KakaoMap';
 import ReservationModal from '../../components/StadiumReservation/ReservationModal/ReservationModal';
@@ -8,6 +8,7 @@ import { useStore } from "../../stores/StadiumStore/useStore";
 function StadiumDetail({ gridArea }) {
     const { stadiumId } = useParams();
     const { state, actions } = useStore();
+    const navigate = useNavigate();
     const [showMap, setShowMap] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [reservedTimeSlots, setReservedTimeSlots] = useState({});
@@ -48,6 +49,11 @@ function StadiumDetail({ gridArea }) {
     };
 
     const handleShowModal = () => {
+        const user = localStorage.getItem('user');
+        if (!user) {
+            navigate('/login');
+            return;
+        }
         setShowModal(true);
     };
 

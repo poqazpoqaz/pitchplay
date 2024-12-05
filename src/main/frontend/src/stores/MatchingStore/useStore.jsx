@@ -13,6 +13,7 @@ import {
     changeStadiumId,
     changeTeamSize,
     updateAllFields,
+    changeMatchingType,
     resetState
 } from "./action";
 
@@ -44,6 +45,8 @@ export const useStore = () => {
         changeTeamSize: (teamSize) => dispatch(changeTeamSize(teamSize)),
         //전체 변경
         updateAllFields: (fields) => dispatch(updateAllFields(fields)),
+        //매칭 종류
+        changeMatchingType : (matchingType) => dispatch(changeMatchingType(matchingType)),
         // 팀 매칭 state 초기화 메서드
         resetState: () => dispatch(resetState())
     };

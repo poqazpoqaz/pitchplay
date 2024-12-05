@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Modal from '../../../components/Modal/Modal';
+import Button from '../../../components/Button';
 
 const Top1 = styled.div`
   padding: 30px;
@@ -53,20 +55,47 @@ const ProfileImg = styled.img`
   margin-right: 20px;
 `;
 
-const AppStatus = ({ pendingMembers }) => {
-  // pendingMembers가 배열이 아니면 빈 배열로 설정
-  const members = Array.isArray(pendingMembers) ? pendingMembers : [];
+const AppStatus = ({ pendingMembers, onApprove, onReject, teamActions, userState, teamState }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태
+  const [selectedMember, setSelectedMember] = useState(null);
+
+  const handleMemberClick = (member) => {
+    setSelectedMember(member); // 클릭한 멤버 저장
+    setIsModalOpen(true); // 모달 열기
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); // 모달 닫기
+    setSelectedMember(null); // 선택된 멤버 초기화
+  };
+
+  const handleApprove = () => {
+    if (selectedMember) {
+      // 승인 처리 로직
+      onApprove(selectedMember); // 부모 컴포넌트의 onApprove 호출
+      closeModal();
+    }
+  };
+
+  const handleReject = () => {
+    if (selectedMember) {
+      // 거절 처리 로직
+      onReject(selectedMember); // 부모 컴포넌트의 onReject 호출
+      closeModal();
+    }
+  };
 
   return (
     <Top1>
       <Subtitle>신청한 멤버 목록</Subtitle>
-      {members.length === 0 ? (
+
+      {pendingMembers.length === 0 ? (
         <p>대기 중인 멤버가 없습니다.</p>
       ) : (
-        members.map((member, index) => (
-          <Box key={index}>
+        pendingMembers.map((member, index) => (
+          <Box key={index} onClick={() => handleMemberClick(member)}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <ProfileImg src={member.profileImg}/>
+              <ProfileImg src={member.profileImg} />
               <h1>{member.pendingnickname}</h1>
             </div>
             <BoxCal>
@@ -74,6 +103,23 @@ const AppStatus = ({ pendingMembers }) => {
             </BoxCal>
           </Box>
         ))
+      )}
+
+      {isModalOpen && selectedMember && (
+        <Modal isOpen={isModalOpen} closeModal={closeModal}>
+          <h2>{selectedMember.pendingnickname}님의 정보</h2>
+          <p>신청일: {selectedMember.applicationDate}</p>
+          <p>내 소개: {selectedMember.description || '정보 없음'}</p>
+          
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+            <Button color="green" size="large" onClick={handleApprove}>
+              가입 승인
+            </Button>
+            <Button color="red" size="large" onClick={handleReject}>
+              가입 거절
+            </Button>
+          </div>
+        </Modal>
       )}
     </Top1>
   );

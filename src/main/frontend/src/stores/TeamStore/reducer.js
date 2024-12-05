@@ -15,7 +15,9 @@ import {
     CHANGE_TEAM_MEMBER,
     CHANGE_COLLECTION_TITLE,
     UPDATE_ALL_FIELDS,
+    CHANGE_PENDINGMEMBERS,
     RESET_STATE
+
 } from "./action";
 
 // 초기값 설정
@@ -82,6 +84,8 @@ export const reducer = (state, action) => {
             return { ...state, teamMember: action.payload };
         case UPDATE_ALL_FIELDS:
             return { ...state, ...action.payload };
+        case CHANGE_PENDINGMEMBERS:
+            return { ...state, ...action.payload};
         case RESET_STATE:
             return initialState;
         default:

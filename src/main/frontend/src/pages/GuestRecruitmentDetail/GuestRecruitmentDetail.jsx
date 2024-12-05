@@ -8,10 +8,11 @@ import styles from "./GuestRecruitmentDetail.module.css";
 import ReservationDetail from "../../containers/ReservationDetail/ReservationDetail";
 import GuestRecruitmentPost from "../../containers/PostDetail/GuestRecruitmetnPost";
 import Button from "../../components/Button";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function GuestRecruitmentDetail({ gridArea }) {
+    const navigate = useNavigate(); 
     const { postNumber } = useParams();
 
     const { state: collectionState, actions: collectionActions } = CollectionStore();
@@ -85,8 +86,15 @@ function GuestRecruitmentDetail({ gridArea }) {
 
     // "지원하기" 버튼 클릭 시 첫 번째 알람 표시
     const handleApplyClick = () => {
+        // Check if user data exists in localStorage
+        const user = localStorage.getItem('user');
+        if (!user) {
+            navigate('/login');
+            return;
+        }
         setFirstAlarmOpen(true);
     };
+
 
     // 첫 번째 알람에서 확인 버튼 클릭 시
     const handleFirstAlarmConfirm = () => {

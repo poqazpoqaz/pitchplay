@@ -17,6 +17,7 @@ import {
     changeCollectionTitle,
     changeTeamMember,
     updateAllFields,
+    changePendingMembers,
     resetState
 } from "./action.js";
 
@@ -57,6 +58,8 @@ export const useStore = () => {
         changeTeamMember: (teamMember) => dispatch(changeTeamMember(teamMember)),
         //전체 변경
         updateAllFields: (fields) => dispatch(updateAllFields(fields)),
+        // 팬딩멤버 변경
+        changePendingMembers: (pendingMembers) => dispatch(changePendingMembers(pendingMembers)),
         // 팀 state 초기화 메서드
         resetState: () => dispatch(resetState())
     };

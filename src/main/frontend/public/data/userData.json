@@ -34,7 +34,7 @@
         "password": "garamplay",
         "favoriteCity": "서울 강남구",
         "favoriteTime": "저녁 시간대",
-        "myTeam": "강남팀",
+        "myTeam": "",
         "isTeamOwner": "false",
         "myDescription": "축구를 좋아하는 가람입니다.",
         "userCash": "30000",
@@ -240,7 +240,8 @@
             "accountNum": "3333067894562",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-01-01T10:00:00"
         },
         {
             "userNumber": "223344",
@@ -261,7 +262,8 @@
             "accountNum": "3333067894563",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-02-01T10:00:00"
         },
         {
             "userNumber": "667788",
@@ -282,7 +284,8 @@
             "accountNum": "142301234568",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-03-01T10:00:00"
         },
         {
             "userNumber": "556677",
@@ -303,7 +306,8 @@
             "accountNum": "50246878946",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-04-01T10:00:00"
         },
         {
             "userNumber": "998877",
@@ -324,7 +328,8 @@
             "accountNum": "3333067894564",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-05-01T10:00:00"
         },{
             "userNumber": "101010",
             "name": "이정수",
@@ -344,7 +349,8 @@
             "accountNum": "3333067894568",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-06-01T10:00:00"
         },
         {
             "userNumber": "202020",
@@ -365,7 +371,8 @@
             "accountNum": "142301234568",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-07-01T10:00:00"
         },
         {
             "userNumber": "303030",
@@ -386,7 +393,8 @@
             "accountNum": "50246878947",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-07-01T10:00:00"
         },
         {
             "userNumber": "404040",
@@ -407,7 +415,8 @@
             "accountNum": "3333067894569",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-08-01T10:00:00"
         },
         {
             "userNumber": "505050",
@@ -428,7 +437,8 @@
             "accountNum": "142301234569",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-09-01T10:00:00"
         },
         {
             "userNumber": "606060",
@@ -449,7 +459,8 @@
             "accountNum": "3333067894570",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-10-01T10:00:00"
         },
         {
             "userNumber": "707070",
@@ -470,7 +481,8 @@
             "accountNum": "50246878948",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-11-01T10:00:00"
         },
         {
             "userNumber": "808080",
@@ -491,7 +503,8 @@
             "accountNum": "3333067894571",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-12-01T10:00:00"
         },
         {
             "userNumber": "909090",
@@ -512,7 +525,8 @@
             "accountNum": "50246878949",
             "profilePublic": true,
             "emailNotification": false,
-            "snsNotification": true
+            "snsNotification": true,
+            "joindate": "2024-12-01T10:00:00"
         }
 
 ]

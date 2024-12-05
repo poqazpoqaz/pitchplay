@@ -36,11 +36,18 @@ import FindIdPw from "./pages/FindIdPw/FindIdPw";
 import WriteReport from "./components/FeedbackAccordion/WriteReport";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import Dashboard from "./pages/AdminPageDashboard/Dashboard";
+import AdminMemeberManagement from './pages/AdminMemberManagement/AdminMemberManagement';
 
 // 새로 추가된 페이지
 import ChargePage from "./pages/ChargePage";
 import RefundPage from "./pages/RefundPage";
 import HistoryPage from "./pages/HistoryPage";
+import Community1 from './pages/Mypage/Community/Community1/Community1';
+import Setting from './pages/Mypage/Setting/Setting';
+import CommentInfo from './pages/Mypage/Community/Community2/CommentInfo';
+import PostInfo from './pages/Mypage/Community/Community2/PostInfo';
+import AppMangement from './pages/Mypage/TeamSet/AppManagement';
+import AdminMatchingManagement from './pages/AdminMatchingManagement/AdminMatchingManagement';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +76,18 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: "/matching/:matchingNum",
+        element: <TeamMatchingDetail gridArea={"section"} />,
+      },
+      {
+        path: "/:postNumber/guestrecruitment",
+        element: <GuestRecruitmentDetail gridArea={"section"} />,
+      },
+      {
+        path: "/:reservationNum/newguest",
+        element: <GuestRecruitmentCreation gridArea={"section"} />,
+      },
+      {
         path: "/mypage/:id", element: <MyPage gridArea={"section"} />, children: [
           { path: "", element: <Mypage1 /> },
           { path: "act", element: <MypageAct gridArea={"section"} /> },
@@ -76,14 +95,20 @@ const router = createBrowserRouter([
           { path: "records", element: <MypageAct02 gridArea={"section"} /> },
           { path: "teamsection", element: <MypageAct03 gridArea={"section"} /> },
           { path: "teamschedule", element: <MypageAct04 gridArea={"section"} /> },
-          { path: ":teamCode/members", element: <MypageAct05 gridArea={"section"} /> }
+          { path: ":teamCode/members", element: <MypageAct05 gridArea={"section"} /> },
+          { path: "posts" , element : <Community1 gridArea={"section"}/>},
+          { path: "setting" , element : <Setting gridArea={"section"}/> },
+          { path: "commentinfo" , element : <CommentInfo gridArea={"section"}/>},
+          { path: "postinfo", element : <PostInfo gridArea={"section"}/>},
+          { path: ":teamCode/members/appmange" , element : <AppMangement gridArea={"section"}/>  }
         ]
       },
       {
         path: "/admin", element: <AdminPage gridArea={"section"} />,
         children: [
           { path: "", element: <Dashboard />, },
-          // {path: "member-management/:id?", element: <AdminMemeberManagement />},
+          { path: "matching-management", element: <AdminMatchingManagement/>},
+          { path: "member-management", element: <AdminMemeberManagement/>}
           // {path: "matching-management/:id?",element: <AdminMatchingManagement />},
           // {path: "team-management/:id?",element: <AdminTeamManagement />},
         ]

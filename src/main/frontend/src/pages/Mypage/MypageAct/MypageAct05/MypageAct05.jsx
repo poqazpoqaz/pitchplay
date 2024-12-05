@@ -3,6 +3,7 @@ import MemberList from './MemberList';
 import { useEffect, useState } from 'react';
 import { useStore as TeamStore } from "../../../../stores/TeamStore/useStore";
 import axios from 'axios';
+import MoveButton from './MoveButton';
 
 
 const MypageAct05 = () => {
@@ -107,6 +108,10 @@ const MypageAct05 = () => {
         selectedRole={selectedRole}
         handleDropdownToggle={handleDropdownToggle}
         dropdownOpen={dropdownOpen}
+      />
+      <MoveButton
+      myTeam={user.myTeam}
+      id = {user.id}
       />
     </div>
   );

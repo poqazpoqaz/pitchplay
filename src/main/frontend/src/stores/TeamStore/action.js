@@ -14,6 +14,7 @@ export const CHANGE_TOTAL_MEMBER = "CHANGE_TOTAL_MEMBER";
 export const CHANGE_COLLECTION_TITLE = "CHANGE_COLLECTION_TITLE";
 export const CHANGE_TEAM_MEMBER = "CHANGE_TEAM_MEMBER";
 export const UPDATE_ALL_FIELDS = "UPDATE_ALL_FIELDS";
+export const CHANGE_PENDINGMEMBERS = "CHANGE_PENDINGMEMBERS";
 export const RESET_STATE = "RESET_STATE";
 
 export const changeTeamName = (teamName) => ({ type: CHANGE_TEAM_NAME, payload: teamName });
@@ -31,5 +32,6 @@ export const changeCurrentMember = (currentMember) => ({ type: CHANGE_CURRENT_ME
 export const changeTotalMember = (totalMember) => ({ type: CHANGE_TOTAL_MEMBER, payload: totalMember });
 export const changeCollectionTitle = (collectionTitle) => ({ type: CHANGE_COLLECTION_TITLE, payload: collectionTitle });
 export const changeTeamMember = (teamMember) => ({ type: CHANGE_TEAM_MEMBER, payload: teamMember});
+export const changePendingMembers = (pendingMembers) => ({type : CHANGE_PENDINGMEMBERS , payload : pendingMembers});
 export const updateAllFields = (fields) => ({type: UPDATE_ALL_FIELDS, payload: fields});
 export const resetState = () => ({ type: RESET_STATE });

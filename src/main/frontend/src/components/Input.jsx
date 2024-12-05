@@ -7,9 +7,10 @@ const StyledInput = styled.input`
     border-radius: 10px;
     border: 1px solid var(--line-color);
     padding: 10px;
-    margin-top: 5px;
-      font-size: ${(props) => {
+    font-size: ${(props) => {
     switch (props.size) {
+      case 'xsmall': 
+      return '15px';
       case 'small':
         return '20px';
       case 'medium':
@@ -19,7 +20,25 @@ const StyledInput = styled.input`
       default:
         return '24px';  // 기본값 설정
     }
-  }}
+  }};
+
+  @media (max-width: 760px) {
+    padding: 6px;
+    font-size: ${(props) => {
+      switch (props.size) {
+        case 'xsmall': 
+          return '12px';  // xsmall 화면에서 더 작은 폰트 크기
+        case 'small':
+          return '16px';  // small 화면에서 더 작은 폰트 크기
+        case 'medium':
+          return '20px';  // medium 화면에서 더 작은 폰트 크기
+        case 'large':
+          return '24px';  // large 화면에서 더 작은 폰트 크기
+        default:
+          return '18px';  // 기본값 설정
+      }
+    }};
+  }
     `;
 
 function Input({ type, placeholder, onChange, value, gridArea, size}) {

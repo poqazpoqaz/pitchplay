@@ -14,6 +14,7 @@ import { DROPDOWN_OPTIONS } from "../../utils/constants";
 
 function GuestRecruitment() {
     const { state: userState, actions: userActions } = UserStore();
+    const user = JSON.parse(localStorage.getItem('user'));
 
     const [reservationList, setReservationList] = useState([]); // 새글작성 클릭 시 유저 팀 예약 데이터 목록
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,52 +52,73 @@ function GuestRecruitment() {
     }, [selectedOption]);
 
     useEffect(() => {
-        // localStorage에서 유저 정보 확인
-        const user = JSON.parse(localStorage.getItem("user"));
-
-        if (!user) {
-            window.location.href = "/login"; // 유저 정보가 없으면 로그인 페이지로 리디렉션
-            return;
+        if(user){
+            userActions.updateAllFields(user);
         }
-
-        userActions.updateAllFields(user);
-    }, []);
+    },[])
 
     // 새글작성 눌렀을 때 데이터
     const handleReservationClick = async () => {
-        if (userState.myTeam) {
-            try {
-                const [teamResponse, reservationResponse, stadiumResponse] = await Promise.all([
-                    axios.get("/data/teamData.json"),
-                    axios.get("/data/reservationData.json"),
-                    axios.get("/data/stadiumData.json"),
-                ]);
-
-                const teamData = teamResponse.data.find(data => data.teamName === userState.myTeam);
-                const reservations = reservationResponse.data.filter(reservation => reservation.teamCode === teamData.teamCode);
-                const stadiums = stadiumResponse.data;
-
-                const combinedData = reservations.map(reservation => {
-                    const stadium = stadiums.find(data => data.SVCID === reservation.stadiumId);
-                    return {
-                        reservationNumber: reservation.reservationNumber,
-                        reservationDate: reservation.reservationDate,
-                        stadium: stadium.SVCNM,
-                    };
-                });
-
-                setReservationList(combinedData);
-                setIsModalOpen(true);
-
-            } catch (error) {
-                console.error("데이터 로드 실패:", error);
+        if (!userState.isTeamOwner) {
+            alert("팀 생성자만 작성 가능합니다.");
+            return;
+        }
+    
+        if (!userState.myTeam) {
+            alert("팀 정보가 없습니다. 다시 로그인해 주세요.");
+            return;
+        }
+    
+        try {
+            const [teamResponse, reservationResponse, stadiumResponse] = await Promise.all([
+                axios.get("/data/teamData.json"),
+                axios.get("/data/reservationData.json"),
+                axios.get("/data/stadiumData.json"),
+            ]);
+    
+            const teamData = teamResponse.data.find(data => data.teamName === userState.myTeam);
+            if (!teamData) {
+                alert("해당 팀을 찾을 수 없습니다.");
+                return;
             }
+    
+            const reservations = reservationResponse.data.filter(reservation => reservation.teamCode === teamData.teamCode);
+            if (reservations.length === 0) {
+                alert("예약된 데이터가 없습니다.");
+                return;
+            }
+
+            const stadiums = stadiumResponse.data;
+            const combinedData = reservations.map(reservation => {
+                const stadium = stadiums.find(stadium => stadium.SVCID === reservation.stadiumId);
+                if (!stadium) {
+                    console.warn(`Stadium with ID ${reservation.stadiumId} not found.`);
+                    return null; 
+                }
+                return {
+                    reservationNumber: reservation.reservationNumber,
+                    reservationDate: reservation.reservationDate,
+                    stadium: stadium.SVCNM,
+                };
+            }).filter(reservation => reservation !== null); 
+
+            if (combinedData.length === 0) {
+                alert("유효한 예약 정보가 없습니다.");
+                return;
+            }
+    
+            setReservationList(combinedData);
+            setIsModalOpen(true);
+    
+        } catch (error) {
+            console.error("데이터 로드 실패:", error);
+            alert("데이터를 로드하는 데 실패했습니다. 다시 시도해 주세요.");
         }
     };
 
     return (
         <div className={styles['guestrecruitment-grid']}>
-            {userState.isTeamOwner &&
+            {user &&
                 <Button gridArea="btn2" color="#606060" size="large" onClick={handleReservationClick}>새 글 작성</Button>
             }
             {isModalOpen &&

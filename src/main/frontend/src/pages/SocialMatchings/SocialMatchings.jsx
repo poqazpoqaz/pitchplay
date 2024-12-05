@@ -31,6 +31,11 @@ function SocialMatchings({ gridArea }) {
 
     // 모달 열기/닫기 함수
     const openModal = (content) => {
+        if (!user) {
+            // 로그인되어 있지 않으면 로그인 페이지로 이동
+            window.location.href = "/login"; // 로그인 페이지 경로를 설정하세요.
+            return;
+        }
         setIsModalOpen(true);
         setStadiumCost(content.stadium.cost);
         setSocialSize(content.social.socialSize);
@@ -42,19 +47,25 @@ function SocialMatchings({ gridArea }) {
     };
 
     // 유저 데이터 불러오기 (소셜매칭신청할때 캐시)
+    // 유저 데이터 불러오기 (소셜매칭 신청할 때 캐시)
     useEffect(() => {
-        axios.get("/data/userData.json")
-            .then(response => {
-                const datas = response.data;
-                const selectedUser = datas.find(data => data.userNumber = user.userNumber);
+        if (!user) {
+            console.log("로그인하지 않은 사용자입니다.");
+            // 사용자 정보가 없는 경우, 필요한 처리를 여기서 할 수 있습니다.
+        } else {
+            axios.get("/data/userData.json")
+                .then(response => {
+                    const datas = response.data;
+                    const selectedUser = datas.find(data => data.userNumber === user.userNumber);
 
-                if (selectedUser) {
-                    userActions.updateAllFields(selectedUser);
-                } else {
-                    console.log("로그인이 되어있지않습니다.");
-                }
-            })
-    }, [user.userNumber]);
+                    if (selectedUser) {
+                        userActions.updateAllFields(selectedUser);
+                    } else {
+                        console.log("로그인이 되어있지 않습니다.");
+                    }
+                })
+        }
+    }, []);
 
     useEffect(() => {
         // social, user, stadium 데이터 가져오기

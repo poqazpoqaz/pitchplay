@@ -34,6 +34,7 @@ const DropdownButton = styled.div`
 
 // 드롭다운 목록 스타일
 const DropdownList = styled(motion.div)`
+  position: absolute;
   width: 100%;
   max-height: 200px; 
   background-color: #ffffff;
