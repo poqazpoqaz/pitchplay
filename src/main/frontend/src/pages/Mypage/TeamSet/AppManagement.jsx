@@ -71,14 +71,30 @@ const AppMangement = ({ gridArea }) => {
     },[pendingMembers]);
 
     const onApprove = (member) => {
+      axios.get("/data/userData.json")
+    .then(response =>{
+      const datas = response.data;
+      const selectedUser = datas.find(data=>data.nickname === member.pendingnickname);
+      
+      if(selectedUser){
+      userActions.updateAllFields(selectedUser);
+      
+      }
+      console.log(selectedUser);
+    })
+    .catch(error => {
+      console.error("유저 데이터를 가져오는 중 오류가 발생했습니다:", error);
+    });
       // 1. 내 팀에 해당 팀을 추가
       userActions.changeMyTeam([...userState.myTeam, teamState.teamName]);
-    
+
+      
       // 2. 팀의 pendingMembers에서 해당 멤버를 제거하고 teamMember에 추가
       teamActions.changeTeamMember([
         ...teamState.teamMember,
         { nickname: member.pendingnickname, profileImg: member.profileImg }
       ]);
+      const updatedCurrentMemberCount = teamState.currentMember + 1; 
     
       // 3. pendingMembers에서 해당 멤버를 제거
       const updatedPendingMembers = pendingMembers.filter(
@@ -89,6 +105,9 @@ const AppMangement = ({ gridArea }) => {
       teamActions.changePendingMembers(updatedPendingMembers);
     
       // 5. 상태 업데이트 (컴포넌트 상태에 반영)
+      
+      teamActions.changeCurrentMember(updatedCurrentMemberCount); // currentMember 수 반영
+      teamActions.changePendingMembers(updatedPendingMembers);
       setPendingMembers(updatedPendingMembers);
     };
     const onReject = (member) => {
@@ -99,7 +118,7 @@ const AppMangement = ({ gridArea }) => {
     
       // 2. 상태 업데이트: changePendingMembers로 팀 스토어의 pendingMembers 변경
       teamActions.changePendingMembers(updatedPendingMembers);
-    
+      teamActions.changeCurrentMember(updatedCurrentMemberCount);
       // 3. 상태 업데이트 (컴포넌트 상태에 반영)
       setPendingMembers(updatedPendingMembers);
     };
