@@ -1,0 +1,32 @@
+.modal-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+}
+
+.modal-sub-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0;
+}
+
+.selector-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+
+  font-size: small;
+
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+
+.selector-content {
+  font-size: small;
+}

@@ -7,6 +7,17 @@ import { motion } from "framer-motion";
 
 
 function TeamCollection({ content, openModal}) {
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    
+    const handleButtonClick = () => {
+            if (!user) {
+                window.location.href = "/login";
+            } else {
+                openModal();
+            }
+        };
+
     return (
         <motion.div
             className={styles['teamcollection-grid']}
@@ -26,7 +37,7 @@ function TeamCollection({ content, openModal}) {
                 gridArea="text"
             />
             {content.activeStatus == "false" ? (
-                <Button color="var(--main-color)" size="medium" gridArea="btn1" onClick={openModal}>
+                <Button color="var(--main-color)" size="medium" gridArea="btn1" onClick={handleButtonClick}>
                     신청하기
                 </Button>
             ) : (

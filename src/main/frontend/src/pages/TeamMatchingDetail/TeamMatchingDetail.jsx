@@ -58,16 +58,32 @@ function TeamMatchingDetail({ gridArea }) {
         }
     }, [matchingState.stadiumId]);
 
-    // 유저 데이터 불러오기 (임의로 값 설정해놓음 나중에는 해당하는 유저 불러오게 해야함 )
+    // 유저 데이터 불러오기
     useEffect(() => {
-        axios.get("/data/userData.json")
-            .then(response => {
-                const datas = response.data;
-                const selectedUser = datas.find(data => data.userNumber = user.userNumber);
-                userActions.changeUserNumber(selectedUser.userNumber);
-                userActions.changeUserCash(selectedUser.userCash);
-            })
-    }, [])
+        if (user) {
+            axios.get("/data/userData.json")
+                .then(response => {
+                    const datas = response.data;
+                    const selectedUser = datas.find(data => data.userNumber === user.userNumber);
+                    if (selectedUser) {
+                        userActions.changeUserNumber(selectedUser.userNumber);
+                        userActions.changeUserCash(selectedUser.userCash);
+                    }
+                });
+        }
+    }, []);
+
+
+     // 신청하기 클릭 시 유저 로그인 여부 확인
+     const handleApplicationClick = () => {
+        if (!user) {
+            // 유저 정보가 없으면 로그인 페이지로 리디렉션
+            window.location.href = "/login";
+        } else {
+            // 유저가 로그인되어 있다면 모달 열기
+            setIsModalOpen(true);
+        }
+    };
 
     // stadiumCost를 2로 나누어 전달
     const adjustedStadiumCost = Math.round(+stadiumState.stadiumCost / 2 / 100) * 100;
@@ -92,7 +108,7 @@ function TeamMatchingDetail({ gridArea }) {
                 matchingDate={formattedMatchingDate}
                 matchingCost={formatCurrency(adjustedStadiumCost)}
                 gridArea="application"
-                onClick={() => setIsModalOpen(true)} />
+                onClick={handleApplicationClick}/>
             <MatchingPayment
                 isOpen={isModalOpen}
                 closeModal={() => setIsModalOpen(false)}

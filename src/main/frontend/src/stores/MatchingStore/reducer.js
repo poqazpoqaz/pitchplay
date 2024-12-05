@@ -11,6 +11,7 @@ import {
     CHANGE_STADIUM_ID,
     CHANGE_TEAMSIZE,
     UPDATE_ALL_FIELDS,
+    CHANGE_MATCHING_TYPE,
     RESET_STATE
 } from './action';
 
@@ -27,7 +28,8 @@ export const initialState = {
     views: "",
     writtenDate: "",
     stadiumId: "",
-    teamSize: ""
+    teamSize: "",
+    matchingType: ""
 };
 
 export const reducer = (state, action) => {
@@ -75,6 +77,8 @@ export const reducer = (state, action) => {
             return { ...state, teamSize: action.payload };
         case UPDATE_ALL_FIELDS:
             return { ...state, ...action.payload };
+        case CHANGE_MATCHING_TYPE:
+            return {...state, matchingType: action.payload};
         case RESET_STATE:
             return initialState;
 

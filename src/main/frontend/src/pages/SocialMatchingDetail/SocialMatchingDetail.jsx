@@ -25,20 +25,22 @@ function SocialMatchingDetail({ gridArea }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-    // 유저 데이터 불러오기 (소셜매칭신청할때 캐시)
+    // 유저 데이터 불러오기 (소셜매칭 신청할 때 캐시)
     useEffect(() => {
-        axios.get("/data/userData.json")
-            .then(response => {
-                const datas = response.data;
-                const selectedUser = datas.find(data => data.userNumber = user.userNumber);
+        if (user) { // Only fetch user data if user exists
+            axios.get("/data/userData.json")
+                .then(response => {
+                    const datas = response.data;
+                    const selectedUser = datas.find(data => data.userNumber === user.userNumber);
 
-                if (selectedUser) {
-                    userActions.updateAllFields(selectedUser);
-                }else{
-                    console.log("로그인이 되어있지않습니다.");
-                }
-            })
-    }, [user.userNumber])
+                    if (selectedUser) {
+                        userActions.updateAllFields(selectedUser);
+                    } else {
+                        console.log("로그인이 되어 있지 않습니다.");
+                    }
+                });
+        }
+    }, []);
 
     // 예약 데이터 불러오기
     useEffect(() => {
@@ -81,6 +83,16 @@ function SocialMatchingDetail({ gridArea }) {
         }
     }, [socialState.stadiumId]);
 
+        // 지원하기 클릭 시 유저 로그인 여부 확인
+    const handleApplicationClick = () => {
+            if (!user) {
+                // 유저 정보가 없으면 로그인 페이지로 리디렉션
+                window.location.href = "/login";
+            } else {
+                // 유저가 로그인되어 있다면 모달 열기
+                setIsModalOpen(true);
+            }
+   };
 
     // 팀 사이즈에 따른 경기장 비용 조정
     let divisor = 1;
@@ -139,7 +151,7 @@ function SocialMatchingDetail({ gridArea }) {
                 teamSize={socialState.socialSize}
                 matchingDate={formattedMatchingDate}
                 matchingCost={formatCurrency(adjustedStadiumCost)}
-                onClick={() => setIsModalOpen(true)}
+                onClick={handleApplicationClick}
                 gridArea="application"
             />
 

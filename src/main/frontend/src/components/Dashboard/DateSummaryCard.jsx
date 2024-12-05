@@ -1,4 +1,4 @@
-import { Table, TableCell, TableRow } from "../../containers/Table/Table";
+import { Table, TableCell, TableRow } from "../../components/Table/Table";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import DateRangeDropdown from "./DateRangeDropdown";
