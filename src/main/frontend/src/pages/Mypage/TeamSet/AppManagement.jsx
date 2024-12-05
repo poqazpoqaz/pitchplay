@@ -18,9 +18,6 @@ const AppMangement = ({ gridArea }) => {
   const {state : userState ,actions: userActions} = UserStore();
   const {state : teamState , actions : teamActions} = TeamStore();
   
-  
-  
-
   useEffect(() => {
     // 로컬스토리지에서 유저 데이터 가져오기
     const userDataFromStorage = JSON.parse(localStorage.getItem("user"));
@@ -64,7 +61,7 @@ const AppMangement = ({ gridArea }) => {
         }
       });
       setPendinMemberList(arr);
-
+ 
     })
     .catch(err => {
       console.error("Error fetching user data:", err);

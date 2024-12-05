@@ -22,30 +22,6 @@ import {
 
 // 초기값 설정
 export const initialState = {
-    teamName: "",
-    teamCode: "",
-    teamImg: "",
-    teamDescription: "",
-    teamLevel: [],
-    teamDay: [],
-    teamTime: [],
-    teamCity: "",
-    teamLoc: "",
-    teamAge: [],
-    teamGender: "",
-    teamMember: [],
-    currentMember: "",
-    totalMember: "",
-    collectionTitle: "",
-    pendingMembers: [
-        {
-            pendingnickname: "",
-            applicationDate: "",
-            profileImg: "",
-            applicationstatus: ""
-        }
-    ],
-    teamMember: []
 }
 
 

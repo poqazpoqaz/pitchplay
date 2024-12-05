@@ -2,6 +2,7 @@
     {
         "socialNumber": "123912",
         "userId": "pitch123",
+        "nickname": "피치플레이",
         "stadiumId": "S231208105143407599",
         "socialGender": "남성",
         "socialSize": "4vs4",
@@ -21,9 +22,10 @@
     {
         "socialNumber": "234234",
         "userId": "pitch123",
+        "nickname": "피치플레이",
         "stadiumId": "S241020142339657690",
         "socialGender": "여성",
-        "socialSize": "3vs3",
+        "socialSize": "4vs4",
         "socialLevel": "아마추어",
         "socialTime": "2024-12-01T18:00:00",
         "writtenDate": "2024-11-15",
@@ -38,6 +40,7 @@
     {
         "socialNumber": "345345",
         "userId": "pitch123",
+        "nickname": "피치플레이",
         "stadiumId": "S231212133601633481",
         "socialGender": "혼성",
         "socialSize": "5vs5",
@@ -58,6 +61,7 @@
     {
         "socialNumber": "456456",
         "userId": "garam456",
+        "nickname": "가람이",
         "stadiumId": "S231208105143407599",
         "socialGender": "여성",
         "socialSize": "6vs6",
@@ -79,6 +83,7 @@
     {
         "socialNumber": "567567",
         "userId": "garam456",
+        "nickname": "가람이",
         "stadiumId": "S231208105143407599",
         "socialGender": "남성",
         "socialSize": "7vs7",
@@ -96,6 +101,7 @@
     {
         "socialNumber": "678678",
         "userId": "garam456",
+        "nickname": "가람이",
         "stadiumId": "S231212133601633481",
         "socialGender": "남성",
         "socialSize": "5vs5",
@@ -115,6 +121,7 @@
     {
         "socialNumber": "789789",
         "userId": "garam456",
+        "nickname": "가람이",
         "stadiumId": "S120423174310156240",
         "socialGender": "혼성",
         "socialSize": "6vs6",
@@ -133,6 +140,7 @@
     {
         "socialNumber": "890890",
         "userId": "hyunsu789",
+        "nickname": "현수짱",
         "stadiumId": "S231208105143407599",
         "socialGender": "여성",
         "socialSize": "11vs11",
@@ -151,6 +159,7 @@
     {
         "socialNumber": "901901",
         "userId": "hyunsu789",
+        "nickname": "현수짱",
         "stadiumId": "S120423174310156240",
         "socialGender": "혼성",
         "socialSize": "7vs7",
@@ -176,6 +185,7 @@
     {
         "socialNumber": "101010",
         "userId": "hyunsu789",
+        "nickname": "현수짱",
         "stadiumId": "S241020142339657690",
         "socialGender": "남성",
         "socialSize": "4vs4",

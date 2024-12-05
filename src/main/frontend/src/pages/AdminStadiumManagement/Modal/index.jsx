@@ -1,48 +1,40 @@
 import Modal from "../../../components/Modal/Modal";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { Table, TableCell, TableRow } from "../../../components/Table/Table";
 import Button from "../../../components/Button";
-import MatchingManagementSVG from "../../../../public/icons/matchingmanage.svg";
+import StadiumReservationSVG from "../../../../public/icons/stadiumReservation.svg";
 import styles from "./index.module.css";
-import SelectorList, { Selector } from "../../../components/Accordion/SelectorList";
 import ConfirmationModal, {
   ConfirmationModalTrigger,
 } from "../../../components/ConfirmationModal/index";
-import useFetch from "../../../api/useFetch";
 import axios from "axios";
 import useMutate from "../../../api/useMutate";
 
-import { useState } from "react";
-
 const headers = {
-  id: "매칭번호",
-  matchType: "매치타입",
-  teamSize: "경기종류",
-  gender: "성별",
-  date: "경기 날짜",
-  time: "경기 시간",
-  location: "경기장",
-  isClosed: "마감여부",
-  reservationedMembers: "예약한 회원",
-  teams: "참가팀",
+  reservationNumber: "구장 예약번호",
+  collectionNumber: "매칭번호",
+  reserverName: "예약자 이름",
+  reserverMemberId: "예약자 회원 번호",
+  stadium: "경기장",
+  stadiumAddress: "경기장 주소",
+  collectionTime: "경기일시",
+  reservationDateTime: "예약일시",
+  paymentId: "결제번호",
+  amount: "금액",
+  isCanceled: "취소여부",
 };
 
-const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
+const AdminStadiumReservationModal = ({isOpen, closeModal, reservationState}) => {
   const { mutate, isLoading: isMutating } = useMutate((options) =>
-    axios.put(`/data/reservationData.json`, options)
+    axios.put(`/data/api/stadiumReservationData.json`, options)
   );
 
-  const handleConfirmModal = () => {
-    mutate({ id: matchingState.id });
+  const handleConfirmModal = async () => {
+    await mutate();
     closeModal();
   };
 
-  const { id: firstHeader, teams: teamsHeader, ...restHeaders} = headers;
-  const {
-    id: firstData,
-    teams: teamsData,
-    ...restData
-  } = matchingState;
+  const { reservationNumber: firstHeader, ...restHeaders } = headers;
+  const { reservationNumber: firstData, ...restData } = reservationState;
 
   const rowCount = Object.keys(restData).length;
 
@@ -61,21 +53,21 @@ const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <h2 className={styles["modal-header"]}>
           <img
-            src={MatchingManagementSVG}
+            src={StadiumReservationSVG}
             style={{ width: "24px", height: "24px" }}
           />
-          <h5>팀 매칭 상세페이지</h5>
+          <h5>구장 예약 상세페이지</h5>
         </h2>
         <div className={styles["modal-sub-header"]}>
-          <h2>팀 매칭</h2> ({firstData}) <h4>상세페이지</h4>
+          <h2>구장 예약</h2> ({reservationState.reservationNumber}) <h4>상세페이지</h4>
         </div>
         <Table columCount={2} rowCount={rowCount} maxRowCount={rowCount}>
           <TableRow>
             <TableCell isHeader={true}>{firstHeader}</TableCell>
             <TableCell isHeader={true}>{firstData}</TableCell>
           </TableRow>
-          {entriesWithHeader.map(({ header, value }) => (
-            <TableRow key={header}>
+          {entriesWithHeader.map(({ header, value}) => (
+            <TableRow key={value}>
               <TableCell>{header}</TableCell>
               <TableCell>{value}</TableCell>
             </TableRow>
@@ -84,11 +76,15 @@ const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
         <div style={{ display: "flex", justifyContent: "end", padding: "8px" }}>
           <ConfirmationModal
             onConfirm={handleConfirmModal}
-            completeText={isMutating ? "취소중..." : `팀 / 소셜 매칭 ( ${matchingState.id} ) 가 취소되었습니다.`}
-            content={`팀 / 소셜 매칭 ( ${matchingState.id} ) 을 \n 취소시키시겠습니까?`}
+            completeText={
+              isMutating
+                ? "취소중..."
+                : `구장예약 ( ${reservationState.reservationNumber} ) 이 취소되었습니다.`
+            }
+            content={`구장예약 ( ${reservationState.reservationNumber} ) 을 \n 취소시키겠습니까?`}
           >
             <ConfirmationModalTrigger>
-              <Button color="var(--main-color)">매칭 취소</Button>
+              <Button color="var(--main-color)">예약 취소</Button>
             </ConfirmationModalTrigger>
           </ConfirmationModal>
         </div>
@@ -97,4 +93,4 @@ const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
   );
 };
 
-export default AdminMatchingManagementModal;
+export default AdminStadiumReservationModal;

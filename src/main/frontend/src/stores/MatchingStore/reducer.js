@@ -16,20 +16,6 @@ import {
 } from './action';
 
 export const initialState = {
-    matchingNum: "",
-    teams: {
-        team1: { name: "", src: "" },
-        team2: { name: "", src: "" },
-    },
-    matchingDate: "",
-    location: "",
-    gender: "",
-    level: "",
-    views: "",
-    writtenDate: "",
-    stadiumId: "",
-    teamSize: "",
-    matchingType: ""
 };
 
 export const reducer = (state, action) => {

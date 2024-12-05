@@ -1,0 +1,50 @@
+.modal-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+}
+
+.modal-sub-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  gap: 8px;
+  padding: 8px;
+
+  text-wrap: nowrap;
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-body {
+  border: 1px solid #a0a0a0;
+  border-radius: 20px;
+  padding: 16px;
+
+  outline: none;
+
+  /* // width height  고정 */
+  width: 90%;
+  height: 30vh;
+
+  resize: none;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  gap: 32px;
+}

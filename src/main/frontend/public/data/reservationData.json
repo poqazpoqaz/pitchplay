@@ -4,7 +4,8 @@
         "collectionNumber": "999991",
         "reservationNumber": "123123",
         "reservationDate": "2024-11-25T20:00:00",
-        "stadiumId": "S210401100008601453"
+        "stadiumId": "S210401100008601453",
+        "isCanceled": true
         
     },
     {
@@ -12,62 +13,167 @@
         "collectionNumber": "999992",
         "reservationNumber": "123245",
         "reservationDate": "2024-11-26T18:00:00",
-        "stadiumId": "S231208105143407599"
+        "stadiumId": "S231208105143407599",
+        "isCanceled": false
     },
     {
         "teamCode": "pitchplay1",
         "collectionNumber": "999993",
         "reservationNumber": "123145",
         "reservationDate": "2024-11-27T19:00:00",
-        "stadiumId": "S231208160336766600"
+        "stadiumId": "S231208160336766600",
+        "isCanceled": false
     },
     {
         "teamCode": "ulsanlight4",
         "collectionNumber": "999994",
         "reservationNumber": "121151",
         "reservationDate": "2024-11-28T21:00:00",
-        "stadiumId": "S231211171320885915"
+        "stadiumId": "S231211171320885915",
+        "isCanceled": false
     },
     {
         "teamCode": "pitchplay1",
         "collectionNumber": "999995",
         "reservationNumber": "100001",
         "reservationDate": "2024-11-29T20:00:00",
-        "stadiumId": "S231030140754182439"
+        "stadiumId": "S231030140754182439",
+        "isCanceled": true
     },
     {
-        "teamCode": "incheoneagle6",
+        "teamCode": "gwangjutiger5",
         "collectionNumber": "999996",
         "reservationNumber": "102842",
         "reservationDate": "2024-11-30T18:00:00",
-        "stadiumId": "S231030133625219222"
+        "stadiumId": "S231030133625219222",
+        "isCanceled": true
     },
     {
-        "teamCode": "suwonblues7",
+        "teamCode": "gwangjutiger5",
         "collectionNumber": "999997",
         "reservationNumber": "190284",
         "reservationDate": "2024-12-01T19:00:00",
-        "stadiumId": "S231030134311132377"
+        "stadiumId": "S231030134311132377",
+        "isCanceled": true
     },
     {
-        "teamCode": "daegurunners8",
+        "teamCode": "pitchplay1",
         "collectionNumber": "999998",
         "reservationNumber": "139482",
         "reservationDate": "2024-12-02T20:00:00",
-        "stadiumId": "S231030130758753552"
+        "stadiumId": "S231030130758753552",
+        "isCanceled": false
     },
     {
-        "teamCode": "seoulwind9",
+        "teamCode": "ulsanlight4",
         "collectionNumber": "999999",
         "reservationNumber": "105823",
         "reservationDate": "2024-12-03T18:00:00",
-        "stadiumId": "S231030140040048038"
+        "stadiumId": "S231030140040048038",
+        "isCanceled": false
     },
     {
-        "teamCode": "jejurions10",
-        "collectionNumber": "888888",
+        "teamCode": "gwangjutiger5",
+        "collectionNumber": "999993",
         "reservationNumber": "135274",
         "reservationDate": "2024-12-04T21:00:00",
-        "stadiumId": "S231030132946032905"
+        "stadiumId": "S231030132946032905",
+        "isCanceled": true
+    },
+    {
+        "userId": "pitch123",
+        "collectionNumber": "999993",
+        "reservationNumber": "134536",
+        "reservationDate": "2024-12-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": true
+    },
+    {
+        "userId" : "garam456",
+        "collectionNumber" : "999999",
+        "reservationNumber": "192337",
+        "reservationDate": "2024-12-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": true
+    },
+    {
+        "userId" : "hyunsu789",
+        "collectionNumber" : "999999",
+        "reservationNumber": "192338",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": false
+    },
+    {
+        "userId" : "hyunsu789",
+        "collectionNumber" : "999997",
+        "reservationNumber": "192341",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": false
+    },
+    {
+        "userId" : "pitch123",
+        "collectionNumber" : "999998",
+        "reservationNumber": "192342",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": false
+    },
+    {
+        "userId" : "pitch123",
+        "collectionNumber" : "999996",
+        "reservationNumber": "192343",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": true
+    },
+    {
+        "userId" : "pitch123",
+        "collectionNumber" : "999995",
+        "reservationNumber": "192344",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": true
+    },
+    {
+        "userId" : "hyunsu789",
+        "collectionNumber" : "999994",
+        "reservationNumber": "192345",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": true
+    },
+    {
+        "userId" : "hyunsu789",
+        "collectionNumber" : "999993",
+        "reservationNumber": "192346",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": true
+    },
+    {
+        "userId" : "hyunsu789",
+        "collectionNumber" : "999992",
+        "reservationNumber": "192347",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": false
+    },
+    {
+        "userId" : "hyunsu789",
+        "collectionNumber" : "999991",
+        "reservationNumber": "1923248",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": false
+    },
+    {
+        "userId" : "hyunsu789",
+        "collectionNumber" : "999991",
+        "reservationNumber": "192323",
+        "reservationDate": "2024-11-02T21:00:00",
+        "stadiumId": "S231030132946032905",
+        "isCanceled": false
     }
 ]

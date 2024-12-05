@@ -37,6 +37,10 @@ import WriteReport from "./components/FeedbackAccordion/WriteReport";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import Dashboard from "./pages/AdminPageDashboard/Dashboard";
 import AdminMemeberManagement from './pages/AdminMemberManagement/AdminMemberManagement';
+import AdminTeamManagement from "./pages/AdminTeamManagement/AdminTeamManagement";
+import AdminStadiumReservation from './pages/AdminStadiumManagement/AdminStadiumManagement';
+import AdminNoticeBoard from "./pages/AdminNoticeBoard/AdminNoticeBoard"
+import NoticeBoardWrite from "./pages/AdminNoticeBoard/NoticeBoardWrite/NoticeBoardWrite"
 
 // 새로 추가된 페이지
 import ChargePage from "./pages/ChargePage";
@@ -109,36 +113,44 @@ const router = createBrowserRouter([
         children: [
           { path: "", element: <Dashboard />, },
           { path: "matching-management", element: <AdminMatchingManagement/>},
-          { path: "member-management", element: <AdminMemeberManagement/>}
-          // {path: "matching-management/:id?",element: <AdminMatchingManagement />},
-          // {path: "team-management/:id?",element: <AdminTeamManagement />},
+          { path: "member-management", element: <AdminMemeberManagement/>},
+          {path: "team-management/:id?",element: <AdminTeamManagement />},
+          {path: "stadium-reservation/:id?", element: <AdminStadiumReservation gridArea={"section"} />},
+          {path: "notice-board", element: <AdminNoticeBoard gridArea={"section"} />},
+          {path: "notice-board/write", element: <NoticeBoardWrite gridArea={"section"} />},
+            ],
+          },
+          // {path: "payment-management/:id?", element: <AdminPaymentManagement gridArea={"section"} />}
+
+          {
+            path: "/notices",
+            element: <NoticePost gridArea={"section"} />,
+            children: [
+              { path: "", element: <NoticeAccordion /> },
+              { path: "faq", element: <FAQAccordion /> },
+              { path: "feedback", element: <FeedbackAccordion /> },
+              { path: "conduct", element: <ConductAccordion /> },
+            ],
+          },
+          {
+            path: "/reservation",
+            element: <ReservationPage gridArea={"section"} />,
+          },
+          {
+            path: "/stadium/:stadiumId",
+            element: <StadiumDetail gridArea={"section"} />,
+          },
         ]
       },
-      {
-        path: "/reservation",
-        element: <ReservationPage gridArea={"section"} />,
-      },
-      {
-        path: "/stadium/:stadiumId",
-        element: <StadiumDetail gridArea={"section"} />,
-      },
-      {
-        path: "/notices",
-        element: <NoticePost gridArea={"section"} />,
-        children: [
-          { path: "", element: <NoticeAccordion /> },
-          { path: "faq", element: <FAQAccordion /> },
-          { path: "feedback", element: <FeedbackAccordion /> },
-          { path: "conduct", element: <ConductAccordion /> },
-        ],
-      },
       { path: "/charge", element: <ChargeMain gridArea={"section"} /> },
+
+
+      { path: "/charge", element: <ChargePage gridArea={"section"} /> },
       { path: "/refund", element: <RefundPage gridArea={"section"} /> },
       { path: "/history", element: <HistoryPage gridArea={"section"} /> },
       { path: "/Write", element: <WriteReport gridArea={"section"} /> },
     ]
-  }
-]);
+);
 
 function App() {
   return (

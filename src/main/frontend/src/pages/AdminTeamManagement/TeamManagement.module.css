@@ -32,15 +32,3 @@
   margin-top: 20px;
 }
 
-@media(max-width: 1024px){
-  .container {
-    display: grid;
-    grid-template: 
-    'title' 30px
-    '...' 20px
-    'drop' 30px
-    '...' 10px
-    'table' 1fr / 1fr;
-  }
-  
-}

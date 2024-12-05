@@ -21,22 +21,6 @@ import {
 
 export const initialState =
 {
-    collectionNumber: "",
-    teamCode: "",
-    collectionDescription: "",
-    collectionTime: "",
-    currentMember: "",
-    totalMember: "",
-    teamName: "",
-    teamImg: "",
-    teamCity: "",
-    teamLoc: "",
-    teamGender: "",
-    viewCount: "",
-    activeStatus: "",
-    writtenDate: "",
-    teamSize: "",
-    stadiumId: ""
 }
 
 export const reducer = (state = initialState, action) => {

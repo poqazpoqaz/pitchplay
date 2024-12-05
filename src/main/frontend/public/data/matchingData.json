@@ -1,6 +1,7 @@
 [
   {
     "matchingNum": 100001,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -16,6 +17,7 @@
   },
   {
     "matchingNum": 100002,
+    "nickname": "가람이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -31,6 +33,7 @@
   },
   {
     "matchingNum": 100003,
+    "name": "이현수",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -46,6 +49,7 @@
   },
   {
     "matchingNum": 100004,
+    "nickname": "다은이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -61,6 +65,7 @@
   },
   {
     "matchingNum": 100005,
+    "nickname": "민수킹",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "피치플레이", "src": "/imgs/1.jpg" }
@@ -76,6 +81,7 @@
   },
   {
     "matchingNum": 100006,
+    "nickname": "지민짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -91,6 +97,7 @@
   },
   {
     "matchingNum": 100007,
+    "nickname": "길동홍",
     "teams": {
       "team1": { "name": "Green Warriors", "src": "/imgs/team.jpg" },
       "team2": { "name": "Black Hawks", "src": "/imgs/team.jpg" }
@@ -106,6 +113,7 @@
   },
   {
     "matchingNum": 100008,
+    "nickname": "세훈이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Red Dragons", "src": "/imgs/team.jpg" }
@@ -121,6 +129,7 @@
   },
   {
     "matchingNum": 100009,
+    "nickname": "하늘하늘",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Wild Cats", "src": "/imgs/team.jpg" }
@@ -135,6 +144,7 @@
     "teamSize": "7vs7"
   },  {
     "matchingNum": 101101,
+    "nickname": "재혁왕",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -150,6 +160,7 @@
   },
   {
     "matchingNum": 101102,
+    "nickname": "민수짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -165,6 +176,7 @@
   },
   {
     "matchingNum": 101103,
+    "nickname": "하늘짱",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -180,6 +192,7 @@
   },
   {
     "matchingNum": 101104,
+    "nickname": "정우짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -195,6 +208,7 @@
   },
   {
     "matchingNum": 101105,
+    "nickname": "수현짱",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "피치플레이", "src": "/imgs/1.jpg" }
@@ -210,6 +224,7 @@
   },
   {
     "matchingNum": 101106,
+    "nickname": "태환짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -225,6 +240,7 @@
   },
   {
     "matchingNum": 101107,
+    "nickname": "정수짱",
     "teams": {
       "team1": { "name": "Green Warriors", "src": "/imgs/team.jpg" },
       "team2": { "name": "Black Hawks", "src": "/imgs/team.jpg" }
@@ -240,6 +256,7 @@
   },
   {
     "matchingNum": 11108,
+    "nickname": "지훈이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Red Dragons", "src": "/imgs/team.jpg" }
@@ -255,6 +272,7 @@
   },
   {
     "matchingNum": 101109,
+    "nickname": "태영왕",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Wild Cats", "src": "/imgs/team.jpg" }
@@ -270,6 +288,7 @@
   },
   {
     "matchingNum": 111001,
+    "nickname": "지혜짱",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -285,6 +304,7 @@
   },
   {
     "matchingNum": 1001102,
+    "nickname": "주희짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -300,6 +320,7 @@
   },
   {
     "matchingNum": 101103,
+    "nickname": "상훈이",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -315,6 +336,7 @@
   },
   {
     "matchingNum": 100004,
+    "nickname": "윤지짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -330,6 +352,7 @@
   },
   {
     "matchingNum": 100005,
+    "nickname": "지영이",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "피치플레이", "src": "/imgs/1.jpg" }
@@ -345,6 +368,7 @@
   },
   {
     "matchingNum": 100006,
+    "nickname": "선영이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -360,6 +384,7 @@
   },
   {
     "matchingNum": 100007,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Green Warriors", "src": "/imgs/team.jpg" },
       "team2": { "name": "Black Hawks", "src": "/imgs/team.jpg" }
@@ -375,6 +400,7 @@
   },
   {
     "matchingNum": 100008,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Red Dragons", "src": "/imgs/team.jpg" }
@@ -390,6 +416,7 @@
   },
   {
     "matchingNum": 100009,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Wild Cats", "src": "/imgs/team.jpg" }
@@ -405,6 +432,7 @@
   },
   {
     "matchingNum": 100001,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -420,6 +448,7 @@
   },
   {
     "matchingNum": 100002,
+    "name": "박가람",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -435,6 +464,7 @@
   },
   {
     "matchingNum": 100003,
+    "name": "박가람",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -450,6 +480,7 @@
   },
   {
     "matchingNum": 100004,
+    "name": "박가람",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -465,6 +496,7 @@
   },
   {
     "matchingNum": 100005,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "피치플레이", "src": "/imgs/1.jpg" }
@@ -480,6 +512,7 @@
   },
   {
     "matchingNum": 100006,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -495,6 +528,7 @@
   },
   {
     "matchingNum": 100007,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Green Warriors", "src": "/imgs/team.jpg" },
       "team2": { "name": "Black Hawks", "src": "/imgs/team.jpg" }
@@ -510,6 +544,7 @@
   },
   {
     "matchingNum": 100008,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Red Dragons", "src": "/imgs/team.jpg" }
@@ -525,6 +560,7 @@
   },
   {
     "matchingNum": 100009,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Wild Cats", "src": "/imgs/team.jpg" }
@@ -540,6 +576,7 @@
   },
   {
     "matchingNum": 100001,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -555,6 +592,7 @@
   },
   {
     "matchingNum": 100002,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -570,6 +608,7 @@
   },
   {
     "matchingNum": 100003,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -585,6 +624,7 @@
   },
   {
     "matchingNum": 100004,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -600,6 +640,7 @@
   },
   {
     "matchingNum": 100005,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "피치플레이", "src": "/imgs/1.jpg" }
@@ -615,6 +656,7 @@
   },
   {
     "matchingNum": 100006,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -630,6 +672,7 @@
   },
   {
     "matchingNum": 100007,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Green Warriors", "src": "/imgs/team.jpg" },
       "team2": { "name": "Black Hawks", "src": "/imgs/team.jpg" }
@@ -645,6 +688,7 @@
   },
   {
     "matchingNum": 100008,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Red Dragons", "src": "/imgs/team.jpg" }
@@ -660,6 +704,7 @@
   },
   {
     "matchingNum": 100009,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Wild Cats", "src": "/imgs/team.jpg" }
@@ -675,6 +720,7 @@
   },
   {
     "matchingNum": 100001,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -690,6 +736,7 @@
   },
   {
     "matchingNum": 100002,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -705,6 +752,7 @@
   },
   {
     "matchingNum": 100003,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -720,6 +768,7 @@
   },
   {
     "matchingNum": 100004,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -735,6 +784,7 @@
   },
   {
     "matchingNum": 100005,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "피치플레이", "src": "/imgs/1.jpg" }
@@ -750,6 +800,7 @@
   },
   {
     "matchingNum": 100006,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -765,6 +816,7 @@
   },
   {
     "matchingNum": 100007,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "Green Warriors", "src": "/imgs/team.jpg" },
       "team2": { "name": "Black Hawks", "src": "/imgs/team.jpg" }
@@ -780,6 +832,7 @@
   },
   {
     "matchingNum": 100008,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Red Dragons", "src": "/imgs/team.jpg" }
@@ -795,6 +848,7 @@
   },
   {
     "matchingNum": 100009,
+    "nickname": "피치플레이",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Wild Cats", "src": "/imgs/team.jpg" }
@@ -810,6 +864,7 @@
   },
   {
     "matchingNum": 100001,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -825,6 +880,7 @@
   },
   {
     "matchingNum": 100002,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "Team Bravo", "src": "/imgs/1.jpg" }
@@ -840,6 +896,7 @@
   },
   {
     "matchingNum": 100003,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -855,6 +912,7 @@
   },
   {
     "matchingNum": 100004,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -870,6 +928,7 @@
   },
   {
     "matchingNum": 100005,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "피치플레이", "src": "/imgs/1.jpg" }
@@ -885,6 +944,7 @@
   },
   {
     "matchingNum": 100006,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "Red Dragons", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
@@ -900,6 +960,7 @@
   },
   {
     "matchingNum": 100007,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "Green Warriors", "src": "/imgs/team.jpg" },
       "team2": { "name": "Black Hawks", "src": "/imgs/team.jpg" }
@@ -915,6 +976,7 @@
   },
   {
     "matchingNum": 100008,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Red Dragons", "src": "/imgs/team.jpg" }
@@ -930,6 +992,7 @@
   },
   {
     "matchingNum": 100009,
+    "nickname": "현수짱",
     "teams": {
       "team1": { "name": "피치플레이", "src": "/imgs/team.jpg" },
       "team2": { "name": "Wild Cats", "src": "/imgs/team.jpg" }

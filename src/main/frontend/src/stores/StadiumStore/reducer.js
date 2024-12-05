@@ -14,16 +14,6 @@ import {
 } from "./action";
 
 export const initialState = {
-    stadiumId: "",
-    stadiumImg: "",
-    stadiumName: "",
-    stadiumAddress: "",
-    stadiumDescription: "",
-    stadiumY: "",
-    stadiumX: "",
-    stadiumCost: "",
-    stadiumVmin: "",
-    stadiumVmax: ""
 }
 
 export const reducer = (state, action) => {

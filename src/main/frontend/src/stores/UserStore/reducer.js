@@ -23,24 +23,6 @@ import {
 } from "./action";
 
 export const initialState = {
-    userNumber: "",
-    name: "",
-    profileImg: "",
-    birthday: "",
-    email: "",
-    phone: "",
-    id: "",
-    nickname: "",
-    password: "",
-    favoriteCity: "",
-    favoriteTime: "",
-    myTeam: "",
-    isTeamOwner: "",
-    myDescription: "",
-    userCash: "",
-    account: "",
-    accountNum: "",
-    joinDate: ""
 }
 
 

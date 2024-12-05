@@ -9,11 +9,6 @@ import {
 } from "./action";
 
 export const initialState = {
-    collectionNumber: "",
-    reservationNumber: "",
-    reservationDate: "",
-    stadiumId: "",
-    teamCode: "",
 }
 
 export const reducer = (state, action) => {

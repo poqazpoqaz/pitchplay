@@ -53,7 +53,7 @@ const Sidebar = ({ gridArea }) => {
       id: "notice-board",
       label: "게시판",
       icon: NoticeBoard,
-      handleClick: () => navigate("/admin/notice-board/post"),
+      handleClick: () => navigate("/admin/notice-board"),
     },
     {
       id: "payment-management",

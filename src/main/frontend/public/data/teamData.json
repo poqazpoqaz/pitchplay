@@ -3,7 +3,9 @@
         "teamName": "피치플레이",
         "teamCode": "pitchplay1",
         "teamImg": "/public/imgs/1.jpg",
+        "teamOwner" : "pitch123",
         "teamDescription": "피치플레이는 피치플레이 시작때부터 만들었던 팀입니다.",
+        "teamCreatedDate": "2024-01-01T10:00:00",
         "teamLevel": [
             "비기너"
         ],
@@ -68,28 +70,30 @@
             {
                 "pendingnickname": "태환짱",
                 "applicationDate": "2024-12-01",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             },
             {
                 "pendingnickname": "수현짱",
                 "applicationDate": "2024-12-02",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             },
             {
                 "pendingnickname": "정우짱",
                 "applicationDate": "2024-12-03",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             }
         ]
     },
     {
         "teamName": "축구사랑",
         "teamCode": "soccerlove2",
+        "teamOwner" : "hyunsu789",
         "teamImg": "/public/imgs/1.jpg",
         "teamDescription": "축구를 사랑하는 사람들이 모인 팀입니다.",
+        "teamCreatedDate": "2024-01-02T11:30:00",
         "teamLevel": [
             "아마추어"
         ],
@@ -124,8 +128,10 @@
     {
         "teamName": "드리머스",
         "teamCode": "dreamers3",
+        "teamOwner" : "daeun1122",
         "teamImg": "/public/imgs/1.jpg",
         "teamDescription": "꿈을 이루기 위해 함께 뛸 멤버를 찾습니다.",
+        "teamCreatedDate": "2024-01-03T12:45:00",
         "teamLevel": [
             "프로"
         ],
@@ -187,34 +193,35 @@
         ],
         "currentMember": 20,
         "totalMember": 30,
-        
         "collectionTitle": "드리머스 팀원 추가 모집!",
         "pendingMembers": [
             {
                 "pendingnickname": "태영왕",
                 "applicationDate": "2024-12-01",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             },
             {
                 "pendingnickname": "지혜짱",
                 "applicationDate": "2024-12-02",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             },
             {
                 "pendingnickname": "주희짱",
                 "applicationDate": "2024-12-03",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             }
         ]
     },
     {
         "teamName": "울산번개",
         "teamCode": "ulsanlight4",
+        "teamOwner" : "minsu2233",
         "teamImg": "/public/imgs/1.jpg",
         "teamDescription": "빠른 속도와 전략을 자랑하는 울산번개입니다.",
+        "teamCreatedDate": "2024-01-04T13:15:00",
         "teamLevel": [
             "중급"
         ],
@@ -249,29 +256,30 @@
             {
                 "pendingnickname": "상훈이",
                 "applicationDate": "2024-12-01",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             },
             {
                 "pendingnickname": "윤지짱",
                 "applicationDate": "2024-12-02",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             },
             {
                 "pendingnickname": "지영이",
                 "applicationDate": "2024-12-03",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             }
         ]
-
     },
     {
         "teamName": "광주타이거즈",
         "teamCode": "gwangjutiger5",
+        "teamOwner" : "jimin3344",
         "teamImg": "/public/imgs/1.jpg",
         "teamDescription": "광주의 자부심, 광주타이거즈입니다.",
+        "teamCreatedDate": "2024-01-05T14:20:00",
         "teamLevel": [
             "초급"
         ],
@@ -306,280 +314,20 @@
             {
                 "pendingnickname": "선영이",
                 "applicationDate": "2024-12-01",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             },
             {
-                "pendingnickname": "",
+                "pendingnickname": "상민이",
                 "applicationDate": "2024-12-02",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             },
             {
-                "pendingnickname": "정우짱",
+                "pendingnickname": "민경이",
                 "applicationDate": "2024-12-03",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            }
-        ]
-    },
-    {
-        "teamName": "인천이글스",
-        "teamCode": "incheoneagle6",
-        "teamImg": "/public/imgs/1.jpg",
-        "teamDescription": "하늘을 나는 인천이글스입니다.",
-        "teamLevel": [
-            "고급"
-        ],
-        "teamDay": [
-            "목",
-            "토"
-        ],
-        "teamTime": [
-            "새벽"
-        ],
-        "teamCity": "인천",
-        "teamLoc": "남동구",
-        "teamAge": [
-            "30대",
-            "40대"
-        ],
-        "teamGender": "혼성",
-        "teamMember": [
-            {
-                "name": "송하윤",
-                "role": "Manager"
-            },
-            {
-                "name": "정우성",
-                "role": "Member"
-            }
-        ],
-        "currentMember": 25,
-        "totalMember": 35,
-        "collectionTitle": "인천이글스 새 멤버 모집!",
-        "pendingMembers": [
-            {
-                "pendingnickname": "태환짱",
-                "applicationDate": "2024-12-01",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            },
-            {
-                "pendingnickname": "수현짱",
-                "applicationDate": "2024-12-02",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            },
-            {
-                "pendingnickname": "정우짱",
-                "applicationDate": "2024-12-03",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            }
-        ]
-    },
-    {
-        "teamName": "수원블루스",
-        "teamCode": "suwonblues7",
-        "teamImg": "/public/imgs/1.jpg",
-        "teamDescription": "수원의 푸른 영혼, 블루스입니다.",
-        "teamLevel": [
-            "비기너"
-        ],
-        "teamDay": [
-            "화",
-            "금"
-        ],
-        "teamTime": [
-            "저녁"
-        ],
-        "teamCity": "수원",
-        "teamLoc": "팔달구",
-        "teamAge": [
-            "20대",
-            "30대"
-        ],
-        "teamGender": "남성",
-        "teamMember": [
-            {
-                "name": "최민수",
-                "role": "Manager"
-            },
-            {
-                "name": "백지훈",
-                "role": "Member"
-            }
-        ],
-        "currentMember": 16,
-        "totalMember": 26,
-        "collectionTitle": "수원블루스 함께할 팀원 모집!"
-    },
-    {
-        "teamName": "대구런너스",
-        "teamCode": "daegurunners8",
-        "teamImg": "/public/imgs/1.jpg",
-        "teamDescription": "대구의 빠른 발, 런너스입니다.",
-        "teamLevel": [
-            "중급"
-        ],
-        "teamDay": [
-            "화",
-            "토"
-        ],
-        "teamTime": [
-            "아침"
-        ],
-        "teamCity": "대구",
-        "teamLoc": "수성구",
-        "teamAge": [
-            "30대",
-            "50대"
-        ],
-        "teamGender": "혼성",
-        "teamMember": [
-            {
-                "name": "한세진",
-                "role": "Manager"
-            },
-            {
-                "name": "조혜수",
-                "role": "Member"
-            }
-        ],
-        "currentMember": 14,
-        "totalMember": 24,
-        "collectionTitle": "대구런너스 팀원 모집!",
-        "pendingMembers": [
-            {
-                "pendingnickname": "태환짱",
-                "applicationDate": "2024-12-01",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            },
-            {
-                "pendingnickname": "수현짱",
-                "applicationDate": "2024-12-02",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            },
-            {
-                "pendingnickname": "정우짱",
-                "applicationDate": "2024-12-03",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            }
-        ]
-    },
-    {
-        "teamName": "서울윈드",
-        "teamCode": "seoulwind9",
-        "teamImg": "/public/imgs/1.jpg",
-        "teamDescription": "서울의 바람처럼 빠르고 유연한 윈드입니다.",
-        "teamLevel": [
-            "고급"
-        ],
-        "teamDay": [
-            "목",
-            "일"
-        ],
-        "teamTime": [
-            "저녁"
-        ],
-        "teamCity": "서울",
-        "teamLoc": "강남구",
-        "teamAge": [
-            "20대",
-            "30대"
-        ],
-        "teamGender": "여성",
-        "teamMember": [
-            {
-                "name": "김유나",
-                "role": "Manager"
-            },
-            {
-                "name": "박세은",
-                "role": "Member"
-            }
-        ],
-        "currentMember": 22,
-        "totalMember": 32,
-        "collectionTitle": "서울윈드와 함께할 팀원 찾습니다.",
-        "pendingMembers": [
-            {
-                "pendingnickname": "태환짱",
-                "applicationDate": "2024-12-01",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            },
-            {
-                "pendingnickname": "수현짱",
-                "applicationDate": "2024-12-02",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            },
-            {
-                "pendingnickname": "정우짱",
-                "applicationDate": "2024-12-03",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            }
-        ]
-    },
-    {
-        "teamName": "제주라이온스",
-        "teamCode": "jejurions10",
-        "teamImg": "/public/imgs/1.jpg",
-        "teamDescription": "제주의 열정과 강인함을 담은 라이온스입니다.",
-        "teamLevel": [
-            "비기너"
-        ],
-        "teamDay": [
-            "월",
-            "금"
-        ],
-        "teamTime": [
-            "오후"
-        ],
-        "teamCity": "제주",
-        "teamLoc": "서귀포시",
-        "teamAge": [
-            "10대",
-            "40대"
-        ],
-        "teamGender": "혼성",
-        "teamMember": [
-            {
-                "name": "오준호",
-                "role": "Manager"
-            },
-            {
-                "name": "이슬기",
-                "role": "Member"
-            }
-        ],
-        "currentMember": 18,
-        "totalMember": 28,
-        "collectionTitle": "제주라이온스 멤버를 찾습니다!",
-        "pendingMembers": [
-            {
-                "pendingnickname": "태환짱",
-                "applicationDate": "2024-12-01",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            },
-            {
-                "pendingnickname": "수현짱",
-                "applicationDate": "2024-12-02",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
-            },
-            {
-                "pendingnickname": "정우짱",
-                "applicationDate": "2024-12-03",
-                "profileImg" : "/imgs/1.jpg",
-                "applicationstatus": "pending"          
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             }
         ]
     }

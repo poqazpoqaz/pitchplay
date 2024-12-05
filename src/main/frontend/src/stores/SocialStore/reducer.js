@@ -16,20 +16,6 @@ import {
 } from "./action";
 
 export const initialState = {
-    socialNumber: "",
-    userNumber: "",
-    stadiumId: "",
-    socialGender: "",
-    socialSize: "",
-    socialLevel: "",
-    socialTime: "",
-    writtenDate: "",
-    viewCount: "",
-    activeStatus: "",
-    currentMember: [
-        { nickname: "", src: "" }
-    ],
-    totalMember: ""
 };
 
 export const reducer = (state, action) => {

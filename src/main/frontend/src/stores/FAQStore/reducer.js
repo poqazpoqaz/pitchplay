@@ -18,20 +18,6 @@ import {
 // 초기 상태 정의
 export const initialState =
 {
-  reports: [],
-  faqNumber: "",
-  userId: "",
-  writeNickname: "",
-  title: "",
-  content: "",
-  category: "",
-  date: "",
-  status: "",
-  views: 123,
-  comments: [
-    { userNickname: "", comment: "" },
-    { userNickname: "", comment: "" }
-  ]
 };
 
 

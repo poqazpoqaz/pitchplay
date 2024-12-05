@@ -16,7 +16,7 @@ function Main() {
       {isAdminPage ? <AdminHeader /> : <Header />} {/* 경로에 따라 헤더 결정 */}
       <Outlet />
       <Footer />
-    </div>
+   </div>
 
   );
 }

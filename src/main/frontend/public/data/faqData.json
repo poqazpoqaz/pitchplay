@@ -1,5 +1,6 @@
 [
-    {
+    {   
+        "category" : "매너/제재",
         "faqNumber": "293819",
         "userId": "123123",
         "writeNickname": "피치플레이",
@@ -14,6 +15,7 @@
         ]
     },
     {
+        "category" : "매너/제재",
         "faqNumber": "293820",
         "userId": "456456",
         "writeNickname": "가람이",
@@ -28,6 +30,7 @@
         ]
     },
     {
+        "category" : "매너/제재",
         "faqNumber": "293821",
         "userId": "789789",
         "writeNickname": "현수짱",
@@ -42,6 +45,7 @@
         ]
     },
     {
+        "category" : "매너/제재",
         "faqNumber": "293822",
         "userId": "123123",
         "writeNickname": "피치플레이",
@@ -56,6 +60,7 @@
         ]
     },
     {
+        "category" : "매너/제재",
         "faqNumber": "293823",
         "userId": "223344",
         "writeNickname": "민수킹",
@@ -70,6 +75,7 @@
         ]
     },
     {
+        "category" : "건의/제보",
         "faqNumber": "293824",
         "userId": "334455",
         "writeNickname": "지민짱",
@@ -84,6 +90,7 @@
         ]
     },
     {
+        "category" : "건의/제보",
         "faqNumber": "293825",
         "userId": "445566",
         "writeNickname": "길동홍",
@@ -98,6 +105,7 @@
         ]
     },
     {
+        "category" : "건의/제보",
         "faqNumber": "293826",
         "userId": "556677",
         "writeNickname": "세훈이",
@@ -112,6 +120,7 @@
         ]
     },
     {
+        "category" : "건의/제보",
         "faqNumber": "293827",
         "userId": "667788",
         "writeNickname": "하늘하늘",
@@ -126,6 +135,7 @@
         ]
     },
     {
+        "category" : "건의/제보",
         "faqNumber": "293828",
         "userId": "778899",
         "writeNickname": "재혁왕",

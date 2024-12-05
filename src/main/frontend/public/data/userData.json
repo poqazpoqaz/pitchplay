@@ -20,7 +20,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2024-01-01T10:00:00"
+        "joindate": "2024-01-01T10:00:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "456456",
@@ -43,7 +44,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-12-01T20:30:00"
+        "joindate": "2023-12-01T20:30:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "789789",
@@ -57,7 +59,7 @@
         "password": "hyunsugood",
         "favoriteCity": "부산 해운대구",
         "favoriteTime": "새벽 시간대",
-        "myTeam": "부산바다팀",
+        "myTeam": "soccerlove2",
         "myDescription": "새벽에 활동하는 현수입니다.",
         "userCash": "15000",
         "account": "신한은행",
@@ -65,7 +67,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-11-25T18:15:00"
+        "joindate": "2023-11-25T18:15:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "112233",
@@ -79,7 +82,7 @@
         "password": "daeunlove",
         "favoriteCity": "대구 수성구",
         "favoriteTime": "오후 시간대",
-        "myTeam": "대구팀",
+        "myTeam": "드리머스",
         "myDescription": "긍정적인 다은입니다.",
         "userCash": "50000",
         "account": "카카오뱅크",
@@ -87,7 +90,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-11-20T15:45:00"
+        "joindate": "2023-11-20T15:45:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "223344",
@@ -101,7 +105,7 @@
         "password": "msking2233",
         "favoriteCity": "광주 북구",
         "favoriteTime": "아침 시간대",
-        "myTeam": "광주호랑이팀",
+        "myTeam": "울산번개",
         "myDescription": "아침마다 달리는 민수입니다.",
         "userCash": "10000",
         "account": "카카오뱅크",
@@ -109,7 +113,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-11-20T15:45:00"
+        "joindate": "2023-11-20T15:45:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "334455",
@@ -123,7 +128,7 @@
         "password": "jiminbest",
         "favoriteCity": "인천 계양구",
         "favoriteTime": "낮 시간대",
-        "myTeam": "인천이글스",
+        "myTeam": "광주타이거즈",
         "myDescription": "인천에서 축구를 사랑하는 지민입니다.",
         "userCash": "40000",
         "account": "카카오뱅크",
@@ -131,7 +136,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-11-20T15:45:00"
+        "joindate": "2023-11-20T15:45:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "445566",
@@ -153,7 +159,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-11-20T15:45:00"
+        "joindate": "2023-11-20T15:45:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "556677",
@@ -175,7 +182,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-11-20T15:45:00"
+        "joindate": "2023-11-20T15:45:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "667788",
@@ -197,7 +205,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-11-20T15:45:00"
+        "joindate": "2023-11-20T15:45:00",
+        "isDeleted" : false
     },
     {
         "userNumber": "778899",
@@ -219,7 +228,8 @@
         "profilePublic": true,
         "emailNotification": false,
         "snsNotification": true,
-        "joindate": "2023-11-20T15:45:00"
+        "joindate": "2023-11-20T15:45:00",
+        "isDeleted" : false
     },
         {
             "userNumber": "889900",
@@ -241,7 +251,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-01-01T10:00:00"
+            "joindate": "2024-01-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "223344",
@@ -263,7 +274,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-02-01T10:00:00"
+            "joindate": "2024-02-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "667788",
@@ -285,7 +297,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-03-01T10:00:00"
+            "joindate": "2024-03-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "556677",
@@ -307,7 +320,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-04-01T10:00:00"
+            "joindate": "2024-04-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "998877",
@@ -329,7 +343,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-05-01T10:00:00"
+            "joindate": "2024-05-01T10:00:00",
+            "isDeleted" : false
         },{
             "userNumber": "101010",
             "name": "이정수",
@@ -350,7 +365,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-06-01T10:00:00"
+            "joindate": "2024-06-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "202020",
@@ -372,7 +388,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-07-01T10:00:00"
+            "joindate": "2024-07-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "303030",
@@ -394,7 +411,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-07-01T10:00:00"
+            "joindate": "2024-07-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "404040",
@@ -416,7 +434,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-08-01T10:00:00"
+            "joindate": "2024-08-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "505050",
@@ -438,7 +457,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-09-01T10:00:00"
+            "joindate": "2024-09-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "606060",
@@ -460,7 +480,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-10-01T10:00:00"
+            "joindate": "2024-10-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "707070",
@@ -482,7 +503,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-11-01T10:00:00"
+            "joindate": "2024-11-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "808080",
@@ -504,7 +526,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-12-01T10:00:00"
+            "joindate": "2024-12-01T10:00:00",
+            "isDeleted" : false
         },
         {
             "userNumber": "909090",
@@ -526,7 +549,8 @@
             "profilePublic": true,
             "emailNotification": false,
             "snsNotification": true,
-            "joindate": "2024-12-01T10:00:00"
+            "joindate": "2024-12-01T10:00:00",
+            "isDeleted" : false
         }
 
 ]

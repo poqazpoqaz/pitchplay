@@ -1,48 +1,38 @@
 import Modal from "../../../components/Modal/Modal";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { Table, TableCell, TableRow } from "../../../components/Table/Table";
 import Button from "../../../components/Button";
-import MatchingManagementSVG from "../../../../public/icons/matchingmanage.svg";
+import TeamManagementSVG from "../../../../public/icons/teamManage.svg";
 import styles from "./index.module.css";
-import SelectorList, { Selector } from "../../../components/Accordion/SelectorList";
 import ConfirmationModal, {
   ConfirmationModalTrigger,
 } from "../../../components/ConfirmationModal/index";
-import useFetch from "../../../api/useFetch";
 import axios from "axios";
 import useMutate from "../../../api/useMutate";
 
-import { useState } from "react";
-
 const headers = {
-  id: "매칭번호",
-  matchType: "매치타입",
-  teamSize: "경기종류",
-  gender: "성별",
-  date: "경기 날짜",
-  time: "경기 시간",
-  location: "경기장",
-  isClosed: "마감여부",
-  reservationedMembers: "예약한 회원",
-  teams: "참가팀",
+  teamId: "팀아이디",
+  teamName: "팀이름",
+  teamOwnerUserId: "팀오너회원번호",
+  createdAt: "팀생성일",
+  members: "팀원",
 };
 
-const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
+const AdminTeamManagementModal = ({teamState, isOpen, closeModal}) => {
   const { mutate, isLoading: isMutating } = useMutate((options) =>
-    axios.put(`/data/reservationData.json`, options)
+    axios.put(`/data/api/teamData.json`, options)
   );
 
-  const handleConfirmModal = () => {
-    mutate({ id: matchingState.id });
+  const handleCofirmModal = () => {
+    mutate({ id: teamState.teamId });
     closeModal();
   };
-
-  const { id: firstHeader, teams: teamsHeader, ...restHeaders} = headers;
   const {
-    id: firstData,
-    teams: teamsData,
-    ...restData
-  } = matchingState;
+    teamId: firstHeader,
+    members: membersHeader,
+    ...restHeaders
+  } = headers;
+
+  const { teamId: firstData, members: membersData, ...restData } = teamState;
 
   const rowCount = Object.keys(restData).length;
 
@@ -61,13 +51,13 @@ const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <h2 className={styles["modal-header"]}>
           <img
-            src={MatchingManagementSVG}
+            src={TeamManagementSVG}
             style={{ width: "24px", height: "24px" }}
           />
-          <h5>팀 매칭 상세페이지</h5>
+          <h5>팀 관리 상세페이지</h5>
         </h2>
         <div className={styles["modal-sub-header"]}>
-          <h2>팀 매칭</h2> ({firstData}) <h4>상세페이지</h4>
+          <h2>팀 ID</h2> ({teamState.teamId}) <h4>상세페이지</h4>
         </div>
         <Table columCount={2} rowCount={rowCount} maxRowCount={rowCount}>
           <TableRow>
@@ -81,14 +71,33 @@ const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
             </TableRow>
           ))}
         </Table>
+        <Table columCount={2} rowCount={2} maxRowCount={1}>
+          <TableRow>
+            <TableCell isHeader={true}>{membersHeader}</TableCell>
+            <TableCell isHeader={true}></TableCell>
+          </TableRow>
+          <TableRow>
+            {membersData && membersData.map((member, index) => (
+              <TableRow key={index}>
+                <TableCell>{member.name}</TableCell>
+                <TableCell>{member.role}</TableCell>
+              </TableRow>
+            ))}
+          </TableRow>
+
+        </Table>
         <div style={{ display: "flex", justifyContent: "end", padding: "8px" }}>
           <ConfirmationModal
-            onConfirm={handleConfirmModal}
-            completeText={isMutating ? "취소중..." : `팀 / 소셜 매칭 ( ${matchingState.id} ) 가 취소되었습니다.`}
-            content={`팀 / 소셜 매칭 ( ${matchingState.id} ) 을 \n 취소시키시겠습니까?`}
+            onConfirm={handleCofirmModal}
+            completeText={
+              isMutating
+                ? "해체중..."
+                : `팀아이디 ${teamState.teamId} ( ${teamState.teamName} ) 이 해체되었습니다.`
+            }
+            content={`팀아이디 ${teamState.teamId} ( ${teamState.teamName} ) 을\n해체 시키시겠습니까?`}
           >
             <ConfirmationModalTrigger>
-              <Button color="var(--main-color)">매칭 취소</Button>
+              <Button color="var(--main-color)">팀 해체</Button>
             </ConfirmationModalTrigger>
           </ConfirmationModal>
         </div>
@@ -97,4 +106,4 @@ const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
   );
 };
 
-export default AdminMatchingManagementModal;
+export default AdminTeamManagementModal;

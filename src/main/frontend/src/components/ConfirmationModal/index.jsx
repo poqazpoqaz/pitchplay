@@ -39,12 +39,14 @@ const ConfirmationModal = ({
   const handleSubModalClose = () => {
     setIsComplete(false);
     setIsOpen(false);
+
   };
 
   const handleCancel = () => {
     onClose && onClose();
     setIsOpen(false);
   };
+
 
   return (
     <ConfirmationModalContext.Provider
@@ -59,8 +61,8 @@ const ConfirmationModal = ({
             justifyContent: "flex-end",
           }}
         >
-          <Button onClick={handleConfirm}>네</Button>
-          <Button onClick={handleCancel}>아니요</Button>
+          <Button color="var(--main-color)" onClick={handleConfirm}>네</Button>
+          <Button color="var(--main-color)" onClick={handleCancel}>아니요</Button>
         </div>
       </Modal>
       <Modal isOpen={isComplete} closeModal={onClose}>
@@ -72,7 +74,7 @@ const ConfirmationModal = ({
             justifyContent: "flex-end",
           }}
         >
-          <Button onClick={handleSubModalClose}>확인</Button>
+          <Button color="var(--main-color)" onClick={handleSubModalClose}>확인</Button>
         </div>
       </Modal>
       {children}
@@ -80,7 +82,7 @@ const ConfirmationModal = ({
   );
 };
 
-export const ConfirmationModalTrigger = ({ children }) => {
+export const ConfirmationModalTrigger = ({ children}) => {
   const { setIsOpen } = useContext(ConfirmationModalContext);
 
   return <div onClick={() => setIsOpen(true)}>{children}</div>;
