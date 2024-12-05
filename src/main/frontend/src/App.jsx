@@ -108,7 +108,8 @@ const router = createBrowserRouter([
       },
       { path: "/charge", element: <ChargePage gridArea={"section"} /> },
       { path: "/refund", element: <RefundPage gridArea={"section"} /> },
-      { path: "/history", element: <HistoryPage gridArea={"section"} /> }
+      { path: "/history", element: <HistoryPage gridArea={"section"} /> },
+      { path: "/Write", element: <WriteReport gridArea={"section"} /> },
     ]
   }
 ]);
