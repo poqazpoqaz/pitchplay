@@ -119,7 +119,9 @@ const CheckboxText = styled.p`
 `;
 
 const ChargePage = ({ gridArea }) => {
-  const [userCash, setUsercash] = useState(0);  
+  const [userCash, setUsercash] = useState(0);
+  const [name, setName] = useState("");
+  const [account, setAccount] = useState("");  
   const [selectedBank, setSelectedBank] = useState('');  
   const [accountNumber, setAccountNumber] = useState('');  
   const [accountHolder, setAccountHolder] = useState('');  
@@ -130,7 +132,9 @@ const ChargePage = ({ gridArea }) => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user && user.userCash) {
-      setUsercash(user.userCash);  
+      setUsercash(user.userCash);
+      setName(user.name);
+      setAccount(user.account);  
     }
   }, []);
 
@@ -191,6 +195,8 @@ const ChargePage = ({ gridArea }) => {
 
       <BorderLine />
       <InfoText>보유 캐시: {userCash} 캐시</InfoText>
+      <InfoText>예금주: {name}</InfoText>
+      <InfoText>환불은행: {account}</InfoText>
       <RedText1>만원 단위로만 환불 가능합니다.</RedText1>
 
       <Dropdown value={selectedBank} onChange={handleBankChange}>

@@ -19,29 +19,22 @@ const Mypage1 = () => {
 
     // 해당하는 userid에 속하는 user 정보 설정 
     useEffect(() => {
-        axios.get("/data/userData.json")
-            .then(response => {
-                const datas = response.data;
-                const userData = datas.find(data => data.id === user.id);
-
-                if (userData) {
-                    actions.changeUserNumber(userData.userNumber);
-                    actions.changeName(userData.name);
-                    actions.changeNickname(userData.nickname);
-                    actions.changeProfileImg(userData.profileImg);
-                    actions.changeBirthday(userData.birthday);
-                    actions.changeEmail(userData.email);
-                    actions.changePhone(userData.phone);
-                    actions.changeId(userData.id);
-                    actions.changePassword(userData.password);
-                    actions.changeFavoriteCity(userData.favoriteCity);
-                    actions.changeUserCash(userData.userCash);
-                    actions.changeFavoriteTime(userData.favoriteTime);
-                    actions.changeMyTeam(userData.myTeam);
-                    actions.changeMyDescription(userData.myDescription);
-                }
-            })
-
+        if (user) {
+            actions.changeUserNumber(user.userNumber);
+            actions.changeName(user.name);
+            actions.changeNickname(user.nickname);
+            actions.changeProfileImg(user.profileImg);
+            actions.changeBirthday(user.birthday);
+            actions.changeEmail(user.email);
+            actions.changePhone(user.phone);
+            actions.changeId(user.id);
+            actions.changePassword(user.password);
+            actions.changeFavoriteCity(user.favoriteCity);
+            actions.changeUserCash(user.userCash);
+            actions.changeFavoriteTime(user.favoriteTime);
+            actions.changeMyTeam(user.myTeam);
+            actions.changeMyDescription(user.myDescription);
+        }
         // 로컬스토리지에서 profileImg가 있으면 불러오기
         const savedUser = JSON.parse(localStorage.getItem("user"));
         if (savedUser && savedUser.profileImg) {
@@ -49,7 +42,7 @@ const Mypage1 = () => {
             setProfileImg(savedUser.profileImg); // base64 파일 가져오기
             setPreviewImage(savedUser.profileImg); // 미리보기 업데이트
         }
-    }, [user.id]);
+    }, [user]);
 
     const formFields = [
         { label: "이름", name: "name", value: state.name, disabled: true },

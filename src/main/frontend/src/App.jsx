@@ -48,6 +48,7 @@ import CommentInfo from './pages/Mypage/Community/Community2/CommentInfo';
 import PostInfo from './pages/Mypage/Community/Community2/PostInfo';
 import AppMangement from './pages/Mypage/TeamSet/AppManagement';
 import AdminMatchingManagement from './pages/AdminMatchingManagement/AdminMatchingManagement';
+import ChargeMain from './pages/ChargeMain';
 
 const router = createBrowserRouter([
   {
@@ -131,7 +132,7 @@ const router = createBrowserRouter([
           { path: "conduct", element: <ConductAccordion /> },
         ],
       },
-      { path: "/charge", element: <ChargePage gridArea={"section"} /> },
+      { path: "/charge", element: <ChargeMain gridArea={"section"} /> },
       { path: "/refund", element: <RefundPage gridArea={"section"} /> },
       { path: "/history", element: <HistoryPage gridArea={"section"} /> },
       { path: "/Write", element: <WriteReport gridArea={"section"} /> },

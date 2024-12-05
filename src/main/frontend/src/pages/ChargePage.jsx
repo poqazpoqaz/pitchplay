@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PriceButton from '../components/PriceButton/PriceButton';
 
@@ -118,65 +117,19 @@ const SubmitButton = styled(PriceButton)`
   }
 `;
 
-const ChargePage = ({ gridArea }) => {
-  const [userCash, setUsercash] = useState(0);  // 유저의 캐시 상태
-  const [selectedAmount, setSelectedAmount] = useState('');  // 선택된 금액
-  const [paymentMethod, setPaymentMethod] = useState('가상 계좌');  // 결제 방법 상태
-  const [termsChecked, setTermsChecked] = useState({
-    serviceTerms: false,
-    privacyTerms: false,
-    thirdPartyTerms: false,
-  });  // 체크박스 상태 관리
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));  // localStorage에서 'user' 가져오기
-    if (user && user.userCash) {
-      setUsercash(user.userCash);  // 유저의 캐시를 상태에 저장
-    }
-  }, []);
-
-  const amounts = [
-    '3,000원', '5,000원', '8,000원', '10,000원', '15,000원', 
-    '20,000원', '30,000원', '40,000원', '50,000원'
-  ];
-
-  const handleAmountClick = (amount) => {
-    setSelectedAmount(amount);  // 선택한 금액을 상태로 저장
-  };
-
-  const handlePaymentMethodChange = (event) => {
-    setPaymentMethod(event.target.value);  // 결제 방법 변경
-  };
-
-  const handleTermsChange = (event) => {
-    const { name, checked } = event.target;
-    setTermsChecked(prevState => ({
-      ...prevState,
-      [name]: checked,
-    }));
-  };
-
-  const handleSubmit = () => {
-    // 금액이 선택되지 않은 경우
-    if (selectedAmount === '') {
-      alert('금액을 선택해주세요.');
-      return;
-    }
-
-    // 모든 체크박스가 체크되지 않은 경우
-    const allChecked = Object.values(termsChecked).every(value => value === true);
-    if (!allChecked) {
-      alert('모든 약관에 동의해야 합니다.');
-      return;
-    }
-
-    // 모든 조건을 만족한 경우
-    alert("충전 신청을 하였습니다.");
-    alert(`충전 금액: ${selectedAmount}`);
-  };
-
+const ChargePage = ({ 
+  userCash = 0, 
+  amounts = [], // 기본값 설정
+  selectedAmount, 
+  handleAmountClick, 
+  paymentMethod, 
+  handlePaymentMethodChange, 
+  termsChecked, 
+  handleTermsChange, 
+  handleSubmit 
+}) => { 
   return (
-    <Container style={{ gridArea: gridArea }}>
+    <Container>
       <Title>캐시 충전</Title>
 
       <AmountContainer>
@@ -206,18 +159,18 @@ const ChargePage = ({ gridArea }) => {
         <TermsContainer>
           <ul>
             <TermItem>
-              <input
-                type="checkbox"
-                name="serviceTerms"
-                checked={termsChecked.serviceTerms}
+              <input 
+                type="checkbox" 
+                name="serviceTerms" 
+                checked={termsChecked.serviceTerms} 
                 onChange={handleTermsChange}
               /> 서비스 이용약관
             </TermItem>
             <TermItem>
-              <input
-                type="checkbox"
-                name="privacyTerms"
-                checked={termsChecked.privacyTerms}
+              <input 
+                type="checkbox" 
+                name="privacyTerms" 
+                checked={termsChecked.privacyTerms} 
                 onChange={handleTermsChange}
               /> 개인정보 수집 및 이용 동의
             </TermItem>
@@ -244,5 +197,4 @@ const ChargePage = ({ gridArea }) => {
     </Container>
   );
 };
-
 export default ChargePage;
