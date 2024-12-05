@@ -88,7 +88,24 @@ const router = createBrowserRouter([
           // {path: "team-management/:id?",element: <AdminTeamManagement />},
         ]
       },
-      // 새로 추가된 라우트
+      {
+        path: "/reservation",
+        element: <ReservationPage gridArea={"section"} />,
+      },
+      {
+        path: "/stadium/:stadiumId",
+        element: <StadiumDetail gridArea={"section"} />,
+      },
+      {
+        path: "/notices",
+        element: <NoticePost gridArea={"section"} />,
+        children: [
+          { path: "", element: <NoticeAccordion /> },
+          { path: "faq", element: <FAQAccordion /> },
+          { path: "feedback", element: <FeedbackAccordion /> },
+          { path: "conduct", element: <ConductAccordion /> },
+        ],
+      },
       { path: "/charge", element: <ChargePage gridArea={"section"} /> },
       { path: "/refund", element: <RefundPage gridArea={"section"} /> },
       { path: "/history", element: <HistoryPage gridArea={"section"} /> }
