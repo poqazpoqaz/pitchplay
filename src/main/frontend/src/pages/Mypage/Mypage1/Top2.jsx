@@ -45,7 +45,7 @@ const Top2 = ({ username, usercash }) => {
       <p>잔액: {formatCurrency(usercash)} 캐시</p>
       <ul>
         <li>
-        <LinkButton to={{ pathname: '/charge', state: { usercash } }}>충전하기</LinkButton>
+        <LinkButton to='/charge'>충전하기</LinkButton>
         </li>
         <li>
           <LinkButton to="/refund">환불하기</LinkButton>

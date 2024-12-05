@@ -38,8 +38,6 @@ const Log = () => {
   return (
     <div>
       <Title>계정</Title>
-
-          <Link to="/account-edit">계정 변경</Link>
         <ul>
           <li>
           <ButtonDe onClick={handleLogoutConfirmation}>로그아웃</ButtonDe>

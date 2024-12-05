@@ -91,10 +91,10 @@ const LinkButton = styled(Link)`
     transform: scale(1.05); /* 버튼 확대 효과 */
   }
 `;
-const Bottom = ({ formFields }) => {
+const Bottom = ({ formFields , id , team  }) => {
   return (
     <BottomContainer>
-      <Title>마이페이지 &gt; 내정보</Title>
+      <Title>마이페이지 &gt; 팀 정보</Title>
       <FormList>
         {formFields.map((field) => (
           <FormItem key={field.name} className={field.name === "teamIntro" ? "textarea" : ""}>
@@ -104,7 +104,7 @@ const Bottom = ({ formFields }) => {
         ))}
       </FormList>
       <BtnEnd>
-        <LinkButton to="/mypage/pitch123/dreamers3/members">
+        <LinkButton to={`/mypage/${id}/${team}/members`}>
         멤버 보기
         </LinkButton>
       </BtnEnd>

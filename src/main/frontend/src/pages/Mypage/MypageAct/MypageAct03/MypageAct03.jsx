@@ -70,8 +70,12 @@ const MypageAct03 = ({ gridArea }) => {
       <div className={styles.content}>
         <h1>마이페이지 &gt; 내활동 &gt; 예약한 경기 목록</h1>
         <div className={styles.actbox}>
-          <Teamimg teamInfo={teamInfo} />
-          <Teaminfo formFields={formFields} />
+          <Teamimg teamInfo={teamInfo}
+          id = {user.id}
+          />
+          <Teaminfo formFields={formFields}
+          id = {user.id}
+          team={user.myTeam} />
         </div>
       </div>
     </div>

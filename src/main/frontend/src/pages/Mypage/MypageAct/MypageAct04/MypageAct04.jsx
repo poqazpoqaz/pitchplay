@@ -48,7 +48,9 @@ const MypageAct04 = ({ gridArea }) => {
       <div className={styles.content}>
         <h1>마이페이지 &gt; 내 활동 &gt; 나의 팀</h1>
         <div className={styles.actbox}>
-          <Linkb />
+          <Linkb 
+          id = {user.id}
+          />
           {/* Calendar 컴포넌트에 onSelect를 전달 */}
           <Calendar onSelect={handleDateSelect} allData={matchingList} />
 

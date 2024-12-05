@@ -99,7 +99,7 @@ const PostsSection = ({ comments = [] }) => {
         </Box>
       ))}
       <BtnEnd>
-        <LinkButton to="/mypage/posts">더 보기</LinkButton>
+        <LinkButton to="/mypage/pitch123/commentinfo">더 보기</LinkButton>
       </BtnEnd>
     </Top1>
   );

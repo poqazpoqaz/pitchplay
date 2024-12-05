@@ -124,15 +124,15 @@ const Temp = styled.p`
 margin : 12px;
 `
 
-const Teamimg = ({ teamInfo }) => {
+const Teamimg = ({ teamInfo ,id }) => {
   return (
     <Container>
       <Gapgap>
         <li>
-          <LinkButton to="/mypage/pitch123/teamsection">팀 정보</LinkButton>
+          <LinkButton>팀 정보</LinkButton>
         </li>
         <li>
-          <LinkButton1 to="/mypage/pitch123/teamschedule">팀 일정</LinkButton1>
+          <LinkButton1 to={`/mypage/${id}/teamschedule`}>팀 일정</LinkButton1>
         </li>
       </Gapgap>
       <Top3Item>

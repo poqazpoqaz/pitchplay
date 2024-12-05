@@ -97,12 +97,12 @@ const MyPost = ({ contents = [] }) => {
           </div>
           <BoxCal>
             <p>{content?.date || '날짜 정보 없음'}</p>
-            <p>{`조회수: ${content?.viewCount || 0}`}</p>
+            <p>{`조회수: ${content?.views || 0}`}</p>
           </BoxCal>
         </Box>
       ))}
       <BtnEnd>
-        <LinkButton to="/mypage/posts">더 보기</LinkButton>
+        <LinkButton to="/mypage/pitch123/postinfo">더 보기</LinkButton>
       </BtnEnd>
     </Top1>
   );
