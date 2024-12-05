@@ -97,7 +97,13 @@ const AdminStadiumReservation = () => {
         setTotalPages(totalPages);
       }
     }, [dataList, stadiumData, currentPage, reservationNumber, selectedMonth]);
-
+    
+    useEffect(() => {
+      // 데이터 로딩이 완료되었을 때 현재 페이지가 1이 아니면 페이지를 1로 리셋
+      if (currentPage !== 1) {
+        navigate("?page=1");
+      }
+    }, [reservationNumber, selectedMonth]);
 
   const handlePageChange = (page) => {
     navigate(`?page=${page}`);

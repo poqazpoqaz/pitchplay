@@ -1,18 +1,13 @@
 import Modal from "../../../components/Modal/Modal";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { Table, TableCell, TableRow } from "../../../components/Table/Table";
 import Button from "../../../components/Button";
 import MatchingManagementSVG from "../../../../public/icons/matchingmanage.svg";
 import styles from "./index.module.css";
-import SelectorList, { Selector } from "../../../components/Accordion/SelectorList";
 import ConfirmationModal, {
   ConfirmationModalTrigger,
 } from "../../../components/ConfirmationModal/index";
-import useFetch from "../../../api/useFetch";
 import axios from "axios";
 import useMutate from "../../../api/useMutate";
-
-import { useState } from "react";
 
 const headers = {
   id: "매칭번호",

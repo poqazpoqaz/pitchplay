@@ -6,6 +6,18 @@
   gap: 8px;
 }
 
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.buttons>a{
+  display: block;
+  flex-grow: 1;
+}
+
 .modal-sub-header {
   display: flex;
   justify-content: space-around;
@@ -47,4 +59,9 @@
   justify-content: center;
   padding: 8px;
   gap: 32px;
+}
+
+.modal-header p, .modal-sub-header>p, .modal-footer{
+  font-weight: bold;
+  font-size: 0.9rem;
 }

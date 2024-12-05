@@ -12,15 +12,15 @@ const StyledLink = styled(motion.create(Link))`
     margin: 5px 0px;
 
     &:hover{
-    background: #ffffff;  // color가 없으면 기본 흰색
-    color: ${props => props.color}; // background color가 있으면 흰색, 없으면 검정색
+    background: ${props => props.color ? "#ffffff" : "var(--main-color)"};  // color가 없으면 기본 main색
+    color: ${props => props.color ? props.color : "#ffffff"}; // background color가 있으면 흰색, 없으면 검정색
     }
 `;
 // StyledButton 컴포넌트 정의
 const StyledButton = styled(motion.button)`
     width: 100%;
     height: 100%;
-    color: ${props => props.color ? '#ffffff' : '#000000'}; // background color가 있으면 흰색, 없으면 검정색
+    color: ${props => props.color ? '#ffffff' : 'var(--main-color)'}; // background color가 있으면 흰색, 없으면 검정색
     font-weight: bold;
     font-size: ${(props) => {
         switch (props.size) {
@@ -38,7 +38,8 @@ const StyledButton = styled(motion.button)`
     }};
 
     &:hover{
-    color: ${props => props.color}; // background color가 있으면 흰색, 없으면 검정색
+    color: ${props => props.color ? props.color : "#ffffff"}; // background color가 있으면 흰색, 없으면 검정색
+
     }
 
     /* 미디어 쿼리로 반응형 스타일 추가 */
