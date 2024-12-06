@@ -162,7 +162,7 @@ const ChargePage = ({
               <input 
                 type="checkbox" 
                 name="serviceTerms" 
-                checked={termsChecked.serviceTerms} 
+                checked={termsChecked.serviceTerms || false} 
                 onChange={handleTermsChange}
               /> 서비스 이용약관
             </TermItem>

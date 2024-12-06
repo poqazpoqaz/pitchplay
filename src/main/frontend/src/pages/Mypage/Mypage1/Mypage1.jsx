@@ -42,15 +42,15 @@ const Mypage1 = () => {
             setProfileImg(savedUser.profileImg); // base64 파일 가져오기
             setPreviewImage(savedUser.profileImg); // 미리보기 업데이트
         }
-    }, [user]);
+    }, []);
 
     const formFields = [
-        { label: "이름", name: "name", value: state.name, disabled: true },
-        { label: "닉네임", name: "nickname", value: state.nickname, disabled: false },
-        { label: "선호 지역", name: "region", value: state.favoriteCity, disabled: false },
-        { label: "선호 시간", name: "time", value: state.favoriteTime, disabled: false },
-        { label: "나의 팀", name: "team", value: state.myTeam, disabled: true },
-        { label: "소개하기", name: "intro", value: state.myDescription, disabled: false },
+        { label: "이름", name: "name", value: state.name || "", disabled: true },
+        { label: "닉네임", name: "nickname", value: state.nickname || "", disabled: false },
+        { label: "선호 지역", name: "region", value: state.favoriteCity || "", disabled: false },
+        { label: "선호 시간", name: "time", value: state.favoriteTime || "", disabled: false },
+        { label: "나의 팀", name: "team", value: state.myTeam || "", disabled: true },
+        { label: "소개하기", name: "intro", value: state.myDescription || "", disabled: false },
     ];
 
     // 이미지 변경 처리 (Base64로 변환)

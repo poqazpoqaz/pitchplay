@@ -141,13 +141,13 @@ const router = createBrowserRouter([
             path: "/stadium/:stadiumId",
             element: <StadiumDetail gridArea={"section"} />,
           },
+          { path: "/charge", element: <ChargeMain gridArea={"section"} /> },
+          { path: "/refund", element: <RefundPage gridArea={"section"} /> },
         ]
       },
-      { path: "/charge", element: <ChargeMain gridArea={"section"} /> },
 
 
-      { path: "/charge", element: <ChargePage gridArea={"section"} /> },
-      { path: "/refund", element: <RefundPage gridArea={"section"} /> },
+      // { path: "/charge", element: <ChargePage gridArea={"section"} /> },
       { path: "/history", element: <HistoryPage gridArea={"section"} /> },
       { path: "/Write", element: <WriteReport gridArea={"section"} /> },
     ]

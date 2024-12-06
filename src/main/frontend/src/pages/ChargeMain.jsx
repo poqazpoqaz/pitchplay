@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ChargePage from './ChargePage';
+import { useNavigate } from 'react-router-dom';
 
 const ChargeMain = ({ gridArea }) => {
   const [userCash, setUsercash] = useState(0);  // 유저의 캐시 상태
@@ -10,6 +11,8 @@ const ChargeMain = ({ gridArea }) => {
     privacyTerms: false,
     thirdPartyTerms: false,
   });  // 체크박스 상태 관리
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));  // localStorage에서 'user' 가져오기
@@ -65,6 +68,8 @@ const ChargeMain = ({ gridArea }) => {
   
     alert('충전 신청을 완료했습니다!');
     alert(`충전 금액: ${selectedAmount}\n총 보유 캐시: ${updatedCash}원`);
+
+    navigate('/mypage/:id');
   };
 
   return (

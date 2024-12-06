@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PriceButton from '../components/PriceButton/PriceButton';
+import { useNavigate } from 'react-router-dom';
 
 const mainColor = '#07550C';  // mainColor 변수 추가
+
 
 const Container = styled.div`
   padding: 30px;
@@ -122,6 +124,8 @@ const ChargePage = ({ gridArea }) => {
   const [userCash, setUsercash] = useState(0);
   const [name, setName] = useState("");
   const [account, setAccount] = useState("");  
+  const [accountNum, setAccountNum] = useState("");
+
   const [selectedBank, setSelectedBank] = useState('');  
   const [accountNumber, setAccountNumber] = useState('');  
   const [accountHolder, setAccountHolder] = useState('');  
@@ -134,7 +138,8 @@ const ChargePage = ({ gridArea }) => {
     if (user && user.userCash) {
       setUsercash(user.userCash);
       setName(user.name);
-      setAccount(user.account);  
+      setAccount(user.account);
+      setAccountNum(user.accountNum);  
     }
   }, []);
 
@@ -167,7 +172,7 @@ const ChargePage = ({ gridArea }) => {
     }
 
     // 3. 계좌번호 유효성 검사
-    if (!/^\d{10,20}$/.test(accountNumber)) {
+    if (!/^\d{10,20}$/.test(accountNum)) {
       setError('유효한 계좌번호를 입력해주세요.');
       return false;
     }
@@ -182,9 +187,25 @@ const ChargePage = ({ gridArea }) => {
     return true;
   };
 
+  const navigate = useNavigate();
   const handleSubmit = () => {
     if (validateForm()) {
+      // 환불 금액을 차감
+      const refund = Number(refundAmount);
+      const updatedUserCash = userCash - refund;
+  
+      // 로컬스토리지에서 사용자 정보를 가져와서 변경된 캐시 값을 저장
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        user.userCash = updatedUserCash; // 차감된 캐시 값으로 업데이트
+        localStorage.setItem('user', JSON.stringify(user)); // 로컬스토리지에 업데이트된 값 저장
+      }
+  
+      // 화면에서 바로 업데이트된 값 표시
+      setUsercash(updatedUserCash);
+  
       alert('환불 신청이 완료되었습니다.');
+      navigate('/mypage/:id');
     }
   };
 
@@ -195,30 +216,26 @@ const ChargePage = ({ gridArea }) => {
 
       <BorderLine />
       <InfoText>보유 캐시: {userCash} 캐시</InfoText>
-      <InfoText>예금주: {name}</InfoText>
-      <InfoText>환불은행: {account}</InfoText>
       <RedText1>만원 단위로만 환불 가능합니다.</RedText1>
 
-      <Dropdown value={selectedBank} onChange={handleBankChange}>
-        <option value="">은행을 선택하세요</option>
-        <option value="kakao">카카오뱅크</option>
-        <option value="shinhan">신한은행</option>
-        <option value="kb">KB국민은행</option>
-        <option value="nh">NH농협은행</option>
-        <option value="woori">우리은행</option>
-      </Dropdown>
+      <Input
+        type="text"
+        placeholder="환불 은행"
+        value={account}
+        onChange={handleAccountNumberChange}
+      /> 
 
       <Input
         type="text"
         placeholder="환불 계좌 번호"
-        value={accountNumber}
+        value={accountNum}
         onChange={handleAccountNumberChange}
-      />
+      /> 
       
       <Input
         type="text"
         placeholder="예금주"
-        value={accountHolder}
+        value={name}
         onChange={handleAccountHolderChange}
       />
 
