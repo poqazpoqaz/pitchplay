@@ -59,7 +59,7 @@ const MercenaryStatus = ({ pendingMembers }) => {
 
   return (
     <Top1>
-      <Subtitle>신청한 멤버 목록</Subtitle>
+      <Subtitle>신청한 용병 목록</Subtitle>
       {members.length === 0 ? (
         <p>대기 중인 멤버가 없습니다.</p>
       ) : (

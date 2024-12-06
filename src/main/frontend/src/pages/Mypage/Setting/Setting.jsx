@@ -11,6 +11,9 @@ import Log from './Log';
 const Setting = ({ gridArea }) => {
     const {id} = useParams();
     const {state , actions} = useStore();
+    const user = JSON.parse(localStorage.getItem('user'));
+
+
 
     const formFields = [
         { label: "아이디", name: "id", value: state.id}, 
@@ -41,7 +44,7 @@ const Setting = ({ gridArea }) => {
         <div style={{ gridArea }}>
             <div className={styles.content}>
                 <div className={styles.actbox}>
-                    <IniSet formFields={formFields}/>
+                    <IniSet formFields={formFields} id={user.id}/>
                     <PrivacySet/>   
                     <Log/>
                 </div>

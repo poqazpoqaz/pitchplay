@@ -91,7 +91,7 @@ const LinkButton = styled(Link)`
     transform: scale(1.05); /* 버튼 확대 효과 */
   }
 `;
-const Bottom = ({ formFields , id , team  }) => {
+const Bottom = ({ formFields , team ,id}) => {
   return (
     <BottomContainer>
       <Title>마이페이지 &gt; 팀 정보</Title>

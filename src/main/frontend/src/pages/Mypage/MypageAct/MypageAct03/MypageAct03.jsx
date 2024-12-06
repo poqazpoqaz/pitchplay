@@ -75,7 +75,7 @@ const MypageAct03 = ({ gridArea }) => {
           />
           <Teaminfo formFields={formFields}
           id = {user.id}
-          team={user.myTeam} />
+          team = {user.myTeam} />
         </div>
       </div>
     </div>

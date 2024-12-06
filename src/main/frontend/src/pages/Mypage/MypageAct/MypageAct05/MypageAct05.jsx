@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 import { useStore as TeamStore } from "../../../../stores/TeamStore/useStore";
 import axios from 'axios';
 import MoveButton from './MoveButton';
+import { useParams } from 'react-router-dom';
 
 
 const MypageAct05 = () => {
+  const {myTeam} = useParams();
   const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 'user' 가져오기
   const { state: teamState, actions: teamActions } = TeamStore();
 
@@ -56,8 +58,7 @@ const MypageAct05 = () => {
       .catch(err => {
         console.error("팀 데이터를 불러오는 중 오류 발생:", err);
       });
-  }, [user.myTeam]);
-
+  }, []);
 
   const handleRoleChange = (index, newRole) => {
     if (!isManager) return; // 매니저만 역할 변경 가능
@@ -100,6 +101,7 @@ const MypageAct05 = () => {
   return (
     <div>
       <h1 className={styles.titi}>팀원 목록</h1>
+
       <MemberList
         members={teamState.teamMember}
         handleRoleChange={handleRoleChange}

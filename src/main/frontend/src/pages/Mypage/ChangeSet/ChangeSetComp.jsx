@@ -1,0 +1,207 @@
+import React from 'react';
+import styled from 'styled-components';
+import { changePhone } from '../../../stores/UserStore/action';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+`;
+
+const FormField = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+`;
+
+const Label = styled.label`
+  font-size: 1.1rem;
+  color: #333;
+  width: 120px;
+`;
+
+const Input = styled.input`
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+  transition: border-color 0.3s ease;
+   margin-bottom: 0px;
+  
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+`;
+
+const Select = styled.select`
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 0 0 30%; /* 드롭다운은 30% */
+  max-width: 150px; /* 드롭다운의 최대 너비를 설정 */
+  margin-top : 15px;
+`;
+
+const Button = styled.button`
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px; /* 버튼 길이를 고정 */
+
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  &:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+`;
+
+const SubmitButton = styled(Button)`
+  align-self: center;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
+`;
+
+const ChangeSetComp = ({
+  openPasswordModal,
+  sendAuthCode,
+  verifyAuthCode,
+  authCode,
+  newEmail,
+  setNewEmail,
+  emailChangeModal,
+  handleSubmitInfo,
+  newPhone,
+  setNewPhone,
+  newbirth,
+  setNewBirth,
+  newAccount,
+  setNewAccount,
+  newAccountNum,
+  setNewAccountNum,
+  setAuthCode,
+  userState
+
+  
+}) => {
+  return (
+    
+    <Container>
+
+      {/* 아이디 변경 */}
+      <FormField>
+        <Label>아이디</Label>
+        <Input 
+          type="text" 
+          value={userState.id} 
+        />
+      </FormField>
+
+      {/* 비밀번호 변경 (모달 호출) */}
+      <FormField>
+        <Label>비밀번호</Label>
+        <Input 
+          type="password" 
+          value={userState.password} // 비밀번호 필드 업데이트
+        />
+        <Button onClick={() => openPasswordModal()}>비밀번호 재설정</Button>
+      </FormField>
+
+      {/* 이메일 변경 */}
+      <FormField>
+        <Label>기존 이메일</Label>
+        <Input 
+          type="email" 
+          value={userState.email} 
+        />
+        <Button onClick={sendAuthCode}>인증번호 발송</Button>
+      </FormField>
+
+      {/* 인증번호 입력 */}
+      <FormField>
+        <Label>인증번호</Label>
+        <Input 
+          type="text" 
+          value={authCode} 
+          onChange={(e) => setAuthCode(e.target.value)} 
+        />
+        <Button onClick={verifyAuthCode}>인증하기</Button>
+      </FormField>
+
+      {/* 이메일 변경 모달 */}
+      {emailChangeModal && (
+        <div className="email-change-modal">
+          <h2>이메일 변경</h2>
+          <Input
+            type="email"
+            value={userState.email}
+            onChange={(e) => setNewEmail(e.target.value)}
+            placeholder="새 이메일 입력"
+          />
+        </div>
+      )}
+
+      {/* 휴대폰 번호 */}
+      <FormField>
+        <Label>휴대폰 번호</Label>
+        <Input 
+          type="text" 
+          value={newPhone} 
+          onChange={(e) => setNewPhone(e.target.value)} 
+        />
+      </FormField>
+
+      {/* 생년월일 */}
+      <FormField>
+        <Label>생년월일</Label>
+        <Input 
+          type="text" 
+          value={newbirth} 
+          onChange={(e) => setNewBirth(e.target.value)} 
+        />
+      </FormField>
+
+      {/* 등록 계좌 */}
+      <FormField>
+        <Label>등록 계좌</Label>
+        <Select 
+          value={newAccount} 
+          onChange={(e) => setNewAccount(e.target.value)}
+        >
+          <option value="계좌1">계좌1</option>
+          <option value="계좌2">계좌2</option>
+          <option value="계좌3">계좌3</option>
+        </Select>
+        <Input 
+          type="text" 
+          value={newAccountNum} 
+          onChange={(e) => setNewAccountNum(e.target.value)} 
+          style={{flex: 1}}
+        />
+      </FormField>
+
+      {/* 수정 완료 버튼 */}
+      <SubmitButton onClick={handleSubmitInfo}>수정 완료</SubmitButton>
+    </Container>
+  );
+};
+
+export default ChangeSetComp;

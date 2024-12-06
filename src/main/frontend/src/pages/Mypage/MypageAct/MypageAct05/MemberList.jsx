@@ -151,9 +151,10 @@ const MemberList = ({ dropdownOpen, members, handleRoleChange, handleDelete, not
 
   return (
     <>
+
       <Notification visible={notification !== ''}>{notification}</Notification>
       <Container>
-        {members.map((member, index) => (
+        {members && members.map((member, index) => (
           <MemberBox key={index}>
             <OptionsButton onClick={() => handleDropdownToggle(index)}>
               <span></span>

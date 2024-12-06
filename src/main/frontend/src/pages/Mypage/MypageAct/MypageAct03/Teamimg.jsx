@@ -124,7 +124,7 @@ const Temp = styled.p`
 margin : 12px;
 `
 
-const Teamimg = ({ teamInfo ,id }) => {
+const Teamimg = ({ teamInfo ,id, }) => {
   return (
     <Container>
       <Gapgap>

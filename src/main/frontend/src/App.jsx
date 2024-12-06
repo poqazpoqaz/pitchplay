@@ -44,6 +44,8 @@ import NoticeBoardWrite from "./pages/AdminNoticeBoard/NoticeBoardWrite/NoticeBo
 import AdminPaymentManagement from "./pages/AdminPaymentManagement/AdminPaymentManagement";
 
 // 새로 추가된 페이지
+import ChargePage from "./pages/ChargePage";
+import RefundPage from "./pages/RefundPage";
 import HistoryPage from "./pages/HistoryPage";
 import Community1 from './pages/Mypage/Community/Community1/Community1';
 import Setting from './pages/Mypage/Setting/Setting';
@@ -53,6 +55,7 @@ import AppMangement from './pages/Mypage/TeamSet/AppManagement';
 import AdminMatchingManagement from './pages/AdminMatchingManagement/AdminMatchingManagement';
 import ChargeMain from './pages/ChargeMain';
 import RefundMain from './pages/RefundMain';
+import ChangeSetting from './pages/Mypage/ChangeSet/ChangeSetting';
 
 const router = createBrowserRouter([
   {
@@ -100,12 +103,13 @@ const router = createBrowserRouter([
           { path: "records", element: <MypageAct02 gridArea={"section"} /> },
           { path: "teamsection", element: <MypageAct03 gridArea={"section"} /> },
           { path: "teamschedule", element: <MypageAct04 gridArea={"section"} /> },
-          { path: ":teamCode/members", element: <MypageAct05 gridArea={"section"} /> },
+          { path: ":myTeam/members", element: <MypageAct05 gridArea={"section"} /> },
           { path: "posts" , element : <Community1 gridArea={"section"}/>},
           { path: "setting" , element : <Setting gridArea={"section"}/> },
           { path: "commentinfo" , element : <CommentInfo gridArea={"section"}/>},
           { path: "postinfo", element : <PostInfo gridArea={"section"}/>},
-          { path: ":teamCode/members/appmange" , element : <AppMangement gridArea={"section"}/>  }
+          { path: ":teamCode/members/appmange" , element : <AppMangement gridArea={"section"}/>  },
+          { path: "changeset" , element : <ChangeSetting gridArea={"section"}/>}
         ]
       },
       {

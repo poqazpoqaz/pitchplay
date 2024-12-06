@@ -83,7 +83,7 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const IniSet = ({ formFields }) => {
+const IniSet = ({ formFields, id }) => {
   return (
     <BottomContainer>
       <Title>마이페이지 &gt; 내정보</Title>
@@ -99,7 +99,7 @@ const IniSet = ({ formFields }) => {
         ))}
       </FormList>
       <BtnEnd>
-        <LinkButton to="/mapage">수정하기</LinkButton>
+        <LinkButton to={`/mypage/${id}/changeset`}>수정하기</LinkButton>
       </BtnEnd>
     </BottomContainer>
   );
