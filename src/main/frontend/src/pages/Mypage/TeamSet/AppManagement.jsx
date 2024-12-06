@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import styles from "./AppManagement.module.css";
 import AppStatus from "./AppStatus";
+import MercenaryStatus from "./MercenaryStatus";
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import MercenaryStatus from "./MercenaryStatus";
 import { useStore as TeamStore } from "../../../stores/TeamStore/useStore";
 import { useStore as UserStore } from "../../../stores/UserStore/useStore";
+import { useStore as CollectionStore} from "../../../stores/CollectionStore/useStore";
 
 
 
@@ -13,6 +14,8 @@ const AppMangement = ({ gridArea }) => {
   const { teamCode } = useParams();  // URL에서 팀 이름 가져오기
   const [pendingMembers, setPendingMembers] = useState([]);
   const [pendingMemberList, setPendinMemberList] = useState([]);
+  const [mercenaryMembers, setMercenaryMembers] = useState([]);
+  const [mercenaryMemberList, setMercenaryMemberList] = useState([]);
   const [userData, setUserData] = useState([]); // 사용자 데이터 상태 추가
 
   const {state : userState ,actions: userActions} = UserStore();
@@ -66,6 +69,27 @@ const AppMangement = ({ gridArea }) => {
     .catch(err => {
       console.error("Error fetching user data:", err);
     },[pendingMembers]);
+
+    axios.get("/data/collectionsData.json")
+      .then(response => {
+        const datas = response.data; // 사용자 데이터
+      const arr = []; // 결과 배열
+      mercenaryMembers.forEach(member => {
+        const user = datas.find(user => user.nuckname === member.mercenarynickname);
+
+        if(user) {
+          arr.push({
+            mercenarynickname: user.nickname,
+            description: user.myDescription || '정보 없음', // description이 없으면 '정보 없음'으로 설정
+            profileImg: user.profileImg || '/default-profile.jpg', // profileImg가 없으면 기본 이미지 설정
+            applicationDate: member.applicationDate // 팀 데이터에서 가져온 applicationDate
+          });
+        }
+      });
+      setMercenaryMemberList(arr);
+      })
+
+
 
     const onApprove = (member) => {
       axios.get("/data/userData.json")

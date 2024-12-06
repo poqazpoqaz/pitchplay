@@ -53,9 +53,9 @@ const ProfileImg = styled.img`
   margin-right: 20px;
 `;
 
-const MercenaryStatus = ({ pendingMembers }) => {
-  // pendingMembers가 배열이 아니면 빈 배열로 설정
-  const members = Array.isArray(pendingMembers) ? pendingMembers : [];
+const MercenaryStatus = ({ mercenaryMembers }) => {
+  // mercenaryMembers가 배열이 아니면 빈 배열로 설정
+  const members = Array.isArray(mercenaryMembers) ? mercenaryMembers : [];
 
   return (
     <Top1>
