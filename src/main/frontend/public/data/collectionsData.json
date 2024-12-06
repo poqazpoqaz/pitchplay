@@ -16,24 +16,24 @@
         "writtenDate": "2024-11-01",
         "teamSize": "5vs5",
         "stadiumId": "S231030140754182439",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "태환짱",
+                "mercenarynickname": "태환짱",
                 "applicationDate": "2024-12-01",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "수현짱",
+                "mercenarynickname": "수현짱",
                 "applicationDate": "2024-12-02",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "정우짱",
+                "mercenarynickname": "정우짱",
                 "applicationDate": "2024-12-03",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     },
@@ -54,12 +54,12 @@
         "writtenDate": "2024-11-05",
         "teamSize": "6vs6",
         "stadiumId": "S231030133625219222",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "태영왕",
+                "mercenarynickname": "태영왕",
                 "applicationDate": "2024-12-01",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     },
@@ -80,24 +80,24 @@
         "writtenDate": "2024-11-10",
         "teamSize": "4vs4",
         "stadiumId": "S231030111024981371",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "태영왕",
+                "mercenarynickname": "태영왕",
                 "applicationDate": "2024-12-01",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "지혜짱",
+                "mercenarynickname": "지혜짱",
                 "applicationDate": "2024-12-02",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "주희짱",
+                "mercenarynickname": "주희짱",
                 "applicationDate": "2024-12-03",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     },
@@ -118,24 +118,24 @@
         "writtenDate": "2024-11-12",
         "teamSize": "5vs5",
         "stadiumId": "S231030134311132377",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "상훈이",
+                "mercenarynickname": "상훈이",
                 "applicationDate": "2024-12-01",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "윤지짱",
+                "mercenarynickname": "윤지짱",
                 "applicationDate": "2024-12-02",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "지영이",
+                "mercenarynickname": "지영이",
                 "applicationDate": "2024-12-03",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     },
@@ -156,24 +156,24 @@
         "writtenDate": "2024-11-15",
         "teamSize": "7vs7",
         "stadiumId": "S231030130758753552",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "선영이",
+                "mercenarynickname": "선영이",
                 "applicationDate": "2024-12-01",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "상민이",
+                "mercenarynickname": "상민이",
                 "applicationDate": "2024-12-02",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "민경이",
+                "mercenarynickname": "민경이",
                 "applicationDate": "2024-12-03",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     },
@@ -194,12 +194,12 @@
         "writtenDate": "2024-11-20",
         "teamSize": "5vs5",
         "stadiumId": "S231030140040048038",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "태영왕",
+                "mercenarynickname": "태영왕",
                 "applicationDate": "2024-12-01",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     },
@@ -220,7 +220,7 @@
         "writtenDate": "2024-11-25",
         "teamSize": "6vs6",
         "stadiumId": "S231030132351965734",
-        "pendingMembers": [
+        "mercenaryMembers": [
            
         ]
     },
@@ -241,12 +241,12 @@
         "writtenDate": "2024-11-30",
         "teamSize": "5vs5",
         "stadiumId": "S231030135040772952",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "정우짱",
+                "mercenarynickname": "정우짱",
                 "applicationDate": "2024-12-03",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     },
@@ -267,12 +267,12 @@
         "writtenDate": "2024-11-18",
         "teamSize": "5vs5",
         "stadiumId": "S241021160113171621",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "지혜짱",
+                "mercenarynickname": "지혜짱",
                 "applicationDate": "2024-12-02",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     },
@@ -293,24 +293,24 @@
         "writtenDate": "2024-11-22",
         "teamSize": "6vs6",
         "stadiumId": "S241119104108577215",
-        "pendingMembers": [
+        "mercenaryMembers": [
             {
-                "pendingnickname": "상훈이",
+                "mercenarynickname": "상훈이",
                 "applicationDate": "2024-12-01",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "윤지짱",
+                "mercenarynickname": "윤지짱",
                 "applicationDate": "2024-12-02",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             },
             {
-                "pendingnickname": "지영이",
+                "mercenarynickname": "지영이",
                 "applicationDate": "2024-12-03",
                 "profileImg": "/imgs/1.jpg",
-                "applicationstatus": "pending"
+                "applicationstatus": "mercenary"
             }
         ]
     }
