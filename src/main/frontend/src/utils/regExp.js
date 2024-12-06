@@ -37,3 +37,5 @@ export const TeamDescriptionPattern = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣\s]{0,300}$/;
 
 // 모집 게시글 유효성 검사 정규표현식 ( 100~ 2000자 ) 
 export const postDescriptionPattern = /^.{100,2000}$/;
+// 계좌 번호 유효성 검사 정규표현식
+export const accountNum = /^\d{8,30}$/;
