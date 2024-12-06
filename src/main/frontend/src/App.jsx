@@ -44,8 +44,6 @@ import NoticeBoardWrite from "./pages/AdminNoticeBoard/NoticeBoardWrite/NoticeBo
 import AdminPaymentManagement from "./pages/AdminPaymentManagement/AdminPaymentManagement";
 
 // 새로 추가된 페이지
-import ChargePage from "./pages/ChargePage";
-import RefundPage from "./pages/RefundPage";
 import HistoryPage from "./pages/HistoryPage";
 import Community1 from './pages/Mypage/Community/Community1/Community1';
 import Setting from './pages/Mypage/Setting/Setting';
@@ -54,6 +52,7 @@ import PostInfo from './pages/Mypage/Community/Community2/PostInfo';
 import AppMangement from './pages/Mypage/TeamSet/AppManagement';
 import AdminMatchingManagement from './pages/AdminMatchingManagement/AdminMatchingManagement';
 import ChargeMain from './pages/ChargeMain';
+import RefundMain from './pages/RefundMain';
 
 const router = createBrowserRouter([
   {
@@ -142,12 +141,11 @@ const router = createBrowserRouter([
             element: <StadiumDetail gridArea={"section"} />,
           },
           { path: "/charge", element: <ChargeMain gridArea={"section"} /> },
-          { path: "/refund", element: <RefundPage gridArea={"section"} /> },
+          { path: "/refund", element: <RefundMain gridArea={"section"} /> },
         ]
       },
 
 
-      // { path: "/charge", element: <ChargePage gridArea={"section"} /> },
       { path: "/history", element: <HistoryPage gridArea={"section"} /> },
       { path: "/Write", element: <WriteReport gridArea={"section"} /> },
     ]

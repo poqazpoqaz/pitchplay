@@ -15,25 +15,13 @@ const Mypage1 = () => {
     const [previewImage, setPreviewImage] = useState(null);
     const [profileImg, setProfileImg] = useState(null);
 
+
     const { state, actions } = useStore();
 
     // 해당하는 userid에 속하는 user 정보 설정 
     useEffect(() => {
         if (user) {
-            actions.changeUserNumber(user.userNumber);
-            actions.changeName(user.name);
-            actions.changeNickname(user.nickname);
-            actions.changeProfileImg(user.profileImg);
-            actions.changeBirthday(user.birthday);
-            actions.changeEmail(user.email);
-            actions.changePhone(user.phone);
-            actions.changeId(user.id);
-            actions.changePassword(user.password);
-            actions.changeFavoriteCity(user.favoriteCity);
-            actions.changeUserCash(user.userCash);
-            actions.changeFavoriteTime(user.favoriteTime);
-            actions.changeMyTeam(user.myTeam);
-            actions.changeMyDescription(user.myDescription);
+            actions.updateAllFields(user)
         }
         // 로컬스토리지에서 profileImg가 있으면 불러오기
         const savedUser = JSON.parse(localStorage.getItem("user"));
@@ -78,16 +66,16 @@ const Mypage1 = () => {
     // 이미지 업로드 처리
     const handleFileUpload = async () => {
         if (fileInput) {
-            // localStorage에서 user 정보 가져오기
-            const user = JSON.parse(localStorage.getItem("user"));
+            // 1. 기존 user 데이터를 로컬스토리지에서 가져옴
+            const savedUser = JSON.parse(localStorage.getItem("user"));
 
-            // Base64 이미지를 localStorage에 저장
-            user.profileImg = fileInput; // Base64 이미지 저장
+            // 2. 기존 데이터에 새로 업로드한 이미지를 병합
+            const updatedUser = { ...savedUser, profileImg: fileInput };
 
-            // 업데이트된 user 정보를 다시 localStorage에 저장
-            localStorage.setItem("user", JSON.stringify(user));
+            // 3. 병합된 데이터를 로컬스토리지에 저장
+            localStorage.setItem("user", JSON.stringify(updatedUser));
 
-            // 상태 업데이트 (미리보기와 이미지 상태 바로 반영)
+            // 4. 상태 업데이트 (미리보기와 이미지 상태 바로 반영)
             setProfileImg(fileInput); // profileImg 상태 업데이트
             setPreviewImage(fileInput); // previewImage 상태 업데이트
             actions.changeProfileImg(fileInput); // store에도 업데이트
@@ -96,7 +84,6 @@ const Mypage1 = () => {
             setFileInput(null);
         }
     };
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
@@ -105,17 +92,30 @@ const Mypage1 = () => {
         else if (name === "region") actions.changeFavoriteCity(value);
         else if (name === "time") actions.changeFavoriteTime(value);
         else if (name === "intro") actions.changeMyDescription(value);
+
     };
-
     const toggleEdit = async () => {
-        setIsEditable(!isEditable);
-
-        // 편집 상태가 끝나면 userState를 로컬스토리지에 저장
-        if (!isEditable) {
-            // 전체 상태 저장
-            localStorage.setItem("user", JSON.stringify(state));
-        };
-    }
+        const newEditableState = !isEditable;
+        setIsEditable(newEditableState);
+    
+        // 편집이 끝났을 때 로컬스토리지에 저장
+        if (!newEditableState) {
+            // 1. 로컬스토리지에서 기존 데이터를 가져오기
+            const savedUser = JSON.parse(localStorage.getItem('user'));
+    
+            // 2. 변경된 값을 기반으로 새로운 객체 생성
+            const updatedUser = {
+                ...savedUser, // 기존 값 유지
+                nickname: state.nickname, // 최신 nickname 값
+                favoriteCity: state.favoriteCity, // 최신 region 값
+                favoriteTime: state.favoriteTime, // 최신 time 값
+                myDescription: state.myDescription, // 최신 intro 값
+            };
+    
+            // 3. 새로운 데이터를 로컬스토리지에 저장
+            localStorage.setItem('user', JSON.stringify(updatedUser));
+        }
+    };
 
     return (
         <div>
