@@ -7,7 +7,7 @@ const DropdownWrapper = styled.div`
   position: relative;
   z-index: 200;
   width: 100%;
-`;
+  `;
 
 // 드롭다운 버튼 스타일
 const DropdownButton = styled.div`
@@ -22,6 +22,7 @@ const DropdownButton = styled.div`
   align-items: center;
   font-size: 0.9rem;
   overflow: hidden;
+  white-space: nowrap; 
 
   &:hover {
     border-color: #888;
@@ -44,7 +45,7 @@ const DropdownList = styled(motion.div)`
   z-index: 100;
   margin-top: 3px;
   overflow-y : auto;
-
+  white-space: nowrap; /* 텍스트가 줄 바꿈 없이 한 줄로 유지됨 */
 `;
 
 // 드롭다운 항목 스타일
@@ -54,6 +55,7 @@ const DropdownItem = styled.div`
   color: #333;
   cursor: pointer;
   font-size: 0.9rem;
+  white-space: nowrap; /* 텍스트가 줄 바꿈 없이 한 줄로 유지됨 */
 
   &:hover {
     background-color: #f0f0f0;
@@ -79,7 +81,7 @@ function Dropdown({ options, selected, onChange, text, gridArea }) {
   };
 
   return (
-    <DropdownWrapper style={{ gridArea: gridArea }}>
+    <DropdownWrapper style={{gridArea: gridArea}}>
       <DropdownButton onClick={handleToggle}>
         {selected ? selected : `${text}`}
         {/* 화살표 아이콘 */}

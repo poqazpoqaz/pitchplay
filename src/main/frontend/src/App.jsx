@@ -39,8 +39,9 @@ import Dashboard from "./pages/AdminPageDashboard/Dashboard";
 import AdminMemeberManagement from './pages/AdminMemberManagement/AdminMemberManagement';
 import AdminTeamManagement from "./pages/AdminTeamManagement/AdminTeamManagement";
 import AdminStadiumReservation from './pages/AdminStadiumManagement/AdminStadiumManagement';
-import AdminNoticeBoard from "./pages/AdminNoticeBoard/AdminNoticeBoard"
-import NoticeBoardWrite from "./pages/AdminNoticeBoard/NoticeBoardWrite/NoticeBoardWrite"
+import AdminNoticeBoard from "./pages/AdminNoticeBoard/AdminNoticeBoard";
+import NoticeBoardWrite from "./pages/AdminNoticeBoard/NoticeBoardWrite/NoticeBoardWrite";
+import AdminPaymentManagement from "./pages/AdminPaymentManagement/AdminPaymentManagement";
 
 // 새로 추가된 페이지
 import ChargePage from "./pages/ChargePage";
@@ -118,9 +119,9 @@ const router = createBrowserRouter([
           {path: "stadium-reservation/:id?", element: <AdminStadiumReservation gridArea={"section"} />},
           {path: "notice-board", element: <AdminNoticeBoard gridArea={"section"} />},
           {path: "notice-board/write", element: <NoticeBoardWrite gridArea={"section"} />},
+          {path: "payment-management", element: <AdminPaymentManagement gridArea={"section"} />}
             ],
           },
-          // {path: "payment-management/:id?", element: <AdminPaymentManagement gridArea={"section"} />}
 
           {
             path: "/notices",

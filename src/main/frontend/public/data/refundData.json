@@ -1,6 +1,7 @@
 [
   {
     "refundId": "REF001",
+    "paymentDate": "2024-11-01",
     "orderId": "ORD001",
     "refundDate": "2024-11-02",
     "refundAmount": 120000,
@@ -10,6 +11,7 @@
   },
   {
     "refundId": "REF002",
+    "paymentDate": "2024-11-02",
     "orderId": "ORD002",
     "refundDate": "2024-11-03",
     "refundAmount": 75000,
@@ -19,15 +21,17 @@
   },
   {
     "refundId": "REF003",
+    "paymentDate": "2024-11-03",
     "orderId": "ORD003",
     "refundDate": "2024-11-04",
     "refundAmount": 250000,
     "refundtype": "캐쉬",
-    "refundStatus": "완료",
+    "refundStatus": "환불대기",
     "userId": "garam456"
   },
   {
-    "refundId": "REF004",
+    "refundId": "REF004",    
+    "paymentDate": "2024-11-04",
     "orderId": "ORD004",
     "refundDate": "2024-11-05",
     "refundAmount": 300000,
@@ -37,6 +41,7 @@
   },
   {
     "refundId": "REF005",
+    "paymentDate": "2024-11-05",
     "orderId": "ORD005",
     "refundDate": "2024-11-06",
     "refundAmount": 100000,
@@ -46,6 +51,7 @@
   },
   {
     "refundId": "REF006",
+    "paymentDate": "2024-11-06",
     "orderId": "ORD006",
     "refundDate": "2024-11-07",
     "refundAmount": 50000,
@@ -55,6 +61,7 @@
   },
   {
     "refundId": "REF007",
+    "paymentDate": "2024-11-07",
     "orderId": "ORD007",
     "refundDate": "2024-11-08",
     "refundAmount": 150000,
@@ -64,15 +71,17 @@
   },
   {
     "refundId": "REF008",
+    "paymentDate": "2024-11-08",
     "orderId": "ORD008",
     "refundDate": "2024-11-09",
     "refundAmount": 200000,
     "refundtype": "캐쉬",
-    "refundStatus": "취소",
+    "refundStatus": "환불대기",
     "userId": "daeun1122"
   },
   {
     "refundId": "REF009",
+    "paymentDate": "2024-11-09",
     "orderId": "ORD009",
     "refundDate": "2024-11-10",
     "refundAmount": 175000,
@@ -82,6 +91,7 @@
   },
   {
     "refundId": "REF010",
+    "paymentDate": "2024-11-10",
     "orderId": "ORD010",
     "refundDate": "2024-11-11",
     "refundAmount": 120000,
@@ -92,6 +102,7 @@
   {
     "refundId": "REF011",
     "orderId": "ORD011",
+    "paymentDate": "2024-11-11",
     "refundDate": "2024-11-12",
     "refundAmount": 220000,
     "refundtype": "구장",
@@ -101,15 +112,17 @@
   {
     "refundId": "REF012",
     "orderId": "ORD012",
+    "paymentDate": "2024-11-12",
     "refundDate": "2024-11-13",
     "refundAmount": 180000,
     "refundtype": "캐쉬",
-    "refundStatus": "취소",
+    "refundStatus": "환불대기",
     "userId": "minsu2233"
   },
   {
     "refundId": "REF013",
     "orderId": "ORD013",
+    "paymentDate": "2024-12-01",
     "refundDate": "2024-12-01",
     "refundAmount": 130000,
     "refundtype": "구장",
@@ -119,6 +132,7 @@
   {
     "refundId": "REF014",
     "orderId": "ORD014",
+    "paymentDate": "2024-12-02",
     "refundDate": "2024-12-02",
     "refundAmount": 80000,
     "refundtype": "캐쉬",
@@ -127,7 +141,8 @@
   },
   {
     "refundId": "REF015",
-    "orderId": "ORD015",
+    "orderId": "ORD015",    
+    "paymentDate": "2024-12-03",
     "refundDate": "2024-12-03",
     "refundAmount": 300000,
     "refundtype": "구장",
@@ -137,6 +152,7 @@
   {
     "refundId": "REF016",
     "orderId": "ORD016",
+    "paymentDate": "2024-12-04",
     "refundDate": "2024-12-04",
     "refundAmount": 450000,
     "refundtype": "캐쉬",
@@ -146,6 +162,7 @@
   {
     "refundId": "REF017",
     "orderId": "ORD017",
+    "paymentDate": "2024-12-05",
     "refundDate": "2024-12-05",
     "refundAmount": 60000,
     "refundtype": "캐쉬",
@@ -155,6 +172,7 @@
   {
     "refundId": "REF018",
     "orderId": "ORD018",
+    "paymentDate": "2024-12-06",
     "refundDate": "2024-12-06",
     "refundAmount": 95000,
     "refundtype": "캐쉬",
@@ -164,6 +182,7 @@
   {
     "refundId": "REF019",
     "orderId": "ORD019",
+    "paymentDate": "2024-12-07",
     "refundDate": "2024-12-07",
     "refundAmount": 180000,
     "refundtype": "구장",
@@ -173,6 +192,7 @@
   {
     "refundId": "REF020",
     "orderId": "ORD020",
+    "paymentDate": "2024-12-02",
     "refundDate": "2024-12-08",
     "refundAmount": 250000,
     "refundtype": "캐쉬",
@@ -182,6 +202,7 @@
   {
     "refundId": "REF021",
     "orderId": "ORD021",
+    "paymentDate": "2024-12-02",
     "refundDate": "2024-12-09",
     "refundAmount": 160000,
     "refundtype": "구장",
@@ -191,6 +212,7 @@
   {
     "refundId": "REF022",
     "orderId": "ORD022",
+    "paymentDate": "2024-12-02",
     "refundDate": "2024-12-10",
     "refundAmount": 120000,
     "refundtype": "캐쉬",
@@ -200,6 +222,7 @@
   {
     "refundId": "REF023",
     "orderId": "ORD023",
+    "paymentDate": "2024-12-02",
     "refundDate": "2024-12-11",
     "refundAmount": 240000,
     "refundtype": "구장",
@@ -209,6 +232,7 @@
   {
     "refundId": "REF024",
     "orderId": "ORD024",
+    "paymentDate": "2024-12-02",
     "refundDate": "2024-12-12",
     "refundAmount": 130000,
     "refundtype": "캐쉬",

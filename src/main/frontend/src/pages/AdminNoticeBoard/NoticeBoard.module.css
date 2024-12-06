@@ -33,3 +33,44 @@
   margin-top: 20px;
 }
 
+/* 1024px 이하에서 적용될 스타일 */
+@media (max-width: 1024px) {
+  .container {
+    grid-template: 
+    'title' 50px
+    'drop' 30px
+    'table' 1fr / 1fr;
+
+    justify-content: center;
+  }
+
+  .container > div:nth-of-type(1) {
+    grid-template: 
+    'inp1 inp2 inp3 inp4 btn btn2' 50px /1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  .table-pagination-container {
+    gap: 30px;
+  }
+}
+
+/* 760px 이하에서 적용될 스타일 */
+@media (max-width: 760px) {
+  .container {
+    grid-template: 
+    'title' 50px
+    'drop' 30px
+    'table' 1fr / 1fr;
+  }
+
+  .container > div:nth-of-type(1) {
+    grid-template: 
+    'inp1 inp2 inp3 inp4 btn btn2' 50px /1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+  }
+
+  .table-pagination-container {
+    gap: 20px;
+  }
+}

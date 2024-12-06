@@ -1,185 +1,138 @@
-// import Modal from "../../../components/Modal/Modal";
-// import {
-//   useLocation,
-//   useParams,
-//   useNavigate,
-//   useSearchParams,
-// } from "react-router-dom";
-// // import Button from "../../../components/Button";
-// // import styles from "./ReportModal.module.css";
-// // import { categoryMap } from "../AdminNoticeBoard";
+import Modal from "../../../components/Modal/Modal";
+import Button from "../../../components/Button";
+import styles from "./ReportModal.module.css";
+import ConfirmationModal, {
+  ConfirmationModalTrigger,
+} from "../../../components/ConfirmationModal/index";
+import ReplyModal, {ReplyModalTrigger} from "./ReplyModal";
+import { useState } from "react";
 
-// // import ReplyModal, { ReplyModalTrigger } from "./ReplyModal";
-// // import ConfirmationModal from "../../../components/ConfirmationModal/index";
-// import useFetch from "../../api/useFetch";
-// import axios from "../../../../../node_modules/axios/index";
-// import useMutate from "./../../api/useMutate";
-// // import BoardManagementSVG from "../../svg/boardmanage.svg";
+const AdminReportModal = ({ isOpen, closeModal, faqState, faqActions }) => {
 
-const AdminReportModal = () => {
-  // const path = useLocation().pathname;
-  // const params = useParams().id;
-  // const openModal = !!params;
-  // const navigate = useNavigate();
+  const handleDelete = () => {
+    closeModal();
+    // 백 연동시에는 axios.delete
+  }
 
-  // /**@type {"announcement" | "report"} */
-  // const category = useSearchParams()[0].get("category");
+  const handleDeleteComment = (index) => {
+    const updatedComments = faqState.comments.filter((_, i) => i !== index);
+    // 상태 업데이트
+    faqActions.changeComment(updatedComments); // faqState 동기화
+  };
 
-  // const { data: postData, isLoading: isLoadingPostData } = useFetch(() =>
-  //   axios.get(`/data/api/reportData.json`)
-  // );
-  // const { data: commentData, isLoading: isLoadingCommentData } = useFetch(() =>
-  //   axios.get(`/data/api/commentListData.json`)
-  // );
+  const handleReplyPost = () => {
+    // axios post로 답 보내는 로직 
+    closeModal();
+  };
 
-  // const { mutate: deletePost } = useMutate((args) =>
-  //   axios.delete(`/data/api/reportData.json/${args.param}`, args.options)
-  // );
+    const handleReplyComment = (index, replyContent) => {
+      const replyComment = {
+        userNickname: "관리자",
+        comment: `답변: ${replyContent}`,
+      };
 
-  // const { mutate: deleteComment } = useMutate((args) =>
-  //   axios.delete(`/data/api/commentListData.json/${args.param}`, args.options)
-  // );
-
-  // const { mutate: replyPost } = useMutate((options) =>
-  //   axios.post(`/data/api/reportData.json`, options)
-  // );
-
-  // const { mutate: replyComment } = useMutate((options) =>
-  //   axios.post(`/data/api/commentListData.json`, options)
-  // );
-
-  // if (isLoadingPostData || isLoadingCommentData) {
-  //   return <div>로딩중...</div>;
-  // }
-
-  // if (category !== "report") return null;
-
-  // const handleDeletePost = () => {
-  //   deletePost({ param: postData.id, options: {} });
-  // };
-
-  // const handleDeleteComment = () => {
-  //   deleteComment({ param: commentData.id, options: {} });
-  // };
-
-  // const handleReplyPost = (content) => {
-  //   replyPost({ content });
-  // };
-
-  // const handleReplyComment = (content) => {
-  //   replyComment({ content });
-  // };
-
-  // const handleMainModalClose = () => {
-  //   const prevPath = path.split("/").slice(0, -1).join("/");
-  //   navigate(prevPath);
-  // };
+      // faqState.comments 업데이트
+      const updatedFaqComments = faqState.comments.map((comment, i) => comment);
+      updatedFaqComments.splice(index + 1, 0, replyComment); // 동일하게 특정 위치에 삽입
+      faqActions.changeComment(updatedFaqComments); // 상태 업데이트
+    };
 
   return (
-    <>
-      <Modal isOpen={openModal} closeModal={handleMainModalClose}>
-        {/* <div className={styles["modal-content"]}>
-          <div>
-            <h2 className={styles["modal-header"]}>
-              <img
-                src={BoardManagementSVG}
-                style={{
-                  width: "24px",
-                  height: "24px",
-                }}
-              />
-              <h5>FAQ 상세페이지</h5>
-            </h2>
-            <div className={styles["modal-sub-header"]}>
-              <h4>[{categoryMap[category]}] 게시판</h4>
-            </div>
+    <Modal isOpen={isOpen} closeModal={closeModal}>
+      <div className={styles["modal-content"]}>
+        <div>
+          <h2 className={styles["modal-header"]}>
+            <p>FAQ 상세페이지</p>
+          </h2>
+          <div className={styles["modal-sub-header"]}>
+            <h4>{faqState.category} 게시판</h4>
           </div>
-          <div>
-            <div className={styles["modal-body"]}>
-              <div className={styles["post-content"]}>
-                <div className={styles["post-header"]}>
-                  <h3 className={styles["post-title"]}>{postData.title}</h3>
-                  <div className={styles["post-meta"]}>
-                    <div className={styles["post-author"]}>
-                      <img src={MyPageSVG} />
-                      <p>{postData.authorName}</p>
-                    </div>
-                    <div className={styles["post-stats"]}>
-                      <p>no.{postData.postNumber}</p>
-                      <p>조회수 : {postData.viewCount}</p>
-                    </div>
+        </div>
+        <div>
+          <div className={styles["modal-body"]}>
+            <div className={styles["post-content"]}>
+              <div className={styles["post-header"]}>
+                <h3 className={styles["post-title"]}>{faqState.title}</h3>
+                <div className={styles["post-meta"]}>
+                  <div className={styles["post-author"]}>
+                    <p>{faqState.authorName}</p>
+                  </div>
+                  <div className={styles["post-stats"]}>
+                    <p>no.{faqState.postNumber}</p>
+                    <p>조회수 : {faqState.viewCount}</p>
                   </div>
                 </div>
-                <p className={styles["post-body"]}>{postData.content}</p>
-                <p className={styles["post-footer"]}>
-                  작성일 {postData.createdAt}
-                </p>
               </div>
+              <p className={styles["post-body"]}>{faqState.content}</p>
+              <p className={styles["post-footer"]}>
+                작성일 {faqState.createdAt}
+              </p>
             </div>
           </div>
-          <div className={styles["modal-actions"]}>
-            <ConfirmationModal
-              onConfirm={handleDeletePost}
-              completeText="삭제 완료"
-              content="게시글을 \n삭제하시겠습니까"
-            >
-              <ConfirmationModalTrigger>
-                <Button>삭제</Button>
-              </ConfirmationModalTrigger>
-            </ConfirmationModal>
-            <ReplyModal
-              title={postData.title}
-              authorName={postData.authorName}
-              createdAt={postData.createdAt}
-              content={postData.content}
-              onReply={handleReplyPost}
-            >
-              <ReplyModalTrigger>
-                <Button>답변하기</Button>
-              </ReplyModalTrigger>
-            </ReplyModal>
-          </div>
+        </div>
+        <div className={styles["modal-actions"]}>
+          <ReplyModal
+            title={faqState.title}
+            authorName={faqState.authorName}
+            createdAt={faqState.createdAt}
+            content={faqState.content}
+            onReply={handleReplyPost}
+          >
+            <ReplyModalTrigger>
+              <Button color="var(--main-color)">답변하기</Button>
+            </ReplyModalTrigger>
+          </ReplyModal>
+          <ConfirmationModal
+            onConfirm={handleDelete}
+            completeText="삭제 완료"
+            content="게시글을 \n삭제하시겠습니까"
+          >
+            <ConfirmationModalTrigger>
+              <Button>삭제</Button>
+            </ConfirmationModalTrigger>
+          </ConfirmationModal>
+        </div>
+        <div>
+          <span className={styles["comments-header"]}>댓글</span>
           <div>
-            <span className={styles["comments-header"]}>댓글</span>
-            <div>
-              {commentData.map((comment, index) => (
-                <div key={index} className={styles["comment"]}>
-                  <div className={styles["comment-content"]}>
-                    <div className={styles["comment-author"]}>
-                      <img src={MyPageSVG} />
-                      <p>{comment.authorName}</p>
-                    </div>
-                    <p>{comment.content}</p>
-                    <div className={styles["comment-actions"]}>
-                      <ConfirmationModal
-                        onConfirm={handleDeleteComment}
-                        completeText="삭제 완료"
-                        content="댓글을 \n삭제하시겠습니까?"
-                      >
-                        <ConfirmationModalTrigger>
-                          <Button>삭제</Button>
-                        </ConfirmationModalTrigger>
-                      </ConfirmationModal>
-                      <ReplyModal
-                        title="답변하기"
-                        authorName={comment.authorName}
-                        createdAt={comment.createdAt}
-                        content={comment.content}
-                        onReply={handleReplyComment}
-                      >
-                        <ReplyModalTrigger>
-                          <Button>답변하기</Button>
-                        </ReplyModalTrigger>
-                      </ReplyModal>
-                    </div>
+            {faqState.comments && faqState.comments.map((comment, index) => (
+              <div key={index} className={styles["comment"]}>
+                <div className={styles["comment-content"]}>
+                  <div className={styles["comment-author"]}>
+                    <p>{comment.userNickname}</p>
+                  </div>
+                  <p className={styles.textleft}>{comment.comment}</p>
+                  <div className={styles["comment-actions"]}>
+                  <ReplyModal
+                      title="답변하기"
+                      authorName={comment.userNickname}
+                      content={comment.comment}
+                      onReply={(replyContent) =>
+                        handleReplyComment(index, replyContent)
+                      }
+                    >
+                      <ReplyModalTrigger>
+                        <Button color="var(--main-color)">답변하기</Button>
+                      </ReplyModalTrigger>
+                    </ReplyModal>
+                    <ConfirmationModal
+                      onConfirm={() => handleDeleteComment(index)}
+                      content="댓글을 \n삭제하시겠습니까?"
+                      completeText="삭제되었습니다."
+                    >
+                      <ConfirmationModalTrigger>
+                        <Button>삭제</Button>
+                      </ConfirmationModalTrigger>
+                    </ConfirmationModal>
+
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </div> */}
-      </Modal>
-    </>
+        </div>
+      </div>
+    </Modal>
   );
 };
 

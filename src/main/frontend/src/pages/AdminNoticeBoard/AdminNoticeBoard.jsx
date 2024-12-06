@@ -141,12 +141,27 @@ const AdminNoticeBoard = () => {
       .then(response => {
         const datas = response.data;
         const selectedFaq = datas.find(data => data.faqNumber == faqNumber);
-        if(selectedFaq){{
-          faqActions.updateAllFields({
 
-          })
+        if(selectedFaq){{
+          axios.get("/data/userData.json").
+          then(response => {
+            const users = response.data;
+            const matchedUser = users.find(user => user.userNumber == selectedFaq.userId);
+          faqActions.updateAllFields({
+            category: selectedFaq.category,
+            title: selectedFaq.title, 
+            content: selectedFaq.content,
+            authorName: matchedUser.nickname,
+            postNumber: selectedFaq.faqNumber,
+            viewCount: selectedFaq.views,
+            createdAt : formattedDate(selectedFaq.date),
+            comments: selectedFaq.comments,
+            createdAt: selectedFaq.date
+          });
+        });
         }}
       })
+      setIsReportOpen(true);
     }
     if(category == "공지사항" || category == "자주묻는질문"){
       axios.get("/data/noticesData.json")
@@ -253,11 +268,12 @@ const AdminNoticeBoard = () => {
         isOpen={isAnnounceOpen}
         closeModal={() => setIsAnnounceOpen(false)}
         />
-        {/* <AdminReportModal 
+        <AdminReportModal 
         faqState={faqState}
+        faqActions={faqActions}
         isOpen={isReportOpen}
-        closeModal={setIsReportOpen}
-        /> */}
+        closeModal={() => setIsReportOpen(false)}
+        />
       </div>
     </>
   );

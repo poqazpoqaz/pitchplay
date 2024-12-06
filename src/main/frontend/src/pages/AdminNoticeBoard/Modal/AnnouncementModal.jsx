@@ -1,18 +1,14 @@
 import Modal from "../../../components/Modal/Modal";
-import { useSearchParams } from "react-router-dom";
 import Button from "../../../components/Button";
 import styles from "./AnnouncementModal.module.css";
+import Alarm from "../../../components/Alarm";
 import { useEffect, useState } from "react";
-import ConfirmationModal, {
-  ConfirmationModalTrigger,
-} from "../../../components/ConfirmationModal/index";
-import axios from "axios";
-import useMutate from "../../../api//useMutate";
 import BoardManagementSVG from "../../../../public/icons/boardmanage.svg";
 
 const AdminAnnouncementModal = ({ noticeState, isOpen, closeModal, noticesActions }) => {
   const [isEditting, setIsEditting] = useState(false);
   const [content, setContent] = useState("");
+  const [isAlarmOpen, setIsAlarmOpen] = useState(false);
 
   useEffect(() => {
     if (noticeState.content) {
@@ -23,8 +19,14 @@ const AdminAnnouncementModal = ({ noticeState, isOpen, closeModal, noticesAction
   const handleUpdate = () => {
     noticesActions.changeContent(content);
     setIsEditting(false);
+    // 백 연동시에는 axios.post 
   }
 
+  const handleDelete = () => {
+    setIsAlarmOpen(false);
+    closeModal();
+    // 백 연동시에는 axios.delete
+  }
   return (
     <>
       <Modal isOpen={isOpen} closeModal={closeModal}>
@@ -49,11 +51,11 @@ const AdminAnnouncementModal = ({ noticeState, isOpen, closeModal, noticesAction
           </div>
           <div>
             {!isEditting &&
-              <div style={{ whiteSpace: "pre-line", textAlign: "left" }}>
+              <div style={{ whiteSpace: "pre-line", textAlign: "left"}}>
                 {noticeState.content}
                 <div className={styles["buttons"]}>
                   <Button onClick={() => setIsEditting(true)} color="var(--main-color)">수정하기</Button>
-                  <Button>삭제하기</Button>
+                  <Button onClick={() => setIsAlarmOpen(true)}>삭제하기</Button>
                 </div>
               </div>
             }
@@ -73,14 +75,15 @@ const AdminAnnouncementModal = ({ noticeState, isOpen, closeModal, noticesAction
           </div>
         </div>
       </Modal>
-
-      <Modal
-      // isOpen={isOpenUpdateModal}
-      // closeModal={() => setIsOpenUpdateModal(false)}
+      <Alarm
+        isOpen={isAlarmOpen}
+        closeModal={() => setIsAlarmOpen(false)}
+        onClick={handleDelete}
+        btntext="확인"
       >
-        {/* <p>수정 완료</p>
-        <Button onClick={() => setIsOpenUpdateModal(false)}>확인</Button> */}
-      </Modal>
+        삭제하시겠습니까?
+      </Alarm>
+
     </>
   );
 };

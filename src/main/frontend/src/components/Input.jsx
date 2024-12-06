@@ -21,9 +21,12 @@ const StyledInput = styled.input`
         return '24px';  // 기본값 설정
     }
   }};
-
+  
+  width: 100%;  // 부모 요소에 맞춰서 늘어나도록 설정
+  box-sizing: border-box;
+  
   @media (max-width: 760px) {
-    padding: 6px;
+    padding: 6px;  // 모바일에서 패딩 줄이기
     font-size: ${(props) => {
       switch (props.size) {
         case 'xsmall': 
@@ -39,18 +42,18 @@ const StyledInput = styled.input`
       }
     }};
   }
-    `;
+`;
 
 function Input({ type, placeholder, onChange, value, gridArea, size}) {
   return (
-      <StyledInput
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
-        value={value}
-        size={size}
-        style={{ gridArea: gridArea }}
-      />
+    <StyledInput
+      type={type}
+      placeholder={placeholder}
+      onChange={onChange}
+      value={value}
+      size={size}
+      style={{ gridArea: gridArea }}  // 부모 컨테이너의 gridArea 속성
+    />
   );
 }
 

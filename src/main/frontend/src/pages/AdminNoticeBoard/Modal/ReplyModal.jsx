@@ -1,11 +1,11 @@
-import Modal from "../../../../components/Modal/Modal";
-import Button from "../../../../components/Button";
+import Modal from "../../../components/Modal/Modal";
+import Button from "../../../components/Button";
 import styles from "./ReplyModal.module.css";
 import { useState } from "react";
 import { createContext } from "react";
 import { useContext } from "react";
 
-import BoardManagementSVG from "../../svg/boardmanage.svg";
+import BoardManagementSVG from "../../../../public/icons/boardmanage.svg";
 const ReplyContext = createContext();
 
 /**
@@ -21,29 +21,24 @@ const ReplyContext = createContext();
  */
 const ReplyModal = ({
   title,
-  content: initialContent,
+  content,
   authorName,
-  createdAt,
   onReply,
   children,
 }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [content, setContent] = useState(initialContent);
+  const [reply, setReply] = useState("");
 
   const handleModalClose = () => {
     setIsOpenModal(false);
   };
 
   const handleReply = async () => {
-    await onReply(content);
+    // axios.post로 답변보내기
+    onReply(reply);  // onReply 함수 호출 (부모에서 정의한 답변 처리 함수)
     handleModalClose();
+    setReply("");
   };
-
-  const replyContent = `
-  ${content}
-  ------------------------
-  답변:
-  `;
 
   return (
     <ReplyContext.Provider value={{ isOpenModal, setIsOpenModal }}>
@@ -61,20 +56,18 @@ const ReplyModal = ({
               <h5>기타관리 상세페이지</h5>
             </h2>
             <div className={styles["modal-sub-header"]}>
-              <h4>{title}</h4>
-              <h5>작성자: {authorName}</h5>
+              <p>{title}</p>
+              <p>작성자: {authorName}</p>
             </div>
           </div>
-          <div>
-            <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              className={styles["modal-body"]}
-              defaultValue={replyContent}
-            />
-            <h5 className={styles["modal-footer"]}>작성일 {createdAt}</h5>
+          <div className={styles["modal-text"]}>
+          <p>{content}</p>
+          <textarea
+            value={reply}
+            onChange={(e) => setReply(e.target.value)}
+            className={styles["modal-body"]}/>
           </div>
-          <Button onClick={handleReply}>보내기</Button>
+          <Button onClick={handleReply} color="var(--main-color)">보내기</Button>
         </div>
       </Modal>
       {children}

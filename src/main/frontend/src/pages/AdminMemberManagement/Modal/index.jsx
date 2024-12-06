@@ -36,7 +36,6 @@ const AdminMemberManagementModal = ({userState, isOpen, closeModal}) => {
     closeModal();
   };
 
-
   const { id: firstHeader, username: usernameHeader, ...restHeaders } = headers;
   const { id: firstData, username, ...restData } = userState;
 

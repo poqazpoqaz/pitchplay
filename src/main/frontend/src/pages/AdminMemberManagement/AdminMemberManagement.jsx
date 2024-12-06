@@ -16,6 +16,7 @@ const PAGE_SIZE = 15; // 페이지당 데이터 수
 
 const AdminMemberManagement = () => {
   const { state: userState, actions: userActions } = UserStore();
+  
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const currentPage = searchParams.get("page") ? parseInt(searchParams.get("page")) : 1;
