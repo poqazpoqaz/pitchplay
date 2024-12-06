@@ -39,7 +39,7 @@ const ChangeSetting = ({ gridArea }) => {
         if(userState){
             setNewBirth(userState.birthday);
             setNewphone(userState.phone);
-            setNewAccount(userState.accountName);
+            setNewAccount(userState.account);
             setNewAccountNum(userState.accountNum);
         }
     },[userState])
@@ -97,7 +97,7 @@ const ChangeSetting = ({ gridArea }) => {
         if (newAccount) {
             userActions.changeAccountName(newAccount); // 계좌명 변경
         } else {
-            userActions.changeAccountName(userState.accountName); // 변경되지 않으면 기존 값 사용
+            userActions.changeAccountName(userState.account); // 변경되지 않으면 기존 값 사용
         }
     
         if (newAccountNum) {
@@ -111,7 +111,7 @@ const ChangeSetting = ({ gridArea }) => {
             ...user, // 기존의 사용자 정보
             phone: newPhone, // 변경된 전화번호 또는 기존 전화번호
             birth: newbirth, // 변경된 생년월일 또는 기존 생년월일
-            accountName: newAccount, // 변경된 계좌명 또는 기존 계좌명
+            account: newAccount, // 변경된 계좌명 또는 기존 계좌명
             accountNum: newAccountNum // 변경된 계좌번호 또는 기존 계좌번호
         };
     
@@ -122,7 +122,8 @@ const ChangeSetting = ({ gridArea }) => {
         setMessage('정보가 성공적으로 변경되었습니다.');
         setIsAlarmOpen(true);
     };
-
+    
+    
     return (
         <div style={{ gridArea }}>
             <div className={styles.content}>

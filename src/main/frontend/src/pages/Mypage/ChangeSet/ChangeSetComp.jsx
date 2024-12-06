@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { changePhone } from '../../../stores/UserStore/action';
+import { accountNum } from '../../../utils/regExp';
 
 const Container = styled.div`
   display: flex;
@@ -98,7 +99,10 @@ const ChangeSetComp = ({
   newAccountNum,
   setNewAccountNum,
   setAuthCode,
-  userState
+  userState,
+  handleBlur
+
+  
 
   
 }) => {
@@ -112,6 +116,7 @@ const ChangeSetComp = ({
         <Input 
           type="text" 
           value={userState.id} 
+
         />
       </FormField>
 
@@ -152,6 +157,7 @@ const ChangeSetComp = ({
           <h2>이메일 변경</h2>
           <Input
             type="email"
+            name="email"
             value={userState.email}
             onChange={(e) => setNewEmail(e.target.value)}
             placeholder="새 이메일 입력"
@@ -164,8 +170,10 @@ const ChangeSetComp = ({
         <Label>휴대폰 번호</Label>
         <Input 
           type="text" 
+          name="phone"
           value={newPhone} 
           onChange={(e) => setNewPhone(e.target.value)} 
+          onBlur={handleBlur}
         />
       </FormField>
 
@@ -174,8 +182,10 @@ const ChangeSetComp = ({
         <Label>생년월일</Label>
         <Input 
           type="text" 
+          name="birth"
           value={newbirth} 
           onChange={(e) => setNewBirth(e.target.value)} 
+          onBlur={handleBlur}
         />
       </FormField>
 
@@ -185,16 +195,24 @@ const ChangeSetComp = ({
         <Select 
           value={newAccount} 
           onChange={(e) => setNewAccount(e.target.value)}
+
         >
-          <option value="계좌1">계좌1</option>
-          <option value="계좌2">계좌2</option>
-          <option value="계좌3">계좌3</option>
+          <option value={newAccount}>{newAccount}</option>
+          <option value="국민은행">국민은행</option>
+          <option value="카카오뱅크">카카오뱅크</option>
+          <option value="신한은행">신한은행</option>
+          <option value="농협">농협</option>
+          <option value="우리은행">우리은행</option>
+          <option value="하나은행">하나은행</option>
+          <option value="기업은행">기업은행</option>
         </Select>
         <Input 
           type="text" 
           value={newAccountNum} 
           onChange={(e) => setNewAccountNum(e.target.value)} 
           style={{flex: 1}}
+          onBlur={handleBlur}
+          name={accountNum}
         />
       </FormField>
 
