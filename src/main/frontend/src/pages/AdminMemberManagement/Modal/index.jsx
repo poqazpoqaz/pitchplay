@@ -59,7 +59,7 @@ const AdminMemberManagementModal = ({userState, isOpen, closeModal}) => {
             src={UserManagementSVG}
             style={{ width: "24px", height: "24px" }}
           />
-          <h5>회원 관리 상세페이지</h5>
+          <p>회원 관리 상세페이지</p>
         </h2>
         <div className={styles["modal-sub-header"]}>
           <h2>{userState.name}</h2>님 ({userState.id}) <h4>상세페이지</h4>

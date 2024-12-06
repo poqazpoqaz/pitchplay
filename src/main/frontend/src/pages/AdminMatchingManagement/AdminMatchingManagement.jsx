@@ -146,93 +146,34 @@ const AdminMatchingManagement = () => {
     navigate(`?page=${page}`);
   };
 
-  const handleItemClick = async (matchingNum) => {
-    try {
-      // 세 개의 데이터를 병렬로 불러오기
-      const [matchingResponse, socialResponse, stadiumResponse] = await Promise.all([
-        axios.get("/data/matchingData.json"),
-        axios.get("/data/socialData.json"),
-        axios.get("/data/stadiumData.json") 
-      ]);
-  
-      // 각 데이터의 내용을 가져오기
-      const matchingDatas = matchingResponse.data;
-      const socialDatas = socialResponse.data;
-      const stadiumDatas = stadiumResponse.data; 
- 
-      // matchingData에서 해당 matchingNum에 맞는 데이터 찾기
-      const selectedMatching = matchingDatas.find(data => data.matchingNum === matchingNum);
-  
-      // socialData에서 해당 matchingNum에 맞는 데이터 찾기
-      const selectedSocial = socialDatas.find(data => data.socialNumber === matchingNum);
-  
-      // stadiumData에서 해당 stadiumId에 맞는 경기장 정보 찾기
-      const getStadiumName = (stadiumId) => {
-        const selectedStadium = stadiumDatas.find(stadium => stadium.SVCID === stadiumId);
-        return selectedStadium ? selectedStadium.SVCNM : "경기장 정보 없음"; 
-      };
-  
+  const handleItemClick = (matchingNum) => {
+    const selectedItem = dataList.find(item => 
+      item.matchingType === "팀" ? item.matchingNum === matchingNum : item.socialNumber === matchingNum
+    );
 
-      if (selectedMatching) {
-        const matchingDateString = selectedMatching.matchingDate; 
-        const isClosed = selectedMatching.teams.team1 && selectedMatching.teams.team2 ? "마감" : "진행중";
-        const [date, time] = matchingDateString.split(" ");  // "2024-12-23", "15:30"
+    if (selectedItem) {
+      const { matchingType, matchingNum, socialNumber, stadiumId, teams, teamSize, socialSize, socialTime, matchingDate } = selectedItem;
+      const isClosed = selectedItem.isClosed === "Y" ? "마감" : "진행중";
+      const date = matchingType === "팀" ? matchingDate.split(" ")[0] : socialTime.split("T")[0];
+      const time = matchingType === "팀" ? matchingDate.split(" ")[1] : socialTime.split("T")[1].substring(0, 5);
+      const location = stadiumData.find(stadium => stadium.SVCID === stadiumId)?.SVCNM || "경기장 정보 없음";
 
-        let result; 
+      matchingActions.updateAllFields({
+        id: matchingType === "팀" ? matchingNum : socialNumber,
+        matchType: matchingType,
+        teamSize: matchingType === "팀" ? teamSize : socialSize,
+        gender: matchingType === "팀" ? selectedItem.gender : selectedItem.socialGender,
+        date,
+        time,
+        location,
+        isClosed,
+        teams: matchingType === "팀" ? teams : selectedItem.currentMember,
+      });
 
-        result = {
-          date: date, 
-          time: time  
-        };
-
-        matchingActions.updateAllFields({
-          id: selectedMatching.matchingNum,
-          matchType: "팀", 
-          teamSize: selectedMatching.teamSize,  // 팀 크기
-          gender: selectedMatching.gender,  // 성별
-          date: result.date,  
-          time: result.time,
-          location: getStadiumName(selectedMatching.stadiumId),  // 경기장 이름 찾기
-          isClosed: isClosed,// 마감 여부
-          teams: selectedMatching.teams  // 참가 팀
-        });
-      } else if (selectedSocial) {
-        // socialData를 사용할 경우
-        const matchingDateString = selectedSocial.socialTime; 
-        const date = matchingDateString.split("T")[0];  // "2024-11-25"
-        const time = matchingDateString.split("T")[1].split(":")[0] + ":" + matchingDateString.split("T")[1].split(":")[1];  // "20:00"
-       
-        let result; 
-
-        result = {
-          date: date,  // "2024-11-25"
-          time: time   // "20:00"
-        };
-
-        const isClosed = selectedSocial.currentMember.length == selectedSocial.totalMember ? "마감" : "진행중";
-
-        matchingActions.updateAllFields({
-          id: selectedSocial.socialNumber,
-          matchType: "소셜",  // 소셜 데이터의 매칭 타입
-          teamSize: selectedSocial.socialSize, // 경기 종류
-          gender: selectedSocial.socialGender, // 성별
-          date: result.date,  // 경기 날짜
-          time: result.time,  // 경기 시간
-          location: getStadiumName(selectedSocial.stadiumId), // 경기장 이름 찾기
-          isClosed: isClosed, // 마감 여부
-          reservationedMembers:  selectedSocial.nickname,// 예약 회원
-          teams: selectedSocial.currentMember.length // 참여 한 수
-        });
-      }
-
-
-    } catch (error) {
-      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
+      setIsOpen(true);
     }
-
-    setIsOpen(true);
   };
- 
+
   return (
     <>
       <div className={styles["container"]}>

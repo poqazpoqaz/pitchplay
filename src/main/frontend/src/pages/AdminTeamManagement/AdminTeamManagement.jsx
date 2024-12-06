@@ -15,94 +15,98 @@ const headers = ["팀 ID", "팀 이름", "팀관리자", "팀 생성일"];
 const PAGE_SIZE = 15; // 페이지당 데이터 수
 
 const AdminTeamManagement = () => {
-  const {state: teamState, actions: teamActions} = TeamStore();
+  const { state: teamState, actions: teamActions } = TeamStore();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const currentPage = searchParams.get("page") ? parseInt(searchParams.get("page")) : 1;
-  const [teamData, setTeamData] = useState([]);
-  const [currentDataList, setCurrentDataList] = useState([]);
-  const [totalPages, setTotalPages] = useState(null);
+  const [teamData, setTeamData] = useState([]); // 원본 데이터
+  const [currentDataList, setCurrentDataList] = useState([]); // 현재 페이지 데이터
+  const [totalPages, setTotalPages] = useState(0); // 총 페이지 수
 
-    // 모달 
-    const [isOpen, setIsOpen] = useState(false);
+  // 모달 상태
+  const [isOpen, setIsOpen] = useState(false);
 
-  // 현재 연도부터 10년 전까지의 년도 배열 생성
-  const currentYear = new Date().getFullYear();
-  const yearOptions = Array.from({ length: 11 }, (_, index) => currentYear - index);
-  
-  // 드롭다운 선택 값 및 입력 필드 값
+  // 검색 필드
   const [text, setText] = useState("");
   const [teamCode, setTeamCode] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
-  
 
-  const handlePageChange = (page) => {
-    navigate(`?page=${page}`);
+  const PAGE_SIZE = 15; // 페이지당 데이터 수
+  const headers = ["팀 ID", "팀 이름", "팀관리자", "팀 생성일"];
+
+  // 현재 연도부터 10년 전까지의 년도 배열
+  const currentYear = new Date().getFullYear();
+  const yearOptions = Array.from({ length: 11 }, (_, index) => currentYear - index);
+
+  // 페이지 이동 처리
+  const handlePageChange = (page) => navigate(`?page=${page}`);
+
+  // 검색 버튼 클릭
+  const handleClick = () => setTeamCode(text);
+
+  // 팀 코드로 특정 데이터 선택
+  const handleClickItem = (teamCode) => {
+    const selectedData = teamData.find((data) => data.teamCode === teamCode);
+
+    if (selectedData) {
+      teamActions.updateAllFields({
+        teamId: selectedData.teamCode,
+        teamName: selectedData.teamName,
+        teamOwnerUserId: selectedData.teamOwner,
+        createdAt: formattedDate(selectedData.teamCreatedDate),
+        members: selectedData.teamMember,
+      });
+      setIsOpen(true);
+    } else {
+      console.log("팀을 찾을 수 없습니다.");
+    }
   };
 
-  const handleClick = () => {
-    setTeamCode(text)
-  }
+  // 데이터를 필터링 및 페이지 처리하는 함수
+  const filterAndPaginateData = () => {
+    let filteredData = teamData;
 
-  const handleClickItem = (teamCode) => {
-    axios.get("/data/teamData.json")
-    .then(response => {
-      const datas = response.data;
-      const selectedData = datas.find(data => data.teamCode == teamCode);
+    // 팀 코드 필터링
+    if (teamCode) {
+      filteredData = filteredData.filter((data) => data.teamCode === teamCode);
+    }
 
-      if(selectedData){
-        teamActions.updateAllFields({
-          teamId: selectedData.teamCode, 
-          teamName: selectedData.teamName, 
-          teamOwnerUserId: selectedData.teamOwner,
-          createdAt: formattedDate(selectedData.teamCreatedDate),
-          members: selectedData.teamMember
-        });
-        setIsOpen(true);
-      } else{
-        console.log("팀을 찾을 수 없습니다.");
-      }
-    })
-    .catch(error => {
-      console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
-    });
-  }
+    // 생성 연도 필터링
+    if (selectedYear) {
+      filteredData = filteredData.filter((data) => {
+        const createdYear = new Date(data.teamCreatedDate).getFullYear();
+        return createdYear === selectedYear;
+      });
+    }
 
+    // 페이지 단위 데이터 분리
+    const startIndex = (currentPage - 1) * PAGE_SIZE;
+    const endIndex = currentPage * PAGE_SIZE;
+    const pageData = filteredData.slice(startIndex, endIndex);
+
+    setCurrentDataList(pageData);
+    setTotalPages(Math.ceil(filteredData.length / PAGE_SIZE));
+  };
+
+  // 초기 데이터 가져오기
   useEffect(() => {
     axios.get("/data/teamData.json")
-    .then(response => {
-      setTeamData(response.data);
-    })
+      .then((response) => {
+        const formattedData = response.data.map((item) => ({
+          ...item,
+          teamCreatedDate: formattedDate(item.teamCreatedDate), // 미리 포맷팅
+        }));
+        setTeamData(formattedData);
+      })
+      .catch((error) => {
+        console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
+      });
   }, []);
 
+  // 필터링 및 페이지 처리
   useEffect(() => {
     if (teamData.length > 0) {
-      let filteredData = teamData;
-  
-      // teamCode 필터링
-      if (teamCode !== null && teamCode !== '') {
-        filteredData = filteredData.filter(data => data.teamCode === teamCode);
-      }
-  
-      // selectedYear 필터링 (연도가 선택된 경우만)
-      if (selectedYear !== null) {
-        filteredData = filteredData.filter(data => {
-          // data.createdAt이 날짜 형식이라면 연도를 추출
-          const createdYear = new Date(data.teamCreatedDate).getFullYear();
-          return createdYear === selectedYear;
-        });
-      }
-  
-      // 필터링된 데이터를 페이지 단위로 나누기
-      const startIndex = (currentPage - 1) * PAGE_SIZE;
-      const endIndex = currentPage * PAGE_SIZE;
-      const pageData = filteredData.slice(startIndex, endIndex);
-  
-      setCurrentDataList(pageData);
-  
-      // 필터링된 데이터의 총 페이지 수 계산
-      const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
-      setTotalPages(totalPages);
+      filterAndPaginateData();
     }
   }, [currentPage, teamData, teamCode, selectedYear]);
 

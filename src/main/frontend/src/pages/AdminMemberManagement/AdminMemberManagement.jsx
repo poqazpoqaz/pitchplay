@@ -44,9 +44,9 @@ const AdminMemberManagement = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const stadiumResponse = await axios.get('/data/userData.json');
-        if (stadiumResponse.data) {
-          setUserData(stadiumResponse.data);
+        const userResponse = await axios.get('/data/userData.json');
+        if (userResponse.data) {
+          setUserData(userResponse.data);
         }
       } catch (error) {
         console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
@@ -108,37 +108,30 @@ const AdminMemberManagement = () => {
   const handlePageChange = (page) => {
     navigate(`?page=${page}`);
   };
-
+  
   const handleItemClick = (id) => {
-    axios.get("/data/userData.json")
-    .then(response => {
-      const datas = response.data;
-      const selectedUser = datas.find(data => data.id === id);
-      if (selectedUser) {
-        // 모든 필드를 상태에 업데이트
-        userActions.updateAllFields({
-          userNumber: selectedUser.userNumber,
-          id: selectedUser.id,
-          email: selectedUser.email,
-          name: selectedUser.name,
-          nickname: selectedUser.nickname, 
-          isTeamOwner:selectedUser.isTeamOwnder? "Y" : "N",
-          myTeam:selectedUser.myTeam || "없음",
-          phone: selectedUser.phone || "없음",
-          favoriteCity:selectedUser.favoriteCity || "없음", 
-          joindate:formattedDate(selectedUser.joindate), 
-          userCash:selectedUser.userCash || 0, 
-          accountNumber:`${selectedUser.account} ${selectedUser.accountNum}` || "없음",
-          isDeleted: selectedUser.isDeleted?"Y" : "N", 
+    // userData에서 id로 사용자 데이터 찾기
+    const selectedUser = userData.find(data => data.id === id);
+    if (selectedUser) {
+      userActions.updateAllFields({
+        userNumber: selectedUser.userNumber,
+        id: selectedUser.id,
+        email: selectedUser.email,
+        name: selectedUser.name,
+        nickname: selectedUser.nickname,
+        isTeamOwner: selectedUser.isTeamOwner ? "Y" : "N",
+        myTeam: selectedUser.myTeam || "없음",
+        phone: selectedUser.phone || "없음",
+        favoriteCity: selectedUser.favoriteCity || "없음",
+        joindate: formattedDate(selectedUser.joindate),
+        userCash: selectedUser.userCash || 0,
+        accountNumber: `${selectedUser.account || ""} ${selectedUser.accountNum || ""}`.trim() || "없음",
+        isDeleted: selectedUser.isDeleted ? "Y" : "N",
       });
-        setIsOpen(true);
-      } else {
-        console.log("사용자를 찾을 수 없습니다.");
-      }
-    })
-    .catch(error => {
-      console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
-    });
+      setIsOpen(true);
+    } else {
+      console.error("사용자를 찾을 수 없습니다.");
+    }
   };
 
   return (

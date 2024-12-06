@@ -54,7 +54,7 @@ const AdminTeamManagementModal = ({teamState, isOpen, closeModal}) => {
             src={TeamManagementSVG}
             style={{ width: "24px", height: "24px" }}
           />
-          <h5>팀 관리 상세페이지</h5>
+          <p>팀 관리 상세페이지</p>
         </h2>
         <div className={styles["modal-sub-header"]}>
           <h2>팀 ID</h2> ({teamState.teamId}) <h4>상세페이지</h4>

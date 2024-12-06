@@ -136,52 +136,40 @@ const AdminNoticeBoard = () => {
   }, [faqNumber, selectedMonth, category, userNickname]);
  
   const handleClickItem = (faqNumber, category) => {
-    if(category == "매너/제재" || category == "건의/제보"){
-      axios.get("/data/faqData.json")
-      .then(response => {
-        const datas = response.data;
-        const selectedFaq = datas.find(data => data.faqNumber == faqNumber);
-
-        if(selectedFaq){{
-          axios.get("/data/userData.json").
-          then(response => {
-            const users = response.data;
-            const matchedUser = users.find(user => user.userNumber == selectedFaq.userId);
-          faqActions.updateAllFields({
-            category: selectedFaq.category,
-            title: selectedFaq.title, 
-            content: selectedFaq.content,
-            authorName: matchedUser.nickname,
-            postNumber: selectedFaq.faqNumber,
-            viewCount: selectedFaq.views,
-            createdAt : formattedDate(selectedFaq.date),
-            comments: selectedFaq.comments,
-            createdAt: selectedFaq.date
-          });
-        });
-        }}
-      })
+    // faqData에서 해당 faqNumber에 해당하는 데이터 찾기
+    const selectedFaq = faqData.find(data => data.faqNumber === faqNumber);
+  
+    if (!selectedFaq) {
+      console.error("선택된 데이터를 찾을 수 없습니다.");
+      return;
+    }
+  
+    if (category === "매너/제재" || category === "건의/제보") {
+      faqActions.updateAllFields({
+        category: selectedFaq.category,
+        title: selectedFaq.title,
+        content: selectedFaq.content,
+        authorName: selectedFaq.writeNickname,
+        postNumber: selectedFaq.faqNumber,
+        viewCount: selectedFaq.views,
+        createdAt: formattedDate(selectedFaq.date),
+        comments: selectedFaq.comments,
+      });
       setIsReportOpen(true);
     }
-    if(category == "공지사항" || category == "자주묻는질문"){
-      axios.get("/data/noticesData.json")
-      .then(response => {
-        const datas = response.data;
-        const selectedNotice = datas.find(data => data.noticeNumber == faqNumber);
-        if(selectedNotice){
-          noticesActions.updateAllFields({
-            category: selectedNotice.category,
-            title: selectedNotice.title, 
-            content: selectedNotice.content,
-            viewCount: selectedNotice.views,
-            createdAt: selectedNotice.date
-          })
-        }
-      })
+  
+    if (category === "공지사항" || category === "자주묻는질문") {
+      noticesActions.updateAllFields({
+        category: selectedFaq.category,
+        title: selectedFaq.title,
+        content: selectedFaq.content,
+        viewCount: selectedFaq.views,
+        createdAt: selectedFaq.date,
+      });
       setIsAnnounceOpen(true);
     }
-    };
-
+  };
+  
   const handleWritePost = () => {
     navigate("/admin/notice-board/write");
   };

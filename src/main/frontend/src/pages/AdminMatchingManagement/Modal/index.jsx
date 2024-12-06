@@ -59,7 +59,7 @@ const AdminMatchingManagementModal = ({isOpen, closeModal, matchingState}) => {
             src={MatchingManagementSVG}
             style={{ width: "24px", height: "24px" }}
           />
-          <h5>팀 매칭 상세페이지</h5>
+          <p>팀 매칭 상세페이지</p>
         </h2>
         <div className={styles["modal-sub-header"]}>
           <h2>팀 매칭</h2> ({firstData}) <h4>상세페이지</h4>

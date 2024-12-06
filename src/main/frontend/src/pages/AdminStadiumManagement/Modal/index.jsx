@@ -56,7 +56,7 @@ const AdminStadiumReservationModal = ({isOpen, closeModal, reservationState}) =>
             src={StadiumReservationSVG}
             style={{ width: "24px", height: "24px" }}
           />
-          <h5>구장 예약 상세페이지</h5>
+          <p>구장 예약 상세페이지</p>
         </h2>
         <div className={styles["modal-sub-header"]}>
           <h2>구장 예약</h2> ({reservationState.reservationNumber}) <h4>상세페이지</h4>

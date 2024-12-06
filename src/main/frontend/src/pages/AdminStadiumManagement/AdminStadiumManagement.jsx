@@ -226,8 +226,8 @@ const AdminStadiumReservation = () => {
                 </TableCell>
               ))}
             </TableRow>
-            {currentDataList.map((data) => (
-              <TableRow key={data.reservationNumber} onClick={() => handleItemClick(data.reservationNumber)}>
+            {currentDataList.map((data, index) => (
+              <TableRow key={index} onClick={() => handleItemClick(data.reservationNumber)}>
                 <TableCell>{data.reservationNumber}</TableCell>
                 <TableCell>{data.stadiumName}</TableCell>
                 <TableCell>{data.formattedDate}</TableCell>
