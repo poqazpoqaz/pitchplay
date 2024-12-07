@@ -84,6 +84,12 @@
                 "applicationDate": "2024-12-03",
                 "profileImg": "/imgs/1.jpg",
                 "applicationstatus": "pending"
+            },
+            {
+                "pendingnickname": "지혜짱",
+                "applicationDate": "2024-12-02",
+                "profileImg": "/imgs/1.jpg",
+                "applicationstatus": "pending"
             }
         ]
     },

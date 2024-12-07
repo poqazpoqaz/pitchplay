@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 
 
 const MypageAct05 = () => {
-  const {myTeam} = useParams();
+  const {teamCode} = useParams();
   const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 'user' 가져오기
   const { state: teamState, actions: teamActions } = TeamStore();
 
@@ -112,7 +112,7 @@ const MypageAct05 = () => {
         dropdownOpen={dropdownOpen}
       />
       <MoveButton
-      myTeam={user.myTeam}
+      teamCode={teamState.teamCode}
       id = {user.id}
       />
     </div>

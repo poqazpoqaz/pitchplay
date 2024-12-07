@@ -53,13 +53,13 @@ display : flex;
 justify-content: space-between;
 `
 
-const MoveButton = ({myTeam , id})=>{
+const MoveButton = ({teamCode , id})=>{
 
     return (
         <Container>
         <Gapgap>
         <li>
-            <LinkButton to={`/mypage/${id}/${myTeam}/members/appmange`}>신청 관리</LinkButton>
+            <LinkButton to={`/mypage/${id}/${teamCode}/members/appmange`}>신청 관리</LinkButton>
         </li>
         <li>
             <LinkButton1 to={`/mypage/${id}/teamschedule`}>팀 해체</LinkButton1>
