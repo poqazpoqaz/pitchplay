@@ -8,181 +8,129 @@ import styles from "./AppManagement.module.css";
 import AppStatus from "./AppStatus";
 import MercenaryStatus from "./MercenaryStatus";
 
-const AppMangement = ({ gridArea }) => {
-  // URL에서 팀 코드를 가져오는 부분
-  const { teamCode } = useParams(); // 팀 코드
+const AppManagement = ({ gridArea }) => {
+  const { teamCode } = useParams();
 
-  // 대기 중인 멤버와 용병 멤버의 상태를 관리하는 변수들
+  // 멤버 목록과 로딩 상태를 관리하는 state
   const [pendingMembers, setPendingMembers] = useState([]); // 대기 중인 멤버 목록
   const [mercenaryMembers, setMercenaryMembers] = useState([]); // 용병 멤버 목록
-  const [pendingMemberList, setPendingMemberList] = useState([]); // 대기 중인 멤버 상세 리스트
-  const [mercenaryMemberList, setMercenaryMemberList] = useState([]); // 용병 멤버 상세 리스트
+  const [pendingMemberList, setPendingMemberList] = useState([]); // 대기 멤버 상세 정보 목록
+  const [mercenaryMemberList, setMercenaryMemberList] = useState([]); // 용병 멤버 상세 정보 목록
   const [userData, setUserData] = useState(null); // 사용자 데이터
-  const [loading, setLoading] = useState(true); // 데이터 로딩 상태
+  const [loading, setLoading] = useState(true); // 로딩 상태
 
-  // 각 스토어의 상태와 액션을 불러옵니다.
+  // 스토어에서 상태와 액션을 가져옴
   const { state: userState, actions: userActions } = UserStore();
-  const { state: teamState, actions: teamActions } = TeamStore();
-  const { state: collectionState, actions: collectionActions } = CollectionStore();
+  const { state: teamState } = TeamStore();
+  const { actions: collectionActions } = CollectionStore();
 
-  // 로컬 스토리지에서 사용자 데이터를 불러와 상태에 저장
+  // 로컬 스토리지에서 사용자 데이터 로드
   useEffect(() => {
-    const userDataFromStorage = JSON.parse(localStorage.getItem("user"));
+    const userDataFromStorage = JSON.parse(localStorage.getItem("user")); // 로컬 스토리지에서 사용자 정보 가져오기
     if (userDataFromStorage) {
-      setUserData(userDataFromStorage); // 데이터가 있으면 상태에 저장
+      setUserData(userDataFromStorage); // 사용자 데이터를 상태에 저장
     } else {
       console.error("유저 데이터가 로컬스토리지에 없습니다.");
     }
-  }, []); // 한 번만 실행되게 설정
+  }, []);
 
-  // 팀 코드가 있을 경우 해당 팀과 컬렉션 데이터를 API로 가져오는 부분
+  // 팀 및 컬렉션 데이터 로드
   useEffect(() => {
-    if (!teamCode) return; // 팀 코드가 없으면 데이터 로딩을 하지 않음
+    if (!teamCode) return; // 팀 코드가 없으면 실행하지 않음
 
-    setLoading(true); // 로딩 상태 시작
+    setLoading(true); // 로딩 상태 활성화
 
-    // 팀 데이터와 컬렉션 데이터를 동시에 요청
-    Promise.all([
-      axios.get("/data/teamData.json"), // 팀 데이터 요청
-      axios.get("/data/collectionsData.json") // 컬렉션 데이터 요청
-    ])
-      .then(([teamResponse, collectionResponse]) => {
-        // 팀 데이터 처리
-        const team = teamResponse.data.find(team => team.teamCode === teamCode);
-        if (team) {
-          setPendingMembers(team.pendingMembers); // 대기 중인 멤버 목록을 상태에 저장
-        } else {
-          console.error(`팀 코드 멤버(${teamCode})에 해당하는 팀을 찾을 수 없습니다.`);
-        }
+    Promise.all([axios.get("/data/teamData.json"), axios.get("/data/collectionsData.json")])
+      .then(([teamRes, collectionRes]) => {
+        const team = teamRes.data.find((t) => t.teamCode === teamCode); // 팀 데이터 검색
+        const collection = collectionRes.data.find((c) => c.teamCode === teamCode); // 컬렉션 데이터 검색
 
-        // 컬렉션 데이터 처리
-        const collection = collectionResponse.data.find(team => team.teamCode === teamCode);
-        if (collection) {
-          setMercenaryMembers(collection.mercenaryMembers); // 용병 멤버 목록을 상태에 저장
-        } else {
-          console.error(`팀 코드 용병(${teamCode})에 해당하는 컬렉션을 찾을 수 없습니다.`);
-        }
+        if (team) setPendingMembers(team.pendingMembers || []); // 대기 멤버 설정
+        if (collection) setMercenaryMembers(collection.mercenaryMembers || []); // 용병 멤버 설정
       })
-      .catch((err) => {
-        console.error("데이터 로딩 중 오류 발생:", err);
-      })
-      .finally(() => {
-        setLoading(false); // 데이터 로딩 완료
-      });
-  }, [teamCode]); // 팀 코드가 변경되면 데이터를 다시 불러옴
+      .catch((err) => console.error("데이터 로딩 오류:", err))
+      .finally(() => setLoading(false)); // 로딩 상태 해제
+  }, [teamCode]);
 
-  // 대기 중인 멤버의 상세 정보를 업데이트하는 로직
+  // 대기 멤버 상세 정보 업데이트
   useEffect(() => {
     if (pendingMembers.length === 0) return; // 대기 멤버가 없으면 실행하지 않음
 
     axios
-      .get("/data/userData.json") // 사용자 데이터를 가져오는 API 요청
+      .get("/data/userData.json") // 사용자 데이터 가져오기
       .then((response) => {
-        const datas = response.data;
-        const arr = pendingMembers
-          .map((member) => {
-            // 대기 중인 멤버의 데이터를 찾아서 상세 정보를 설정
-            const user = datas.find((user) => user.nickname === member.pendingnickname);
-            if (user) {
-              return {
-                pendingnickname: user.nickname,
-                description: user.myDescription || "정보 없음", // 설명이 없으면 "정보 없음"
-                profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지, 없으면 기본 이미지
+        const userData = response.data; // 사용자 데이터 전체
+        const detailedPendingMembers = pendingMembers.map((member) => {
+          const user = userData.find((u) => u.nickname === member.pendingnickname); // 해당 멤버의 상세 정보 검색
+          return user
+            ? {
+                pendingnickname: user.nickname, // 닉네임
+                description: user.myDescription || "정보 없음", // 설명
+                profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지
                 applicationDate: member.applicationDate, // 신청일
-              };
-            }
-            return null; // 해당 멤버가 없으면 null 반환
-          })
-          .filter(Boolean); // null을 제거하여 유효한 데이터만 남김
-        setPendingMemberList(arr); // 대기 멤버 리스트 업데이트
+              }
+            : null;
+        }).filter(Boolean); // 유효한 데이터만 필터링
+        setPendingMemberList(detailedPendingMembers); // 상태 업데이트
       })
-      .catch((err) => {
-        console.error("Error fetching user data:", err);
-      });
-  }, [pendingMembers]); // pendingMembers가 변경될 때마다 실행
+      .catch((err) => console.error("대기 멤버 데이터 로딩 오류:", err));
+  }, [pendingMembers]);
 
-  // 용병 멤버의 상세 정보를 업데이트하는 로직
+  // 용병 멤버 상세 정보 업데이트
   useEffect(() => {
     if (mercenaryMembers.length === 0) return; // 용병 멤버가 없으면 실행하지 않음
 
     axios
-      .get("/data/userData.json") // 사용자 데이터를 가져오는 API 요청
+      .get("/data/userData.json") // 사용자 데이터 가져오기
       .then((response) => {
-        const datas = response.data;
-        const arr = mercenaryMembers
-          .map((member) => {
-            // 용병 멤버의 데이터를 찾아서 상세 정보를 설정
-            const user = datas.find((user) => user.nickname === member.mercenarynickname);
-            if (user) {
-              return {
-                mercenarynickname: user.nickname,
-                description: user.myDescription || "정보 없음", // 설명이 없으면 "정보 없음"
-                profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지, 없으면 기본 이미지
+        const userData = response.data; // 사용자 데이터 전체
+        const detailedMercenaryMembers = mercenaryMembers.map((member) => {
+          const user = userData.find((u) => u.nickname === member.mercenarynickname); // 해당 멤버의 상세 정보 검색
+          return user
+            ? {
+                mercenarynickname: user.nickname, // 닉네임
+                description: user.myDescription || "정보 없음", // 설명
+                profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지
                 applicationDate: member.applicationDate, // 신청일
-              };
-            }
-            return null; // 해당 멤버가 없으면 null 반환
-          })
-          .filter(Boolean); // null을 제거하여 유효한 데이터만 남김
-        setMercenaryMemberList(arr); // 용병 멤버 리스트 업데이트
+              }
+            : null;
+        }).filter(Boolean); // 유효한 데이터만 필터링
+        setMercenaryMemberList(detailedMercenaryMembers); // 상태 업데이트
       })
-      .catch((err) => {
-        console.error("Error fetching mercenary data:", err);
-      });
-  }, [mercenaryMembers]); // mercenaryMembers가 변경될 때마다 실행
+      .catch((err) => console.error("용병 멤버 데이터 로딩 오류:", err));
+  }, [mercenaryMembers]);
 
-  // 승인 처리 함수 (대기 중인 멤버)
+  // 대기 멤버 승인 및 거절 처리
   const onApprove = (member) => {
-    console.log("Member approved:", member);
-    // 사용자 팀에 현재 팀을 추가
+    console.log("Approving member:", member);
     userActions.changeMyTeam([...userState.myTeam, teamState.teamName]);
-    // 대기 중인 멤버 목록에서 해당 멤버를 제거
-    const updatedPendingMembers = pendingMembers.filter(
-      (m) => m.pendingnickname !== member.pendingnickname
-    );
-    setPendingMembers(updatedPendingMembers); // 업데이트된 목록 상태 저장
+    setPendingMembers((prev) => prev.filter((m) => m.pendingnickname !== member.pendingnickname));
+    setPendingMemberList((prev) => prev.filter((m) => m.pendingnickname !== member.pendingnickname));
   };
 
-  // 거절 처리 함수 (대기 중인 멤버)
   const onReject = (member) => {
-    console.log("Member rejected:", member);
-    // 대기 중인 멤버 목록에서 해당 멤버를 제거
-    const updatedPendingMembers = pendingMembers.filter(
-      (m) => m.pendingnickname !== member.pendingnickname
-    );
-    setPendingMembers(updatedPendingMembers); // 업데이트된 목록 상태 저장
+    setPendingMembers((prev) => prev.filter((m) => m.pendingnickname !== member.pendingnickname)); // 목록에서 제거
+    setPendingMemberList((prev) => prev.filter((m) => m.pendingnickname !== member.pendingnickname)); // 상세 목록에서 제거
   };
 
-  // 용병 승인 처리 함수
+  // 용병 멤버 승인 및 거절 처리
   const onApproveMercenary = (member) => {
-    console.log("Mercenary approved:", member);
-    // 용병을 팀에 추가
-    collectionActions.addMercenaryToTeam(member);
-    // 용병 목록에서 해당 용병을 제거
-    const updatedMercenaryMembers = mercenaryMembers.filter(
-      (m) => m.mercenarynickname !== member.mercenarynickname
-    );
-    setMercenaryMembers(updatedMercenaryMembers); // 업데이트된 목록 상태 저장
+    collectionActions.addMercenaryToTeam(member); // 용병을 팀에 추가
+    setMercenaryMembers((prev) => prev.filter((m) => m.mercenarynickname !== member.mercenarynickname)); // 목록에서 제거
+    setMercenaryMemberList((prev) => prev.filter((m) => m.mercenarynickname !== member.mercenarynickname)); // 상세 목록에서 제거
   };
 
-  // 용병 거절 처리 함수
   const onRejectMercenary = (member) => {
-    console.log("Mercenary rejected:", member);
-    // 용병 목록에서 해당 용병을 제거
-    const updatedMercenaryMembers = mercenaryMembers.filter(
-      (m) => m.mercenarynickname !== member.mercenarynickname
-    );
-    setMercenaryMembers(updatedMercenaryMembers); // 업데이트된 목록 상태 저장
+    setMercenaryMembers((prev) => prev.filter((m) => m.mercenarynickname !== member.mercenarynickname)); // 목록에서 제거
+    setMercenaryMemberList((prev) => prev.filter((m) => m.mercenarynickname !== member.mercenarynickname)); // 상세 목록에서 제거
   };
 
-  // 로딩 중일 때 보여줄 화면
-  if (loading) {
-    return <div>로딩 중...</div>; // 로딩 중인 경우
-  }
+  // 로딩 상태 표시
+  if (loading) return <div>로딩 중...</div>;
 
   return (
     <div style={{ gridArea }}>
-      <div className={styles.congrid}>
+      <div className={styles.containerGrid}>
         <div className={styles.content}>
           <h1 className={styles.title}>마이페이지 &gt; 내 활동 &gt; 나의 팀 &gt; 신청 관리</h1>
           <AppStatus
@@ -201,4 +149,4 @@ const AppMangement = ({ gridArea }) => {
   );
 };
 
-export default AppMangement;
+export default AppManagement;

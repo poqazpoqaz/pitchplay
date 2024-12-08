@@ -70,10 +70,10 @@ const AppStatus = ({ pendingMembers, onApprove, onReject, teamActions, userState
   };
 
   const handleApprove = () => {
+    console.log("Modal approving member:", selectedMember);
     if (selectedMember) {
-      // 승인 처리 로직
-      onApprove(selectedMember); // 부모 컴포넌트의 onApprove 호출
-      closeModal();
+      onApprove(selectedMember);
+      setIsModalOpen(false);
     }
   };
 
