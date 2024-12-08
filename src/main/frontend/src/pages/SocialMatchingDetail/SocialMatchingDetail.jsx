@@ -134,7 +134,7 @@ function SocialMatchingDetail({ gridArea }) {
             />
             <SocialMember
                 gridArea="teamMatching"
-                socialMembers={socialState.currentMember}
+                socialMembers={socialState.currentMember || []} // 기본값으로 빈 배열 제공
             />
             <MatchingStadiumDetails
                 stadiumState={stadiumState}
