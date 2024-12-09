@@ -74,8 +74,8 @@ function TeamMatchingDetail({ gridArea }) {
     }, []);
 
 
-     // 신청하기 클릭 시 유저 로그인 여부 확인
-     const handleApplicationClick = () => {
+    // 신청하기 클릭 시 유저 로그인 여부 확인
+    const handleApplicationClick = () => {
         if (!user) {
             // 유저 정보가 없으면 로그인 페이지로 리디렉션
             window.location.href = "/login";
@@ -100,7 +100,10 @@ function TeamMatchingDetail({ gridArea }) {
                 matchingLoc={matchingState.location}
                 matchingDate={formattedMatchingDate}
                 gridArea="matchinginfo" />
-            <MatchingTeamDetails teams={matchingState.teams} gridArea="teamMatching" />
+            <MatchingTeamDetails
+                teams={matchingState.teams || []} // 기본값 빈 배열
+                gridArea="teamMatching"
+            />
             <MatchingStadiumDetails stadiumState={stadiumState} gridArea="map" />
             <MatchingApplicationDetails
                 matchingLoc={matchingState.location}
@@ -108,7 +111,7 @@ function TeamMatchingDetail({ gridArea }) {
                 matchingDate={formattedMatchingDate}
                 matchingCost={formatCurrency(adjustedStadiumCost)}
                 gridArea="application"
-                onClick={handleApplicationClick}/>
+                onClick={handleApplicationClick} />
             <MatchingPayment
                 isOpen={isModalOpen}
                 closeModal={() => setIsModalOpen(false)}
