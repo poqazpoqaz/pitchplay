@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import versus from "./versus.svg";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
+import defaultImage from "../../../public/imgs/1.jpg";
 
 const Wrapper = styled.div`
   position: relative;
   display: grid;
-  grid-template: 
-  'team1 team2' 1fr / 1fr 1fr;
+  grid-template: "team1 team2" 1fr / 1fr 1fr;
   width: 100%;
   height: 100%;
 `;
@@ -17,7 +17,7 @@ const VersusImage = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50px; 
+  width: 50px;
   height: 50px;
   z-index: 100;
 `;
@@ -77,24 +77,28 @@ const InnerTeam = styled.div`
     margin-bottom: 16px;
     border: 3px solid #fff;
   }
-
 `;
 
 function MatchingTeamDetails({ teams, gridArea }) {
+
+  const team1 = teams?.team1 || { name: '팀1 정보 없음', src: '/default.jpg' };
+  const team2 = teams?.team2 || { name: '팀2 정보 없음', src: '/default.jpg' };
+
+
   return (
     <Wrapper style={{ gridArea: gridArea }}>
-      <VersusImage src={versus}/>
+      <VersusImage src={versus} />
       <TeamWrapper1>
         <InnerTeam>
-          <img src={teams.team1.src} alt={teams.team1.name} />
-          <h1>{teams.team1.name}</h1>
+          <img src={team1.src ? team1.src : defaultImage} alt={team1.name} />
+          <h1>{team1.name ? team1.name : "팀 없음"}</h1>
         </InnerTeam>
       </TeamWrapper1>
       <TeamWrapper2>
-        {teams.team2.name ? (
+        {team2.name ? (
           <InnerTeam>
-            <img src={teams.team2.src} alt={teams.team2.name} />
-            <h1>{teams.team2.name}</h1>
+            <img src={team2.src ? team2.src : defaultImage} alt={team2.name} />
+            <h1>{team2.name ? team2.name : "팀 없음"}</h1>
           </InnerTeam>
         ) : (
           <InnerTeam>

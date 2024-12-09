@@ -71,7 +71,7 @@ function TeamMatchingDetail({ gridArea }) {
                     }
                 });
         }
-    }, []);
+    }, [user.userNumber]);
 
 
     // 신청하기 클릭 시 유저 로그인 여부 확인

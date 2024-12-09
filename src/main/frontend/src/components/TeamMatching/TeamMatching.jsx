@@ -29,7 +29,7 @@ function TeamMatching({ content }) {
                 {/* 매칭 아이템 */}
                 <TeamMatchingItem
                     team1={team1.name}
-                    team2={team2?.name !== "null" ? team2.name : null}
+                    team2={team2.name !== "null" ? team2.name : null}
                     date={matchingDate}
                     location={location}
                     gender={gender}
@@ -37,11 +37,11 @@ function TeamMatching({ content }) {
                     views={views}
                     gridArea="text"
                 />
-
                 {/* 팀 2 이미지 또는 버튼 */}
                 {team2.name && team2.name !== "null" ? (
                     <CircleImg src={team2.src} alt={`${team2.name} 이미지`} gridArea="team2" />
                 ) : (
+                
                     <Button color="var(--main-color)" gridArea="team2" to={`/matching/${content.matchingNum}`}>
                         신청하기
                     </Button>
