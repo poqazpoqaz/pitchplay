@@ -199,7 +199,7 @@ function SocialMatchings({ gridArea }) {
                     <MatchingPayment
                         isOpen={isModalOpen}
                         closeModal={() => setIsModalOpen(false)}
-                        userCash={userState.userCash}
+                        userCash={user.userCash}
                         stadiumCost={adjustedStadiumCost}
                         to="/"
                     />
