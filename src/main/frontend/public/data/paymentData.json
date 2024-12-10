@@ -4,7 +4,7 @@
     "paymentDate": "2024-11-01",
     "amount": 120000,
     "paymentMethod": "신한카드",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "pitch123",
     "reservationNumber": "123123"
   },
@@ -14,7 +14,7 @@
     "amount": 75000,
     "paymentMethod": "신한카드",
     "stadiumId": "S210401100008601453",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "pitch123",
     "reservationNumber": "123245"
   },
@@ -33,7 +33,7 @@
     "amount": 300000,
     "paymentMethod": "농협카드",
     "stadiumId": "S231208105143407599",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "garam456",
     "reservationNumber": "121151"
   },
@@ -42,7 +42,7 @@
     "paymentDate": "2024-11-05",
     "amount": 100000,
     "paymentMethod": "농협카드",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "hyunsu789",
     "reservationNumber": "100001"
   },
@@ -61,7 +61,7 @@
     "paymentDate": "2024-11-07",
     "amount": 150000,
     "paymentMethod": "우리카드",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "daeun1122",
     "reservationNumber": "102842"
   },
@@ -90,7 +90,7 @@
     "amount": 120000,
     "paymentMethod": "삼성카드",
     "stadiumId": "S231211171320885915",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "minsu2233",
     "reservationNumber": "105823"
     },
@@ -99,7 +99,7 @@
     "paymentDate": "2024-11-11",
     "amount": 220000,
     "paymentMethod": "하나카드",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "jimin3344",
     "reservationNumber": "135274"
   },
@@ -118,7 +118,7 @@
     "paymentDate": "2024-12-01",
     "amount": 130000,
     "paymentMethod": "핸드폰결제",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "hong4455",
     "reservationNumber": "134536"
   },
@@ -128,7 +128,7 @@
     "amount": 80000,
     "paymentMethod": "우리카드",
     "stadiumId": "S241119093351511483",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "jaehyun7788",
     "reservationNumber": "192337"
   },
@@ -137,7 +137,7 @@
     "paymentDate": "2024-12-03",
     "amount": 300000,
     "paymentMethod": "우리카드",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "minsu9900",
     "reservationNumber": "192338"
   },
@@ -147,7 +147,7 @@
     "amount": 450000,
     "paymentMethod": "신한카드",
     "stadiumId": "S241119093351511483",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "haneul2233",
     "reservationNumber": "192341"
   },
@@ -156,7 +156,7 @@
     "paymentDate": "2024-12-05",
     "amount": 60000,
     "paymentMethod": "국민카드",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "jungwoo7788",
     "reservationNumber": "192342"
   },
@@ -166,7 +166,7 @@
     "amount": 95000,
     "paymentMethod": "삼성카드",
     "stadiumId": "S241119093351511483",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "soohyun5566",
     "reservationNumber": "192343"
   },
@@ -194,7 +194,7 @@
     "paymentDate": "2024-12-09",
     "amount": 160000,
     "paymentMethod": "농협카드",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "lee1010",
     "reservationNumber": "192346"
   },
@@ -204,7 +204,7 @@
     "amount": 120000,
     "paymentMethod": "농협카드",
     "stadiumId": "S241119100830004167",
-    "paymentStatus": "성공",
+    "paymentStatus": "충전",
     "userId": "hong4455",
     "reservationNumber": "192347"
   },
