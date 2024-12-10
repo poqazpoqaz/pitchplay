@@ -1,6 +1,57 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Styled Components 정의
+const Container = styled.div`
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Noto Sans', sans-serif; /* 폰트 패밀리를 Noto Sans로 변경 */
+  line-height: 1.6;
+  color: #333;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  ${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
+  /* 80% 너비 제한, 자동으로 가로 중앙 정렬 */
+`;
+
+const Title = styled.h1`
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+const Section = styled.div`
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+const Heading = styled.h2`
+  font-size: 1.5em;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+`;
+
+const Text = styled.p`
+  font-size: 1em;
+  color: #555;
+  line-height: 1.8;
+  text-indent: 1em; /* 문단 첫 줄 들여쓰기 */
+  white-space: pre-wrap;
+`;
+
 const Terms = ({ gridArea }) => {
   return (
     <Container gridArea={gridArea}>
@@ -93,50 +144,4 @@ const Terms = ({ gridArea }) => {
   );
 };
 
-// Styled Components 정의
-const Container = styled.div`
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  ${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
-`;
-
-const Title = styled.h1`
-  font-size: 2em;
-  text-align: center;
-  margin-bottom: 20px;
-`;
-
-const Section = styled.div`
-  margin-bottom: 20px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-`;
-
-const Heading = styled.h2`
-  font-size: 1.5em;
-  color: #333;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-`;
-
-const Text = styled.p`
-  font-size: 1em;
-  color: #555;
-  line-height: 1.8;
-  text-indent: 1em; /* 문단 첫 줄 들여쓰기 */
-  white-space: pre-wrap;
-`;
 export default Terms;

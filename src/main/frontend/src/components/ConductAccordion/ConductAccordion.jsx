@@ -5,7 +5,6 @@ import ReportDetail from "../FeedbackAccordion/ReportDetail";
 import "./ConductAccordion.css"; // CSS 파일 import
 
 function ConductAccordion() {
-    // 선택된 보고서를 state로 저장하여 제공
     const { state: faqState, actions: faqActions } = useStore();
 
     const [dataList, setDataList] = useState([]);
@@ -34,12 +33,17 @@ function ConductAccordion() {
         fetchData(); // 데이터 불러오기 함수 실행
     }, []); // faqActions가 변경될 때마다 다시 실행
 
-    // 클릭된 보고서 상세보기
+    // 클릭된 보고서 상세보기 및 조회수 증가 처리
     const handleViewReport = (faqNumber) => {
-        const report = dataList.find(r => r.faqNumber === faqNumber);
+        const updatedDataList = [...dataList]; // 데이터 복사
+        const report = updatedDataList.find(r => r.faqNumber === faqNumber);
         if (report) {
-            setSelectedReport(report);
-            faqActions.updateAllFields(report);
+            // 조회수 증가
+            report.views += 1;
+            setDataList(updatedDataList); // 상태 업데이트
+
+            setSelectedReport(report); // 선택된 보고서 설정
+            faqActions.updateAllFields(report); // FAQ 상태 업데이트
         }
     };
 

@@ -5,41 +5,44 @@ import "./FeedbackAccordion.css";
 import ReportDetail from "./ReportDetail";
 
 function FeedbackAccordion() {
-    // 선택된 보고서를 state로 저장하여 제공
     const { state: faqState, actions: faqActions } = useStore();
 
     const [dataList, setDataList] = useState([]);
-    const [loading, setLoading] = useState(true); // 로딩 상태 관리
-    const [error, setError] = useState(null); // 에러 상태 관리
-    const [selectedReport, setSelectedReport] = useState(null); // 선택된 보고서 저장
-    const navigate = useNavigate(); // 페이지 네비게이션을 위한 navigate 훅
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [selectedReport, setSelectedReport] = useState(null);
+    const navigate = useNavigate();
 
-    // 데이터 불러오기 (useEffect를 사용하여 컴포넌트 마운트 시 실행)
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/data/faqData.json"); // 데이터 파일을 가져옵니다.
-                if (!response.ok) { // 응답이 정상적이지 않으면 에러 처리
+                const response = await fetch("/data/faqData.json");
+                if (!response.ok) {
                     throw new Error("데이터를 불러오는 데 실패했습니다.");
                 }
-                const data = await response.json(); // JSON 데이터 파싱
-                setDataList(data); // 상태에 데이터를 설정
+                const data = await response.json();
+                setDataList(data);
             } catch (err) {
-                setError(err.message); // 에러 발생 시 상태에 에러 메시지 저장
+                setError(err.message);
             } finally {
-                setLoading(false); // 로딩 완료
+                setLoading(false);
             }
         };
 
-        fetchData(); // 데이터 불러오기 함수 실행
-    }, []); // faqActions가 변경될 때마다 다시 실행
+        fetchData();
+    }, []);
 
-    // 클릭된 보고서 상세보기
+    // 클릭된 보고서 상세보기 및 조회수 증가 처리
     const handleViewReport = (faqNumber) => {
-        const report = dataList.find(data => data.faqNumber === faqNumber);
+        const updatedDataList = [...dataList]; // 데이터 복사
+        const report = updatedDataList.find(data => data.faqNumber === faqNumber);
         if (report) {
-            setSelectedReport(report);
-            faqActions.updateAllFields(report);
+            // 조회수 증가
+            report.views += 1;
+            setDataList(updatedDataList); // 상태 업데이트
+
+            setSelectedReport(report); // 선택된 보고서 설정
+            faqActions.updateAllFields(report); // FAQ 상태 업데이트
         }
     };
 
@@ -53,7 +56,6 @@ function FeedbackAccordion() {
         navigate("/write"); // 글쓰기 페이지로 이동
     };
 
-    // 로딩 중 또는 에러 발생 시 화면 표시
     if (loading) return <p>로딩 중...</p>;
     if (error) return <p>에러 발생: {error}</p>;
 
