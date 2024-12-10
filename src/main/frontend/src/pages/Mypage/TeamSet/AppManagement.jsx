@@ -44,16 +44,24 @@ const AppManagement = ({ gridArea }) => {
     Promise.all([axios.get("/data/teamData.json"), axios.get("/data/collectionsData.json")])
       .then(([teamRes, collectionRes]) => {
         const team = teamRes.data.find((t) => t.teamCode === teamCode); // 팀 데이터 검색
-        const collection = collectionRes.data.find((c) => c.teamCode === teamCode); // 컬렉션 데이터 검색
+        const collections = collectionRes.data.filter((c) => c.teamCode === teamCode); // 팀 코드로 컬렉션 필터링
+
+        // 각 컬렉션에서 mercenaryMembers와 collectionTime을 추출하여 병합
+        const allMercenaryMembers = collections.flatMap(({ mercenaryMembers, collectionTime }) =>
+          mercenaryMembers.map((member) => ({
+            ...member, // mercenaryMembers에 있는 데이터를 유지
+            collectionTime, // 해당 collection의 collectionTime 추가
+          }))
+        );
 
         if (team) setPendingMembers(team.pendingMembers || []); // 대기 멤버 설정
-        if (collection){
-        setMercenaryMembers(collection.mercenaryMembers || []); // 용병 멤버 설정
-        setCollectionTime(collection.collectionTime || null); 
-      }})
+
+        setMercenaryMembers(allMercenaryMembers || []); // 용병 멤버 설정
+
+      })
       .catch((err) => console.error("데이터 로딩 오류:", err))
       .finally(() => setLoading(false)); // 로딩 상태 해제
-  }, [teamCode]);
+  }, [teamCode]); // teamCode가 변경될 때마다 실행
 
   // 대기 멤버 상세 정보 업데이트
   useEffect(() => {
@@ -67,22 +75,23 @@ const AppManagement = ({ gridArea }) => {
           const user = userData.find((u) => u.nickname === member.pendingnickname); // 해당 멤버의 상세 정보 검색
           return user
             ? {
-                pendingnickname: user.nickname, // 닉네임
-                description: user.myDescription || "정보 없음", // 설명
-                profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지
-                applicationDate: member.applicationDate, // 신청일
-              }
+              pendingnickname: user.nickname, // 닉네임
+              description: user.myDescription || "정보 없음", // 설명
+              profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지
+              applicationDate: member.applicationDate, // 신청일
+            }
             : null;
         }).filter(Boolean); // 유효한 데이터만 필터링
         setPendingMemberList(detailedPendingMembers); // 상태 업데이트
       })
       .catch((err) => console.error("대기 멤버 데이터 로딩 오류:", err));
   }, [pendingMembers]);
+
   // ------------------------------------------------------
   // 용병 멤버 상세 정보 업데이트
   useEffect(() => {
     if (mercenaryMembers.length === 0) return; // 용병 멤버가 없으면 실행하지 않음
-
+    if (mercenaryMemberList.length > 0) return;
     axios
       .get("/data/userData.json") // 사용자 데이터 가져오기
       .then((response) => {
@@ -91,17 +100,23 @@ const AppManagement = ({ gridArea }) => {
           const user = userData.find((u) => u.nickname === member.mercenarynickname); // 해당 멤버의 상세 정보 검색
           return user
             ? {
-                mercenarynickname: user.nickname, // 닉네임
-                description: user.myDescription || "정보 없음", // 설명
-                profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지
-                applicationDate: member.applicationDate, // 신청일
-              }
+              mercenarynickname: user.nickname, // 닉네임
+              description: user.myDescription || "정보 없음", // 설명
+              profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지
+              applicationDate: member.applicationDate, // 신청일
+              collectionTime: member.collectionTime, // 매치 시간 추가
+            }
             : null;
         }).filter(Boolean); // 유효한 데이터만 필터링
-        setMercenaryMemberList(detailedMercenaryMembers); // 상태 업데이트
+
+        // 기존의 mercenaryMemberList에 새로 가져온 데이터를 병합
+        setMercenaryMemberList((prevList) => [
+          ...prevList,
+          ...detailedMercenaryMembers,
+        ]); // 상태 업데이트
       })
       .catch((err) => console.error("용병 멤버 데이터 로딩 오류:", err));
-  }, [mercenaryMembers]);
+  }, [mercenaryMembers]); // mercenaryMembers가 변경될 때마다 데이터 갱신
 
   // 대기 멤버 승인 및 거절 처리
   const onApprove = (member) => {
@@ -135,18 +150,20 @@ const AppManagement = ({ gridArea }) => {
     <div style={{ gridArea }}>
       <div className={styles.containerGrid}>
         <div className={styles.content}>
-          <h1 className={styles.title}>마이페이지 &gt; 내 활동 &gt; 나의 팀 &gt; 신청 관리</h1>
-          <AppStatus
-            pendingMembers={pendingMemberList}
-            onApprove={onApprove}
-            onReject={onReject}
-          />
-          <MercenaryStatus
-            mercenaryMembers={mercenaryMemberList}
-            onApprove={onApproveMercenary}
-            onReject={onRejectMercenary}
-            collectionTime={collectionTime}
-          />
+          <h1 className={styles.title}>마이페이지 &gt; 내 활동 &gt; 나의 팀 관리</h1>
+          <div className={styles.teamInfo}>
+            <AppStatus
+              pendingMembers={pendingMemberList}
+              onApprove={onApprove}
+              onReject={onReject}
+            />
+            <MercenaryStatus
+              mercenaryMembers={mercenaryMemberList}
+              collectionTime={collectionTime} // collectionTime 전달
+              onApprove={onApproveMercenary}
+              onReject={onRejectMercenary}
+            />
+          </div>
         </div>
       </div>
     </div>

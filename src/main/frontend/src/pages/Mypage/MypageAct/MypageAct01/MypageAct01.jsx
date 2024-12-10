@@ -22,6 +22,9 @@ const MypageAct01 = ({ gridArea }) => {
         console.error("Error fetching matching data:", err);
       });
   }, [user?.nickname]);
+
+
+  
   // 예약 취소 함수 정의
   const handleCancelMatch = (match) => {
     console.log('Cancelling match:', match);
@@ -29,6 +32,7 @@ const MypageAct01 = ({ gridArea }) => {
     // 예약 취소 처리 로직 (예: 서버 요청 또는 로컬 상태 업데이트)
     setMatchingList((prevMatches) => prevMatches.filter((m) => m.matchingNum !== match.matchingNum));
     alert(`${match.location} 예약이 취소되었습니다.`);
+
   };
 
   return (
