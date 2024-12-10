@@ -129,7 +129,9 @@ const Mypage1 = () => {
                         handleFileUpload={handleFileUpload}
                         previewImage={previewImage} //미리보기 전달
                     />
-                    <Top2 username={state.name} usercash={state.userCash} />
+                    <Top2 username={state.name} usercash={state.userCash}
+                    id={user.id}
+                    />
                     <Bottom
                         formFields={formFields}
                         isEditable={isEditable}

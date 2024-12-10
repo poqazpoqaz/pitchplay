@@ -38,7 +38,7 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const Top2 = ({ username, usercash }) => {
+const Top2 = ({ username, usercash, id }) => {
   return (
     <Top22>
       <h2>{username} 님</h2>
@@ -51,7 +51,7 @@ const Top2 = ({ username, usercash }) => {
           <LinkButton to="/refund">환불하기</LinkButton>
         </li>
         <li>
-          <LinkButton to="/history">사용 내역</LinkButton>
+          <LinkButton to={`/mypage/${id}/history`}>사용 내역</LinkButton>
         </li>
       </ul>
     </Top22>

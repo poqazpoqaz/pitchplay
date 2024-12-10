@@ -99,7 +99,8 @@ const router = createBrowserRouter([
         element: <GuestRecruitmentCreation gridArea={"section"} />,
       },
       {
-        path: "/mypage/:id", element: <MyPage gridArea={"section"} />, children: [
+        path: "/mypage/:id", element: <MyPage gridArea={"section"} />, 
+        children: [
           { path: "", element: <Mypage1 /> },
           { path: "act", element: <MypageAct gridArea={"section"} /> },
           { path: "matches", element: <MypageAct01 gridArea={"section"} /> },
@@ -112,7 +113,8 @@ const router = createBrowserRouter([
           { path: "commentinfo" , element : <CommentInfo gridArea={"section"}/>},
           { path: "postinfo", element : <PostInfo gridArea={"section"}/>},
           { path: ":teamCode/members/appmange" , element : <AppMangement gridArea={"section"}/>  },
-          { path: "changeset" , element : <ChangeSetting gridArea={"section"}/>}
+          { path: "changeset" , element : <ChangeSetting gridArea={"section"}/>},
+          { path: "history", element: <HistoryPage gridArea={"section"} /> },
         ]
       },
       {
@@ -157,7 +159,6 @@ const router = createBrowserRouter([
       },
 
 
-      { path: "/history", element: <HistoryPage gridArea={"section"} /> },
       { path: "/Write", element: <WriteReport gridArea={"section"} /> },
     ]
 );
