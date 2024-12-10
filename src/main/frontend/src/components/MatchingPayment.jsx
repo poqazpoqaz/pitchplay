@@ -44,23 +44,45 @@ const FlexDiv = styled.div`
 `
 
 
-function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost}) {
+function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost }) {
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
-    const remainingCash = +userCash - +stadiumCost;
+    const [currentCash, setCurrentCash] = useState(userCash); // 현재 캐시 상태
+
+    const handlePayment = () => {
+        // 결제 처리
+        if (currentCash >= stadiumCost) {
+            const updatedCash = currentCash - stadiumCost; // 남은 캐시 계산
+            setCurrentCash(updatedCash); // UI 상태 업데이트
+
+            // 로컬스토리지에서 user 객체 가져오기
+            const user = JSON.parse(localStorage.getItem("user")) || {};
+            const updatedUser = { ...user, userCash: updatedCash }; // userCash 업데이트
+
+            // 로컬스토리지에 변경된 user 저장
+            localStorage.setItem("user", JSON.stringify(updatedUser));
+
+            setIsAlarmOpen(true); // 알람 표시
+        } else {
+            alert("캐시가 부족합니다. 충전이 필요합니다."); // 캐시 부족 알림
+        }
+    };
+
+    const remainingCash = currentCash - stadiumCost; // 결제 후 남는 캐시 계산
 
     return (
         <Modal isOpen={isOpen} closeModal={closeModal}>
-            {isAlarmOpen &&
-                <Alarm 
-                isOpen={isAlarmOpen}
-                onClick={()=>setIsAlarmOpen(false)}
-                closeAlarm={()=>setIsAlarmOpen(false)}
-                to={to}
-                btntext={"확인"}
+            {isAlarmOpen && (
+                <Alarm
+                    isOpen={isAlarmOpen}
+                    onClick={() => setIsAlarmOpen(false)}
+                    closeAlarm={() => setIsAlarmOpen(false)}
+                    to={to}
+                    btntext={"확인"}
                 >
                     결제되었습니다.
-                </Alarm>}
-            {(+userCash < +stadiumCost) ?
+                </Alarm>
+            )}
+            {currentCash < stadiumCost ? (
                 <Wrapper>
                     <TitleWrapper>
                         <TitleText color="var(--main-color)">결제 신청</TitleText>
@@ -69,23 +91,30 @@ function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost}) {
                     <BoxWrapper>
                         <FlexDiv>
                             <p>부족한 캐시</p>
-                            <p><span>{formatCurrency(Math.abs(remainingCash))}</span> 캐시</p>
-                            
+                            <p>
+                                <span>{formatCurrency(Math.abs(remainingCash))}</span> 캐시
+                            </p>
                         </FlexDiv>
                         <FlexDiv>
                             <p>현재 보유 캐시</p>
-                            <p><span>{formatCurrency(userCash)}</span> 캐시</p>
+                            <p>
+                                <span>{formatCurrency(currentCash)}</span> 캐시
+                            </p>
                         </FlexDiv>
                     </BoxWrapper>
                     <BoxWrapper>
                         <FlexDiv>
                             <p>결제 금액</p>
-                            <p><span>{formatCurrency(stadiumCost)}</span> 캐시</p>
+                            <p>
+                                <span>{formatCurrency(stadiumCost)}</span> 캐시
+                            </p>
                         </FlexDiv>
                     </BoxWrapper>
-                    <Button color="var(--main-color)" size="large"> 충전하기</Button>
+                    <Button color="var(--main-color)" size="large">
+                        충전하기
+                    </Button>
                 </Wrapper>
-                :
+            ) : (
                 <Wrapper>
                     <TitleWrapper>
                         <TitleText color="var(--main-color)">결제 신청</TitleText>
@@ -94,25 +123,36 @@ function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost}) {
                     <BoxWrapper>
                         <FlexDiv>
                             <p>결제 후 남는 캐시</p>
-                            <p><span>{formatCurrency(Math.abs(remainingCash))}</span> 캐시</p>
+                            <p>
+                                <span>{formatCurrency(remainingCash)}</span> 캐시
+                            </p>
                         </FlexDiv>
                         <FlexDiv>
                             <p>현재 보유 캐시</p>
-                            <p><span>{formatCurrency(userCash)}</span> 캐시</p>
+                            <p>
+                                <span>{formatCurrency(userCash)}</span> 캐시
+                            </p>
                         </FlexDiv>
                     </BoxWrapper>
                     <BoxWrapper>
                         <FlexDiv>
                             <p>결제 금액</p>
-                            <p><span>{formatCurrency(stadiumCost)}</span> 캐시</p>
+                            <p>
+                                <span>{formatCurrency(stadiumCost)}</span> 캐시
+                            </p>
                         </FlexDiv>
                     </BoxWrapper>
-                    <Button color="var(--main-color)" size="large" onClick={() => setIsAlarmOpen(true)}> 신청하기 </Button>
+                    <Button
+                        color="var(--main-color)"
+                        size="large"
+                        onClick={handlePayment}
+                    >
+                        신청하기
+                    </Button>
                 </Wrapper>
-            }
+            )}
         </Modal>
-
-    )
+    );
 }
 
 export default MatchingPayment;

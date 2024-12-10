@@ -18,14 +18,16 @@ const MypageAct04 = ({ gridArea }) => {
     axios.get("/data/matchingData.json")
       .then(response => {
         const datas = response.data;
+        // nickname이 team1.name과 일치하는 데이터만 필터링
         const selectedMatches = datas.filter(data =>
-          data.teams.team1.name === user.myTeam || data.teams.team2.name === user.myTeam);
-        setMatchingList(selectedMatches);
+          data.teams.team1.name === user.nickname
+        );
+        setMatchingList(selectedMatches);  // 필터링된 매칭 데이터를 상태에 저장
       })
       .catch(err => {
         console.error("Error fetching matching data:", err);
       });
-  }, []);
+  }, []); 
 
   // 날짜 범위가 선택될 때 호출되는 함수
   const handleDateSelect = (filteredData) => {
