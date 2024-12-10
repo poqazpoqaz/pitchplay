@@ -4,69 +4,60 @@ import styled from 'styled-components';
 import TotalCalendar from '../Calendar/TotalCalendar';
 
 const ModalContent = styled.div`
-  position: relative;
-  background: white;
-  padding: 5px;
-  border-radius: 10px;
-  max-width: 80%;
-  width: 90%;
-  margin: 0 auto;
-  height: 80vh; /* 고정 높이 */
-  overflow-y: auto; /* 스크롤 가능 */
+  padding: 20px;
   display: flex;
-  flex-direction: column; /* Flexbox로 레이아웃 정렬 */
-  justify-content: space-between; /* Footer가 항상 아래쪽에 위치 */
-
-  /* 스크롤바 숨기기 */
-  ::-webkit-scrollbar {
-    display: none; /* 웹킷 기반 브라우저에서 스크롤바 숨기기 */
-  }
-
-  -ms-overflow-style: none; /* IE에서 스크롤바 숨기기 */
-  scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
+  flex-direction: column;
+  gap: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
 `;
 
 const FormGroup = styled.div`
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 const FormLabel = styled.label`
-  display: block;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: left;
-  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
 `;
 
 const Dropdown = styled.select`
-  width: 100%;
-  padding: 8px;
-  font-size: 1rem;
+  padding: 10px;
+  font-size: 14px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+
+  &:focus {
+    border-color: #1b4510;
+    outline: none;
+  }
 `;
 
 const Group = styled.div`
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  justify-content: space-between; /* 버튼 간격 균등 분배 */
-  width: 100%; /* 부모 크기에 맞춤 */
 `;
 
 const Button = styled.button`
-  flex: 1; /* 버튼의 크기를 균등하게 분배 */
-  padding: 10px 0; /* 상하 여백으로 버튼 높이를 조정 */
-  font-size: 0.8rem
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: ${(props) => (props.active ? '#1B4510' : '#f5f5f5')};
-  color: ${(props) => (props.active ? 'white' : 'black')};
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid ${(props) => (props.active ? '#1b4510' : '#ccc')};
+  border-radius: 4px;
+  background-color: ${(props) => (props.active ? '#1b4510' : '#f9f9f9')};
+  color: ${(props) => (props.active ? '#fff' : '#333')};
   cursor: pointer;
-  text-align: center;
 
   &:hover {
-    background-color: ${(props) => (props.active ? '#1B4510' : '#e0e0e0')};
+    background-color: ${(props) => (props.active ? '#16400c' : '#eaeaea')};
   }
 `;
 
@@ -76,10 +67,14 @@ const FooterButton = styled(Button)`
     props.variant === 'cancel' ? '#BBBBBB' : '#1B4510'};
   color: white;
   border-radius: 2px;
+  margin-top: 20px;
 `;
 
 const TotalModal = ({ isOpen, onClose }) => {
-  const [selectedButtons, setSelectedButtons] = useState([]);
+  const [selectedButtons, setSelectedButtons] = useState([]); // gender, teamSize에서 선택
+  const [region, setRegion] = useState(''); // location (지역)
+  const [subRegion, setSubRegion] = useState(''); // 세부 지역
+  const [matchingDate, setMatchingDate] = useState(''); // 매칭 날짜
 
   const toggleButtonSelection = (label) => {
     setSelectedButtons((prev) =>
@@ -88,8 +83,28 @@ const TotalModal = ({ isOpen, onClose }) => {
         : [...prev, label]
     );
   };
+  const handleDateSelect = (dateRange) => {
+    setMatchingDate(dateRange); // 선택된 날짜 범위 저장
+  };
 
   const isActive = (label) => selectedButtons.includes(label);
+
+  const handleSave = () => {
+    const dataToSave = {
+      location: `${region} ${subRegion}`.trim(),
+      gender: selectedButtons.filter((item) =>
+        ['남성', '여성', '혼성'].includes(item)
+      ),
+      teamSize: selectedButtons.filter((item) =>
+        ['4 vs 4', '5 vs 5', '6 vs 6', '7 vs 7', '전체'].includes(item)
+      ),
+      matchingDate,
+    };
+
+    localStorage.setItem('TotalSet', JSON.stringify(dataToSave)); // 로컬스토리지에 저장
+    onClose(); // 모달 닫기
+    alert('데이터가 저장되었습니다!');
+  };
 
   return (
     <Modal isOpen={isOpen} closeModal={onClose}>
@@ -99,7 +114,7 @@ const TotalModal = ({ isOpen, onClose }) => {
           <FormGroup>
             <FormLabel>날짜 선택</FormLabel>
             <Group>
-              <TotalCalendar />
+              <TotalCalendar onSelect={handleDateSelect} />
             </Group>
           </FormGroup>
 
@@ -107,17 +122,24 @@ const TotalModal = ({ isOpen, onClose }) => {
           <FormGroup>
             <FormLabel htmlFor="region">지역</FormLabel>
             <Group>
-              <Dropdown id="region">
-                <option>지역을 선택해주세요</option>
-                <option>서울</option>
-                <option>부산</option>
-                <option>대구</option>
+              <Dropdown
+                id="region"
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+              >
+                <option value="">지역을 선택해주세요</option>
+                <option value="서울">서울</option>
+                <option value="부산">부산</option>
+                <option value="대구">대구</option>
               </Dropdown>
-              <Dropdown>
-                <option>세부지역을 선택해주세요</option>
-                <option>강남구</option>
-                <option>서초구</option>
-                <option>해운대구</option>
+              <Dropdown
+                value={subRegion}
+                onChange={(e) => setSubRegion(e.target.value)}
+              >
+                <option value="">세부지역을 선택해주세요</option>
+                <option value="강남구">강남구</option>
+                <option value="서초구">서초구</option>
+                <option value="해운대구">해운대구</option>
               </Dropdown>
             </Group>
           </FormGroup>
@@ -155,7 +177,10 @@ const TotalModal = ({ isOpen, onClose }) => {
           </FormGroup>
         </section>
         <footer>
-          <FooterButton variant="search">다음</FooterButton>
+          <FooterButton onClick={handleSave}>저장하기</FooterButton>
+          <FooterButton variant="cancel" onClick={onClose}>
+            취소
+          </FooterButton>
         </footer>
       </ModalContent>
     </Modal>

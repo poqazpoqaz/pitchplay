@@ -14,12 +14,10 @@ import {
 } from "date-fns";
 import "./Calendar.css";
 
-const TotalCalendar = ({ allData }) => {
+const TotalCalendar = ({ onSelect }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedRange, setSelectedRange] = useState({ start: null, end: null });
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-
-
 
   const handlePrevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -31,14 +29,16 @@ const TotalCalendar = ({ allData }) => {
 
   const handleDateClick = (day) => {
     if (!selectedRange.start || selectedRange.end) {
-      setSelectedRange({ start: day, end: null });
+      const newRange = { start: day, end: null };
+      setSelectedRange(newRange);
+      onSelect && onSelect(newRange); // 선택된 날짜 범위를 부모로 전달
     } else if (selectedRange.start && !selectedRange.end) {
-      setSelectedRange((prevState) => {
-        if (day < prevState.start) {
-          return { start: day, end: prevState.start };
-        }
-        return { ...prevState, end: day };
-      });
+      const newRange =
+        day < selectedRange.start
+          ? { start: day, end: selectedRange.start }
+          : { ...selectedRange, end: day };
+      setSelectedRange(newRange);
+      onSelect && onSelect(newRange); // 선택된 날짜 범위를 부모로 전달
     }
   };
 
@@ -83,14 +83,20 @@ const TotalCalendar = ({ allData }) => {
           {isDropdownVisible && (
             <div className="dropdown">
               <div className="dropdown-content">
-                <select onChange={handleYearChange} value={currentMonth.getFullYear()}>
+                <select
+                  onChange={handleYearChange}
+                  value={currentMonth.getFullYear()}
+                >
                   {years.map((year) => (
                     <option key={year} value={year}>
                       {year}년
                     </option>
                   ))}
                 </select>
-                <select onChange={handleMonthChange} value={currentMonth.getMonth()}>
+                <select
+                  onChange={handleMonthChange}
+                  value={currentMonth.getMonth()}
+                >
                   {months.map((month) => (
                     <option key={month} value={month}>
                       {month + 1}월
@@ -113,7 +119,6 @@ const TotalCalendar = ({ allData }) => {
           placeholder="시작일"
           onClick={() => setSelectedRange({ ...selectedRange, start: null })}
         />
-        {/* 종료일 입력 */}
         <input
           type="text"
           readOnly
@@ -147,9 +152,11 @@ const TotalCalendar = ({ allData }) => {
             return (
               <div
                 key={index}
-                className={`date ${isSameMonth(day, currentMonth) ? "" : "disabled"} ${
-                  isSelectedStart ? "selected-start" : ""
-                } ${isSelectedEnd ? "selected-end" : ""} ${
+                className={`date ${
+                  isSameMonth(day, currentMonth) ? "" : "disabled"
+                } ${isSelectedStart ? "selected-start" : ""} ${
+                  isSelectedEnd ? "selected-end" : ""
+                } ${
                   isInRange && !isSelectedStart && !isSelectedEnd ? "in-range" : ""
                 }`}
                 onClick={() => handleDateClick(day)}
