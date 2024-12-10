@@ -5,9 +5,9 @@ import styled from "styled-components";
 // 드롭다운 Wrapper
 const DropdownWrapper = styled.div`
   position: relative;
-  z-index: 200;
   width: 100%;
   `;
+  // z-index: 100; 이거 몰라서 뺌일단
 
 // 드롭다운 버튼 스타일
 const DropdownButton = styled.div`
