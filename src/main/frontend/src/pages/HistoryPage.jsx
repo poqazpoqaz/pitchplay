@@ -2,15 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  padding : 40px; 
 `;
 
 const Header = styled.div`
@@ -59,7 +51,15 @@ const ListItem = styled.div`
   color: ${(props) => (props.type === 'positive' ? '#1B4510' : '#ff0000')};
 `;
 const Actbox = styled.div `
-padding : 30px;
+width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
 `
 
 const HistoryPage = ({ gridArea }) => {
@@ -71,9 +71,9 @@ const HistoryPage = ({ gridArea }) => {
       </Header>
       <FilterButtons>
         <FilterButton active>전체</FilterButton>
-        <FilterButton>충전/전환</FilterButton>
-        <FilterButton>사용/취소</FilterButton>
-        <FilterButton>사용/취소</FilterButton>
+        <FilterButton>충전</FilterButton>
+        <FilterButton>환불</FilterButton>
+        <FilterButton>취소</FilterButton>
       </FilterButtons>
       <NoDataMessage>존재하는 캐시 내역이 없습니다.</NoDataMessage>
       <Divider />
