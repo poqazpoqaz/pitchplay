@@ -75,7 +75,7 @@
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
     .footer-title {
         font-size: 24px;
     }

@@ -56,6 +56,7 @@ import AdminMatchingManagement from './pages/AdminMatchingManagement/AdminMatchi
 import ChargeMain from './pages/ChargeMain';
 import RefundMain from './pages/RefundMain';
 import ChangeSetting from './pages/Mypage/ChangeSet/ChangeSetting';
+import PSinformation from './pages/Footer/PSinformation';
 
 const router = createBrowserRouter([
   {
@@ -146,7 +147,9 @@ const router = createBrowserRouter([
           },
           { path: "/charge", element: <ChargeMain gridArea={"section"} /> },
           { path: "/refund", element: <RefundMain gridArea={"section"} /> },
+          { path: "/psinfo" , element:<PSinformation gridArea={"section"}/>},
         ]
+        
       },
 
 
