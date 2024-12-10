@@ -12,22 +12,16 @@ const MypageAct01 = ({ gridArea }) => {
     axios.get("/data/matchingData.json")
       .then(response => {
         const datas = response.data;
-
-        // user가 포함된 팀 이름이 team1이나 team2에 포함된 매칭 데이터 필터링
-        const selectedMatches = datas.filter(data =>
-          data?.teams?.team1?.name === user?.myTeam || data?.teams?.team2?.name === user?.myTeam);
-
-        // 중복 제거
-        const uniqueMatches = Array.from(new Set(selectedMatches.map(match => match.matchingNum)))
-          .map(matchingNum => selectedMatches.find(match => match.matchingNum === matchingNum));
-
-        setMatchingList(uniqueMatches);
+  
+        // nickname이 매칭 데이터의 nickname과 일치하는 매칭만 필터링
+        const selectedMatches = datas.filter(data => data?.nickname === user?.nickname);
+  
+        setMatchingList(selectedMatches);
       })
       .catch(err => {
         console.error("Error fetching matching data:", err);
       });
-  }, [user?.myTeam]);
-
+  }, [user?.nickname]);
   // 예약 취소 함수 정의
   const handleCancelMatch = (match) => {
     console.log('Cancelling match:', match);

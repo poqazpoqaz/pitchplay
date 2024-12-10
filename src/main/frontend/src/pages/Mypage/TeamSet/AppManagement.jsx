@@ -18,6 +18,7 @@ const AppManagement = ({ gridArea }) => {
   const [mercenaryMemberList, setMercenaryMemberList] = useState([]); // 용병 멤버 상세 정보 목록
   const [userData, setUserData] = useState(null); // 사용자 데이터
   const [loading, setLoading] = useState(true); // 로딩 상태
+  const [collectionTime, setCollectionTime] = useState(null);
 
   // 스토어에서 상태와 액션을 가져옴
   const { state: userState, actions: userActions } = UserStore();
@@ -46,8 +47,10 @@ const AppManagement = ({ gridArea }) => {
         const collection = collectionRes.data.find((c) => c.teamCode === teamCode); // 컬렉션 데이터 검색
 
         if (team) setPendingMembers(team.pendingMembers || []); // 대기 멤버 설정
-        if (collection) setMercenaryMembers(collection.mercenaryMembers || []); // 용병 멤버 설정
-      })
+        if (collection){
+        setMercenaryMembers(collection.mercenaryMembers || []); // 용병 멤버 설정
+        setCollectionTime(collection.collectionTime || null); 
+      }})
       .catch((err) => console.error("데이터 로딩 오류:", err))
       .finally(() => setLoading(false)); // 로딩 상태 해제
   }, [teamCode]);
@@ -75,7 +78,7 @@ const AppManagement = ({ gridArea }) => {
       })
       .catch((err) => console.error("대기 멤버 데이터 로딩 오류:", err));
   }, [pendingMembers]);
-
+  // ------------------------------------------------------
   // 용병 멤버 상세 정보 업데이트
   useEffect(() => {
     if (mercenaryMembers.length === 0) return; // 용병 멤버가 없으면 실행하지 않음
@@ -142,6 +145,7 @@ const AppManagement = ({ gridArea }) => {
             mercenaryMembers={mercenaryMemberList}
             onApprove={onApproveMercenary}
             onReject={onRejectMercenary}
+            collectionTime={collectionTime}
           />
         </div>
       </div>

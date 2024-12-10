@@ -54,6 +54,9 @@ const CancelButton = styled.button`
 
 `;
 
+
+
+
 const MatcheList = ({ matches, onCancelMatch }) => {
   const [selectedMatch, setSelectedMatch] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -71,21 +74,41 @@ const MatcheList = ({ matches, onCancelMatch }) => {
     setIsModalOpen(false); // 모달 닫기
     setSelectedMatch(null);
   };
+  
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // 시간을 00:00:00으로 설정하여 비교
+
+  // 과거 기록만 필터링
+  const pastRecords = matches.filter((match) => {
+    const recordDate = new Date(match.matchingDate);
+    // record.date가 유효한지 확인
+    if (isNaN(recordDate)) {
+      console.warn(`Invalid date: ${matches.matchingDate}`);  // 잘못된 날짜 로그 확인
+      return false;  // 유효하지 않은 날짜는 필터링
+    }
+    
+    return recordDate >= today; // 오늘 이전 날짜만
+  });
+  const filledMatches = pastRecords.slice(0, 10);
 
   return (
     <Container>
       <Title>예약한 경기 목록</Title>
-      {matches.map((match, index) => (
-        <Box key={index}>
-          <div>
-            <h1>{match.location || '위치 정보 없음'}</h1>
-            <BoxCal>
-              <p>{formattedDate(match.matchingDate) || '날짜 정보 없음'}</p>
-            </BoxCal>
-          </div>
-          <CancelButton onClick={() => handleCancelClick(match)}>예약 취소</CancelButton>
-        </Box>
-      ))}
+      {filledMatches.length > 0 ? (
+        filledMatches.map((match, index) => (
+          <Box key={index}>
+            <div>
+              <h1>{match.location || '위치 정보 없음'}</h1>
+              <BoxCal>
+                <p>{formattedDate(match.matchingDate) || '날짜 정보 없음'}</p>
+              </BoxCal>
+            </div>
+            <CancelButton onClick={() => handleCancelClick(match)}>예약 취소</CancelButton>
+          </Box>
+        ))
+      ) : (
+        <p>예약한 경기가 없습니다.</p>
+      )}
 
       <CancelModal
         match={selectedMatch}
