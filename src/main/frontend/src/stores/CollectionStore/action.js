@@ -16,6 +16,7 @@ export const CHANGE_TEAM_SIZE = "CHANGE_TEAM_SIZE";
 export const CHANGE_STADIUM = "CHANGE_STADIUM";
 export const UPDATE_ALL_FIELDS = "UPDATE_ALL_FIELDS";
 export const RESET_STATE = "RESET_STATE";
+export const CHANGE_MERCENARY = "CHANGE_MERCENARY";
 
 
 export const changeCollectionNumber = (collectionNumber) => ({type: CHANGE_COLLECTION_NUMBER, payload: collectionNumber})
@@ -35,4 +36,5 @@ export const changeWrittenDate = ( writtenDate) => ({type: CHANGE_WRITTEN_DATE,p
 export const changeTeamSize = (teamSize) => ({type: CHANGE_TEAM_SIZE,payload: teamSize });
 export const changeStadium = (stadiumId) => ({type: CHANGE_STADIUM,payload:  stadiumId });
 export const updateAllFields = (fields) => ({type: UPDATE_ALL_FIELDS, payload: fields});
+export const changeMercenary = (mercenaryMembers) => ({type : CHANGE_MERCENARY, payload : mercenaryMembers});
 export const resetState = () => ({type: RESET_STATE});

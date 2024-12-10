@@ -16,6 +16,7 @@ import {
     CHANGE_TEAM_SIZE,
     CHANGE_STADIUM,
     UPDATE_ALL_FIELDS,
+    CHANGE_MERCENARY,
     RESET_STATE
 } from "./action";
 
@@ -57,6 +58,8 @@ export const reducer = (state = initialState, action) => {
             return { ...state, teamSize: action.payload };
         case CHANGE_STADIUM:
             return { ...state, stadiumId: action.payload };
+        case CHANGE_MERCENARY:
+            return {...state, ...action.payload };
         case UPDATE_ALL_FIELDS:
             return { ...state, ...action.payload };
         case RESET_STATE:

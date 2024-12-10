@@ -18,6 +18,7 @@ import {
     changeTeamSize,
     changeStadium,
     updateAllFields,
+    changeMercenary,
     resetState
 } from "./action";
 
@@ -57,6 +58,8 @@ export const useStore = () => {
         changeTeamSize: (teamSize) => dispatch(changeTeamSize(teamSize)),
         // 경기장 변경 메서드
         changeStadium: (stadiumId) => dispatch(changeStadium(stadiumId)),
+        // 용병 관리 메서드
+        changeMercenary: (mercenaryMembers) => dispatch(changeMercenary(mercenaryMembers)),
         //전체 변경
         updateAllFields: (fields) => dispatch(updateAllFields(fields)),
         // 상태 초기화 메서드
