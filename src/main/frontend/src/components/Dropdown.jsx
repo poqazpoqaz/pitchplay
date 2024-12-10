@@ -42,8 +42,8 @@ const DropdownList = styled(motion.div)`
   border: 1px solid #CCCCCC;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 100;
   margin-top: 3px;
+  z-index: 100;
   overflow-y : auto;
   white-space: nowrap; /* 텍스트가 줄 바꿈 없이 한 줄로 유지됨 */
 `;
