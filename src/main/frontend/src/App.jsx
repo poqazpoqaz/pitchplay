@@ -57,6 +57,7 @@ import ChargeMain from './pages/ChargeMain';
 import RefundMain from './pages/RefundMain';
 import ChangeSetting from './pages/Mypage/ChangeSet/ChangeSetting';
 import PSinformation from './pages/Footer/PSinformation';
+import Terms from './pages/Terms';
 
 const router = createBrowserRouter([
   {
@@ -148,6 +149,7 @@ const router = createBrowserRouter([
           { path: "/charge", element: <ChargeMain gridArea={"section"} /> },
           { path: "/refund", element: <RefundMain gridArea={"section"} /> },
           { path: "/psinfo" , element:<PSinformation gridArea={"section"}/>},
+          { path: "term", element: <Terms gridArea={"section"}/>},
         ]
         
       },
