@@ -16,7 +16,7 @@ function AdminHeader() {
             <div className={styles['header-middle']}>
                 <HeaderLogo />
             </div>
-            <Link to="#" className={styles['header-right']}><img src={home} /></Link>
+            <Link to="/" className={styles['header-right']}><img src={home} /></Link>
         </div>
     )
 }
