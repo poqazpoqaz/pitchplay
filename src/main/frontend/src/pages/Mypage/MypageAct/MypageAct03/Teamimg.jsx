@@ -139,7 +139,7 @@ const Teamimg = ({ teamInfo ,id, }) => {
         <TeamInfo>
           <TeamImg
             src={teamInfo.image}
-            alt="팀 이미지"
+            alt=""
           />
         </TeamInfo>
         <TeamDetails>
