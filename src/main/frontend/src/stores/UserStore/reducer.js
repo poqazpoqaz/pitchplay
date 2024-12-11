@@ -67,10 +67,10 @@ export const reducer = (state, action) => {
             return { ...state, joinDate: action.payload };
         case UPDATE_ALL_FIELDS:
             return { ...state, ...action.payload };
+        case CHANGE_USER_HISTORY:
+            return { ...state, userHistory: action.payload };
         case RESET_STATE:
             return initialState;
-        case CHANGE_USER_HISTORY:
-                return { ...state, userHistory: action.payload };
         default:
             return state;
     }

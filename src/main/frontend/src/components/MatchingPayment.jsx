@@ -5,6 +5,7 @@ import Button from "./Button";
 import Alarm from "../components/Alarm";
 import { useState } from "react";
 import {formatCurrency} from "../utils/formattedDate";
+import Category from "./Category/Category";
 
 
 // 추후에 결제하는 쪽 주소 보내야함
@@ -48,19 +49,26 @@ function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost }) {
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
     const [currentCash, setCurrentCash] = useState(userCash); // 현재 캐시 상태
 
+
+
     const handlePayment = () => {
-        // 결제 처리
+        // 로컬스토리지에서 user 객체 가져오기
+        const user = JSON.parse(localStorage.getItem("user")) || {};
+        
+        // userHistory가 없으면 빈 배열로 초기화
+        const userHistory = user.userHistory || [];
+    
         if (currentCash >= stadiumCost) {
             const updatedCash = currentCash - stadiumCost; // 남은 캐시 계산
             setCurrentCash(updatedCash); // UI 상태 업데이트
-
-            // 로컬스토리지에서 user 객체 가져오기
-            const user = JSON.parse(localStorage.getItem("user")) || {};
-            const updatedUser = { ...user, userCash: updatedCash }; // userCash 업데이트
-
+    
+            // 결제 기록 추가
+            const updatedHistory = [...userHistory, { Category: "matching", userHistory: stadiumCost }];
+            const updatedUser = { ...user, userCash: updatedCash, userHistory: updatedHistory }; // userCash 업데이트
+    
             // 로컬스토리지에 변경된 user 저장
             localStorage.setItem("user", JSON.stringify(updatedUser));
-
+    
             setIsAlarmOpen(true); // 알람 표시
         } else {
             alert("캐시가 부족합니다. 충전이 필요합니다."); // 캐시 부족 알림
