@@ -6,6 +6,9 @@ import {
     CHANGE_PAYMENT_STATUS,
     CHANGE_USER_ID,
     CHANGE_RESERVATION_NUMBER,
+    CHANGE_REFUND_ID,
+    CHANGE_REFUND_STATUS,
+    CHANGE_REFUND_DATE,
     UPDATE_ALL_FIELDS,
     RESET_STATE
 } from "./action";
@@ -34,6 +37,15 @@ export const reducer = (state, action) => {
         
         case CHANGE_RESERVATION_NUMBER:
             return { ...state, reservationNumber: action.payload };
+
+        case CHANGE_REFUND_ID:
+            return {...state, refundId: action.payload };
+        
+        case CHANGE_REFUND_STATUS:
+            return {...state, refundStatus: action.payload };
+
+        case CHANGE_REFUND_DATE:
+            return {...state, refundDate: action.payload};
         
         case UPDATE_ALL_FIELDS:
             return { ...state, ...action.payload }; 

@@ -5,7 +5,7 @@
     "orderId": "ORD001",
     "refundDate": "2024-11-02",
     "refundAmount": 120000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "pitch123"
   },
@@ -15,7 +15,7 @@
     "orderId": "ORD002",
     "refundDate": "2024-11-03",
     "refundAmount": 75000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "pitch123"
   },
@@ -25,7 +25,7 @@
     "paymentDate": "2024-12-02",
     "refundDate": "2024-12-12",
     "refundAmount": 130000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "pitch123"
   },
@@ -35,7 +35,7 @@
     "orderId": "ORD003",
     "refundDate": "2024-11-04",
     "refundAmount": 250000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "환불대기",
     "userId": "garam456"
   },
@@ -45,7 +45,7 @@
     "orderId": "ORD004",
     "refundDate": "2024-11-05",
     "refundAmount": 300000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "garam456"
   },
@@ -55,7 +55,7 @@
     "orderId": "ORD005",
     "refundDate": "2024-11-06",
     "refundAmount": 100000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "hyunsu789"
   },
@@ -65,7 +65,7 @@
     "orderId": "ORD006",
     "refundDate": "2024-11-07",
     "refundAmount": 50000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "hyunsu789"
   },
@@ -75,7 +75,7 @@
     "orderId": "ORD007",
     "refundDate": "2024-11-08",
     "refundAmount": 150000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "daeun1122"
   },
@@ -85,7 +85,7 @@
     "orderId": "ORD008",
     "refundDate": "2024-11-09",
     "refundAmount": 200000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "환불대기",
     "userId": "daeun1122"
   },
@@ -95,7 +95,7 @@
     "orderId": "ORD009",
     "refundDate": "2024-11-10",
     "refundAmount": 175000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "daeun1122"
   },
@@ -105,7 +105,7 @@
     "orderId": "ORD010",
     "refundDate": "2024-11-11",
     "refundAmount": 120000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "jimin3344"
   },
@@ -115,7 +115,7 @@
     "paymentDate": "2024-11-11",
     "refundDate": "2024-11-12",
     "refundAmount": 220000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "jimin3344"
   },
@@ -125,7 +125,7 @@
     "paymentDate": "2024-11-12",
     "refundDate": "2024-11-13",
     "refundAmount": 180000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "환불대기",
     "userId": "minsu2233"
   },
@@ -135,7 +135,7 @@
     "paymentDate": "2024-12-01",
     "refundDate": "2024-12-01",
     "refundAmount": 130000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "skyblue"
   },
@@ -145,7 +145,7 @@
     "paymentDate": "2024-12-02",
     "refundDate": "2024-12-02",
     "refundAmount": 80000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "hong4455"
   },
@@ -155,7 +155,7 @@
     "paymentDate": "2024-12-03",
     "refundDate": "2024-12-03",
     "refundAmount": 300000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "jaehyun7788"
   },
@@ -165,7 +165,7 @@
     "paymentDate": "2024-12-04",
     "refundDate": "2024-12-04",
     "refundAmount": 450000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "minsu9900"
   },
@@ -175,7 +175,7 @@
     "paymentDate": "2024-12-05",
     "refundDate": "2024-12-05",
     "refundAmount": 60000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "haneul2233"
   },
@@ -185,7 +185,7 @@
     "paymentDate": "2024-12-06",
     "refundDate": "2024-12-06",
     "refundAmount": 95000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "jungwoo7788"
   },
@@ -195,7 +195,7 @@
     "paymentDate": "2024-12-07",
     "refundDate": "2024-12-07",
     "refundAmount": 180000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "soohyun5566"
   },
@@ -205,7 +205,7 @@
     "paymentDate": "2024-12-02",
     "refundDate": "2024-12-08",
     "refundAmount": 250000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "taehwan9988"
   },
@@ -215,7 +215,7 @@
     "paymentDate": "2024-12-02",
     "refundDate": "2024-12-09",
     "refundAmount": 160000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "USER020"
   },
@@ -225,7 +225,7 @@
     "paymentDate": "2024-12-02",
     "refundDate": "2024-12-10",
     "refundAmount": 120000,
-    "refundtype": "캐쉬",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "lee1010"
   },
@@ -235,7 +235,7 @@
     "paymentDate": "2024-12-02",
     "refundDate": "2024-12-11",
     "refundAmount": 240000,
-    "refundtype": "구장",
+    "refundtype": "매칭",
     "refundStatus": "완료",
     "userId": "lee1010"
   }

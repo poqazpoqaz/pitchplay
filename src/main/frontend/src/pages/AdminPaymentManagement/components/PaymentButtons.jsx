@@ -24,7 +24,7 @@ const PaymentButtons = ({ value, onChangeValue, gridArea}) => {
         color={selectedButton === "환불관리" ? "var(--main-color)" : null}
         size="large"
       >
-        환불관리
+        캐시관리
       </Button>
     </div>
   );

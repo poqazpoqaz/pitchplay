@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
 // Styled Components
 const Container = styled.div`
@@ -51,36 +51,37 @@ const ListItem = styled.div`
     color: ${(props) =>
       props.type === "reservation" || props.type === "refund"
         ? "#ff0000"
-        : "#1B4510"}; /* 리펀드 제이슨 데이터 및 환불은 빨간색, 충전은 초록색 */
+        : "#1B4510"}; /* 환불은 빨간색, 충전은 초록색 */
   }
 `;
 
 // Component
 const HistoryPage = () => {
-  const { id } = useParams();
   const [filter, setFilter] = useState("전체");
-  const [paymentData, setPaymentData] = useState([]);
-  const [refundData, setRefundData] = useState([]);
   const [combinedData, setCombinedData] = useState([]);
+
+  
+
+  const user =JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const paymentResponse = await fetch("/data/paymentData.json");
-        const payment = await paymentResponse.json();
+        const [paymentResponse, refundResponse] = 
+        await Promise.all([
+          axios.get("/data/paymentData.json"),
+          axios.get("/data/refundData.json"),
+        ]);
 
-        const refundResponse = await fetch("/data/refundData.json");
-        const refund = await refundResponse.json();
-
-        const filteredPayment = payment.filter((item) => item.userId === id);
-        const filteredRefund = refund.filter((item) => item.userId === id);
+        const paymentData = paymentResponse.data.filter((item) => item.userId === user.id);
+        const refundData = refundResponse.data.filter((item) => item.userId === user.id);
 
         const mergedData = [
-          ...filteredPayment.map((paymentItem) => ({
+          ...paymentData.map((paymentItem) => ({
             ...paymentItem,
             type: paymentItem.paymentStatus === "환불" ? "refund" : "charge",
           })),
-          ...filteredRefund.map((refundItem) => ({
+          ...refundData.map((refundItem) => ({
             orderId: refundItem.orderId,
             paymentDate: refundItem.paymentDate,
             refundDate: refundItem.refundDate,
@@ -91,8 +92,6 @@ const HistoryPage = () => {
           })),
         ];
 
-        setPaymentData(filteredPayment);
-        setRefundData(filteredRefund);
         setCombinedData(mergedData);
       } catch (error) {
         console.error("데이터 불러오기 실패:", error);
@@ -100,16 +99,13 @@ const HistoryPage = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [user.id]);
 
   const getFilteredData = () => {
     if (filter === "전체") return combinedData;
-    if (filter === "충전")
-      return combinedData.filter((item) => item.type === "charge");
-    if (filter === "환불")
-      return combinedData.filter((item) => item.type === "refund");
-    if (filter === "예약")
-      return combinedData.filter((item) => item.type === "reservation");
+    if (filter === "충전") return combinedData.filter((item) => item.type === "charge");
+    if (filter === "환불") return combinedData.filter((item) => item.type === "refund");
+    if (filter === "예약") return combinedData.filter((item) => item.type === "reservation");
     return combinedData;
   };
 
@@ -160,14 +156,13 @@ const HistoryPage = () => {
                   <strong>신청 일:</strong> {item.refundDate}
                 </div>
                 <div className="amount">
-                  <strong>취소 금액:</strong>{" "}
-                  {item.refundAmount.toLocaleString()}원
+                  <strong>취소 금액:</strong> {item.refundAmount.toLocaleString()}원
                 </div>
                 <div>
                   <strong>취소 상태:</strong> {item.refundStatus}
                 </div>
                 <div>
-                  <strong> 유형:</strong> {item.refundType}
+                  <strong>유형:</strong> {item.refundType}
                 </div>
               </>
             ) : (
@@ -176,10 +171,7 @@ const HistoryPage = () => {
                   <strong>결제 상태:</strong> {item.paymentStatus}
                 </div>
                 <div className="amount">
-                  <strong>금액:</strong>{" "}
-                  {item.amount
-                    ? `${item.amount.toLocaleString()}원`
-                    : `${item.refundAmount.toLocaleString()}원`}
+                  <strong>금액:</strong> {item.amount.toLocaleString()}원
                 </div>
               </>
             )}
