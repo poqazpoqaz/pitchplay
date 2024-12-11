@@ -23,7 +23,7 @@
         "joindate": "2024-01-01T10:00:00",
         "isDeleted" : false,
         "userHistory" : [
-            {"category" : "matching" , "useHistory" : 30000}
+            {"category" : "matching" , "useHistory" : 30000 , "useDate" : "2024-12-10"}
         ]
     },
     {

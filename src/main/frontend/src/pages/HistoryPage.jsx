@@ -199,11 +199,15 @@ const HistoryPage = () => {
     ) : item.category === "matching" ? (
       <>
         <div>
+          <strong>사용 일:</strong> {item.useDate}
+        </div>
+        <div>
           <strong>카테고리:</strong> {item.category}
         </div>
-        <div className="amount">
+        <div>
           <strong>사용 금액:</strong> {item.useHistory}원
         </div>
+        
       </>
     ) : (
       <>
