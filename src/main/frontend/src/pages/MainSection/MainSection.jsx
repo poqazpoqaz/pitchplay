@@ -110,7 +110,7 @@ const MainSection = ({ gridArea }) => {
       linkText: '소셜로 이동하기',
     },
     {
-      src: '1.jpg',
+      src: 'team.jpg',
       alt: 'Team',
       link: '/team',
       text: '팀',

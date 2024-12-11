@@ -20,6 +20,7 @@ import {
     changeAccountNum,
     changeJoinDate,
     updateAllFields,
+    changeUserHistory,
     resetState
 } from "./action.js";
 
@@ -63,6 +64,8 @@ export const useStore = () => {
         changeAccountNum : (accountNum) => dispatch(changeAccountNum(accountNum)),
         // 유저 가입
         changeJoinDate : (joindate) => dispatch(changeJoinDate(joindate)),
+        // 유저 사용 내역
+        changeUserHistory : (userHistory) => dispatch(changeUserHistory(userHistory)),
         //전체 변경
         updateAllFields : (fields) => dispatch(updateAllFields(fields)),
         //초기화

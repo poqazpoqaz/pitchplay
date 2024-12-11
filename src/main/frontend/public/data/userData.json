@@ -21,7 +21,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2024-01-01T10:00:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "456456",
@@ -45,7 +48,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-12-01T20:30:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "789789",
@@ -68,7 +74,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-11-25T18:15:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "112233",
@@ -91,7 +100,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-11-20T15:45:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "223344",
@@ -114,7 +126,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-11-20T15:45:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "334455",
@@ -137,7 +152,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-11-20T15:45:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "445566",
@@ -160,7 +178,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-11-20T15:45:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "556677",
@@ -183,7 +204,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-11-20T15:45:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "667788",
@@ -206,7 +230,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-11-20T15:45:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
     {
         "userNumber": "778899",
@@ -229,7 +256,10 @@
         "emailNotification": false,
         "snsNotification": true,
         "joindate": "2023-11-20T15:45:00",
-        "isDeleted" : false
+        "isDeleted" : false,
+        "userHistory" : [
+            {"category" : "stadium" , "useHistory" : "30000"}
+        ]
     },
         {
             "userNumber": "889900",
@@ -252,7 +282,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-01-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "223344",
@@ -275,7 +308,11 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-02-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
+            
         },
         {
             "userNumber": "667788",
@@ -298,7 +335,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-03-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "556677",
@@ -321,7 +361,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-04-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "998877",
@@ -344,7 +387,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-05-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },{
             "userNumber": "101010",
             "name": "이정수",
@@ -366,7 +412,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-06-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "202020",
@@ -389,7 +438,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-07-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "303030",
@@ -412,7 +464,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-07-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "404040",
@@ -435,7 +490,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-08-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "505050",
@@ -458,7 +516,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-09-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "606060",
@@ -481,7 +542,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-10-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "707070",
@@ -504,7 +568,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-11-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "808080",
@@ -527,7 +594,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-12-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         },
         {
             "userNumber": "909090",
@@ -550,7 +620,10 @@
             "emailNotification": false,
             "snsNotification": true,
             "joindate": "2024-12-01T10:00:00",
-            "isDeleted" : false
+            "isDeleted" : false,
+            "userHistory" : [
+                {"category" : "stadium" , "useHistory" : "30000"}
+            ]
         }
 
 ]
