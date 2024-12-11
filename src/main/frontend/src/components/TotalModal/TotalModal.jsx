@@ -114,7 +114,7 @@ const TotalModal = ({ isOpen, onClose }) => {
         ['남성', '여성', '혼성'].includes(item)
       ),
       teamSize: selectedButtons.filter((item) =>
-        ['4vs4', '5vs5', '6vs6', '7vs7', '전체'].includes(item)
+        ['4vs4', '5vs5', '6vs6', '7vs7'].includes(item)
       ),
       matchingDate,
     };
@@ -182,7 +182,7 @@ const TotalModal = ({ isOpen, onClose }) => {
           <FormGroup>
             <FormLabel>인원(복수선택 가능)</FormLabel>
             <Group>
-              {['4vs4', '5vs5', '6vs6', '7vs7', '전체'].map((label) => (
+              {['4vs4', '5vs5', '6vs6', '7vs7'].map((label) => (
                 <Button
                   key={label}
                   active={isActive(label)}
