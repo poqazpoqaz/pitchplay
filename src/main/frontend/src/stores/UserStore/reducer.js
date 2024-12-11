@@ -18,6 +18,7 @@ import {
     CHANGE_ACCOUNT_NUM,
     CHANGE_JOIN_DATE,
     UPDATE_ALL_FIELDS,
+    CHANGE_USER_HISTORY,
     RESET_STATE
 
 } from "./action";
@@ -68,6 +69,8 @@ export const reducer = (state, action) => {
             return { ...state, ...action.payload };
         case RESET_STATE:
             return initialState;
+        case CHANGE_USER_HISTORY:
+                return { ...state, userHistory: action.payload };
         default:
             return state;
     }

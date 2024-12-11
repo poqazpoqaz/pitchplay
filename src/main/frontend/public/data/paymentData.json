@@ -23,7 +23,7 @@
     "paymentDate": "2024-11-03",
     "amount": 250000,
     "paymentMethod": "하나카드",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "garam456",
    "reservationNumber": "123145"
   },
@@ -52,7 +52,7 @@
     "amount": 50000,
     "paymentMethod": "하나카드",
     "stadiumId" :"S231208160336766600",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "hyunsu789",
     "reservationNumber": "102842"
   },
@@ -71,7 +71,7 @@
     "amount": 200000,
     "paymentMethod": "현대카드",
     "stadiumId": "S231211171320885915",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "daeun1122",
     "reservationNumber": "190284"
   },
@@ -80,7 +80,7 @@
     "paymentDate": "2024-11-09",
     "amount": 175000,
     "paymentMethod": "삼성카드",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "jimin3344",
     "reservationNumber": "139482"
   },
@@ -109,7 +109,7 @@
     "amount": 180000,
     "paymentMethod": "우리카드",
     "stadiumId": "S231211171320885915",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "minsu2233",
     "reservationNumber": "134536"
   },
@@ -175,7 +175,7 @@
     "paymentDate": "2024-12-07",
     "amount": 180000,
     "paymentMethod": "국민카드",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "taehwan9988",
     "reservationNumber": "192344"
   },
@@ -185,7 +185,7 @@
     "amount": 250000,
     "paymentMethod": "농협카드",
     "stadiumId": "S241119100830004167",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "taehwan9988",
     "reservationNumber": "192345"
   },
@@ -213,7 +213,7 @@
     "paymentDate": "2024-12-11",
     "amount": 240000,
     "paymentMethod": "신한카드",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "lee1010",
     "reservationNumber": "1923248"
   },
@@ -223,7 +223,7 @@
     "amount": 190000,
     "paymentMethod": "신한카드",
     "stadiumId": "S241119100830004167",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "taeyoung3030",
     "reservationNumber": "192323"
   },
@@ -233,7 +233,7 @@
     "amount": 190000,
     "paymentMethod": "신한카드",
     "stadiumId": "S241119100830004167",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "taeyoung3030",
     "reservationNumber": "192323"
   },
@@ -243,7 +243,7 @@
     "amount": 120000,
     "paymentMethod": "우리카드",
     "stadiumId": "S241119100830004167",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "taeyoung3030",
     "reservationNumber": "192323"
   },
@@ -253,7 +253,7 @@
     "amount": 190000,
     "paymentMethod": "우리카드",
     "stadiumId": "S241119100830004167",
-    "paymentStatus": "취소",
+    "paymentStatus": "환불",
     "userId": "hong4455",
     "reservationNumber": "192323"
   }

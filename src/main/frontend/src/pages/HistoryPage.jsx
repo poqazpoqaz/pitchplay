@@ -114,6 +114,9 @@ const HistoryPage = ({ gridArea }) => {
           <FilterButton active={filter === '환불'} onClick={() => setFilter('환불')}>
             환불
           </FilterButton>
+          <FilterButton active={filter === '사용'} onClick={() => setFilter('환불')}>
+            사용
+          </FilterButton>
           <FilterButton active={filter === '취소'} onClick={() => setFilter('취소')}>
             취소
           </FilterButton>

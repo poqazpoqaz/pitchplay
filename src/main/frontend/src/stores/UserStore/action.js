@@ -17,6 +17,7 @@ export const CHANGE_ACCOUNT_NAME = "CHANGE_ACCOUNT_NAME";
 export const CHANGE_ACCOUNT_NUM = "CHANGE_ACCOUNT_NUM";
 export const CHANGE_JOIN_DATE = "CHANGE_JOIN_DATE";
 export const UPDATE_ALL_FIELDS = "UPDATE_ALL_FIELDS";
+export const CHANGE_USER_HISTORY = "CHANGE_USER_HISTORY";
 export const RESET_STATE = "RESET_STATE";
 
 export const changeUserNumber = (userNumber) => ({ type: CHANGE_USER_NUMBER, payload: userNumber });
@@ -38,4 +39,5 @@ export const changeAccountName = (account) => ({ type: CHANGE_ACCOUNT_NAME, payl
 export const changeAccountNum = (accountNum) => ({ type: CHANGE_ACCOUNT_NUM, payload: accountNum });
 export const changeJoinDate = (joindate) => ({ type: CHANGE_JOIN_DATE, payload: joindate });
 export const updateAllFields = (fields) => ({ type: UPDATE_ALL_FIELDS, payload: fields });
+export const changeUserHistory= (userHistory)=> ({ type: CHANGE_USER_HISTORY, payload: userHistory });
 export const resetState = () => ({ type: RESET_STATE });
