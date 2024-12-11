@@ -78,7 +78,7 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const RecordsSection = ({ mathces }) => {
+const RecordsSection = ({ mathces,id }) => {
   return (
     <Container>
       <Subtitle>참가한 경기 기록</Subtitle>
@@ -97,7 +97,7 @@ const RecordsSection = ({ mathces }) => {
       </Box>
 
       <BtnEnd>
-        <LinkButton to="/mypage/pitch123/records">더 보기</LinkButton>
+        <LinkButton to={`/mypage/${id}/records`}>더 보기</LinkButton>
       </BtnEnd>
     </Container>
   );

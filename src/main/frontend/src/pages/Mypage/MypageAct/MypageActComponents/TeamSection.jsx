@@ -74,26 +74,26 @@ const LinkButton = styled(Link)`
   }
 `;
 
-const TeamSection = ({ teamInfo }) => {
+const TeamSection = ({ teamInfo, id }) => {
   return (
     <Container>
       <Subtitle>내 팀 정보</Subtitle>
       <Top3Item>
         <TeamInfo>
           <TeamImg
-            src={teamInfo.teamImg || pachiImage}
-            alt="팀 이미지"
+            src={teamInfo.teamImg || ""}
+            alt=""
           />
         </TeamInfo>
         <TeamDetails>
-          <TeamName>{teamInfo.teamName || "안산 그리너스"}</TeamName>
+          <TeamName>{teamInfo.teamName || ""}</TeamName>
           <Members>
-            {teamInfo.teamLoc || "안산 고잔동"} / {teamInfo.currentMember || 24}명
+            {teamInfo.teamLoc || ""} / {teamInfo.currentMember || ""}명
           </Members>
         </TeamDetails>
       </Top3Item>
       <BtnEnd>
-        <LinkButton to="/mypage/pitch123/teamsection">나의 팀</LinkButton>
+        <LinkButton to={`/mypage/${id}/teamsection`}>나의 팀</LinkButton>
       </BtnEnd>
     </Container>
   );
