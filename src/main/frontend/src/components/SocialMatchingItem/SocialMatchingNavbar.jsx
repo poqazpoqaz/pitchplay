@@ -31,7 +31,7 @@ const Wrapper = styled.div`
     }
 `;
 
-    function SocialMatchingNavbar({ gridArea, filteredData , onSearchButtonClick  }) {
+    function SocialMatchingNavbar({ gridArea, onSearchButtonClick  }) {
 
     return (
         <Wrapper style={{ gridArea: gridArea }}>
@@ -39,7 +39,6 @@ const Wrapper = styled.div`
             <SearchInput 
                 gridArea="inp" 
                 onClick={onSearchButtonClick}
-                filteredData={filteredData}
             />
         </Wrapper>
     );

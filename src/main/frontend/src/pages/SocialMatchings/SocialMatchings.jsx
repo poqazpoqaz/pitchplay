@@ -15,15 +15,12 @@ function SocialMatchings({ gridArea }) {
     const { state: userState, actions: userActions } = UserStore(); // 유저 캐시 변경되기 때문에 스토어 사용
     const [stadiumCost, setStadiumCost] = useState(0);  // 경기장 가격 
     const [socialSize, setSocialSize] = useState(""); // 소셜매칭 teamSize 
-    const [filteredData, setFilteredData] = useState([]);  // 필터링된 데이터 상태
-    const [allData, setAllData] = useState([]);  // 모든 데이터 상태
-    const filterCriteria = JSON.parse(localStorage.getItem('TotalSet'));
 
     // 드롭다운 옵션
     const [selectedOption, setSelectedOption] = useState("최신순");
 
     // 데이터 저장 
-    const [dataList, setDataList] = useState([]);
+    const [allData, setAllData] = useState([]);
     const [sortedContents, setSortedContents] = useState([]);
 
     // 현재 렌더링할 데이터 개수
@@ -49,6 +46,25 @@ function SocialMatchings({ gridArea }) {
         setSelectedOption(option); // 선택된 옵션 업데이트
     };
 
+    // 더 보기 버튼 클릭 처리
+    const handleLoadMore = () => {
+        setVisibleCount((prevCount) => Math.min(prevCount + 5, filteredData.length));
+    };
+
+    // 정렬된 데이터 상태 업데이트
+    useEffect(() => {
+        if (allData.length > 0) {
+            const sortedData = sortObjectContents([...allData], selectedOption); // 정렬된 데이터
+            setSortedContents(sortedData); // 정렬 결과 저장
+        }
+    }, [allData, selectedOption]);
+
+
+    // 필터링
+    const [filteredData, setFilteredData] = useState([]);  // 필터링된 데이터 상태
+
+    const filterCriteria = JSON.parse(localStorage.getItem('TotalSet'));
+
     // 유저 데이터 불러오기 (소셜매칭 신청할 때 캐시)
     useEffect(() => {
         if (!user) {
@@ -70,11 +86,6 @@ function SocialMatchings({ gridArea }) {
     }, []);
 
     useEffect(() => {
-        if (!filterCriteria) {
-            console.log("필터없는데?");
-            return;
-        }
-
         // social, user, stadium 데이터 가져오기
         Promise.all([
             axios.get("/data/socialData.json"),
@@ -126,62 +137,52 @@ function SocialMatchings({ gridArea }) {
                     };
                 });
                 setAllData(updatedList);  // 모든 데이터를 저장
-              
-                setFilteredData(updatedList); // 필터된 데이터 초기화
             })
             .catch((error) => {
                 console.error("데이터 로딩 실패:", error);
             });
-    }, [filterCriteria]);
+    }, []);
 
     // 필터링된 데이터만 출력하는 함수
     const applyFilters = () => {
+
         if (!filterCriteria) return;
-    
-        const filteredList = allData.filter((item) => {
+        console.log('Filter Criteria:', filterCriteria);
+        
+        // 필터링된 리스트 생성
+        const filteredList = sortedContents.filter((item) => {
             const { social, stadium } = item;
-    
-            // 성별 필터링
+            
+            // 각 조건을 체크하는 부분에서 로그를 찍어봄
             const genderMatch = filterCriteria.gender.includes(social.socialGender);
-            console.log("Gender Filter: ", filterCriteria.gender, "=>", genderMatch);
-            console.log("확인용" , filterCriteria);
-            console.log("필터데이터",filteredData);
-    
-            // 위치 필터링
+            console.log('Gender Match:', genderMatch, social.socialGender);
+            
             const locationMatch = stadium.loc.includes(filterCriteria.locDetail);
-            console.log("Location Filter: ", filterCriteria.locDetail, "=>", locationMatch);
-    
-            // 날짜 범위 필터링
+            console.log('Location Match:', locationMatch, stadium.loc, filterCriteria.locDetail);
+            
             const socialDate = new Date(social.socialTime);  // 소셜매칭의 날짜
             const startDate = new Date(filterCriteria.matchingDate.start);
             const endDate = new Date(filterCriteria.matchingDate.end);
             const dateMatch = socialDate >= startDate && socialDate <= endDate;
-            console.log("Date Filter: ", filterCriteria.matchingDate.start, "to", filterCriteria.matchingDate.end, "=>", dateMatch);
-    
-            // 팀 크기 필터링
+            console.log('Date Match:', dateMatch, socialDate, startDate, endDate);
+            
             const teamSizeMatch = filterCriteria.teamSize.includes(social.socialSize);
-            console.log("Team Size Filter: ", filterCriteria.teamSize, "=>", teamSizeMatch);
-    
+            console.log('Team Size Match:', teamSizeMatch, social.socialSize);
+            
+            // 모든 조건이 맞으면 true 반환
             return genderMatch && locationMatch && dateMatch && teamSizeMatch;
         });
     
-        setFilteredData(filteredList);  // 필터된 데이터를 저장
-        setDataList(filteredList); // 필터된 데이터를 dataList에도 업데이트
+        console.log('Filtered List:', filteredList);
+    
+        // 필터링된 데이터 상태 업데이트
+        setFilteredData(filteredList);  // 필터링된 데이터 상태도 저장
+    
+        // 필터링된 데이터 정렬
+        const sortedFilteredData = sortObjectContents([...filteredList], selectedOption);
+        setSortedContents(sortedFilteredData);  // 정렬된 결과를 저장
     };
 
-    // 정렬된 데이터 상태 업데이트
-    useEffect(() => {
-        if (dataList.length > 0) {
-            const sortedData = sortObjectContents([...dataList], selectedOption); // 정렬된 데이터
-            setSortedContents(sortedData); // 정렬 결과 저장
-            console.log(filteredData)
-        }
-    }, [dataList, selectedOption]);
-
-    // 더 보기 버튼 클릭 처리
-    const handleLoadMore = () => {
-        setVisibleCount((prevCount) => Math.min(prevCount + 5, filteredData.length));
-    };
 
     return (
         <div style={{ gridArea: gridArea }} className={styles['social-wrapper-grid']}>
@@ -189,7 +190,9 @@ function SocialMatchings({ gridArea }) {
                 gridArea="nav"
                 filteredData={filteredData}
                 onSearchButtonClick={applyFilters}  // 네비바에서 버튼 클릭 시 필터링 적용
+
             />
+
             <div className={styles['socialMathings-grid']}>
                 {/* 드롭다운 컴포넌트 */}
                 <Dropdown
@@ -202,14 +205,19 @@ function SocialMatchings({ gridArea }) {
 
                 <div className={styles["socialMathings-items"]}>
                     {/* 정렬된 내용에서 visibleCount만큼만 표시 */}
-                    {filteredData.slice(0, visibleCount).map((content, index) => (
-                        <div key={index}>
-                            <SocialMatching
-                                content={content}
-                                openModal={() => openModal(content)}
-                            />
-                        </div>
-                    ))}
+                    {sortedContents.length > 0 ? (
+                        sortedContents.slice(0, visibleCount).map((content, index) => (
+                            <div key={index}>
+                                <SocialMatching
+                                    content={content}
+                                    openModal={() => openModal(content)}
+                                />
+
+                            </div>
+                        ))
+                    ) : (
+                        <p>No matching data found</p>
+                    )}
                 </div>
 
                 {/* 더 보기 버튼 */}
