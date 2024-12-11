@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // useParams 사용
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
 
 // Styled Components
 const Container = styled.div`
@@ -21,15 +21,15 @@ const FilterButtons = styled.div`
 
 const FilterButton = styled.button`
   padding: 8px 16px;
-  border: 1px solid ${(props) => (props.active ? '#1B4510' : '#ccc')};
-  background-color: ${(props) => (props.active ? '#1B4510' : '#f5f5f5')};
-  color: ${(props) => (props.active ? '#fff' : '#000')};
+  border: 1px solid ${(props) => (props.active ? "#1B4510" : "#ccc")};
+  background-color: ${(props) => (props.active ? "#1B4510" : "#f5f5f5")};
+  color: ${(props) => (props.active ? "#fff" : "#000")};
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
 
   &:hover {
-    background-color: ${(props) => (props.active ? '#16530c' : '#e0e0e0')};
+    background-color: ${(props) => (props.active ? "#16530c" : "#e0e0e0")};
   }
 `;
 
@@ -40,105 +40,152 @@ const NoDataMessage = styled.p`
   margin: 40px 0;
 `;
 
-const Divider = styled.div`
-  border-top: 1px solid #ddd;
-  margin: 20px 0;
-`;
-
 const ListItem = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 10px 0;
   font-size: 14px;
-  color: ${(props) => (props.type === 'positive' ? '#1B4510' : '#ff0000')};
-`;
+  border-bottom: 1px solid #ddd;
 
-const Actbox = styled.div`
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  & > div.amount {
+    color: ${(props) =>
+      props.type === "reservation" || props.type === "refund"
+        ? "#ff0000"
+        : "#1B4510"}; /* 리펀드 제이슨 데이터 및 환불은 빨간색, 충전은 초록색 */
+  }
 `;
 
 // Component
-const HistoryPage = ({ gridArea }) => {
-  const { id } = useParams(); // URL에서 id 파라미터 가져오기
-  const [filter, setFilter] = useState('전체'); // 현재 필터 상태
-  const [paymentData, setPaymentData] = useState([]); // 결제 데이터
+const HistoryPage = () => {
+  const { id } = useParams();
+  const [filter, setFilter] = useState("전체");
+  const [paymentData, setPaymentData] = useState([]);
+  const [refundData, setRefundData] = useState([]);
+  const [combinedData, setCombinedData] = useState([]);
 
   useEffect(() => {
-    // 데이터 불러오기
     const fetchData = async () => {
       try {
-        const response = await fetch('/data/paymentData.json'); // JSON 파일 경로
-        const data = await response.json();
-        // 사용자 ID에 맞는 데이터만 필터링
-        const filteredData = data.filter((item) => item.userId === id);
-        setPaymentData(filteredData);
+        const paymentResponse = await fetch("/data/paymentData.json");
+        const payment = await paymentResponse.json();
+
+        const refundResponse = await fetch("/data/refundData.json");
+        const refund = await refundResponse.json();
+
+        const filteredPayment = payment.filter((item) => item.userId === id);
+        const filteredRefund = refund.filter((item) => item.userId === id);
+
+        const mergedData = [
+          ...filteredPayment.map((paymentItem) => ({
+            ...paymentItem,
+            type: paymentItem.paymentStatus === "환불" ? "refund" : "charge",
+          })),
+          ...filteredRefund.map((refundItem) => ({
+            orderId: refundItem.orderId,
+            paymentDate: refundItem.paymentDate,
+            refundDate: refundItem.refundDate,
+            refundAmount: refundItem.refundAmount,
+            refundStatus: refundItem.refundStatus,
+            refundType: refundItem.refundtype,
+            type: "reservation", // 예약 취소/완료 내역
+          })),
+        ];
+
+        setPaymentData(filteredPayment);
+        setRefundData(filteredRefund);
+        setCombinedData(mergedData);
       } catch (error) {
-        console.error('데이터 불러오기 실패:', error);
+        console.error("데이터 불러오기 실패:", error);
       }
     };
 
     fetchData();
   }, [id]);
 
-  // 필터링된 데이터 가져오기
   const getFilteredData = () => {
-    if (filter === '전체') {
-      return paymentData;
-    }
-    return paymentData.filter((item) => item.paymentStatus === filter);
+    if (filter === "전체") return combinedData;
+    if (filter === "충전")
+      return combinedData.filter((item) => item.type === "charge");
+    if (filter === "환불")
+      return combinedData.filter((item) => item.type === "refund");
+    if (filter === "예약")
+      return combinedData.filter((item) => item.type === "reservation");
+    return combinedData;
   };
 
   const filteredData = getFilteredData();
 
   return (
-    <Container style={{ gridArea: gridArea }}>
-      <Actbox>
-        <Header>
-          <h2>캐시 상세 내역</h2>
-        </Header>
-        <FilterButtons>
-          <FilterButton active={filter === '전체'} onClick={() => setFilter('전체')}>
-            전체
-          </FilterButton>
-          <FilterButton active={filter === '충전'} onClick={() => setFilter('충전')}>
-            충전
-          </FilterButton>
-          <FilterButton active={filter === '환불'} onClick={() => setFilter('환불')}>
-            환불
-          </FilterButton>
-          <FilterButton active={filter === '사용'} onClick={() => setFilter('환불')}>
-            사용
-          </FilterButton>
-          <FilterButton active={filter === '취소'} onClick={() => setFilter('취소')}>
-            취소
-          </FilterButton>
-        </FilterButtons>
-        {filteredData.length === 0 ? (
-          <NoDataMessage>존재하는 캐시 내역이 없습니다.</NoDataMessage>
-        ) : (
-          filteredData.map((item, index) => (
-            <ListItem
-              key={index}
-              type={item.amount > 0 ? 'positive' : 'negative'}
-            >
-              <span>{item.paymentDate}</span>
-              <span>
-                {item.amount > 0
-                  ? `+ ${item.amount.toLocaleString()}원`
-                  : `- ${Math.abs(item.amount).toLocaleString()}원`}
-              </span>
-            </ListItem>
-          ))
-        )}
-      </Actbox>
+    <Container>
+      <Header>
+        <h2>결제 및 환불 내역</h2>
+      </Header>
+      <FilterButtons>
+        <FilterButton
+          active={filter === "전체"}
+          onClick={() => setFilter("전체")}
+        >
+          전체
+        </FilterButton>
+        <FilterButton
+          active={filter === "충전"}
+          onClick={() => setFilter("충전")}
+        >
+          충전
+        </FilterButton>
+        <FilterButton
+          active={filter === "환불"}
+          onClick={() => setFilter("환불")}
+        >
+          환불
+        </FilterButton>
+        <FilterButton
+          active={filter === "예약"}
+          onClick={() => setFilter("예약")}
+        >
+          예약 상태
+        </FilterButton>
+      </FilterButtons>
+      {filteredData.length === 0 ? (
+        <NoDataMessage>데이터가 없습니다.</NoDataMessage>
+      ) : (
+        filteredData.map((item, index) => (
+          <ListItem key={index} type={item.type}>
+            <div>
+              <strong>결제일:</strong> {item.paymentDate || "없음"}
+            </div>
+            {item.type === "reservation" ? (
+              <>
+                <div>
+                  <strong>신청 일:</strong> {item.refundDate}
+                </div>
+                <div className="amount">
+                  <strong>취소 금액:</strong>{" "}
+                  {item.refundAmount.toLocaleString()}원
+                </div>
+                <div>
+                  <strong>취소 상태:</strong> {item.refundStatus}
+                </div>
+                <div>
+                  <strong> 유형:</strong> {item.refundType}
+                </div>
+              </>
+            ) : (
+              <>
+                <div>
+                  <strong>결제 상태:</strong> {item.paymentStatus}
+                </div>
+                <div className="amount">
+                  <strong>금액:</strong>{" "}
+                  {item.amount
+                    ? `${item.amount.toLocaleString()}원`
+                    : `${item.refundAmount.toLocaleString()}원`}
+                </div>
+              </>
+            )}
+          </ListItem>
+        ))
+      )}
     </Container>
   );
 };

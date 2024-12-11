@@ -20,6 +20,16 @@
     "userId": "pitch123"
   },
   {
+    "refundId": "REF024",
+    "orderId": "ORD024",
+    "paymentDate": "2024-12-02",
+    "refundDate": "2024-12-12",
+    "refundAmount": 130000,
+    "refundtype": "캐쉬",
+    "refundStatus": "완료",
+    "userId": "pitch123"
+  },
+  {
     "refundId": "REF003",
     "paymentDate": "2024-11-03",
     "orderId": "ORD003",
@@ -228,15 +238,5 @@
     "refundtype": "구장",
     "refundStatus": "완료",
     "userId": "lee1010"
-  },
-  {
-    "refundId": "REF024",
-    "orderId": "ORD024",
-    "paymentDate": "2024-12-02",
-    "refundDate": "2024-12-12",
-    "refundAmount": 130000,
-    "refundtype": "캐쉬",
-    "refundStatus": "완료",
-    "userId": "pitch123"
   }
 ]

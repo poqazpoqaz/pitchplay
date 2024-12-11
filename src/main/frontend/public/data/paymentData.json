@@ -19,6 +19,16 @@
     "reservationNumber": "123245"
   },
   {
+    "orderId": "ORD002",
+    "paymentDate": "2024-11-02",
+    "amount": 20000,
+    "paymentMethod": "신한카드",
+    "stadiumId": "S210401100008601453",
+    "paymentStatus": "환불",
+    "userId": "pitch123",
+    "reservationNumber": "123245"
+  },
+  {
     "orderId": "ORD003",
     "paymentDate": "2024-11-03",
     "amount": 250000,
