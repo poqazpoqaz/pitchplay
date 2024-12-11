@@ -108,12 +108,13 @@ const TotalModal = ({ isOpen, onClose }) => {
 
   const handleSave = () => {
     const dataToSave = {
-      location: `${region} ${subRegion}`.trim(),
+      loc: region.trim(), // region을 loc에 저장
+      locDetail: subRegion.trim(), // subRegion을 locDetail에 저장
       gender: selectedButtons.filter((item) =>
         ['남성', '여성', '혼성'].includes(item)
       ),
       teamSize: selectedButtons.filter((item) =>
-        ['4 vs 4', '5 vs 5', '6 vs 6', '7 vs 7', '전체'].includes(item)
+        ['4vs4', '5vs5', '6vs6', '7vs7', '전체'].includes(item)
       ),
       matchingDate,
     };
@@ -121,7 +122,7 @@ const TotalModal = ({ isOpen, onClose }) => {
     localStorage.setItem('TotalSet', JSON.stringify(dataToSave)); // 로컬스토리지에 저장
     onClose(); // 모달 닫기
     alert('데이터가 저장되었습니다!');
-  };
+};
 
   return (
     <Modal isOpen={isOpen} closeModal={onClose}>
@@ -156,7 +157,7 @@ const TotalModal = ({ isOpen, onClose }) => {
                 <option value="">세부지역을 선택해주세요</option>
                 <option value="강남구">강남구</option>
                 <option value="서초구">서초구</option>
-                <option value="해운대구">해운대구</option>
+                <option value="마포구">마포구</option>
               </Dropdown>
             </Group>
           </FormGroup>
@@ -181,7 +182,7 @@ const TotalModal = ({ isOpen, onClose }) => {
           <FormGroup>
             <FormLabel>인원(복수선택 가능)</FormLabel>
             <Group>
-              {['4 vs 4', '5 vs 5', '6 vs 6', '7 vs 7', '전체'].map((label) => (
+              {['4vs4', '5vs5', '6vs6', '7vs7', '전체'].map((label) => (
                 <Button
                   key={label}
                   active={isActive(label)}

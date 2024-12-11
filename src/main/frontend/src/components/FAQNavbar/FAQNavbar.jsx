@@ -1,7 +1,7 @@
 import DefaultButton from "../DefaultButton";
 import styles from "./FAQNavbar.module.css";
-import SearchInput from "../SearchInput";
 import { useState } from "react";
+import SearchInputFAQ from "../SearchInputFAQ";
 
 //// src 팀만들기 만들어지면 고치기!!!!!!!!!!!! 
 
@@ -49,7 +49,7 @@ function FAQNavbar({ gridArea }) {
                 src="/notices/conduct"
             >매너/제재</DefaultButton>
 
-            <SearchInput gridArea="search" size="large" placeholder="검색할 단어를 작성해주세요." />
+            <SearchInputFAQ gridArea="search" size="large" placeholder="검색할 단어를 작성해주세요." />
         </div>
     )
 }
