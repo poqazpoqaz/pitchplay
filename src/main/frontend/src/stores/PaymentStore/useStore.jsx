@@ -9,6 +9,9 @@ import {
     changeUserId,
     changeReservationNumber,
     updateAllFields,
+    changeRefundId,
+    changeRefundStatus,
+    changeRefundDate,
     resetState
 } from "./action";
 
@@ -36,7 +39,15 @@ export const useStore = () => {
         
         // Reservation Number 변경
         changeReservationNumber: (reservationNumber) => dispatch(changeReservationNumber(reservationNumber)),
-        
+
+        // 리펀드 id 변경 
+        changeRefundId: (refundId) => dispatch(changeRefundId(refundId)),
+
+        // 리펀드 상태 변경
+        changeRefundStatus: (refundStatus) => dispatch(changeRefundStatus(refundStatus)),
+
+        // 리펀드 날짜 변경
+        changeRefundDate: (refundDate) => dispatch(changeRefundDate(refundDate)),
         // 모든 필드 업데이트
         updateAllFields: (fields) => dispatch(updateAllFields(fields)),
         

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useStore } from "../stores/PaymentStore/useStore"; // store에서 useStore 훅을 가져옵니다.
 
-// Styled Components
 const Container = styled.div`
   padding: 40px;
 `;
@@ -53,25 +53,41 @@ const ListItem = styled.div`
         ? "#ff0000"
         : "#1B4510"}; /* 환불은 빨간색, 충전은 초록색 */
   }
+
+  /* 각 필터에 맞는 스타일 추가 */
+  &.charge {
+    display: ${(props) => (props.filter === "충전" || props.filter === "전체" ? "block" : "none")};
+  }
+
+  &.refund {
+    display: ${(props) => (props.filter === "환불" || props.filter === "전체" ? "block" : "none")};
+  }
+
+  &.reservation {
+    display: ${(props) => (props.filter === "예약" || props.filter === "전체" ? "block" : "none")};
+  }
+
+  &.userHistory {
+    display: ${(props) => (props.filter === "userHistory" ? "block" : "none")};
+  }
 `;
 
-// Component
 const HistoryPage = () => {
   const [filter, setFilter] = useState("전체");
-  const [combinedData, setCombinedData] = useState([]);
+  const { state, actions } = useStore(); 
+  const [paymentStore, setPaymentStore] = useState([]);
+  const [userHistory, setUserHistory] = useState([]);
 
-  
-
-  const user =JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [paymentResponse, refundResponse] = 
-        await Promise.all([
-          axios.get("/data/paymentData.json"),
-          axios.get("/data/refundData.json"),
-        ]);
+          await Promise.all([
+            axios.get("/data/paymentData.json"),
+            axios.get("/data/refundData.json"),
+          ]);
 
         const paymentData = paymentResponse.data.filter((item) => item.userId === user.id);
         const refundData = refundResponse.data.filter((item) => item.userId === user.id);
@@ -88,11 +104,11 @@ const HistoryPage = () => {
             refundAmount: refundItem.refundAmount,
             refundStatus: refundItem.refundStatus,
             refundType: refundItem.refundtype,
-            type: "reservation", // 예약 취소/완료 내역
+            type: "reservation",
           })),
         ];
 
-        setCombinedData(mergedData);
+        setPaymentStore(mergedData);
       } catch (error) {
         console.error("데이터 불러오기 실패:", error);
       }
@@ -101,15 +117,17 @@ const HistoryPage = () => {
     fetchData();
   }, [user.id]);
 
-  const getFilteredData = () => {
-    if (filter === "전체") return combinedData;
-    if (filter === "충전") return combinedData.filter((item) => item.type === "charge");
-    if (filter === "환불") return combinedData.filter((item) => item.type === "refund");
-    if (filter === "예약") return combinedData.filter((item) => item.type === "reservation");
-    return combinedData;
-  };
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user")); // 로컬 스토리지에서 user 데이터 가져오기
+    if (user) {
+      setUserHistory(user.userHistory); // userHistory를 그대로 상태에 저장
+      console.log(user.userHistory)
+    }
+  }, []);
 
-  const filteredData = getFilteredData();
+  const handleUserHistoryClick = () => {
+    setFilter("userHistory");
+  };
 
   return (
     <Container>
@@ -124,6 +142,12 @@ const HistoryPage = () => {
           전체
         </FilterButton>
         <FilterButton
+          active={filter === "userHistory"}
+          onClick={handleUserHistoryClick}
+        >
+          내 기록
+        </FilterButton>
+        <FilterButton
           active={filter === "충전"}
           onClick={() => setFilter("충전")}
         >
@@ -135,6 +159,7 @@ const HistoryPage = () => {
         >
           환불
         </FilterButton>
+
         <FilterButton
           active={filter === "예약"}
           onClick={() => setFilter("예약")}
@@ -142,41 +167,58 @@ const HistoryPage = () => {
           예약 상태
         </FilterButton>
       </FilterButtons>
-      {filteredData.length === 0 ? (
+      {paymentStore.length === 0 && userHistory.length === 0 ? (
         <NoDataMessage>데이터가 없습니다.</NoDataMessage>
       ) : (
-        filteredData.map((item, index) => (
-          <ListItem key={index} type={item.type}>
-            <div>
-              <strong>결제일:</strong> {item.paymentDate || "없음"}
-            </div>
-            {item.type === "reservation" ? (
-              <>
-                <div>
-                  <strong>신청 일:</strong> {item.refundDate}
-                </div>
-                <div className="amount">
-                  <strong>취소 금액:</strong> {item.refundAmount.toLocaleString()}원
-                </div>
-                <div>
-                  <strong>취소 상태:</strong> {item.refundStatus}
-                </div>
-                <div>
-                  <strong>유형:</strong> {item.refundType}
-                </div>
-              </>
-            ) : (
-              <>
-                <div>
-                  <strong>결제 상태:</strong> {item.paymentStatus}
-                </div>
-                <div className="amount">
-                  <strong>금액:</strong> {item.amount.toLocaleString()}원
-                </div>
-              </>
-            )}
-          </ListItem>
-        ))
+        <>
+         {paymentStore.concat(userHistory).map((item, index) => (
+  <ListItem
+    key={index}
+    type={item.type}
+    filter={filter} // 필터 상태를 ListItem에 전달
+    className={item.type}
+  >
+    <div>
+      <strong>결제일:</strong> {item.paymentDate || "없음"}
+    </div>
+    {item.type === "reservation" ? (
+      <>
+        <div>
+          <strong>신청 일:</strong> {item.refundDate}
+        </div>
+        <div className="amount">
+          <strong>취소 금액:</strong> {item.refundAmount ? item.refundAmount.toLocaleString() : "없음"}원
+        </div>
+        <div>
+          <strong>취소 상태:</strong> {item.refundStatus || "없음"}
+        </div>
+        <div>
+          <strong>유형:</strong> {item.refundType || "없음"}
+        </div>
+      </>
+    ) : item.category === "matching" ? (
+      <>
+        <div>
+          <strong>카테고리:</strong> {item.category}
+        </div>
+        <div className="amount">
+          <strong>사용 금액:</strong> {item.useHistory}원
+        </div>
+      </>
+    ) : (
+      <>
+        <div>
+          <strong>결제 상태:</strong> {item.paymentStatus || "없음"}
+        </div>
+        <div className="amount">
+          <strong>금액:</strong> {item.amount ? item.amount.toLocaleString() : "없음"}원
+        </div>
+      </>
+    )}
+  </ListItem>
+))}
+
+        </>
       )}
     </Container>
   );
