@@ -8,15 +8,17 @@ const StyledDiv = styled.div`
   min-height: 25px;
 `;
 
-const StyledInput = styled.input`
+const StyledButton = styled.button`
   padding: 10px;
   padding-right: 60px;
   border: 2px solid var(--main-color);
   border-radius: 10px;
   width: 100%;
   height: 100%;
+  background-color: #fff;
   white-space: nowrap;
   outline: none;
+  cursor: pointer;
   font-size: ${(props) => {
     switch (props.size) {
       case 'small':
@@ -28,12 +30,13 @@ const StyledInput = styled.input`
       case 'xlarge':
         return '30px';
       default:
-        return '15px';  // 기본값 설정
+        return '15px'; // 기본값 설정
     }
   }};
 
   &:hover {
     box-shadow: 1px 2px 3px #e9ecef;
+    background-color: #f9f9f9;
   }
 
   /* 미디어 쿼리 추가 */
@@ -72,7 +75,9 @@ const MagnifierIcon = styled.img`
 function SearchInput({ onClick, onChange, gridArea, size, placeholder }) {
   return (
     <StyledDiv style={{ gridArea: gridArea }}>
-      <StyledInput type="text" onChange={onChange} size={size} placeholder={placeholder} />
+      <StyledButton onClick={onClick} size={size}>
+        {placeholder || "통합 검색 불러오기"}
+      </StyledButton>
       <MagnifierIcon src={magnifier} onClick={onClick} />
     </StyledDiv>
   );

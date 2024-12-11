@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HeaderLogo from "./HeaderLogo";
 import MenuDropdown from "../../components/menuDropdown/MenuDropdown";
 import TotalModal from "../../components/TotalModal/TotalModal"; // TotalModal 임포트
@@ -14,6 +14,7 @@ function Header() {
     // 메뉴 및 모달 상태 관리
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate(); // React Router's navigation
 
     const openMenu = () => {
         setIsMenuVisible(true);
@@ -50,8 +51,15 @@ function Header() {
         };
     }, [isMenuVisible]);
 
-    // 로그인 되어있는지 여부 확인
+    // 로그인 여부와 사용자 역할 확인
     const user = JSON.parse(localStorage.getItem("user"));
+
+    const handleAdminClick = (event) => {
+        if (!user || user.role !== "admin") {
+            event.preventDefault(); // 링크 동작 막기
+            alert("관리자만 접근할 수 있습니다."); // 경고 메시지로 alert 사용
+        }
+    };
 
     return (
         <div className={styles["header-container"]} style={{ gridArea: "header" }}>
@@ -71,13 +79,18 @@ function Header() {
 
             {/* 오른쪽 메뉴 */}
             <ul className={styles["header-right"]}>
+                {/* 마이페이지 링크 */}
                 <Link to={user ? `/mypage/${user.id}` : `/login`}>
                     <img src={mypage} />
                 </Link>
+                
+                {/* 검색 버튼 */}
                 <Link to="#" onClick={openModal}>
                     <img src={search} />
                 </Link>
-                <Link to="/admin">
+                
+                {/* 관리자 페이지 링크 */}
+                <Link to="/admin" onClick={handleAdminClick}>
                     <img src={setting} />
                 </Link>
             </ul>

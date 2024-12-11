@@ -624,6 +624,33 @@
             "userHistory" : [
                 {"category" : "stadium" , "useHistory" : "30000"}
             ]
+        },
+        {
+            "userNumber": "000000",
+            "name": "관리자",
+            "profileImg": "/imgs/1.jpg",
+            "birthday": "1999.09.17",
+            "email": "admin@kosmo.com",
+            "phone": "010-0000-0000",
+            "id": "admin",
+            "nickname": "관리자",
+            "password": "admin",
+            "favoriteCity": "",
+            "favoriteTime": "",
+            "myTeam": "",
+            "isTeamOwner": false,
+            "myDescription": "전체 시스템을 관리하는 관리자입니다.",
+            "userCash": "999999999",
+            "account": "",
+            "accountNum": "",
+            "profilePublic": false,
+            "emailNotification": false,
+            "snsNotification": false,
+            "joindate": "2023-01-01T00:00:00",
+            "isDeleted": false,
+            "userHistory": [],
+            "role": "admin" 
         }
+
 
 ]

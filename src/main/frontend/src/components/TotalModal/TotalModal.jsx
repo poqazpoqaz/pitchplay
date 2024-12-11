@@ -12,12 +12,22 @@ const ModalContent = styled.div`
   border-radius: 8px;
   max-width: 500px;
   margin: auto;
+  height: 80vh; /* 고정 높이 설정 */
+  max-height: 80vh; /* 최대 높이 */
+  overflow-y: auto; /* 스크롤 기능 */
+  scrollbar-width: none; /* 스크롤바 숨기기 (Firefox) */
+  -ms-overflow-style: none; /* 스크롤바 숨기기 (IE) */
+  
+  &::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨기기 (Chrome, Safari) */
+  }
 `;
 
 const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
+  margin-bottom: 10px;
 `;
 
 const FormLabel = styled.label`
@@ -44,10 +54,14 @@ const Group = styled.div`
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+
+  /* 버튼이 한 줄로 정렬되도록 조정 */
+  justify-content: space-between; 
 `;
 
 const Button = styled.button`
-  padding: 10px 20px;
+  flex: 1; /* 버튼이 균등하게 너비를 가짐 */
+  padding: 10px;
   font-size: 14px;
   font-weight: 500;
   border: 1px solid ${(props) => (props.active ? '#1b4510' : '#ccc')};
@@ -59,6 +73,9 @@ const Button = styled.button`
   &:hover {
     background-color: ${(props) => (props.active ? '#16400c' : '#eaeaea')};
   }
+
+  /* 버튼의 최소 너비를 설정해 버튼이 작아지지 않도록 함 */
+  min-width: 80px;
 `;
 
 const FooterButton = styled(Button)`

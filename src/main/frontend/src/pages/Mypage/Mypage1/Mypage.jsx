@@ -33,7 +33,7 @@ function MyPage({ gridArea }) {
     
     return (
         <div className={styles['mypage-grid']} style={{ gridArea: gridArea }}>
-            <Sidebar gridArea={"sidebar"} userState={userState} profileImg={profileImg} />
+            <Sidebar gridArea={"sidebar"} userState={userState} profileImg={profileImg} id={user.id}/>
             <div className={styles['mypage-content']}>
                 <Outlet />
             </div>

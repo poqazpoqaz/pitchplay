@@ -96,7 +96,7 @@ const MypageAct = ({ gridArea }) => {
           {/* 예약한 경기 목록 */}
           <MatchesSection matches={upcomingMatches.slice(0, 2)} />
           {/* 지난 경기 기록 목록 */}
-          <RecordsSection records={pastMatches.slice(0, 2)} />
+          <RecordsSection mathces={pastMatches.slice(0, 2)} />
           <TeamSection teamInfo={teamState} />
           <PostsSection contents={contents} comments={comments} commentCount={commentCount} />
         </div>

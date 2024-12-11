@@ -62,7 +62,7 @@ function Navbar({ gridArea }) {
                 src="/team/creation"
             >팀만들기</DefaultButton>
 
-            <SearchInput gridArea="search" size="large" placeholder="검색할 단어를 작성해주세요." />
+            <SearchInput gridArea="search" size="large" placeholder="통합 검색 불러오기" />
         </div>
     )
 }

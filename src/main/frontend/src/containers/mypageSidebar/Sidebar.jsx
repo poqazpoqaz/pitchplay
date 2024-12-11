@@ -107,7 +107,7 @@ const Link = styled.a`
 
 
 // Sidebar Component
-const Sidebar = ({ userState, gridArea, profileImg}) => {
+const Sidebar = ({ userState, gridArea, profileImg, id}) => {
 
   const handleLogout = () => {
     localStorage.removeItem("user"); // localStorage에서 사용자 정보 제거
@@ -128,22 +128,22 @@ const Sidebar = ({ userState, gridArea, profileImg}) => {
           <ListItem>
             <img src={myinfo} alt="내 정보" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="/mypage/pitch123">내 정보</Link>
+            <Link href={`/mypage/${id}`}>내 정보</Link>
           </ListItem>
           <ListItem>
             <img src={myactivity} alt="내 활동" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="/mypage/pitch123/act">내 활동</Link>
+            <Link href={`/mypage/${id}/act`}>내 활동</Link>
           </ListItem>
           <ListItem>
             <img src={commnuity} alt="커뮤니티" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="/mypage/pitch123/posts">커뮤니티</Link>
+            <Link href={`/mypage/${id}/posts`}>커뮤니티</Link>
           </ListItem>
           <ListItem>
             <img src={setting} alt="설정" />
             {/* Link 컴포넌트로 변경 */}
-            <Link href="/mypage/pitch123/setting">설정</Link>
+            <Link href={`/mypage/${id}/setting`}>설정</Link>
           </ListItem>
         </List>
       </Sidemid>
