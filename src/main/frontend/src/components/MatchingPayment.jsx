@@ -61,9 +61,12 @@ function MatchingPayment({ to, isOpen, closeModal, userCash, stadiumCost }) {
         if (currentCash >= stadiumCost) {
             const updatedCash = currentCash - stadiumCost; // 남은 캐시 계산
             setCurrentCash(updatedCash); // UI 상태 업데이트
+
+            const currentDate = new Date();
+            const formattedDate = currentDate.toISOString().split("T")[0];
     
             // 결제 기록 추가
-            const updatedHistory = [...userHistory, { category: "matching", useHistory: stadiumCost }];
+            const updatedHistory = [...userHistory, { category: "matching", useHistory: stadiumCost , useDate : formattedDate }];
             const updatedUser = { ...user, userCash: updatedCash, userHistory: updatedHistory }; // userCash 업데이트
     
             // 로컬스토리지에 변경된 user 저장

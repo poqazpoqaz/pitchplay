@@ -120,8 +120,7 @@ const AppManagement = ({ gridArea }) => {
 
   // 대기 멤버 승인 및 거절 처리
   const onApprove = (member) => {
-    console.log("Approving member:", member);
-    userActions.changeMyTeam([...userState.myTeam, teamState.teamName]);
+    userActions.changeMyTeam(member);
     setPendingMembers((prev) => prev.filter((m) => m.pendingnickname !== member.pendingnickname));
     setPendingMemberList((prev) => prev.filter((m) => m.pendingnickname !== member.pendingnickname));
   };
@@ -133,7 +132,7 @@ const AppManagement = ({ gridArea }) => {
 
   // 용병 멤버 승인 및 거절 처리
   const onApproveMercenary = (member) => {
-    collectionActions.addMercenaryToTeam(member); // 용병을 팀에 추가
+    collectionActions.changeMercenary(member); // 용병을 팀에 추가
     setMercenaryMembers((prev) => prev.filter((m) => m.mercenarynickname !== member.mercenarynickname)); // 목록에서 제거
     setMercenaryMemberList((prev) => prev.filter((m) => m.mercenarynickname !== member.mercenarynickname)); // 상세 목록에서 제거
   };

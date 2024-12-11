@@ -14,16 +14,15 @@ const MypageAct02 = ({ gridArea }) => {
     axios.get("/data/matchingData.json")
       .then(response => {
         const datas = response.data;
-  
-        // nickname이 매칭 데이터의 nickname과 일치하는 매칭만 필터링
-        const selectedMatches = datas.filter(data => data?.nickname === user?.nickname);
-  
+        // user가 포함된 팀 이름이 team1이나 team2에 포함된 매칭 데이터 필터링
+        const selectedMatches = datas.filter(data =>
+          data.teams.team1.name === user.myTeam || data.teams.team2.name === user.myTeam);
         setMatchingList(selectedMatches);
       })
       .catch(err => {
         console.error("Error fetching matching data:", err);
       });
-  }, [user?.nickname]);
+  }, []);
 
   return (
     <div style={{ gridArea: gridArea }}>

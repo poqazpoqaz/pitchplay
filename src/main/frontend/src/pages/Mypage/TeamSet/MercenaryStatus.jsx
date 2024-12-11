@@ -56,7 +56,7 @@ const ProfileImg = styled.img`
   margin-right: 20px;
 `;
 
-const MercenaryStatus = ({ mercenaryMembers, onApprove, onReject , collectionTime }) => {
+const MercenaryStatus = ({ mercenaryMembers, onApprove, onReject }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [selectedMember, setSelectedMember] = useState(null); // Selected member data
   const [stadiumName, setStadiumName] = useState(''); // 구장 이름 상태
@@ -135,7 +135,6 @@ const MercenaryStatus = ({ mercenaryMembers, onApprove, onReject , collectionTim
           <h2>{selectedMember.mercenarynickname}님의 정보</h2>
           <p>신청일: {selectedMember.applicationDate}</p>
           <p>내 소개: {selectedMember.description || '정보 없음'}</p>
- 
           
           {/* 경기 시간, 구장 이름 추가 */}
           <p>구장 이름: {stadiumName || '구장 정보 없음'}</p>
