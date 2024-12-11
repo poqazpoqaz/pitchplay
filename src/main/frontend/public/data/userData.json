@@ -637,7 +637,7 @@
             "password": "admin",
             "favoriteCity": "",
             "favoriteTime": "",
-            "myTeam": "",
+            "myTeam": "admin",
             "isTeamOwner": false,
             "myDescription": "전체 시스템을 관리하는 관리자입니다.",
             "userCash": "999999999",
