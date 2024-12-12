@@ -73,6 +73,33 @@ function SocialMatchings({ gridArea }) {
         }
     }, [filteredData, visibleCount]);
 
+    // stadium socialSize에 따라 divison 변경
+    let divisor = 1;
+    if (stadiumCost) {
+        switch (socialSize) {
+            case '4vs4':
+                divisor = 8;
+                break;
+            case '5vs5':
+                divisor = 10;
+                break;
+            case '6vs6':
+                divisor = 12;
+                break;
+            case '7vs7':
+                divisor = 14;
+                break;
+            case '11vs11':
+                divisor = 22;
+                break;
+            default:
+                divisor = 1; // 기본값 설정
+                break;
+        }
+    }
+    // stadiumCost를 divisor로 나누기
+    const adjustedStadiumCost = Math.round(+stadiumCost / divisor / 100) * 100;
+
     // 더 보기 버튼 클릭 처리
     const handleLoadMore = () => {
         setVisibleCount((prevCount) => Math.min(prevCount + 5));
@@ -254,7 +281,7 @@ function SocialMatchings({ gridArea }) {
                         isOpen={isModalOpen}
                         closeModal={() => setIsModalOpen(false)}
                         userCash={user.userCash}
-                        stadiumCost={stadiumCost}
+                        stadiumCost={adjustedStadiumCost}
                         to="/"
                     />
                 )}
