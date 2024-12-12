@@ -91,32 +91,30 @@ const AppManagement = ({ gridArea }) => {
   // 용병 멤버 상세 정보 업데이트
   useEffect(() => {
     if (mercenaryMembers.length === 0) return; // 용병 멤버가 없으면 실행하지 않음
-    if (mercenaryMemberList.length > 0) return;
+  
     axios
       .get("/data/userData.json") // 사용자 데이터 가져오기
       .then((response) => {
-        const userData = response.data; // 사용자 데이터 전체
+        const userData = response.data;
         const detailedMercenaryMembers = mercenaryMembers.map((member) => {
-          const user = userData.find((u) => u.nickname === member.mercenarynickname); // 해당 멤버의 상세 정보 검색
+          const user = userData.find((u) => u.nickname === member.mercenarynickname);
           return user
             ? {
-              mercenarynickname: user.nickname, // 닉네임
-              description: user.myDescription || "정보 없음", // 설명
-              profileImg: user.profileImg || "/default-profile.jpg", // 프로필 이미지
-              applicationDate: member.applicationDate, // 신청일
-              collectionTime: member.collectionTime, // 매치 시간 추가
-            }
+                mercenarynickname: user.nickname,
+                description: user.myDescription || "정보 없음",
+                profileImg: user.profileImg || "/default-profile.jpg",
+                applicationDate: member.applicationDate,
+                collectionTime: member.collectionTime,
+              }
             : null;
-        }).filter(Boolean); // 유효한 데이터만 필터링
-
-        // 기존의 mercenaryMemberList에 새로 가져온 데이터를 병합
-        setMercenaryMemberList((prevList) => [
-          ...prevList,
-          ...detailedMercenaryMembers,
-        ]); // 상태 업데이트
+        }).filter(Boolean);
+  
+        // 중복 제거: 새로운 데이터와 기존 상태를 병합하지 않고 교체
+        setMercenaryMemberList(detailedMercenaryMembers);
       })
       .catch((err) => console.error("용병 멤버 데이터 로딩 오류:", err));
-  }, [mercenaryMembers]); // mercenaryMembers가 변경될 때마다 데이터 갱신
+  }, [mercenaryMembers]); // 상태 변경 시 중복 호출 방지
+  
 
   // 대기 멤버 승인 및 거절 처리
   const onApprove = (member) => {
