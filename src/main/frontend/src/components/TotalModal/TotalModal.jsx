@@ -141,23 +141,16 @@ const TotalModal = ({ isOpen, onClose }) => {
             <FormLabel htmlFor="region">지역</FormLabel>
             <Group>
               <Dropdown
-                id="region"
-                value={region}
-                onChange={(e) => setRegion(e.target.value)}
-              >
-                <option value="">지역을 선택해주세요</option>
-                <option value="서울">서울</option>
-                <option value="부산">부산</option>
-                <option value="대구">대구</option>
-              </Dropdown>
-              <Dropdown
                 value={subRegion}
                 onChange={(e) => setSubRegion(e.target.value)}
               >
-                <option value="">세부지역을 선택해주세요</option>
+                <option value="">지역을 선택해주세요</option>
                 <option value="강남구">강남구</option>
                 <option value="서초구">서초구</option>
                 <option value="마포구">마포구</option>
+                <option value="광진구">광진구</option>
+                <option value="동작구">동작구</option>
+                <option value="고양시">고양시</option>
               </Dropdown>
             </Group>
           </FormGroup>

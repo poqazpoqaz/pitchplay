@@ -25,9 +25,11 @@ function SocialMatchings({ gridArea }) {
 
     // 현재 렌더링할 데이터 개수
     const [visibleCount, setVisibleCount] = useState(5);
+    const [visibleData, setVisibleData] = useState([]);
 
     // 모달 오픈
     const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     // 모달 열기/닫기 함수
     const openModal = (content) => {
@@ -46,10 +48,7 @@ function SocialMatchings({ gridArea }) {
         setSelectedOption(option); // 선택된 옵션 업데이트
     };
 
-    // 더 보기 버튼 클릭 처리
-    const handleLoadMore = () => {
-        setVisibleCount((prevCount) => Math.min(prevCount + 5, filteredData.length));
-    };
+
 
     // 정렬된 데이터 상태 업데이트
     useEffect(() => {
@@ -63,7 +62,21 @@ function SocialMatchings({ gridArea }) {
     // 필터링
     const [filteredData, setFilteredData] = useState([]);  // 필터링된 데이터 상태
 
-    const filterCriteria = JSON.parse(localStorage.getItem('TotalSet'));
+
+    useEffect(() => {
+        if (filteredData.length > 0) {
+            // 필터링된 데이터가 있으면 이를 표시
+            setVisibleData(filteredData.slice(0, visibleCount));
+        } else {
+            // 필터링된 데이터가 없으면 전체 데이터 표시
+            setVisibleData(allData.slice(0, visibleCount));
+        }
+    }, [filteredData, visibleCount]);
+
+    // 더 보기 버튼 클릭 처리
+    const handleLoadMore = () => {
+        setVisibleCount((prevCount) => Math.min(prevCount + 5));
+    };
 
     // 유저 데이터 불러오기 (소셜매칭 신청할 때 캐시)
     useEffect(() => {
@@ -85,6 +98,8 @@ function SocialMatchings({ gridArea }) {
         }
     }, []);
 
+
+    //전체데이터
     useEffect(() => {
         // social, user, stadium 데이터 가져오기
         Promise.all([
@@ -143,45 +158,56 @@ function SocialMatchings({ gridArea }) {
             });
     }, []);
 
-    // 필터링된 데이터만 출력하는 함수
+    // allData를 가지고 필터링
     const applyFilters = () => {
-
-        if (!filterCriteria) return;
+        const filterCriteria = JSON.parse(localStorage.getItem('TotalSet'));
+    
+        if (!filterCriteria) return; // 필터 조건이 없으면 리턴
         console.log('Filter Criteria:', filterCriteria);
-        
-        // 필터링된 리스트 생성
-        const filteredList = sortedContents.filter((item) => {
+    
+        const filteredList = allData.filter((item) => {
             const { social, stadium } = item;
-            
-            // 각 조건을 체크하는 부분에서 로그를 찍어봄
-            const genderMatch = filterCriteria.gender.includes(social.socialGender);
-            console.log('Gender Match:', genderMatch, social.socialGender);
-            
-            const locationMatch = stadium.loc.includes(filterCriteria.locDetail);
-            console.log('Location Match:', locationMatch, stadium.loc, filterCriteria.locDetail);
-            
-            const socialDate = new Date(social.socialTime);  // 소셜매칭의 날짜
-            const startDate = new Date(filterCriteria.matchingDate.start);
-            const endDate = new Date(filterCriteria.matchingDate.end);
-            const dateMatch = socialDate >= startDate && socialDate <= endDate;
-            console.log('Date Match:', dateMatch, socialDate, startDate, endDate);
-            
-            const teamSizeMatch = filterCriteria.teamSize.includes(social.socialSize);
-            console.log('Team Size Match:', teamSizeMatch, social.socialSize);
-            
-            // 모든 조건이 맞으면 true 반환
-            return genderMatch && locationMatch && dateMatch && teamSizeMatch;
+    
+            // 조건 활성화 여부에 따라 동적으로 평가
+            const conditions = []; // 조건 평가 결과를 저장하는 배열
+    
+            if (filterCriteria.gender && filterCriteria.gender.length > 0) {
+                const genderMatch = filterCriteria.gender.includes(social.socialGender);
+                conditions.push(genderMatch); // 성별 조건 추가
+            }
+    
+            if (filterCriteria.locDetail && filterCriteria.locDetail.trim() !== "") {
+                const locationMatch = stadium.loc.includes(filterCriteria.locDetail);
+                conditions.push(locationMatch); // 지역 조건 추가
+            }
+    
+            if (filterCriteria.matchingDate && filterCriteria.matchingDate.start && filterCriteria.matchingDate.end) {
+                const socialDate = new Date(social.socialTime);
+                const startDate = new Date(filterCriteria.matchingDate.start);
+                const endDate = new Date(filterCriteria.matchingDate.end);
+                const dateMatch = socialDate >= startDate && socialDate <= endDate;
+                conditions.push(dateMatch); // 날짜 조건 추가
+            }
+    
+            if (filterCriteria.teamSize && filterCriteria.teamSize.length > 0) {
+                const teamSizeMatch = filterCriteria.teamSize.includes(social.socialSize);
+                conditions.push(teamSizeMatch); // 팀 크기 조건 추가
+            }
+    
+            // 활성화된 조건 중 하나라도 false면 제외
+            return conditions.every(Boolean); // 활성화된 조건이 모두 참인지 확인
         });
     
         console.log('Filtered List:', filteredList);
     
-        // 필터링된 데이터 상태 업데이트
-        setFilteredData(filteredList);  // 필터링된 데이터 상태도 저장
-    
-        // 필터링된 데이터 정렬
-        const sortedFilteredData = sortObjectContents([...filteredList], selectedOption);
-        setSortedContents(sortedFilteredData);  // 정렬된 결과를 저장
+        setFilteredData(filteredList); // 필터링된 데이터 업데이트
     };
+
+    useEffect(() => {
+        const dataToSort = filteredData.length > 0 ? filteredData : allData;
+        const sortedData = sortObjectContents([...dataToSort], selectedOption);
+        setSortedContents(sortedData);
+    }, [filteredData, allData, selectedOption]);
 
 
     return (
