@@ -62,7 +62,8 @@ function TeamCollections() {
                     const locDetailMatch = item.teamLoc.includes(filterCriteria.locDetail);
                     conditions.push(locDetailMatch);
                 }
-                return conditions.some(Boolean); // 하나라도 조건 만족 시 true
+                
+                return conditions.every(Boolean); // 하나라도 조건 만족 시 true
             });
         }
 

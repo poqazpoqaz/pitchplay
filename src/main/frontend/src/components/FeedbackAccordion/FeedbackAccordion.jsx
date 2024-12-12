@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { useStore } from "../../stores/FAQStore/useStore";
 import "./FeedbackAccordion.css";
 import ReportDetail from "./ReportDetail";
 
 function FeedbackAccordion() {
     const { state: faqState, actions: faqActions } = useStore();
+    const { searchQuery } = useOutletContext(); // 부모 컴포넌트에서 전달된 searchQuery 사용
 
     const [dataList, setDataList] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,28 +33,31 @@ function FeedbackAccordion() {
         fetchData();
     }, []);
 
-    // 클릭된 보고서 상세보기 및 조회수 증가 처리
-    const handleViewReport = (faqNumber) => {
-        const updatedDataList = [...dataList]; // 데이터 복사
-        const report = updatedDataList.find(data => data.faqNumber === faqNumber);
-        if (report) {
-            // 조회수 증가
-            report.views += 1;
-            setDataList(updatedDataList); // 상태 업데이트
+    // 필터링된 데이터 리스트 생성
+    const filteredDataList = dataList.filter(
+        (report) =>
+            report.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            report.writeNickname.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
-            setSelectedReport(report); // 선택된 보고서 설정
-            faqActions.updateAllFields(report); // FAQ 상태 업데이트
+    const handleViewReport = (faqNumber) => {
+        const updatedDataList = [...dataList];
+        const report = updatedDataList.find((data) => data.faqNumber === faqNumber);
+        if (report) {
+            report.views += 1;
+            setDataList(updatedDataList);
+
+            setSelectedReport(report);
+            faqActions.updateAllFields(report);
         }
     };
 
-    // '뒤로가기' 버튼 클릭 시 처리
     const handleGoBack = () => {
-        setSelectedReport(null); // 보고서 상세보기 화면을 닫고 목록 화면으로 돌아감
+        setSelectedReport(null);
     };
 
-    // '글쓰기' 버튼 클릭 시 글쓰기 페이지로 이동
     const handleAddReport = () => {
-        navigate("/write"); // 글쓰기 페이지로 이동
+        navigate("/write");
     };
 
     if (loading) return <p>로딩 중...</p>;
@@ -62,7 +66,6 @@ function FeedbackAccordion() {
     return (
         <div className="feedback-container">
             {selectedReport ? (
-                // 선택된 보고서가 있으면 ReportDetail 컴포넌트를 표시
                 <ReportDetail
                     report={selectedReport}
                     onGoBack={handleGoBack}
@@ -73,7 +76,7 @@ function FeedbackAccordion() {
                 <>
                     <h2>건의/제보 게시판 리스트</h2>
                     <button className="add-report-btn" onClick={handleAddReport}>
-                        건의/제보  글쓰기
+                        건의/제보 글쓰기
                     </button>
                     <table className="feedback-table">
                         <thead>
@@ -87,11 +90,11 @@ function FeedbackAccordion() {
                             </tr>
                         </thead>
                         <tbody>
-                            {dataList.map((report) => (
+                            {filteredDataList.map((report) => (
                                 <tr
                                     key={report.faqNumber}
                                     className="feedback-row"
-                                    onClick={() => handleViewReport(report.faqNumber)} // 클릭 시 해당 보고서 상세보기
+                                    onClick={() => handleViewReport(report.faqNumber)}
                                 >
                                     <td>{report.faqNumber}</td>
                                     <td>{report.title}</td>

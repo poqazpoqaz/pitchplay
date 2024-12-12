@@ -1,4 +1,4 @@
-import magnifier from "../assets/magnifier.svg";
+import magnifier from "../../assets/magnifier.svg";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`

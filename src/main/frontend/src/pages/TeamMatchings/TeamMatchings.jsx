@@ -59,7 +59,7 @@ function TeamMatchings() {
                     conditions.push(matchingDate >= startDate && matchingDate <= endDate);
                 }
 
-                return conditions.some(Boolean); // 하나라도 조건 만족 시 true
+                return conditions.every(Boolean); // 하나라도 조건 만족 시 true
             });
         }
 

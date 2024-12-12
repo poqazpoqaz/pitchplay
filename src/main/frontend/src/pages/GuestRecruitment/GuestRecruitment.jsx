@@ -79,7 +79,7 @@ function GuestRecruitment() {
                 }
                 
     
-                return conditions.some(Boolean); // 하나라도 조건 만족 시 true
+                return conditions.every(Boolean); // 하나라도 조건 만족 시 true
             
             
             });
