@@ -40,7 +40,7 @@
       "team1": { "name": "Team Alpha", "src": "/imgs/1.jpg" },
       "team2": { "name": "", "src": "" }
     },
-    "matchingDate": "2024-11-25T10:30",
+    "matchingDate": "2024-11-25 10:30",
     "location": "광나루한강공원",
     "locDetail": "강동구",
     "stadiumId": "S231030110352370636",

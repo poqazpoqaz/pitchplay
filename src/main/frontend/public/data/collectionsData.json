@@ -1,6 +1,6 @@
 [
     {
-        "collectionNumber" : "999991",
+        "collectionNumber": "999991",
         "collectionDescription": "10시00분 ~ 12시 00분, 장소는 서울 디지털운동장 A구장입니다. 회사 동호회 수준이니까 다들 걱정없이 오세요!! 회사팀이라서 땀흘리고 운동하는 것을 목적으로 하고 있습니다. 고레벨의 플레이를 원하시거나 과도한 경쟁심이 있으신분들은 정중히 사양하겠습니다",
         "collectionTime": "2024-11-25T20:00:00",
         "currentMember": "10",
@@ -9,8 +9,8 @@
         "teamCode": "pitchplay1",
         "teamImg": "/public/imgs/1.jpg",
         "teamCity": "서울",
-        "teamLoc": "도봉구",
-        "teamGender": "남자",
+        "teamLoc": "강남구",
+        "teamGender": "남성",
         "viewCount": "100",
         "activeStatus": "true",
         "writtenDate": "2024-11-01",
@@ -38,7 +38,7 @@
         ]
     },
     {
-        "collectionNumber" : "999992",
+        "collectionNumber": "999992",
         "collectionDescription": "축구 즐기실 분 모집합니다!",
         "collectionTime": "2024-12-05T18:00:00",
         "currentMember": "12",
@@ -47,7 +47,7 @@
         "teamCode": "soccerlove2",
         "teamImg": "/public/imgs/1.jpg",
         "teamCity": "서울",
-        "teamLoc": "강남구",
+        "teamLoc": "서초구",
         "teamGender": "혼성",
         "viewCount": "250",
         "activeStatus": "false",
@@ -64,7 +64,7 @@
         ]
     },
     {
-        "collectionNumber" : "999993",
+        "collectionNumber": "999993",
         "collectionDescription": "풋살팀 레드불에서 새로운 멤버를 찾습니다!",
         "collectionTime": "2024-12-15T15:30:00",
         "currentMember": "4",
@@ -72,9 +72,9 @@
         "teamName": "드리머스",
         "teamCode": "dreamers3",
         "teamImg": "/public/imgs/1.jpg",
-        "teamCity": "부산",
-        "teamLoc": "해운대구",
-        "teamGender": "여자",
+        "teamCity": "서울",
+        "teamLoc": "마포구",
+        "teamGender": "여성",
         "viewCount": "80",
         "activeStatus": "false",
         "writtenDate": "2024-11-10",
@@ -102,7 +102,7 @@
         ]
     },
     {
-        "collectionNumber" : "999994",
+        "collectionNumber": "999994",
         "collectionDescription": "풋살 함께 하실 분 구합니다.",
         "collectionTime": "2024-11-30T09:00:00",
         "currentMember": "12",
@@ -110,9 +110,9 @@
         "teamName": "울산번개",
         "teamCode": "ulsanlight4",
         "teamImg": "/public/imgs/1.jpg",
-        "teamCity": "광주",
-        "teamLoc": "북구",
-        "teamGender": "남자",
+        "teamCity": "서울",
+        "teamLoc": "광진구",
+        "teamGender": "남성",
         "viewCount": "120",
         "activeStatus": "true",
         "writtenDate": "2024-11-12",
@@ -140,7 +140,7 @@
         ]
     },
     {
-        "collectionNumber" : "999995",
+        "collectionNumber": "999995",
         "collectionDescription": "아마추어 축구팀 모집합니다!",
         "collectionTime": "2024-11-29T14:00:00",
         "currentMember": "20",
@@ -148,8 +148,8 @@
         "teamName": "광주타이거즈",
         "teamCode": "gwangjutiger5",
         "teamImg": "/public/imgs/1.jpg",
-        "teamCity": "대전",
-        "teamLoc": "중구",
+        "teamCity": "서울",
+        "teamLoc": "동작구",
         "teamGender": "혼성",
         "viewCount": "95",
         "activeStatus": "false",
@@ -178,7 +178,7 @@
         ]
     },
     {
-        "collectionNumber" : "999996",
+        "collectionNumber": "999996",
         "collectionDescription": "우리 열심히해봅시다!!",
         "collectionTime": "2024-12-01T10:00:00",
         "currentMember": "5",
@@ -186,8 +186,8 @@
         "teamName": "드리머스",
         "teamCode": "dreamers3",
         "teamImg": "/public/imgs/1.jpg",
-        "teamCity": "인천",
-        "teamLoc": "남동구",
+        "teamCity": "서울",
+        "teamLoc": "송파구",
         "teamGender": "혼성",
         "viewCount": "50",
         "activeStatus": "false",
@@ -204,7 +204,7 @@
         ]
     },
     {
-        "collectionNumber" : "999997",
+        "collectionNumber": "999997",
         "collectionDescription": "풋살 클럽에서 새로운 동료를 기다립니다!",
         "collectionTime": "2024-12-10T19:00:00",
         "currentMember": "7",
@@ -212,20 +212,18 @@
         "teamName": "광주타이거즈",
         "teamCode": "gwangjutiger5",
         "teamImg": "/public/imgs/1.jpg",
-        "teamCity": "대구",
-        "teamLoc": "수성구",
-        "teamGender": "남자",
+        "teamCity": "서울",
+        "teamLoc": "강동구",
+        "teamGender": "남성",
         "viewCount": "180",
         "activeStatus": "false",
         "writtenDate": "2024-11-25",
         "teamSize": "6vs6",
         "stadiumId": "S231030132351965734",
-        "mercenaryMembers": [
-           
-        ]
+        "mercenaryMembers": []
     },
     {
-        "collectionNumber" : "999998",
+        "collectionNumber": "999998",
         "collectionDescription": "여성 축구 클럽에서 멤버 모집합니다.",
         "collectionTime": "2024-12-20T16:00:00",
         "currentMember": "18",
@@ -233,9 +231,9 @@
         "teamName": "피치플레이",
         "teamCode": "pitchplay1",
         "teamImg": "/public/imgs/1.jpg",
-        "teamCity": "울산",
-        "teamLoc": "남구",
-        "teamGender": "여자",
+        "teamCity": "서울",
+        "teamLoc": "강남구",
+        "teamGender": "여성",
         "viewCount": "300",
         "activeStatus": "false",
         "writtenDate": "2024-11-30",
@@ -251,7 +249,7 @@
         ]
     },
     {
-        "collectionNumber" : "999999",
+        "collectionNumber": "999999",
         "collectionDescription": "서울에서 축구 함께하실 분 구합니다.",
         "collectionTime": "2024-11-28T17:00:00",
         "currentMember": "16",
@@ -277,7 +275,7 @@
         ]
     },
     {
-        "collectionNumber" : "888888",
+        "collectionNumber": "888888",
         "collectionDescription": "초보부터 고수까지 환영합니다!",
         "collectionTime": "2024-12-25T13:00:00",
         "currentMember": "10",

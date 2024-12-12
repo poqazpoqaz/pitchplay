@@ -5,14 +5,13 @@ import CircularButton from "../../components/CircularButton/CircularButton";
 import Dropdown from "../../components/Dropdown";
 import styles from "./TeamMatchings.module.css";
 import axios from "axios";
-import { sortContents } from "../../utils/sortContents";
 import { DROPDOWN_OPTIONS } from "../../utils/constants";
+import { sortContents } from "../../utils/sortContents";
 
 function TeamMatchings() {
     const { isFiltered, filterCriteria } = useOutletContext();
     const [selectedOption, setSelectedOption] = useState("최신순");
     const [allData, setAllData] = useState([]);
-    const [sortedContents, setSortedContents] = useState([]);
     const [filteredContents, setFilteredContents] = useState([]);
     const [visibleCount, setVisibleCount] = useState(5);
 
@@ -23,17 +22,19 @@ function TeamMatchings() {
             .then((response) => {
                 const datas = response.data;
                 setAllData(datas);
-                setSortedContents(sortContents(datas, selectedOption));
+                setFilteredContents(sortContents(datas, selectedOption)); // 초기 정렬 적용
             })
             .catch((error) => {
                 console.error("데이터 로딩 실패:", error);
             });
-    }, [selectedOption]);
+    }, []);
 
-    // 필터링 적용
+    // 필터링 및 정렬 적용
     useEffect(() => {
+        let updatedData = [...allData];
+
         if (isFiltered && filterCriteria) {
-            const filtered = allData.filter((item) => {
+            updatedData = updatedData.filter((item) => {
                 const conditions = [];
 
                 // 성별 필터링
@@ -43,39 +44,36 @@ function TeamMatchings() {
 
                 // 지역 필터링 (locDetail 사용)
                 if (filterCriteria.locDetail && filterCriteria.locDetail.trim() !== "") {
-                    conditions.push(item.locDetail.includes(filterCriteria.locDetail));
+                    conditions.push(item.location.includes(filterCriteria.locDetail));
                 }
-                if (filterCriteria.matchingDate && filterCriteria.matchingDate.start && filterCriteria.matchingDate.end) {
-                    const socialDate = new Date(item.matchingDate);
+
+                // 날짜 필터링
+                if (
+                    filterCriteria.matchingDate &&
+                    filterCriteria.matchingDate.start &&
+                    filterCriteria.matchingDate.end
+                ) {
+                    const matchingDate = new Date(item.matchingDate);
                     const startDate = new Date(filterCriteria.matchingDate.start);
-                    const endDate = new Date(filterCriteria.matchingDate.end);                    
-                    const dateMatch = socialDate >= startDate && socialDate <= endDate;
-                    conditions.push(dateMatch); // 날짜 조건 추가
+                    const endDate = new Date(filterCriteria.matchingDate.end);
+                    conditions.push(matchingDate >= startDate && matchingDate <= endDate);
                 }
-                
-                // 하나라도 조건이 만족하면 true 반환
-                return conditions.some(Boolean);
+
+                return conditions.some(Boolean); // 하나라도 조건 만족 시 true
             });
-
-            setFilteredContents(filtered); // 필터링된 데이터 저장
-        } else {
-            setFilteredContents(sortedContents); // 필터링되지 않으면 정렬 데이터 유지
-            
-
         }
-    }, [isFiltered, filterCriteria, allData]);
 
+        // 정렬 적용
+        const sortedData = sortContents(updatedData, selectedOption);
+        setFilteredContents(sortedData);
+    }, [isFiltered, filterCriteria, allData, selectedOption]);
 
-    
     // 더 보기 버튼
     const handleLoadMore = () => {
         setVisibleCount((prev) =>
-            Math.min(prev + 5, isFiltered ? filteredContents.length : sortedContents.length)
+            Math.min(prev + 5, filteredContents.length)
         );
     };
-
-    // 필터링된 데이터와 정렬된 데이터 결정
-    const dataToRender = isFiltered ? filteredContents : sortedContents;
 
     return (
         <div className={styles["teamMatching-grid"]}>
@@ -87,7 +85,7 @@ function TeamMatchings() {
                 gridArea="drop"
             />
             <div className={styles["teamMatching-items"]}>
-                {dataToRender.slice(0, visibleCount).map((content, index) => (
+                {filteredContents.slice(0, visibleCount).map((content, index) => (
                     <TeamMatching key={index} content={content} />
                 ))}
             </div>

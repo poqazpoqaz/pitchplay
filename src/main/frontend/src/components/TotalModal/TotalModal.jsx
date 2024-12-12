@@ -91,7 +91,7 @@ const TotalModal = ({ isOpen, onClose }) => {
   const [selectedButtons, setSelectedButtons] = useState([]); // gender, teamSize에서 선택
   const [region, setRegion] = useState(''); // location (지역)
   const [subRegion, setSubRegion] = useState(''); // 세부 지역
-  const [matchingDate, setMatchingDate] = useState(''); // 매칭 날짜
+  const [matchingDate, setMatchingDate] = useState({ start: null, end: null }); // 매칭 날짜
 
   const toggleButtonSelection = (label) => {
     setSelectedButtons((prev) =>
