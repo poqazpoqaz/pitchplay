@@ -31,7 +31,7 @@ function TeamCollection({ content, openModal}) {
                 currentMember={content.currentMember}
                 totalMember={content.totalMember}
                 city={content.teamCity}
-                loc={content.teamLoc}
+                locDetail={content.teamLoc}
                 gender={content.teamGender}
                 views={content.viewCount}
                 gridArea="text"
