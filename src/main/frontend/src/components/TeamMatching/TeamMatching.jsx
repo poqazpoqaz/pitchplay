@@ -5,7 +5,7 @@ import styles from "./TeamMatching.module.css";
 import { motion } from "framer-motion";
 
 function TeamMatching({ content }) {
-    const { teams, matchingDate, location, gender, level, views } = content;
+    const { teams, matchingDate, locDetail, location,gender, level, views } = content;
     const team1 = teams.team1; // 팀 1 정보
     const team2 = teams.team2; // 팀 2 정보
 
@@ -32,6 +32,7 @@ function TeamMatching({ content }) {
                     team2={team2.name !== "null" ? team2.name : null}
                     date={matchingDate}
                     location={location}
+                    locDetail={locDetail}
                     gender={gender}
                     level={level}
                     views={views}

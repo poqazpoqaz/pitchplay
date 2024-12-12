@@ -151,6 +151,8 @@ const TotalModal = ({ isOpen, onClose }) => {
                 <option value="광진구">광진구</option>
                 <option value="동작구">동작구</option>
                 <option value="고양시">고양시</option>
+                <option value="강동구">강동구</option>
+                <option value="송파구">송파구</option>
               </Dropdown>
             </Group>
           </FormGroup>
