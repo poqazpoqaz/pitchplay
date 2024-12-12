@@ -1,6 +1,6 @@
 import styles from "./TeamCollectionItem.module.css";
 
-function TeamCollectionItem({ gridArea, teamName, currentMember, totalMember, city, loc, gender, views }) {
+function TeamCollectionItem({ gridArea, teamName, currentMember, totalMember, city, locDetail, gender, views }) {
     return (
         <div style={{ gridArea: gridArea }} className={styles['collectionItem-flex']}>
             <div>
@@ -8,7 +8,7 @@ function TeamCollectionItem({ gridArea, teamName, currentMember, totalMember, ci
                 <h3>（{currentMember} / {totalMember}명）</h3>
             </div>
             <div>
-                <p>{city} {loc}</p>
+                <p>{city} {locDetail}</p>
                 <p>{gender}</p>
             </div>
             <div>

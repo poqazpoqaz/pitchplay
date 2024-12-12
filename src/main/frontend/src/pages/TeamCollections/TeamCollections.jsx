@@ -11,13 +11,13 @@ import { sortContents } from "../../utils/sortContents";
 import { DROPDOWN_OPTIONS } from "../../utils/constants";
 
 function TeamCollections() {
-    const { isFiltered, filterCriteria } = useOutletContext();  // 필터링 상태
+    const { isFiltered, filterCriteria } = useOutletContext(); // 필터링 상태와 조건
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
-    const [sortedContents, setSortedContents] = useState([]);  // 정렬된 데이터
-    const [filteredContents, setFilteredContents] = useState([]);  // 필터링된 데이터
-    const [selectedOption, setSelectedOption] = useState("최신순");  // 드롭다운
-    const [visibleCount, setVisibleCount] = useState(5);  // 현재 렌더링할 데이터 개수
+    const [allData, setAllData] = useState([]); // 전체 데이터
+    const [filteredContents, setFilteredContents] = useState([]); // 필터링된 데이터
+    const [selectedOption, setSelectedOption] = useState("최신순"); // 드롭다운 선택 옵션
+    const [visibleCount, setVisibleCount] = useState(5); // 표시할 데이터 개수
 
     // 알람 열기/닫기 함수
     const openAlarm = () => {
@@ -27,67 +27,54 @@ function TeamCollections() {
 
     const closeAlarm = () => setIsAlarmOpen(false);
 
-    // 드롭다운 선택 변경 처리
-    const handleSelectChange = (option) => {
-        setSelectedOption(option);  // 선택된 옵션 업데이트
-    };
-
-    // 더 보기 버튼 클릭 처리
-    const handleLoadMore = () => {
-        setVisibleCount((prevCount) => Math.min(prevCount + 5, filteredContents.length));  // 필터링된 내용에 맞춰 더 보기
-    };
-
     // 데이터 가져오기
     useEffect(() => {
         axios.get("/data/collectionsData.json")
             .then(response => {
                 const datas = response.data;
-                setSortedContents(datas);  // 전체 데이터 설정
+                setAllData(datas); // 전체 데이터 설정
+                setFilteredContents(sortContents(datas, selectedOption)); // 초기 정렬
             })
             .catch(error => {
                 console.error("데이터 로딩 실패:", error);
             });
-    }, []);  // 초기 로드
+    }, []);
 
     // 필터링 및 정렬 적용
     useEffect(() => {
-        let updatedData = [...sortedContents];
+        let updatedData = [...allData];
 
-        // 필터링 조건이 있을 경우 필터링 적용
         if (isFiltered && filterCriteria) {
             updatedData = updatedData.filter((item) => {
                 const conditions = [];
 
                 // 성별 필터링
                 if (filterCriteria.gender && filterCriteria.gender.length > 0) {
-                    conditions.push(filterCriteria.gender.includes(item.gender));
+                    const genderMatch = filterCriteria.gender.some((gender) =>
+                        item.teamGender.includes(gender)
+                    
+                    );
+                    conditions.push(genderMatch);
                 }
 
                 // 지역 필터링 (locDetail 사용)
-                if (filterCriteria.locDetail && filterCriteria.locDetail.trim() !== "") {
-                    conditions.push(item.location.includes(filterCriteria.locDetail));
+                if (filterCriteria.locDetail) {
+                    const locDetailMatch = item.teamLoc.includes(filterCriteria.locDetail);
+                    conditions.push(locDetailMatch);
                 }
-
-                // 날짜 필터링
-                if (
-                    filterCriteria.matchingDate &&
-                    filterCriteria.matchingDate.start &&
-                    filterCriteria.matchingDate.end
-                ) {
-                    const matchingDate = new Date(item.matchingDate);
-                    const startDate = new Date(filterCriteria.matchingDate.start);
-                    const endDate = new Date(filterCriteria.matchingDate.end);
-                    conditions.push(matchingDate >= startDate && matchingDate <= endDate);
-                }
-
-                return conditions.some(Boolean);  // 하나라도 조건 만족 시 true
+                return conditions.some(Boolean); // 하나라도 조건 만족 시 true
             });
         }
 
         // 정렬 적용
         const sortedData = sortContents(updatedData, selectedOption);
-        setFilteredContents(sortedData);  // 필터링 및 정렬된 데이터 설정
-    }, [isFiltered, filterCriteria, sortedContents, selectedOption]);  // 의존성 배열: 필터링 상태, 필터링 조건, 정렬 옵션 변경 시 실행
+        setFilteredContents(sortedData); // 필터링 및 정렬된 데이터 설정
+    }, [isFiltered, filterCriteria, allData, selectedOption]);
+
+    // 더 보기 버튼 클릭
+    const handleLoadMore = () => {
+        setVisibleCount((prevCount) => Math.min(prevCount + 5, filteredContents.length));
+    };
 
     return (
         <div className={styles['teamcollections-grid']}>
@@ -95,7 +82,7 @@ function TeamCollections() {
             <Dropdown
                 options={DROPDOWN_OPTIONS}
                 selected={selectedOption}
-                onChange={handleSelectChange}
+                onChange={setSelectedOption}
                 text="정렬기준"
                 gridArea="drop"
             />
@@ -117,12 +104,12 @@ function TeamCollections() {
             <CircularButton onClick={handleLoadMore} gridArea="btn" />
 
             {/* 가입 신청 모달 */}
-            {isModalOpen &&
+            {isModalOpen && (
                 <JoinRequestModal titletext="가입신청" buttontext="가입신청하기" isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} openAlarm={openAlarm}>
                     <p>가입 신청 시에 팀에게 프로필과 연락처가 공개됩니다.</p>
                     <p><span style={{ fontWeight: "bold" }}>개인정보 공개에 동의</span>하실 경우 버튼을 눌러 신청해주세요.</p>
                 </JoinRequestModal>
-            }
+            )}
 
             {/* 알람 모달 */}
             {isAlarmOpen && <Alarm btntext="확인" isOpen={isAlarmOpen} closeAlarm={closeAlarm} onClick={closeAlarm}>가입신청이 완료되었습니다.</Alarm>}
