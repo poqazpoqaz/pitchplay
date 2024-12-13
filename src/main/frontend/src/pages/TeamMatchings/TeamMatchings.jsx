@@ -32,37 +32,39 @@ function TeamMatchings() {
     // 필터링 및 정렬 적용
     useEffect(() => {
         let updatedData = [...allData];
-
+    
         if (isFiltered && filterCriteria) {
             updatedData = updatedData.filter((item) => {
                 const conditions = [];
-
+    
                 // 성별 필터링
                 if (filterCriteria.gender && filterCriteria.gender.length > 0) {
                     conditions.push(filterCriteria.gender.includes(item.gender));
                 }
-
-                // 지역 필터링 (locDetail 사용)
+    
+                // 지역 필터링
                 if (filterCriteria.locDetail && filterCriteria.locDetail.trim() !== "") {
                     conditions.push(item.location.includes(filterCriteria.locDetail));
                 }
-
+    
                 // 날짜 필터링
                 if (
                     filterCriteria.matchingDate &&
                     filterCriteria.matchingDate.start &&
                     filterCriteria.matchingDate.end
                 ) {
-                    const matchingDate = new Date(item.matchingDate);
+                    const matchingDate = new Date(item.matchingDate || "1970-01-01");
                     const startDate = new Date(filterCriteria.matchingDate.start);
                     const endDate = new Date(filterCriteria.matchingDate.end);
-                    conditions.push(matchingDate >= startDate && matchingDate <= endDate);
+                    if (!isNaN(matchingDate)) {
+                        conditions.push(matchingDate >= startDate && matchingDate <= endDate);
+                    }
                 }
-
-                return conditions.every(Boolean); // 하나라도 조건 만족 시 true
+    
+                return conditions.every(Boolean); // 모든 조건이 참이어야 포함
             });
         }
-
+    
         // 정렬 적용
         const sortedData = sortContents(updatedData, selectedOption);
         setFilteredContents(sortedData);
