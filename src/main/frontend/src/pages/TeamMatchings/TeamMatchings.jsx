@@ -43,8 +43,8 @@ function TeamMatchings() {
                 }
     
                 // 지역 필터링
-                if (filterCriteria.locDetail && filterCriteria.locDetail.trim() !== "") {
-                    conditions.push(item.location.includes(filterCriteria.locDetail));
+                if (filterCriteria.locDetail && filterCriteria.locDetail.length > 0) {
+                    conditions.push(filterCriteria.locDetail.includes(item.locDetail));
                 }
     
                 // 날짜 필터링
