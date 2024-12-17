@@ -2,10 +2,14 @@ import React from 'react';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/style.css';
 import styles from './StadiumReservation.module.css';
+import { useNavigate } from 'react-router-dom';
 
 function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots }) {
     const [selectedDate, setSelectedDate] = React.useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = React.useState("");
+    const [selectedMatchType, setSelectedMatchType] = React.useState(null); // 소셜매칭 또는 팀매칭 선택 상태
+
+    const navigate = useNavigate();
 
     const timeSlots = [
         "08:00-10:00",
@@ -54,6 +58,16 @@ function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots }) {
 
     const handleTimeSlotSelect = (slot) => {
         setSelectedTimeSlot(slot);
+        setSelectedMatchType(null); // 타임슬롯을 선택하면 매칭 타입 초기화
+    };
+
+    const handleMatchTypeSelect = (type) => {
+        // 선택한 매칭타입이 이미 선택된 타입이면 비활성화 하지 않음
+        if (selectedMatchType === type) {
+            setSelectedMatchType(null); // 이미 선택된 타입이면 선택 해제
+        } else {
+            setSelectedMatchType(type); // 선택한 타입 설정
+        }
     };
 
     const handleReservation = () => {
@@ -72,6 +86,7 @@ function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots }) {
             alert("예약이 신청되었습니다!");
             setSelectedTimeSlot("");
             setSelectedDate(null);
+            setSelectedMatchType(null); // 예약 완료 후 매칭 타입 초기화
         } else {
             alert("예약 날짜와 시간을 모두 선택해주세요.");
         }
@@ -115,23 +130,34 @@ function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots }) {
                         </button>
                     ))}
                 </div>
-                <div className={styles.butDiv}>
-    <button
-        className={`${styles.socialteamButton} ${!selectedDate || !selectedTimeSlot ? styles.disabled : ''}`}
-        disabled={!selectedDate || !selectedTimeSlot}
-    >
-        소셜매칭
-    </button>
-    <button
-        className={`${styles.socialteamButton} ${!selectedDate || !selectedTimeSlot ? styles.disabled : ''}`}
-        disabled={!selectedDate || !selectedTimeSlot}
-    >
-        팀매칭
-    </button>
-</div>
             </div>
 
-            <button className={styles.confirmButton} onClick={handleReservation} disabled={!selectedDate || !selectedTimeSlot}>
+            {/* 소셜매칭 / 팀매칭 버튼 */}
+            {selectedTimeSlot && (
+                <div className={styles.butDiv}>
+                    <button
+                        className={`${styles.socialteamButton} ${selectedMatchType === 'social' ? styles.selected : ''}`}
+                        onClick={() => handleMatchTypeSelect('social')}
+                        disabled={selectedMatchType && selectedMatchType !== 'social'} // 다른 버튼이 선택되면 비활성화
+                    >
+                        소셜매칭
+                    </button>
+                    <button
+                        className={`${styles.socialteamButton} ${selectedMatchType === 'team' ? styles.selected : ''}`}
+                        onClick={() => handleMatchTypeSelect('team')}
+                        disabled={selectedMatchType && selectedMatchType !== 'team'} // 다른 버튼이 선택되면 비활성화
+                    >
+                        팀매칭
+                    </button>
+                </div>
+            )}
+
+            <button 
+            className={styles.confirmButton} onClick={() => {
+                handleReservation(); // 예약 처리 함수
+                navigate("/");       // 메인 페이지로 이동
+            }}
+         disabled={!selectedDate || !selectedTimeSlot || !selectedMatchType}>
                 예약 확인
             </button>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '../../components/Modal/Modal';
 import TeamNameCodeInput from '../../components/TeamCreationItem/TeamNameCodeInput';
 import TeamImageInput from '../../components/TeamCreationItem/TeamImageInput';
@@ -17,6 +17,30 @@ function TeamCreation() {
   const user = JSON.parse(localStorage.getItem('user')); // localStorage에서 user가져옴
   const { state, actions } = useStore();
   const navigate = useNavigate();
+  
+  const initialState = {
+    teamName: "", // 팀 이름 (빈 문자열로 초기화)
+    teamCode: "", // 팀 코드 (빈 문자열로 초기화)
+    teamImg: null, // 팀 이미지 (null로 초기화)
+    teamDescription: "", // 팀 설명 (빈 문자열로 초기화)
+    teamLevel: [], // 팀 레벨 (빈 배열로 초기화)
+    teamDay: [], // 팀 활동 요일 (빈 배열로 초기화)
+    teamTime: [], // 팀 활동 시간대 (빈 배열로 초기화)
+    teamCity: "", // 팀 도시 (빈 문자열로 초기화)
+    teamLoc: "", // 팀 위치 (빈 문자열로 초기화)
+    teamAge: [], // 팀 연령대 (빈 배열로 초기화)
+    teamGender: [], // 팀 성별 (빈 배열로 초기화)
+    currentMember: 0, // 현재 멤버 수 (0으로 초기화)
+    totalMember: 0, // 전체 멤버 수 (0으로 초기화)
+    collectionTitle: "", // 컬렉션 제목 (빈 문자열로 초기화)
+    teamMember: [], // 팀 멤버 (빈 배열로 초기화)
+    teamOwner : "",
+    pendingMembers: [] // 대기 중인 멤버 (빈 배열로 초기화
+}
+
+useEffect(() => {
+  actions.updateAllFields(initialState);
+}, []);
 
   // 모달창 오픈
   const [isOpen, setIsOpen] = useState(true);
