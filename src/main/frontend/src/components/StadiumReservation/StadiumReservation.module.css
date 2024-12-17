@@ -118,6 +118,29 @@ select {
     white-space: normal; /* 텍스트 줄 바꿈을 허용 */
     word-wrap: break-word; /* 긴 텍스트가 자동으로 줄 바꿈되도록 */
 }
+.socialteamButton {
+    flex: 1 1 150px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+.socialteamButton:hover{
+    background-color: #0056b3;
+}
+.butDiv {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap; /* 버튼들이 여러 줄로 정렬될 수 있도록 허용 */
+    gap: 10px; /* 버튼 사이의 간격 */
+    justify-content: center; /* 버튼들을 가운데 정렬 */
+    margin-bottom: 15px;
+}
 
 .timeSlotButton:hover {
     background-color: #0056b3;

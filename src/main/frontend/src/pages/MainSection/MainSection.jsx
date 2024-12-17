@@ -103,7 +103,7 @@ const MainSection = ({ gridArea }) => {
 
   const images = [
     {
-      src: 'team.jpg',
+      src: '1.jpg',
       alt: 'Image 1',
       link: '/social',
       text: '소셜',
@@ -117,7 +117,7 @@ const MainSection = ({ gridArea }) => {
       linkText: '팀으로 이동하기',
     },
     {
-      src: 'team.jpg',
+      src: 'gujang.png',
       alt: 'Gujang',
       link: '/reservation',
       text: '구장',

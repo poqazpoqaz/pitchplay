@@ -31,7 +31,7 @@ function TeamLevel({ levels, teamLevel, handleCategoryClick }) {
           <Checkbox
             key={level}
             onClick={() => handleCategoryClick(level, 'level')}
-            isChecked={teamLevel.includes(level)}
+            isChecked={(teamLevel || []).includes(level)}
           >
             {level}
           </Checkbox>

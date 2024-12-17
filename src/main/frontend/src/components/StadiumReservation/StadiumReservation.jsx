@@ -115,6 +115,20 @@ function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots }) {
                         </button>
                     ))}
                 </div>
+                <div className={styles.butDiv}>
+    <button
+        className={`${styles.socialteamButton} ${!selectedDate || !selectedTimeSlot ? styles.disabled : ''}`}
+        disabled={!selectedDate || !selectedTimeSlot}
+    >
+        소셜매칭
+    </button>
+    <button
+        className={`${styles.socialteamButton} ${!selectedDate || !selectedTimeSlot ? styles.disabled : ''}`}
+        disabled={!selectedDate || !selectedTimeSlot}
+    >
+        팀매칭
+    </button>
+</div>
             </div>
 
             <button className={styles.confirmButton} onClick={handleReservation} disabled={!selectedDate || !selectedTimeSlot}>
