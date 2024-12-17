@@ -3,11 +3,23 @@ import CircleImg from "../CircleImg";
 import Button from "../Button";
 import styles from "./TeamMatching.module.css";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function TeamMatching({ content }) {
     const { teams, matchingDate, locDetail, location,gender, level, views } = content;
     const team1 = teams.team1; // 팀 1 정보
     const team2 = teams.team2; // 팀 2 정보
+
+    const navigate = useNavigate();  // useNavigate 훅 사용
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    const handleViewDetailsClick = () => {
+        if (!user) {
+            navigate("/login");  // 로그인 페이지로 이동
+        } else {
+            navigate(`/matching/${content.matchingNum}`);  // 소셜 매칭 상세 페이지로 이동
+        }
+    };
 
     return (
         <div className={styles["matching-box"]}>
@@ -43,7 +55,9 @@ function TeamMatching({ content }) {
                     <CircleImg src={team2.src} alt={`${team2.name} 이미지`} gridArea="team2" />
                 ) : (
                 
-                    <Button color="var(--main-color)" gridArea="team2" to={`/matching/${content.matchingNum}`}>
+                    <Button
+                    onClick={handleViewDetailsClick}
+                    color="var(--main-color)" gridArea="team2">
                         신청하기
                     </Button>
                 )}

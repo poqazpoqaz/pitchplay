@@ -4,12 +4,24 @@ import CircleImg from "../CircleImg";
 import styles from "./SocialMatching.module.css";
 import SocialMatchingItem from "./SocialMatchingItem";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 
 function SocialMatching({ content, openModal }) {
+    const navigate = useNavigate();  // useNavigate 훅 사용
+    const user = JSON.parse(localStorage.getItem('user'));
 
 
     const currentCount = content.social.currentMember.length || 0;
+
+
+    const handleViewDetailsClick = () => {
+        if (!user) {
+            navigate("/login");  // 로그인 페이지로 이동
+        } else {
+            navigate(`/social/${content.social.socialNumber}`);  // 소셜 매칭 상세 페이지로 이동
+        }
+    };
 
     // 날짜 포맷 함수
     function formatDateWithDay(dateString) {
@@ -22,6 +34,9 @@ function SocialMatching({ content, openModal }) {
         const dayOfWeek = daysOfWeek[date.getDay()]; // 요일 가져오기
 
         return `${year}-${month}-${day}(${dayOfWeek})`;
+
+
+
     }
 
     return (
@@ -51,7 +66,9 @@ function SocialMatching({ content, openModal }) {
                     정원마감
                 </DisabledButton>
             )}
-            <Button color="var(--main-color)" size="medium" gridArea="btn2" to={`/social/${content.social.socialNumber}`}>
+            <Button
+            onClick={handleViewDetailsClick}
+            color="var(--main-color)" size="medium" gridArea="btn2">
                 자세히 보기
             </Button>
         </motion.div>

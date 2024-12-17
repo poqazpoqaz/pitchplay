@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DefaultButton from "../DefaultButton";
 import SearchInput from "../SearchInput";
 import styles from "./Navbar.module.css";
@@ -7,6 +7,9 @@ import styles from "./Navbar.module.css";
 function Navbar({ gridArea, onSearch }) {
     const [activeButton, setActiveButton] = useState("btn1");
     const location = useLocation();
+    const navigate = useNavigate();
+    
+    
 
     useEffect(() => {
         if (location.pathname === "/team") {
@@ -20,8 +23,16 @@ function Navbar({ gridArea, onSearch }) {
         }
     }, [location]);
 
-    const handleButtonClick = (buttonId) => {
-        setActiveButton(buttonId);
+    const handleButtonClick = (buttonId, targetPath) => {
+        const user = JSON.parse(localStorage.getItem("user")); // 로컬스토리지에서 사용자 정보 가져오기
+
+        if (!user) {
+            // 사용자가 로그인하지 않았다면 로그인 페이지로 리다이렉트
+            navigate("/login");  // 로그인 페이지로 이동
+        } else {
+            setActiveButton(buttonId);
+            navigate(targetPath);  // 로그인된 사용자라면 원하는 페이지로 이동
+        }
     };
 
     const handleSearchClick = () => {
@@ -67,8 +78,7 @@ function Navbar({ gridArea, onSearch }) {
                 gridArea="btn4"
                 size="xlarge"
                 isActive={activeButton === "btn4"}
-                onClick={() => handleButtonClick("btn4")}
-                src="/team/creation"
+                onClick={() => handleButtonClick("btn4", "/team/creation")} 
             >
                 팀만들기
             </DefaultButton>
