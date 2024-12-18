@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom'; // useNavigate import 추가
 import { changePhone } from '../../../stores/UserStore/action';
 import { accountNum } from '../../../utils/regExp';
 
@@ -36,7 +37,7 @@ const Input = styled.input`
   border-radius: 4px;
   flex: 1;
   transition: border-color 0.3s ease;
-   margin-bottom: 0px;
+  margin-bottom: 0px;
   
   &:focus {
     border-color: #007bff;
@@ -51,7 +52,7 @@ const Select = styled.select`
   border-radius: 4px;
   flex: 0 0 30%; /* 드롭다운은 30% */
   max-width: 150px; /* 드롭다운의 최대 너비를 설정 */
-  margin-top : 15px;
+  margin-top: 15px;
 `;
 
 const Button = styled.button`
@@ -101,22 +102,28 @@ const ChangeSetComp = ({
   setAuthCode,
   userState,
   handleBlur
-
-  
-
-  
 }) => {
-  return (
-    
-    <Container>
+  const navigate = useNavigate(); // useNavigate 훅 추가
+  const user = JSON.parse(localStorage.getItem('user')); 
 
+  // handleSubmitInfo 함수 수정: 제출 후 '/changeset' 페이지로 이동
+  const handleSubmitInfoAndRedirect = () => {
+    handleSubmitInfo(); // 기존 서브밋 함수 호출
+
+    alert("변경되었습니다"); // 알림 창 추가
+
+    // 페이지 이동 (현재 사용자 ID에 맞는 경로로 이동)
+    navigate(`/mypage/${user.id}/setting`);
+  };
+
+  return (
+    <Container>
       {/* 아이디 변경 */}
       <FormField>
         <Label>아이디</Label>
         <Input 
           type="text" 
           value={userState.id} 
-
         />
       </FormField>
 
@@ -195,7 +202,6 @@ const ChangeSetComp = ({
         <Select 
           value={newAccount} 
           onChange={(e) => setNewAccount(e.target.value)}
-
         >
           <option value={newAccount}>{newAccount}</option>
           <option value="국민은행">국민은행</option>
@@ -217,7 +223,7 @@ const ChangeSetComp = ({
       </FormField>
 
       {/* 수정 완료 버튼 */}
-      <SubmitButton onClick={handleSubmitInfo}>수정 완료</SubmitButton>
+      <SubmitButton onClick={handleSubmitInfoAndRedirect}>수정 완료</SubmitButton>
     </Container>
   );
 };

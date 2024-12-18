@@ -20,7 +20,7 @@ const Setting = ({ gridArea }) => {
         { label: "비밀번호", name: "pw", value: user.password}, 
         { label: "이메일", name: "email", value: user.email}, 
         { label: "휴대폰 번호", name: "num", value: user.phone}, 
-        { label: "생년 월일", name: "birthdate", value: user.birth}, 
+        { label: "생년 월일", name: "birthdate", value: user.birthday}, 
         {  label: "등록 계좌", name: "account", value: `${user.account} ${user.accountNum}`} 
     ];
     useEffect(() => {

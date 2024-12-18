@@ -110,7 +110,7 @@ const ChangeSetting = ({ gridArea }) => {
         const updatedUserInfo = {
             ...user, // 기존의 사용자 정보
             phone: newPhone, // 변경된 전화번호 또는 기존 전화번호
-            birth: newbirth, // 변경된 생년월일 또는 기존 생년월일
+            birthday: newbirth, // 변경된 생년월일 또는 기존 생년월일
             account: newAccount, // 변경된 계좌명 또는 기존 계좌명
             accountNum: newAccountNum // 변경된 계좌번호 또는 기존 계좌번호
         };
