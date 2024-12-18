@@ -6,20 +6,26 @@ import SocialMatchingItem from "./SocialMatchingItem";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-
 function SocialMatching({ content, openModal }) {
     const navigate = useNavigate();  // useNavigate 훅 사용
-    const user = JSON.parse(localStorage.getItem('user'));
 
+    // localStorage에서 user 데이터를 안전하게 가져오기
+    const storedUser = localStorage.getItem('user');
+    const user = storedUser ? JSON.parse(storedUser) : null;
+
+    // user가 null인 경우 userCash에 안전하게 접근
+    const userCash = user?.userCash || 0; // userCash가 없으면 0을 기본값으로 사용
 
     const currentCount = content.social.currentMember.length || 0;
 
-
+    // '자세히 보기' 버튼 클릭 시 처리
     const handleViewDetailsClick = () => {
         if (!user) {
-            navigate("/login");  // 로그인 페이지로 이동
+            // 로그인되지 않은 경우, 로그인 페이지로 이동
+            navigate("/login");
         } else {
-            navigate(`/social/${content.social.socialNumber}`);  // 소셜 매칭 상세 페이지로 이동
+            // 로그인된 경우, 해당 소셜 매칭 상세 페이지로 이동
+            navigate(`/social/${content.social.socialNumber}`);
         }
     };
 
@@ -34,9 +40,6 @@ function SocialMatching({ content, openModal }) {
         const dayOfWeek = daysOfWeek[date.getDay()]; // 요일 가져오기
 
         return `${year}-${month}-${day}(${dayOfWeek})`;
-
-
-
     }
 
     return (
@@ -57,7 +60,7 @@ function SocialMatching({ content, openModal }) {
                 socialTime={formatDateWithDay(content.social.socialTime)}
             />
 
-            {content.social.activeStatus == "false" ? (
+            {content.social.activeStatus === "false" ? (
                 <Button color="var(--main-color)" size="medium" gridArea="btn1" onClick={openModal}>
                     신청하기
                 </Button>
@@ -66,9 +69,10 @@ function SocialMatching({ content, openModal }) {
                     정원마감
                 </DisabledButton>
             )}
+
             <Button
-            onClick={handleViewDetailsClick}
-            color="var(--main-color)" size="medium" gridArea="btn2">
+                onClick={handleViewDetailsClick}  // 디테일 페이지로 이동
+                color="var(--main-color)" size="medium" gridArea="btn2">
                 자세히 보기
             </Button>
         </motion.div>

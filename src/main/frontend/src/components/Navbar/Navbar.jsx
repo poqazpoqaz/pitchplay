@@ -78,7 +78,9 @@ function Navbar({ gridArea, onSearch }) {
                 gridArea="btn4"
                 size="xlarge"
                 isActive={activeButton === "btn4"}
-                onClick={() => handleButtonClick("btn4", "/team/creation")} 
+                onClick={() => handleButtonClick("btn4")}
+                src= "/team/creation"
+                
             >
                 팀만들기
             </DefaultButton>
