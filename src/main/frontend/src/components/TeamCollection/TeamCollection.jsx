@@ -37,7 +37,9 @@ function TeamCollection({ content, openModal}) {
                 gridArea="text"
             />
             {content.activeStatus == "false" ? (
-                <Button color="var(--main-color)" size="medium" gridArea="btn1" onClick={handleButtonClick}>
+                <Button color="var(--main-color)" size="medium" gridArea="btn1" onClick={handleButtonClick}
+                
+                >
                     신청하기
                 </Button>
             ) : (

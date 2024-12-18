@@ -5,10 +5,9 @@ import JoinRequestModal from "../../components/JoinRequestModal";
 import styles from "./TeamApplication.module.css"
 import Alarm from "../../components/Alarm";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate  } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useStore } from "../../stores/TeamStore/useStore";
-
 
 function TeamApplication() {
     const { state, actions } = useStore();
@@ -16,7 +15,6 @@ function TeamApplication() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAlarmOpen, setIsAlarmOpen] = useState(false);
     const navigate = useNavigate();
-
 
     useEffect(() => {
         // 데이터를 가져오는 비동기 작업
@@ -49,17 +47,21 @@ function TeamApplication() {
             });
     }, [teamCode]);
 
-
     // 모달 열기/닫기 함수
-       const openModal = () => {
-        const user = JSON.parse(localStorage.getItem('user'));
+    const openModal = () => {
+        const user = JSON.parse(localStorage.getItem('user'));  // 사용자 정보 가져오기
         if (!user) {
             // 로그인되지 않은 경우, 로그인 페이지로 리디렉션
             navigate("/login");
+        } else if (user.myTeam && user.myTeam.trim() !== "") {
+            // 이미 팀에 가입되어 있는 경우
+            alert("이미 팀에 가입되어있습니다.");  // 가입된 상태 알림
         } else {
+            // 팀에 가입되지 않은 경우 모달 열기
             setIsModalOpen(true);
         }
     };
+
     const closeModal = () => setIsModalOpen(false);
 
     // 알람 열기/닫기 함수

@@ -27,6 +27,22 @@ function TeamCollections() {
 
     const closeAlarm = () => setIsAlarmOpen(false);
 
+    // 사용자 정보 가져오기
+    const [user, setUser] = useState(null);
+
+    // 사용자 정보를 localStorage에서 한번만 읽어옴
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem('user'));
+        setUser(storedUser);
+    }, []);
+
+    // 팀에 이미 가입되어 있는지 확인하고 알람 표시
+    useEffect(() => {
+        if (user && user.myTeam && user.myTeam.trim() !== "") {
+            alert("이미 팀에 가입되어있습니다.");
+        }
+    }, [user]);
+
     // 데이터 가져오기
     useEffect(() => {
         axios.get("/data/collectionsData.json")
@@ -52,7 +68,6 @@ function TeamCollections() {
                 if (filterCriteria.gender && filterCriteria.gender.length > 0) {
                     const genderMatch = filterCriteria.gender.some((gender) =>
                         item.teamGender.includes(gender)
-                    
                     );
                     conditions.push(genderMatch);
                 }
@@ -62,7 +77,7 @@ function TeamCollections() {
                     const locDetailMatch = item.teamLoc.includes(filterCriteria.locDetail);
                     conditions.push(locDetailMatch);
                 }
-                
+
                 return conditions.every(Boolean); // 하나라도 조건 만족 시 true
             });
         }
@@ -75,6 +90,15 @@ function TeamCollections() {
     // 더 보기 버튼 클릭
     const handleLoadMore = () => {
         setVisibleCount((prevCount) => Math.min(prevCount + 5, filteredContents.length));
+    };
+
+    // 가입 신청 모달을 열기 전에 팀에 가입된 상태인지 확인
+    const openJoinRequestModal = () => {
+        if (user && user.myTeam && user.myTeam.trim() !== "") {
+            alert("이미 팀에 가입되어있습니다.");
+        } else {
+            setIsModalOpen(true);
+        }
     };
 
     return (
@@ -94,7 +118,7 @@ function TeamCollections() {
                         <TeamCollection
                             key={index}
                             content={content}
-                            openModal={() => setIsModalOpen(true)}
+                            openModal={openJoinRequestModal} // 기존 openModal 대신 openJoinRequestModal 사용
                             openAlarm={openAlarm}
                         />
                     );
