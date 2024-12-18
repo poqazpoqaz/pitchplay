@@ -16,12 +16,12 @@ const Setting = ({ gridArea }) => {
 
 
     const formFields = [
-        { label: "아이디", name: "id", value: state.id}, 
-        { label: "비밀번호", name: "pw", value: state.password}, 
-        { label: "이메일", name: "email", value: state.email}, 
-        { label: "휴대폰 번호", name: "num", value: state.phone}, 
-        { label: "생년 월일", name: "birthdate", value: state.birthday}, 
-        {  label: "등록 계좌", name: "account", value: `${state.account} ${state.accountNum}`} 
+        { label: "아이디", name: "id", value: user.id}, 
+        { label: "비밀번호", name: "pw", value: user.password}, 
+        { label: "이메일", name: "email", value: user.email}, 
+        { label: "휴대폰 번호", name: "num", value: user.phone}, 
+        { label: "생년 월일", name: "birthdate", value: user.birth}, 
+        {  label: "등록 계좌", name: "account", value: `${user.account} ${user.accountNum}`} 
     ];
     useEffect(() => {
         axios.get("/data/userData.json")
