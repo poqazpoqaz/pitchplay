@@ -147,6 +147,7 @@ function StadiumDetail({ gridArea }) {
                 closeModal={handleCloseModal}
                 reservedTimeSlots={reservedTimeSlots}
                 setReservedTimeSlots={setReservedTimeSlots}
+                stadiumCost={state.stadiumCost} // 수정한거임
             />
         </div>
     );

@@ -4,7 +4,7 @@ import 'react-day-picker/style.css';
 import styles from './StadiumReservation.module.css';
 import { useNavigate } from 'react-router-dom';
 
-function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots }) {
+function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots, stadiumCost }) {
     const [selectedDate, setSelectedDate] = React.useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = React.useState("");
     const [selectedMatchType, setSelectedMatchType] = React.useState(null); // 소셜매칭 또는 팀매칭 선택 상태
@@ -69,21 +69,43 @@ function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots }) {
             setSelectedMatchType(type); // 선택한 타입 설정
         }
     };
-
+    // 얘도 수정
     const handleReservation = () => {
         if (selectedDate && selectedTimeSlot) {
             const formattedDate = selectedDate.toISOString().split("T")[0];
+    
+            // 이미 예약된 시간대인지 확인
             if (reservedTimeSlots[formattedDate] && reservedTimeSlots[formattedDate].includes(selectedTimeSlot)) {
                 alert("이미 예약된 시간대입니다.");
                 return;
             }
-
+    
+            // 로컬스토리지에서 사용자 데이터 불러오기
+            const user = JSON.parse(localStorage.getItem('user')) || {};
+    
+            // userCash가 없거나 사용자의 보유 금액이 부족한 경우 처리
+            const userCash = user.userCash || 0;
+            if (userCash < parseInt(stadiumCost, 10)) {
+                alert("잔액이 부족합니다. 충전 후 다시 시도해주세요.");
+                return;
+            }
+    
+            // 예약 성공 처리: 비용 차감
+            const updatedUser = {
+                ...user,
+                userCash: userCash - parseInt(stadiumCost, 10), // stadiumCost 차감
+            };
+    
+            // 로컬스토리지에 업데이트된 사용자 정보 저장
+            localStorage.setItem('user', JSON.stringify(updatedUser));
+    
+            // 예약된 시간대를 상태에 추가
             setReservedTimeSlots((prev) => ({
                 ...prev,
                 [formattedDate]: [...(prev[formattedDate] || []), selectedTimeSlot],
             }));
-
-            alert("예약이 신청되었습니다!");
+    
+            alert("예약이 성공적으로 완료되었습니다!");
             setSelectedTimeSlot("");
             setSelectedDate(null);
             setSelectedMatchType(null); // 예약 완료 후 매칭 타입 초기화
@@ -158,7 +180,7 @@ function StadiumReservation({ reservedTimeSlots, setReservedTimeSlots }) {
                 navigate("/");       // 메인 페이지로 이동
             }}
          disabled={!selectedDate || !selectedTimeSlot || !selectedMatchType}>
-                예약 확인
+                예약 하기
             </button>
         </div>
     );

@@ -5,7 +5,8 @@ import './ReservationModal.css'; // 모달 스타일 import
 import ModalHeader from '../../../components/Modal/ModalHeader'; // ModalHeader 컴포넌트 import
 import StadiumReservation from '../StadiumReservation'; // 예약 컴포넌트 import
 
-const ReservationModal = ({ isOpen, closeModal, reservedTimeSlots, setReservedTimeSlots }) => {
+// stadiumCost 받아옴
+const ReservationModal = ({ isOpen, closeModal, reservedTimeSlots, setReservedTimeSlots, stadiumCost }) => {
   const nodeRef = useRef(null); // ref 생성
 
   // 모달 애니메이션 설정
@@ -60,6 +61,7 @@ const ReservationModal = ({ isOpen, closeModal, reservedTimeSlots, setReservedTi
               <StadiumReservation
                 reservedTimeSlots={reservedTimeSlots}
                 setReservedTimeSlots={setReservedTimeSlots}
+                stadiumCost={stadiumCost} // 비용전달 수정함
               />
             </div>
           </motion.div>
