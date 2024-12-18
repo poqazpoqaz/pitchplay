@@ -34,7 +34,7 @@ const Mypage1 = () => {
 
     const formFields = [
         { label: "이름", name: "name", value: state.name || "", disabled: true },
-        { label: "닉네임", name: "nickname", value: state.nickname || "", disabled: false },
+        { label: "닉네임", name: "nickname", value: state.nickname || "", disabled: true },
         { label: "선호 지역", name: "region", value: state.favoriteCity || "", disabled: false },
         { label: "선호 시간", name: "time", value: state.favoriteTime || "", disabled: false },
         { label: "나의 팀", name: "team", value: state.myTeam || "", disabled: true },
@@ -88,8 +88,7 @@ const Mypage1 = () => {
         const { name, value } = e.target;
 
         // 'name'과 'team'은 변경 불가하므로 처리하지 않음
-        if (name === "nickname") actions.changeNickname(value);
-        else if (name === "region") actions.changeFavoriteCity(value);
+        if (name === "region") actions.changeFavoriteCity(value);
         else if (name === "time") actions.changeFavoriteTime(value);
         else if (name === "intro") actions.changeMyDescription(value);
 
@@ -106,7 +105,6 @@ const Mypage1 = () => {
             // 2. 변경된 값을 기반으로 새로운 객체 생성
             const updatedUser = {
                 ...savedUser, // 기존 값 유지
-                nickname: state.nickname, // 최신 nickname 값
                 favoriteCity: state.favoriteCity, // 최신 region 값
                 favoriteTime: state.favoriteTime, // 최신 time 값
                 myDescription: state.myDescription, // 최신 intro 값

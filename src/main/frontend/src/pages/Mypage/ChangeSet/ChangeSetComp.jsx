@@ -86,7 +86,7 @@ const ChangeSetComp = ({
   sendAuthCode,
   verifyAuthCode,
   authCode,
-  newEmail,
+  email,
   setNewEmail,
   emailChangeModal,
   handleSubmitInfo,
